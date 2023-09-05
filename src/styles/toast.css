@@ -1,0 +1,51 @@
+.errorBorder {
+    border: 2px solid red !important;
+    outline: none !important;
+}
+
+.Toastify__toast-icon svg {
+    fill: #fff !important;
+}
+
+
+/* error toast popup */
+.errorToast {
+    background-color: #ff0000e8 !important;
+    color: #fff !important;
+}
+
+.errorToast>.Toastify__progress-bar {
+    background-color: #fff;
+}
+
+.errorToast>.Toastify__close-button {
+    color: #fff;
+}
+
+/* success toast popup */
+.successToast {
+    background-color: #01ca01e8 !important;
+    color: #fff !important;
+}
+
+.successToast>.Toastify__progress-bar {
+    background-color: #fff;
+}
+
+.successToast>.Toastify__close-button {
+    color: #fff;
+}
+
+/* success toast popup */
+.warningToast {
+    background-color: #f0b81fe8 !important;
+    color: #fff !important;
+}
+
+.warningToast>.Toastify__progress-bar {
+    background-color: #fff;
+}
+
+.warningToast>.Toastify__close-button {
+    color: #fff;
+}

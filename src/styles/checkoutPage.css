@@ -1,0 +1,274 @@
+.minHeight800 {
+    min-height: 800px;
+}
+
+.maxWidth450 {
+    max-width: 400px;
+}
+
+header.header-sec {
+    background: transparent;
+    box-shadow: none;
+}
+
+.headerlogo {
+    display: flex;
+    justify-content: center;
+    height: 50px !important;
+
+}
+
+.header-sec {
+    padding: 25px 10px;
+    box-shadow: 2px 2px 2px rgba(206, 198, 198, 0.58);
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        min-width: 1170px;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        width: 750px;
+    }
+}
+
+.header-sec img {
+    margin: 0;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profile-form-sec {
+    padding: 50px 0;
+    float: left;
+    width: 100%;
+}
+
+.first-price-sec {
+    float: left;
+    width: 100%;
+}
+
+.third-coupon-sec ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.third-coupon-sec ul li {
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.check-info-sec {
+    padding: 50px 40px;
+    float: left;
+    width: 100%;
+    background: #f7f7f7;
+}
+
+.check-info-sec h3 {
+    margin-top: 0px;
+    text-transform: uppercase;
+    /* font-weight: 600; */
+    font-size: 16px;
+    margin-bottom: 30px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+.check-info-sec .form-group label {
+    font-size: 12px;
+    margin-top: 20px;
+}
+.checkout-form .form-group{
+    width: 100%;
+}
+.checkout-form .form-group .form-control{
+    font-size: .9rem;
+}
+
+.check-info-sec .form-group .form-control {
+    background: transparent;
+    box-shadow: 0 0;
+    border-radius: 0;
+    border: 1px solid #d0cfcf;
+    border: 1px solid #c9c6c6;
+    height: 40px;
+}
+
+.check-info-sec .resp-tabs-list {
+    border-bottom: 1px solid #ccc;
+    float: left;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+ul.resp-tabs-list,
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.resp-tabs-container {
+    padding: 0px;
+    background-color: transparent;
+    clear: left;
+    min-height: 264px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.resp-tabs-container {
+    padding: 0px;
+    background-color: #fff;
+    clear: left;
+}
+
+.third-coupon-sec ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.third-coupon-sec ul li {
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.r-submit-form .coupon-L-sec {
+    padding: 0px;
+}
+
+.coupon-L-sec {
+    text-align: left;
+}
+
+.order-btn-submit {
+    background: #1FA7C4 !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    border: 0px;
+    font-weight: 300;
+    padding: 15px 10px;
+}
+.order-btn-submit:hover{
+    background-color: #1487a1 !important;
+}
+.refererror-sec label {
+    color: #000;
+    font-size: 12px;
+}
+
+.coupon-L-sec label {
+    font-weight: 400;
+    font-size: 16px;
+    color: #1FA7C4;
+}
+
+.coupon-L-sec {
+    text-align: left;
+}
+
+.subtotal-sec label {
+    color: #000;
+}
+
+.coupon-L-sec label {
+    font-weight: 400;
+    font-size: 16px;
+    color: #1FA7C4;
+}
+
+.coupon-R-sec {
+    text-align: right;
+}
+
+.subtotal-sec label {
+    color: #000;
+}
+
+.coupon-R-sec label {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.subtotal-sec label {
+    color: #000;
+}
+
+.coupon-apply {
+    float: left;
+    width: 100%;
+    margin: 0;
+    border: 1px solid #c9c6c6;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    position: relative;
+}
+
+input#coupon_code {
+    width: 87%;
+}
+
+.coupon-apply input[type="text"] {
+    display: inline-block;
+    width: 82%;
+    border: 0;
+    box-shadow: 0 0;
+    color: #000;
+}
+
+button#coupon_apply_button {
+    width: 13%;
+    background: #1FA7C4;
+    color: #fff !important;
+    border: 2px solid #1FA7C4;
+}
+
+.total-pay label {
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #000;
+}
+
+.coupon-R-sec label {
+    font-weight: 400;
+}
+
+.check-info-sec h2 {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-top: 50px;
+    padding-left: 15px;
+}
