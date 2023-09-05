@@ -24,5 +24,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simransoftwaresolutions/s3pages-checkout-package.git"
+  },
+  "publishConfig": {
+    "@sss-product:registry": "https://npm.pkg.github.com"
   }
 }
