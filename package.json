@@ -1,14 +1,16 @@
 {
   "name": "@sss-product/checkout",
   "version": "0.1.0",
-  "description": "product checkout packages",
+  "description": "products checkout package",
+  "main": "./components/index.ts",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "author": "ram-ashish",
+  "license": "ISC",
+  "author": "Ram Ashish",
   "dependencies": {
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
