@@ -1,7 +1,7 @@
 {
-  "name": "@sss-product/checkout",
+  "name": "s3pages-checkout",
   "version": "0.1.0",
-  "description": "products checkout package",
+  "description": "Checkout pages components of S3Pages",
   "main": "./components/index.ts",
   "scripts": {
     "dev": "next dev",
@@ -28,6 +28,6 @@
     "url": "git+https://github.com/simransoftwaresolutions/s3pages-checkout-package.git"
   },
   "publishConfig": {
-    "@sss-product:registry": "https://npm.pkg.github.com"
+    "s3pages-checkout:registry": "https://npm.pkg.github.com"
   }
 }
