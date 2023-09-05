@@ -2,7 +2,7 @@
   "name": "s3pages-checkout",
   "version": "0.1.0",
   "description": "Checkout pages components of S3Pages",
-  "main": "./components/index.ts",
+  "main": "./src/index.ts",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
