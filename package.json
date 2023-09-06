@@ -2,10 +2,8 @@
   "name": "s3pages-checkout",
   "version": "0.1.2",
   "description": "Checkout pages components of S3Pages",
-  "main": "lib/exports.js",
-  "types": "lib/exports.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "react-scripts build",
     "prepare": "npm run build",
     "start": "react-scripts start"
   },
