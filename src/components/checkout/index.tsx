@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "../../styles/globals.css"
 
 export function CheckoutProduct({ data }: { data: any }) {
     return (
