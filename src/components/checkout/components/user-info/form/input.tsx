@@ -22,7 +22,7 @@ export const Input = ({ title, field, type = "text", show = true, error: isError
             value={formInfo?.[field] ?? ""}
             onChange={(e: any) => handleChange(field, e.target.value)}
             className="form-control input-field"
-            placeholder={`Enter the ${title}`}
+            placeholder={`Enter the ${title.toLowerCase()}`}
         />
         {isError ? <p className="text-danger m-0">please provide {field.toLowerCase()}</p> : null}
     </div> : <></>
