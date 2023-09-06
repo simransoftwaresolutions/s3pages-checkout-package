@@ -1,0 +1,12 @@
+@import "../styles/checkoutPage.css";
+@import "../styles/toast.css";
+
+body {
+  font-size: 13px/1.7em;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
+}
+
+hr {
+  margin-top: 0 !important;
+}

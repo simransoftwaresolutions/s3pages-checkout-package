@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "declaration": true,
+        "outDir": "./lib",
+        "jsx": "react-jsx",
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/__tests__/*"
+    ]
+}
