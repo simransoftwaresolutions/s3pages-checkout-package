@@ -1,5 +1,5 @@
-@import "../styles/checkoutPage.css";
-@import "../styles/toast.css";
+@import "./checkoutPage.css";
+@import "./toast.css";
 
 body {
   font-size: 13px/1.7em;
