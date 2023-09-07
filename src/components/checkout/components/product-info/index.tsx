@@ -13,7 +13,7 @@ export const ProductInfo = () => {
         <div className="first-price-sec"></div>
 
         <div>
-          <img src={process.env.IMAGE_DOMAIN + data?.imagePath?.key} className="maxWidth450" alt="thumbnail" />
+          <img src={'https://d105z293na9jky.cloudfront.net/' + data?.imagePath?.key} className="maxWidth450" alt="thumbnail" />
           <br />
           <br />
           <br />

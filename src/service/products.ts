@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 export const fetchOneProduct = async (slug: string) => {
     return ErrorHandler(async () => {
 
-        const response = await fetch(process.env.BASE_BACKEND_URL + `/fe/product/${slug}`)
+        const response = await fetch('https://s3pagesapi.s3preview.com/api' + `/fe/product/${slug}`)
         const responseJSON = await response.json()
 
         return responseJSON.status ? responseJSON?.data : responseJSON?.message
@@ -19,7 +19,7 @@ export const checkoutProduct = async (data: any) => {
         axios({
             maxRedirects: 0,
             method: 'post',
-            url: process.env.BASE_BACKEND_URL + `/products/fe/checkout`,
+            url: 'https://s3pagesapi.s3preview.com/api' + `/products/fe/checkout`,
             data,
             headers: {
                 "Content-Type": "application/json"
