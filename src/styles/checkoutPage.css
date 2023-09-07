@@ -29,21 +29,30 @@ header.header-sec {
     border-top: 3px solid #ff0000 !important;
     border-radius: 0;
 }
+
+.tablist-btn li button:hover {
+    color: #0009;
+}
+
 .width-fixed {
     min-height: 200px;
 }
-.formRow label{
+
+.formRow label {
     font-weight: 700;
 }
-@media(max-width:950px){
-    .change-order{
+
+@media(max-width:950px) {
+    .change-order {
         order: 2;
         width: 100%;
     }
+
     .total-pay label {
         font-size: 18px;
     }
-    .change-order-2{
+
+    .change-order-2 {
         width: 100%;
     }
 }
@@ -68,6 +77,7 @@ header.header-sec {
 
     .container {
         width: 750px;
+        padding-bottom: 30px;
     }
 }
 
@@ -130,11 +140,14 @@ header.header-sec {
 .check-info-sec .form-group label {
     font-size: 13px;
     margin-top: 20px;
+    color: #000000bb;
 }
-.checkout-form .form-group{
+
+.checkout-form .form-group {
     width: 100%;
 }
-.checkout-form .form-group .form-control{
+
+.checkout-form .form-group .form-control {
     font-size: .9rem;
 }
 
@@ -207,9 +220,11 @@ p {
     font-weight: 300;
     padding: 15px 10px;
 }
-.order-btn-submit:hover{
+
+.order-btn-submit:hover {
     background-color: #1487a1 !important;
 }
+
 .refererror-sec label {
     color: #000;
     font-size: 12px;

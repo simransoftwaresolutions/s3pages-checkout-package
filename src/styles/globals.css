@@ -11,4 +11,13 @@ hr {
   margin-top: 0 !important;
 }
 
+.capitalize {
+  text-transform: capitalize !important;
+}
 
+.nav-link,
+.nav-link:focus,
+.nav-link:active,
+.nav-link:hover {
+  color: #0009;
+}

@@ -2,7 +2,7 @@ import { useCheckout } from '../../../../context/product/useProductCheckout';
 import { UserForm } from './form';
 import { t } from '../../../../constant/one-liner';
 import { FormSubmit } from './form/submit';
-import { ProductDetail } from './product-detail';
+import { PaymentMethods } from './product-detail';
 
 export const UserInfo = () => {
     const { setting } = useCheckout() as any
@@ -20,7 +20,7 @@ export const UserInfo = () => {
 
                     <div className="clearfix"></div>
                     {/* details about product like:- payment-method, amount */}
-                    <ProductDetail />
+                    <PaymentMethods />
 
                     {/* submit form with product detail and userDetail */}
                     <FormSubmit />
