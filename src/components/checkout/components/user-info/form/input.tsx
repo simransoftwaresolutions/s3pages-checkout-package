@@ -14,16 +14,18 @@ export const Input = ({ title, field, type = "text", show = true, error: isError
         return () => { }
     }, [isError])
 
-    return show ? <div className="form-group col-md-6 col-sm-12 col-xs-12">
-        <label> {title} </label>
-        <input
-            type={type}
-            name={`bl_${field}`}
-            value={formInfo?.[field] ?? ""}
-            onChange={(e: any) => handleChange(field, e.target.value)}
-            className="form-control input-field"
-            placeholder={`Enter the ${title.toLowerCase()}`}
-        />
-        {isError ? <p className="text-danger m-0">please provide {field.toLowerCase()}</p> : null}
-    </div> : <></>
+    return show ? <div className="col-md-6 col-12">
+        <div className="form-group col-md-6 col-sm-12 col-xs-12">
+            <label> {title} </label>
+            <input
+                type={type}
+                name={`bl_${field}`}
+                value={formInfo?.[field] ?? ""}
+                onChange={(e: any) => handleChange(field, e.target.value)}
+                className="form-control input-field"
+                placeholder={`Enter the ${title.toLowerCase()}`}
+            />
+            {isError ? <p className="text-danger m-0">please provide {field.toLowerCase()}</p> : null}
+        </div> 
+    </div>: <></>
 }

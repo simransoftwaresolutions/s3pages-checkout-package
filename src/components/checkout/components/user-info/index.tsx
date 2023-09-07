@@ -8,8 +8,8 @@ export const UserInfo = () => {
     const { setting } = useCheckout() as any
 
     return (
-        <div className="col-md-6 col-sm-6 col-xs-12 minHeight800" >
-            <div className="check-info-sec" style={{ background: setting?.formBackgroundColor, border: `2px solid ${setting?.formBorderColor}` }}>
+        <div className="col-md-6 col-sm-12 col-xs-12 minHeight800 change-order" >
+            <div className="check-info-sec" style={{ background: setting?.formBackgroundColor, border: `1px solid ${setting?.formBorderColor}` }}>
                 <h3>{t.billingInfo}</h3>
 
                 <form className="checkout-form" id="checkout_form" onSubmit={(e: any) => e.preventDefault()}>

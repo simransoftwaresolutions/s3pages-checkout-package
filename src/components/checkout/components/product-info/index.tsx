@@ -7,13 +7,13 @@ export const ProductInfo = () => {
   const { data, totalPrice } = useCheckout() as any
 
   return (
-    <div className="col-md-6 col-sm-6 col-xs-12 minHeight800" >
+    <div className="col-md-6 col-sm-12 col-xs-12 minHeight800 change-order-2 " >
       <div className="profile-form-sec">
 
         <div className="first-price-sec"></div>
 
-        <div>
-          <img src={'https://d105z293na9jky.cloudfront.net/' + data?.imagePath?.key} className="maxWidth450" alt="thumbnail" />
+        <div className='text-center'>
+          <img src={'https://d105z293na9jky.cloudfront.net/' + data?.imagePath?.key} className="img-fluid" alt="thumbnail" />
           <br />
           <br />
           <br />
@@ -26,11 +26,11 @@ export const ProductInfo = () => {
 
             {/* subscriptoin amount -- to be implemented */}
             <li className="subtotal-sec row">
-              <div className="coupon-L-sec col-md-4 col-sm-4 col-xs-4">
+              <div className="coupon-L-sec col-md-4 col-sm-4 col-xs-4 col-6">
                 <label>{t.subscription}:</label>
               </div>
 
-              <div className="coupon-R-sec col-md-8 col-sm-8 col-xs-8">
+              <div className="coupon-R-sec col-md-8 col-sm-8 col-xs-8 col-6">
                 <label>$0.00</label>
               </div>
             </li>
@@ -39,11 +39,11 @@ export const ProductInfo = () => {
 
             {/* shipping amount -- to be implemented */}
             <li className='row'>
-              <div className="coupon-L-sec col-md-6 col-sm-6 col-xs-6">
+              <div className="coupon-L-sec col-md-6 col-sm-6 col-xs-6 col-6">
                 <label> {t.shipping} <CaretRight /> </label>
               </div>
 
-              <div className="coupon-R-sec col-md-6 col-sm-6 col-xs-6">
+              <div className="coupon-R-sec col-md-6 col-sm-6 col-xs-6 col-6">
                 <label>${data?.recurring_shipping ?? "0"}.00</label>
               </div>
             </li>
@@ -52,11 +52,11 @@ export const ProductInfo = () => {
 
             {/* sales tax of product -- to be added */}
             <li  className='row'>
-              <div className="coupon-L-sec col-md-6 col-sm-6 col-xs-6">
+              <div className="coupon-L-sec col-md-6 col-sm-6 col-xs-6 col-6">
                 <label> {t.salesTax} <CaretRight /> </label>
               </div>
 
-              <div className="coupon-R-sec col-md-6 col-sm-6 col-xs-6">
+              <div className="coupon-R-sec col-md-6 col-sm-6 col-xs-6 col-6">
                 <label>${data?.billing_type === "OT" ? data?.one_time_tax : data?.recurring_tax}.00</label>
               </div>
             </li>
@@ -68,11 +68,11 @@ export const ProductInfo = () => {
               <br />
               <br />
 
-              <div className="coupon-L-sec col-md-6 col-sm-6 col-xs-6" >
+              <div className="coupon-L-sec col-md-6 col-sm-6 col-xs-6 col-6" >
                 <label>{t.totalPay}</label>
               </div>
 
-              <div className="coupon-R-sec col-md-6 col-sm-6 col-xs-6">
+              <div className="coupon-R-sec col-md-6 col-sm-6 col-xs-6 col-6">
 
                 <label className="total_amount">${totalPrice()}.00</label>
                 <input type="hidden" id="total_amount" value="159" />

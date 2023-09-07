@@ -10,7 +10,30 @@ export const ProductDetail = () => {
         <>
             <h2>{t.paymentInfo}</h2>
 
-            <div id="horizontalTab" className="displayB width100per margin0" >
+                
+
+                <ul className="nav nav-tabs tablist-btn" id="myTab" role="tablist">
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link active" id="paypal" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">{PaymentType.PAYPAL}</button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link" id="stripe" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">{PaymentType.STRIPE}</button>
+                    </li>
+                
+                </ul>
+                <div className="tab-content width-fixed" id="myTabContent">
+                    <div className="text-center tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="paypal">
+                        <img className='img-fluid' src={PaymentLogo.PAYPAL} alt={PaymentType.PAYPAL} />
+                    </div>
+                    <div className="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="stripe">
+                        <img className='img-fluid' src={PaymentLogo.STRIPE} alt={PaymentType.STRIPE} />
+                    </div>
+                
+                </div>
+
+
+
+            {/* <div id="horizontalTab" className="displayB width100per margin0" >
 
                 <input type="hidden" name="paymentmethod" id="payment_method" value="" />
                 <div className="resp-tabs-container ">
@@ -34,7 +57,9 @@ export const ProductDetail = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+
         </>
     )
 }
