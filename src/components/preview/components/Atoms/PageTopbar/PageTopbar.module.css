@@ -1,0 +1,34 @@
+.viewSizes1{
+    display: flex;
+    align-items: center;
+    float: right;
+    padding-right: 27px;
+    white-space: nowrap;
+}
+.viewSizes1 button{
+    background: transparent;
+    border: 0;
+}
+.viewSizes1 button svg{ 
+    fill: #999;
+    width: 21px;
+    display: inline-block;
+}
+.viewSizes1 button svg:hover{
+    fill:#fff;
+}
+.UndoRedu{
+    padding-right: 7px;
+    border-right: 1px solid#333;
+}
+.moreIconDlt{
+    padding-left: 7px;
+    padding-right: 7px;
+    border-right: 1px solid#333;
+}
+.clsSaveView{
+    padding-left: 7px;
+}
+.highlightElement svg {
+    fill:#fff !important;
+}
