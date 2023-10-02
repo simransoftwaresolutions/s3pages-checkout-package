@@ -1,6 +1,6 @@
 "use client";
 // import type { NextPage } from 'next';
-import Myeditorcomp from './Myeditorcomp';
+import Myeditor from './myeditor';
 import '../../styles/preview/globals.css';
 // import '../styles/globals.css';
 import "../../styles/preview/bootstrap-grid.css";
@@ -14,15 +14,11 @@ import { ContentsProvider } from '../../context/preview/ContentsContext';
 import { CollectionProvider } from '../../context/preview/CollectionModal';
 import { CollectionDataProvider } from '../../context/preview/CollectionDataModal';
 import { SettingProvider } from '../../context/preview/SettingModal';
-import 'react-quill/dist/quill.snow.css';
+// import 'react-quill/dist/quill.snow.css';
 import HeadTag from './components/Atoms/HeadTag';
 import '../../styles/preview/custom.css';
 
-interface MyeditorProps {
-  id?:any;
-  token?:any;
-}
-const Myeditor = ({id, token}:MyeditorProps) => {
+const PreviewPage = () => {
 
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap" as any);
@@ -38,7 +34,7 @@ const Myeditor = ({id, token}:MyeditorProps) => {
                 <CollectionDataProvider>
                   <SettingProvider>
                     <HeadTag />
-                    <Myeditorcomp id={id} token={token} />
+                    <Myeditor />
                   </SettingProvider>
                 </CollectionDataProvider>
               </CollectionProvider>
@@ -50,4 +46,4 @@ const Myeditor = ({id, token}:MyeditorProps) => {
   )
 }
 
-export default Myeditor;
+export default PreviewPage;

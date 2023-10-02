@@ -13,14 +13,17 @@ import { GetSiteData, GetThemeSiteStyles } from "../../service/preview/PagesServ
 import { deepCloneArray } from '../../utils/functions';
 import { useContentCtx } from "../../context/preview/ContentsContext";
 
-interface MyeditorProps {
-  id?:any;
-  token?:any;
-}
+// interface PreviewPageProps {
+//   id?:any;
+//   token?:any;
+// }
 
-const Myeditorcomp  = ({id, token}:MyeditorProps) => {
+const Myeditor  = () => {
 
   ENV.isViewReadOnly = true;
+
+  const id = "64661c4927827070ff3212e5";
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZmZGZiOGJkM2QwMWU3OWE5MGE5OCIsImlhdCI6MTY4NzkyODcxMywiZXhwIjoxNzE5NDY0NzEzfQ.ITTlkhQCZyu-hHDPOa0PKC83p6cWMl6ab_p-0p-FOcM";
 
   const { isProcessing } = usePushCtx();
   const { pageAction, setPageAction } = usePagesCtx();
@@ -114,4 +117,4 @@ const Myeditorcomp  = ({id, token}:MyeditorProps) => {
   )
 }
 
-export default Myeditorcomp;
+export default Myeditor;
