@@ -12,7 +12,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import AltRouteOutlinedIcon from '@mui/icons-material/AltRouteOutlined';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 interface PageTopbarProps {
     onRedo: () => void,
@@ -104,7 +104,7 @@ const PageTopbar = ({
                         </button> */}
                         <button onClick={handlePreview}>
                             <div className="tooltip"> 
-                                <Link href="/preview"><a target='_blank'><RemoveRedEyeIcon fontSize="medium"/></a></Link>
+                                {/* <Link href="/preview"><a target='_blank'><RemoveRedEyeIcon fontSize="medium"/></a></Link> */}
                                 <span className="tooltiptext">Preview</span>
                             </div>
                         </button>

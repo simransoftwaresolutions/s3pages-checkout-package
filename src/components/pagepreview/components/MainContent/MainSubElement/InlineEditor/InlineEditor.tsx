@@ -24,25 +24,25 @@ export default class InlineEditor extends React.Component<any,any> {
   }
 
   componentDidMount() {
-    const mediumEditorColorButtons = require('./medium-editor-colorpicker-buttons').get(MediumEditor);
-    const mediumEditorColorButtons1 = require('./medium-editor-colorpicker-buttons1').get(MediumEditor);
+    // const mediumEditorColorButtons = require('./medium-editor-colorpicker-buttons').get(MediumEditor);
+    // const mediumEditorColorButtons1 = require('./medium-editor-colorpicker-buttons1').get(MediumEditor);
   
-    const TextColorButtonClass = mediumEditorColorButtons.TextColorButtonClass;
-    const TextColorButtonClass1 = mediumEditorColorButtons1.TextColorButtonClass;
+    // const TextColorButtonClass = mediumEditorColorButtons.TextColorButtonClass;
+    // const TextColorButtonClass1 = mediumEditorColorButtons1.TextColorButtonClass;
 
     const FontSizeButton = FontSizeForm(MediumEditor);
     const FontNameButton = FontNameForm(MediumEditor);
 
     this.medium = new MediumEditor(`#${this.props.id}`, {
                                           placeholder: false,
-                                          toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'textcolor', 'bgcolor','companySizes', 'fontnameext'] },
+                                          toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor','companySizes', 'fontnameext'] },
                                          
                                           disableReturn: false,
                                           disableDoubleReturn: true,
                                           
                                           extensions: {
-                                            textcolor: new TextColorButtonClass(),
-                                            bgcolor: new TextColorButtonClass1(),
+                                            // textcolor: new TextColorButtonClass(),
+                                            // bgcolor: new TextColorButtonClass1(),
                                             companysizes: new FontSizeButton(),
                                             fontnameext: new FontNameButton(),
                                           }
