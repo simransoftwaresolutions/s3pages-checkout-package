@@ -1,0 +1,8 @@
+.ratingCnt{
+    align-items: center;
+    display: flex;
+}
+
+.rateText{
+    margin-left: 10px;
+}

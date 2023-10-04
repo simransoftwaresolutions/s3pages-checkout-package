@@ -1,0 +1,88 @@
+.timerContainer {
+    text-align: center;
+    display:inline-flex;
+}
+
+.imageResponsive {
+    /* display: block; */
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+.queMainBox {
+    padding:10px;
+    margin-bottom:10px;
+    border: 1px solid #5c5656;
+    border-radius: 10px;
+}
+
+.ansBox {
+    padding-top: 10px;
+}
+
+.noFaq {
+    padding:10px;
+    border-radius: 10px;
+    background:#1D1D1D;
+}
+
+.faqArrow {
+    border: 2px solid;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.faqSpan {
+    padding-top: 10px !important;
+    display: block;
+}
+
+.faqText {
+    justify-content: space-between;
+}
+
+.queInner {
+    display:flex;
+}
+.menuCnt {
+    display: flex;
+}
+.menuFlex {
+    flex:1;
+    display: flex;
+}
+.menuBlock {
+    display: block !important;
+}
+
+.menuAlign {
+    justify-content: right;
+    align-items: center;
+}
+.hbgMenuBtnCnt {
+    align-items: center;
+}
+
+.bannerSlide {
+    float: none !important;
+}
+
+.bannerBtn {
+    border: none !important;
+}
+
+@media screen and (max-width: 576px) {
+    .menuFlex {
+        flex:none;
+        display: contents;
+    }
+}
+
+.humburgerIconImg {
+    background-image: none !important;
+}
+
+.socialIconCnt{
+    display:inline-flex;
+}

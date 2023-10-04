@@ -1,0 +1,55 @@
+.headBtnContain {
+    padding: 5px;
+    background-color: #0e0e0e;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+}
+.headBtnContain svg {
+    color: #999;
+    /* opacity: 0.5; */
+}
+.headBtnContain svg:hover {
+    color: #fff;
+}
+.curPointer {
+    cursor: pointer;
+}
+.viewSizes{
+    display: flex;
+    align-items: center;
+}
+.viewSizes button{
+    background: transparent;
+    border: 0;
+}
+.viewSizes button svg{ 
+    fill: #999;
+    width: 21px;
+    display: inline-block;
+}
+.viewSizes button svg:hover{
+    fill:#fff;
+}
+.viewSizes1{
+    display: flex;
+    align-items: center;
+    float: right;
+    padding-right: 27px;
+    white-space: nowrap;
+}
+.viewSizes1 button{
+    background: transparent;
+    border: 0;
+}
+.viewSizes1 button svg{ 
+    fill: #999;
+    width: 21px;
+    display: inline-block;
+}
+.viewSizes1 button svg:hover{
+    fill:#fff;
+}
+.activeDevice svg {
+    fill:#fff !important;
+}

@@ -1,0 +1,20 @@
+.errorSpan {
+    margin-left: 15px;
+    color: red;
+    font-size: 14px;
+    margin-top: -15px;
+}
+.btncls{
+    margin: 15px;
+}
+.subBtnInnr {
+    width: 100%;
+}
+.input_required {
+    color:red;
+    margin-left:5px;
+}
+
+.validationText {
+    color:red;
+}

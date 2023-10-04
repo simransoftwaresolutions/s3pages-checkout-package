@@ -1,0 +1,24 @@
+.variantsContainer {
+    padding: 20px 20px 10px 10px;
+    color: #000;
+}
+.headBtnContain {
+    padding: 5px;
+    background-color: #0e0e0e;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+}
+.headBtnContain svg {
+    color: #999;
+}
+.headBtnContain svg:hover {
+    color: #fff;
+}
+.curPointer{
+    cursor: pointer;
+}
+.variantTitle {
+    text-align: center;
+    width:300px;
+}

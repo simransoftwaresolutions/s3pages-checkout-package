@@ -1,9 +1,11 @@
 import { CheckoutProduct } from './components/checkout';
+import Previeweditor from './components/pagepreview/previeweditor';
 
 export default function componentName() {
     return (
         <>
-            <CheckoutProduct data={{ product: {} }} />
+            {/* <CheckoutProduct data={{ product: {} }} /> */}
+            <Previeweditor />
         </>
     );
 }
