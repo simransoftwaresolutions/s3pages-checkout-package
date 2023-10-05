@@ -5,7 +5,7 @@
   "main": "lib/exports.js",
   "types": "lib/exports.d.ts",
   "scripts": {
-    "copy-files": "copyfiles -u 1 src/**/*.css lib/",
+    "copy-files": "copyfiles -u 1 src/styles/* lib/",
     "build": "tsc && yarn copy-files",
     "prepare": "npm run build",
     "start": "react-scripts start"
