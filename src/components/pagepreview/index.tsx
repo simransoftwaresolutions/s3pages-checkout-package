@@ -19,9 +19,9 @@ import '../../styles/pagepreview/custom.css';
 
 const PreviewPage = () => {
 
-  useEffect(() => {
-    import("bootstrap/dist/js/bootstrap" as any);
-  }, []);
+  // useEffect(() => {
+  //   import("bootstrap/dist/js/bootstrap" as any);
+  // }, []);
 
   return (
     <Fragment>
