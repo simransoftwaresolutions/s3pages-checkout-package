@@ -1,4 +1,4 @@
-import styles from './StyleGenerater.module.css';
+import styles from '../../../../../styles/pagepreview/StyleGenerater.module.css';
 import { useEffect, useState } from "react";
 import { deepCloneArray } from '../../../../../utils/functions';
 import { usePagesCtx } from '../../../../../context/pagepreview/PagesContext';

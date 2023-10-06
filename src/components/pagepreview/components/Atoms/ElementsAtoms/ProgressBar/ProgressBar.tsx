@@ -1,4 +1,4 @@
-import styles from './ProgressBar.module.css';
+import styles from '../../../../../../styles/pagepreview/ProgressBar.module.css';
 import ProgressBarProps from './IProgressBar';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";
 

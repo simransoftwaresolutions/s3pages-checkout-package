@@ -1,4 +1,4 @@
-import styles from './PreviewElement.module.css';
+import styles from '../../../../../styles/pagepreview/PreviewElement.module.css';
 import { 
     ButtonElements, 
     HeadingElements, 

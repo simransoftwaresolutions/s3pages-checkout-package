@@ -1,4 +1,4 @@
-import styles from './MenuAtom.module.css';
+import styles from '../../../../../../styles/pagepreview/MenuAtom.module.css';
 import MenuAtomProps from './IMenuAtom';
 import MaterialIcons from '../../../../components/Atoms/MaterialIcons';
 import { generateChildClassNameStr } from "../../../../../../utils/functions";

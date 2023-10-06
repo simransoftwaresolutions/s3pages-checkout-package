@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { deepCloneArray, generateClassNameStr } from '../../../../../utils/functions';
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
 import ENV from '../../../../../utils/env';
-import styles from '../MainContent.module.css';
+import styles from '../../../../../styles/pagepreview/MainContent.module.css';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
 
 interface Prop {

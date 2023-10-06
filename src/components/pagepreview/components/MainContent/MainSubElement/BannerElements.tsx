@@ -1,7 +1,7 @@
 // import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import BannerAtom from '../../../components/Atoms/ElementsAtoms/BannerAtom';
-import styles from './MainSubElement.module.css';
+import styles from '../../../../../styles/pagepreview/MainContent.module.css';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
 import DefaultImage from '../../../components/Atoms/DefaultImage';
 

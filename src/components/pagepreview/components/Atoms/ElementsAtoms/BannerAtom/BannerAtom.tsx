@@ -1,4 +1,4 @@
-import styles from './BannerAtom.module.css';
+import styles from '../../../../../../styles/pagepreview/BannerAtom.module.css';
 import BannerAtomProps from './IBannerAtom';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";
 import ENV from '../../../../../../utils/env';

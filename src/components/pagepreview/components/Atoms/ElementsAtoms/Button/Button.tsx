@@ -1,4 +1,4 @@
-import styles from './Button.module.css';
+import styles from '../../../../../../styles/pagepreview/Button.module.css';
 import ButtonProps from './IButton';
 import ButtonsIcons from '../../../../components/Atoms/ButtonsIcons';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";

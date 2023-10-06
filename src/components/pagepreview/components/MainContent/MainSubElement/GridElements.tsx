@@ -23,7 +23,7 @@ import {  getElementName,
           getChangeStyleOfElement,
           generateClassNameStr,
         } from '../../../../../utils/functions';
-import styles from '../MainContent.module.css';
+import styles from '../../../../../styles/pagepreview/MainContent.module.css';
 import OpenWithOutlinedIcon from '@mui/icons-material/OpenWithOutlined';
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';

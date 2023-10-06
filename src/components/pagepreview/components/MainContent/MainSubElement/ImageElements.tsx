@@ -1,6 +1,6 @@
 // import type { NextPage } from 'next'
 import { Fragment } from 'react'
-import styles from './MainSubElement.module.css';
+import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 import ButtonsIcons from '../../../components/Atoms/ButtonsIcons';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
 

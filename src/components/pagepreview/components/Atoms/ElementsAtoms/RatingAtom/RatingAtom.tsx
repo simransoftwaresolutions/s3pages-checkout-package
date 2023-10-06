@@ -1,4 +1,4 @@
-import styles from './RatingAtom.module.css';
+import styles from '../../../../../../styles/pagepreview/RatingAtom.module.css';
 import RatingAtomProps from './IRatingAtom';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";
 import StarHalfIcon from '@mui/icons-material/StarHalf';

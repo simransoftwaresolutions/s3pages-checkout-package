@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import MenuAtom from '../../../components/Atoms/ElementsAtoms/MenuAtom';
 import { generateClassNameStr, generateChildClassNameStr, generateMenuClassNameStr } from "../../../../../utils/functions";
 import ButtonsIcons from '../../../components/Atoms/ButtonsIcons';
-import styles from './MainSubElement.module.css';
+import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 
 interface Prop {
   type:string;

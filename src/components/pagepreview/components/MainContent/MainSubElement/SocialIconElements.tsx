@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import SocialIcon from '../../../components/Atoms/ElementsAtoms/SocialIcon';
 import RatingAtom from '../../../components/Atoms/ElementsAtoms/RatingAtom';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
-import styles from './MainSubElement.module.css';
+import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 
 interface Prop {
   type:string;

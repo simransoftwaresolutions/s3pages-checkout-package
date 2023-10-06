@@ -1,4 +1,4 @@
-import styles from './Heading.module.css';
+import styles from '../../../../../../styles/pagepreview/Heading.module.css';
 import HeadingProps from './IHeading';
 import { deepCloneArray, generateClassNameStr } from "../../../../../../utils/functions";
 

@@ -1,4 +1,4 @@
-import styles from './TimerAtom.module.css';
+import styles from '../../../../../../styles/pagepreview/TimerAtom.module.css';
 import TimerAtomProps from './ITimerAtom';
 import { generateChildClassNameStr } from "../../../../../../utils/functions";
 

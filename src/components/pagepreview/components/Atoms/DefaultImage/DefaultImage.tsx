@@ -1,4 +1,5 @@
-import styles from './DefaultImage.module.css';
+import styles from '../../../../../styles/pagepreview/DefaultImage.module.css';
+
 import { ShimmerCategoryItem  } from "react-shimmer-effects";
 
 const DefaultImage = () => {

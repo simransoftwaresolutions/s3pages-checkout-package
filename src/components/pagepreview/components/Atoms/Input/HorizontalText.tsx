@@ -1,4 +1,4 @@
-import styles from './Input.module.css';
+import styles from '../../../../../styles/pagepreview/Input.module.css';
 
 interface TextFieldProps {
     format?:any,

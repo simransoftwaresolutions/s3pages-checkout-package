@@ -1,4 +1,4 @@
-import styles from './SocialIcon.module.css';
+import styles from '../../../../../../styles/pagepreview/SocialIcon.module.css';
 import SocialIconProps from './ISocialIcon';
 import MaterialIcons from '../../../../components/Atoms/MaterialIcons';
 import { generateChildClassNameStr } from "../../../../../../utils/functions";

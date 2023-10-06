@@ -1,4 +1,4 @@
-import styles from './FormAtom.module.css';
+import styles from '../../../../../../styles/pagepreview/FormAtom.module.css';
 import MenuAtomProps from './IFormAtom';
 import { Select, Text, TextArea, Range, Radio, HorizontalText, HorizontalTextArea } from '../../../../components/Atoms/Input';
 import { useState, useEffect, useRef } from "react";

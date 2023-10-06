@@ -1,6 +1,6 @@
 // import type { NextPage } from 'next'
 import { Fragment, useState, useEffect } from 'react'
-import styles from "./MainSubElement.module.css";
+import styles from "../../../../../styles/pagepreview/MainSubElement.module.css";
 import DefaultImage from '../../../components/Atoms/DefaultImage';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';

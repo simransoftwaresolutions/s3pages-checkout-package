@@ -18,7 +18,7 @@ import {
   VideoElements, 
   FormElements, 
 } from './MainSubElement';
-import styles from './MainContent.module.css';
+import styles from '../../../../styles/pagepreview/MainContent.module.css';
 import { useState, useEffect, useRef } from "react";
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';

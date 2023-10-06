@@ -1,7 +1,7 @@
 // import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import TimerAtom from '../../../components/Atoms/ElementsAtoms/TimerAtom';
-import styles from './MainSubElement.module.css';
+import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 import Countdown, { CountdownApi } from 'react-countdown';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
 

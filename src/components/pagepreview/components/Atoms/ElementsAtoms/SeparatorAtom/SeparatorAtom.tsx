@@ -1,4 +1,4 @@
-import styles from './SeparatorAtom.module.css';
+import styles from '../../../../../../styles/pagepreview/SeparatorAtom.module.css';
 import SeparatorAtomProps from './ISeparatorAtom';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";
 

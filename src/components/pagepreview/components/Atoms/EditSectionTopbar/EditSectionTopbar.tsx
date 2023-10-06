@@ -1,4 +1,4 @@
-import styles from './EditSectionTopbar.module.css';
+import styles from '../../../../../styles/pagepreview/EditSectionTopbar.module.css';
 import { usePagesCtx } from "../../../../../context/pagepreview/PagesContext";
 import { useEffect, useState } from "react";
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
