@@ -481,6 +481,8 @@ const MainContent = () => {
     removeAllHighlightedHover();
     setSelDragSection(-1);
 
+    if(ENV.isViewReadOnly) return;
+
     if(draggedElement?.from === "blocks" && draggedElement?.type === "Section"){
       // this code is called on section drop from blocks
 
@@ -773,32 +775,6 @@ const MainContent = () => {
       secRefs?.current[sIndex]?.classList.add('drag-over');
     }
   }
-  //////////////////////////////////////////////////////////////////////////////////////////////
-
-  // useEffect(() => {
-    
-  //   const getSecDetails = async() => {
-  //     if(saveElementsData?.showElement){
-  //       const id = saveElementsData?.id || "";
-  //       const _previewEleData = await GetSectionDetail(id);
-
-  //       if(_previewEleData?.status){
-  //         const _eleData = JSON.parse(_previewEleData?.data?.content || "");
-  //         setPreviewEleData(_eleData);
-  //       }
-
-  //     }
-  //   }
-
-  //   getSecDetails();
-    
-  // }, [saveElementsData?.showElement, saveElementsData?.id])
-
-  // if(saveElementsData?.showElement && previewEleData){
-  //   return <PreviewElement type="Button" data={previewEleData} />
-  // }
-
-  /////////////////////////////////////////////////////////////////////////////////////////////
 
   let deviceCls = "desktopclass";
   if(viewState === "desktop") deviceCls = "desktopclass";
