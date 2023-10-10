@@ -13,12 +13,12 @@ import { GetSiteData, GetThemeSiteStyles } from "../../service/pagepreview/Pages
 import { deepCloneArray } from '../../utils/functions';
 import { useContentCtx } from "../../context/pagepreview/ContentsContext";
 
-// interface PreviewPageProps {
-//   id?:any;
-//   token?:any;
-// }
+interface PreviewPageProps {
+  siteInfo?:any;
+  uriInfo?:any;
+}
 
-const Previeweditor  = () => {
+const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
 
   ENV.isViewReadOnly = true;
 
@@ -41,20 +41,18 @@ const Previeweditor  = () => {
     }
    }, [id, token]);
 
-
   useEffect(() => {
-    
+
     const getDatas = async() => {
   
-      if(!queryData.funnelId) return;
+      if(!id) return;
 
       let _themeId = "";
-      // let _themeId = "64661c4927827070ff3212e5";
-      const siteData = await GetSiteData(queryData.funnelId);
+      const siteData = await GetSiteData(id);
       
       // set sections ctx
       if(siteData?.status && siteData?.data?.pages[0]){
-        _themeId = siteData?.data?.themeId || queryData.funnelId;
+        _themeId = siteData?.data?.themeId;
 
         const _gFntFamily = (siteData?.data?.settings);
 
@@ -75,12 +73,12 @@ const Previeweditor  = () => {
       setStylesCtx(_styleCtx);
 
 
-      let _siteType = queryData.funnelId !== _themeId ? "site" : "themesite";
+      let _siteType = id !== _themeId ? "site" : "themesite";
 
       const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
-      if(_themeId){
+      if(id !== _themeId){
         const globSiteData = await GetThemeSiteStyles(_themeId);
-        if(globSiteData.status && queryData.funnelId !== _themeId){
+        if(globSiteData.status && id !== _themeId){
           _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles: [];
           _siteType = "site";
         }
@@ -91,17 +89,53 @@ const Previeweditor  = () => {
 
     }
 
-    getDatas();
-    
-  }, [queryData.funnelId])
+
+    const getNewData = async() => {
+      if (uriInfo?.status === false) {
+        return;
+      }else{
+        let _themeId = siteInfo?.data?.themeId;
+        if(uriInfo?.data?.page?.variants?.length){
+          const testJson = JSON.parse(uriInfo?.data?.page?.variants[0]?.content);
+          const _tempContents = uriInfo?.data?.page?.variants[0]?.content !== ' ' ? testJson : [];
+          setSectionCtx(_tempContents);
+        }
+
+        const _styleCtx = deepCloneArray(stylesCtx); // set styles 
+        _styleCtx.styles = siteInfo?.data?.styles ? siteInfo?.data?.styles: [];
+        setStylesCtx(_styleCtx);
+
+        const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
+        let _siteType = siteInfo?.data?._id !== _themeId ? "site" : "themesite";
+        if(_themeId !== siteInfo?.data?._id){
+          const globSiteData = await GetThemeSiteStyles(_themeId);
+          if(globSiteData.status && queryData.funnelId !== _themeId){
+            _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles: [];
+          }
+        }
+
+        setStylesGlobCtx(_styleGlobCtx);
+
+        setQueryData({...queryData, siteType:_siteType, themeId:_themeId});
+
+      }
+    }
+
+    if(uriInfo && siteInfo){
+      getNewData();
+    }else{
+      getDatas();
+    }
+
+  }, [uriInfo, siteInfo])
 
   return (
     <Fragment>
       {
-      id && token && ENV.auth &&
+      id && token &&
         <>
           <div className='container-fluid'>
-            <div  className={`row`} >
+            <div className={`row`} >
               <div className={`${styles.previewPage} col-md-12}`}>
                 {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} /> }
                 {isProcessing && <div className={styles.processingText}>Processing...</div>}

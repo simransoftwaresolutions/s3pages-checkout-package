@@ -17,11 +17,12 @@ import { SettingProvider } from '../../context/pagepreview/SettingModal';
 // import 'react-quill/dist/quill.snow.css';
 import '../../styles/pagepreview/custom.css';
 
-const PreviewPage = () => {
+interface PreviewPageProps {
+  siteInfo?:any;
+  uriInfo?:any;
+}
 
-  // useEffect(() => {
-  //   import("bootstrap/dist/js/bootstrap" as any);
-  // }, []);
+const PreviewPage = ({siteInfo, uriInfo}:PreviewPageProps) => {
 
   return (
     <Fragment>
@@ -32,7 +33,7 @@ const PreviewPage = () => {
               <CollectionProvider>
                 <CollectionDataProvider>
                   <SettingProvider>
-                    <Previeweditor />
+                    <Previeweditor siteInfo={siteInfo} uriInfo={uriInfo} />
                   </SettingProvider>
                 </CollectionDataProvider>
               </CollectionProvider>

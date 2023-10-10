@@ -1,6 +1,50 @@
 import ENV from "../../utils/env";
 // import useSWR from 'swr';
 
+export const getSiteInfo = (site: string) => {
+
+    const url = `https://s3pagesapi.s3preview.com/api/site/fe/${site}`;
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        maxRedirects: 20,
+    };
+
+    return fetch(url, options)
+    .then(response => {
+        return response.json();
+    })
+    .then(async data => {
+            return (data);
+        }
+    );
+}
+
+export const getUriInfo = (siteid: string) => {
+
+    const url = `https://s3pagesapi.s3preview.com//api/url/fe/${siteid}/`;
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        maxRedirects: 20,
+    };
+
+    return fetch(url, options)
+    .then(response => {
+        return response.json();
+    })
+    .then(async data => {
+            return (data);
+        }
+    );
+}
+
 export const GetGoogleFonts = () => {
 
     const url = "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBwIX97bVWr3-6AIUvGkcNnmFgirefZ6Sw";
