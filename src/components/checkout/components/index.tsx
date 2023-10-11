@@ -11,7 +11,7 @@ export const CheckoutPage = () => {
             <CheckoutHeader />
 
             <section className="checkout-form-sec" style={{ background: setting?.pageBackgroundColor }}>
-                <div className="container">
+                <div className="checkout-container container">
                     <div className="row">
 
                         {data?.checkout_page_template === "second" ?
