@@ -24,6 +24,10 @@ interface PreviewPageProps {
 
 const PreviewPage = ({siteInfo, uriInfo}:PreviewPageProps) => {
 
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap");
+  }, []);
+
   return (
     <Fragment>
       <PagesProvider>
