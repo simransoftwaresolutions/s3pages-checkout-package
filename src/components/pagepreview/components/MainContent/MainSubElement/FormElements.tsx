@@ -20,7 +20,7 @@ const FormElements = ({type, props, refBtn}:Prop) => {
   const formEleRef = useRef<any>([]);
   
   const [ validation, setValidation ] = useState<string[]>([]);
-  const { pageAction, funnelPages } = usePagesCtx();
+  const { pageAction, funnelPages, queryData } = usePagesCtx();
 
   const handleForm = async(e:any) => {
     e.preventDefault(); 
@@ -28,7 +28,7 @@ const FormElements = ({type, props, refBtn}:Prop) => {
     let isValidate = true;
 
     let activePage = pageAction?.activePage ? pageAction?.activePage : 0;
-    const _pageId = funnelPages[activePage]?.pageData?.id;
+    const _pageId = queryData?.pageId || "";
     
     let req:any = {};
     for(let i=0; i<props?.formArr?.length; i++){

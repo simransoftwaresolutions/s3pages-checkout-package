@@ -123,6 +123,7 @@ export const defaultUserInfo:UserInfoType = {
 interface QueryDataType {
     funnelId:any;
     themeId:any;
+    pageId:any;
     token:any;
     siteType:string;
 }
@@ -130,6 +131,7 @@ interface QueryDataType {
 export const defaultQueryData:QueryDataType = {
     funnelId:"",
     themeId:"",
+    pageId:"",
     token:"",
     siteType:"",
 }

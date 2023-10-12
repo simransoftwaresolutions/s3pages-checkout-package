@@ -31,15 +31,11 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
   const { funnelPages, setFunnelPages, stylesCtx, setStylesCtx } = usePagesCtx();
   const { sectionCtx,setSectionCtx } = useContentCtx();
 
-  // const {token} = router.query;
-  // const {id} = router.query;
-
   useEffect(() => {
-    if(id && token){
+    if(token){
       ENV.auth = token.toString();
-      setQueryData({...queryData, funnelId: id, token:token});
     }
-   }, [id, token]);
+   }, [token]);
 
   useEffect(() => {
 
@@ -84,7 +80,7 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
         }
       }
 
-      setQueryData({...queryData, siteType:_siteType, themeId:_themeId});
+      setQueryData({...queryData, funnelId: id, siteType:_siteType, themeId:_themeId, pageId:siteData?.data?.pages[0]?.id});
       setStylesGlobCtx(_styleGlobCtx);
 
     }
@@ -109,14 +105,14 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
         let _siteType = siteInfo?.data?._id !== _themeId ? "site" : "themesite";
         if(_themeId !== siteInfo?.data?._id){
           const globSiteData = await GetThemeSiteStyles(_themeId);
-          if(globSiteData.status && queryData.funnelId !== _themeId){
+          if(globSiteData.status && siteInfo?.data?._id !== _themeId){
             _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles: [];
           }
         }
 
         setStylesGlobCtx(_styleGlobCtx);
 
-        setQueryData({...queryData, siteType:_siteType, themeId:_themeId});
+        setQueryData({...queryData, funnelId: siteInfo?.data?._id, siteType:_siteType, themeId:_themeId, pageId:uriInfo?.data?.page?._id});
 
       }
     }
