@@ -107,7 +107,7 @@ const StyleGenerater = () => {
 
         _css += desktopCss;
         _css += `@media only screen and (max-width: 768px){${tabletCss}}`;
-        _css += `@media only screen and (max-width: 600px){${mobileCss}}`;
+        _css += `@media(min-width: 320px) and (max-width: 480px){${mobileCss}}`;
         _css += tabletInEditorCss;
         _css += mobileInEditorCss;
         // settings css loaded here
