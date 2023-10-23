@@ -316,7 +316,7 @@ export default function componentName({ pages }: any) {
               </div>
             )}
 
-            <div className={` ${styles.templateBody}`}>
+            <div className={` ${styles.templateBody}`} style={{overflow:"hidden"}}>
               {templates !== undefined && templates.length > 0 ? (
                 <>
                   {templates &&
