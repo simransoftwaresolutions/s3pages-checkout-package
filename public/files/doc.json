@@ -1,0 +1,86 @@
+{
+    "filters":[
+        {
+            "key": "All",
+            "value": [{
+                "key":"",
+                "value":""
+            }]
+        },
+        {
+            "key":"Option",
+            "value": [
+                {
+                    "key": "Email Option",
+                    "value":"optin-emial"
+                },
+                {
+                    "key":"Thank You",
+                    "value":"optin-thank-you"
+                }
+            ]
+        },
+        {
+            "key":"Sales",
+            "value": [
+                {
+                    "key": "Long Sales Page",
+                    "value":"long-sales-page"
+                },
+                {
+                    "key": "Video Sales Page",
+                    "value":"video-sales-page"
+                },
+                {
+                    "key":"Product Launch",
+                    "value":"product launch"
+                },
+                {
+                    "key":"App Landing Page",
+                    "value":"app-landing-page"
+                }
+                ,{
+                    "key":"Personal Branding",
+                    "value":"personal-branding"
+                },
+                {
+                    "key":"E-Book Download",
+                    "value":"e-book-download"
+                }
+              
+            ]
+        },
+        {
+            "key": "Webinar",
+            "value":[
+                {
+                    "key":"Webinar Registration",
+                    "value":"webinar-registration"
+                },
+                {
+                    "key":"Thank you",
+                    "value":"webinar-thank-you"
+                }
+            ]
+        },
+        {
+            "key": "Miscellaneous",
+            "value":[
+                {
+                    "key":"JV Page",
+                    "value":"jv-page"
+                },
+                {
+                    "key":"404 Page",
+                    "value":"404-page"
+                },
+                {
+                    "key":"Coming Soon",
+                    "value":"coming-soon"
+                }
+            ]
+        }
+    ],
+    "type" :["image", "video", "progressBar", "form", "section", "html", "socialIcons", "headings", "popup", "grid", "button","timers","menu","text", "seprator"],
+    "tags": ["header", "footer", "hero", "testimonials", "services", "grid", "testimonial", "service", "custom", ""  ]
+}

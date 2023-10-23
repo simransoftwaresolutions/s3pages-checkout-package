@@ -12,7 +12,9 @@ import StyleGenerater from '../pagepreview/components/Atoms/StyleGenerater';
 import { GetSiteData, GetThemeSiteStyles } from "../../service/pagepreview/PagesServices";
 import { deepCloneArray } from '../../utils/functions';
 import { useContentCtx } from "../../context/pagepreview/ContentsContext";
-
+import { Typography } from '@mui/material';
+import PageTemplate from "../page-template/index"
+import Templategen from "../templategen/index"
 interface PreviewPageProps {
   siteInfo?:any;
   uriInfo?:any;
@@ -133,6 +135,9 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
           <div className='container-fluid'>
             <div className={`row`} >
               <div className={`${styles.previewPage} col-md-12}`}>
+                <Templategen/>
+                <PageTemplate/>
+                
                 {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} /> }
                 {isProcessing && <div className={styles.processingText}>Processing...</div>}
               </div>
