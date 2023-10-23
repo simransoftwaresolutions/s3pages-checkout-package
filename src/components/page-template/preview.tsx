@@ -70,31 +70,35 @@ export default function Preview({
             onChange={handleChange}
             aria-label="basic tabs example"
             sx={{
-              '& .MuiTabs-indicator': {
-                height:" 3px !important",
+              "& .MuiTabs-indicator": {
+                height: " 3px !important",
                 /* opacity: 0.5; */
-                backgroundColor: "#8836dd !important", 
+                backgroundColor: "#8836dd !important",
               },
             }}
           >
             <Tab
-            sx={{              
-              '&.Mui-selected': {
-                color:" #333 !important",
-                // opacity: 0.5;
-                fontWeight: "700"
-              },     
-                      }}
+              sx={{
+                "&.Mui-selected": {
+                  color: " #333 !important",
+                  // opacity: 0.5;
+                  fontWeight: "700",
+                },
+              }}
               label="Desktop"
               {...a11yProps(1)}
             />
-            <Tab       sx={{              
-              '&.Mui-selected': {
-                color:" #333 !important",
-                // opacity: 0.5;
-                fontWeight: "700"
-              },     
-                      }}  label="Mobile" {...a11yProps(0)} />
+            <Tab
+              sx={{
+                "&.Mui-selected": {
+                  color: " #333 !important",
+                  // opacity: 0.5;
+                  fontWeight: "700",
+                },
+              }}
+              label="Mobile"
+              {...a11yProps(0)}
+            />
           </Tabs>
         </Box>
         <button
