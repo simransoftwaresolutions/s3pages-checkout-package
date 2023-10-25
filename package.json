@@ -7,8 +7,8 @@
   "scripts": {
     "copy-preview": "copyfiles -u 1 src/styles/pagepreview/*.css lib/",
     "copy-checkout": "copyfiles -u 1 src/styles/* lib/",
-    "copy-Templategen": "copyfiles -u 1 src/styles/* lib/",
-    "copy-PageTemplate": "copyfiles -u 1 src/styles/* lib/",
+    "copy-Templategen": "copyfiles -u 1 src/styles/page-template/*.css lib/",
+    "copy-PageTemplate": "copyfiles -u 1 src/styles/templategen/*.css lib/",
     "copy-files": "yarn copy-preview && yarn copy-checkout",
     "build": "tsc && vite build && yarn copy-files",
     "prepare": "npm run build",
