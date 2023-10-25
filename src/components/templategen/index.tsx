@@ -6,8 +6,7 @@ import Step3 from "./Step3";
 export default function index() {
   const [step, setStep] = useState("step1");
   return (
-    <div>
-    
+    <div>    
       {step === "step1" && <Step1 setStep={setStep} />}
       {step === "step2" && <Step2 setStep={setStep} />}
       {step === "step3" && <Step3 setStep={setStep} />}
