@@ -15,8 +15,7 @@ import { CollectionProvider } from '../../context/pagepreview/CollectionModal';
 import { CollectionDataProvider } from '../../context/pagepreview/CollectionDataModal';
 import { SettingProvider } from '../../context/pagepreview/SettingModal';
 // import 'react-quill/dist/quill.snow.css';
-import '../../styles/pagepreview/custom.css';
-import '../../styles/pagepreview/globals.css';
+
 interface PreviewPageProps {
   siteInfo?:any;
   uriInfo?:any;
