@@ -4,6 +4,10 @@ import PreviewPage from "./components/pagepreview";
 // import { useState, useEffect, useRef } from "react";
 import './styles/pagepreview/custom.css';
 import './styles/pagepreview/globals.css';
+import "./styles/pagepreview/bootstrap-grid.css";
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 export default function componentName() {
 
     // const [ sInfo, setSInfo ] = useState<any>([]);

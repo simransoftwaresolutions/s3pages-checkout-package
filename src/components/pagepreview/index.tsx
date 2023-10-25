@@ -3,8 +3,7 @@
 import Previeweditor from './previeweditor';
 
 // import '../styles/globals.css';
-import "../../styles/pagepreview/bootstrap-grid.css";
-import 'bootstrap/dist/css/bootstrap.css';
+
 // import 'animate.css';
 import { Fragment, useEffect } from "react";
 import { SettingsProvider } from "../../context/pagepreview/SettingsContext";
