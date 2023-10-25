@@ -1,7 +1,7 @@
 "use client";
 // import type { NextPage } from 'next';
 import Previeweditor from './previeweditor';
-import '../../styles/pagepreview/globals.css';
+// import '../../styles/pagepreview/globals.css';
 // import '../styles/globals.css';
 import "../../styles/pagepreview/bootstrap-grid.css";
 import 'bootstrap/dist/css/bootstrap.css';
