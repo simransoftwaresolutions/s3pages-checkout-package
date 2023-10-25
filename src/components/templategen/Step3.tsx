@@ -86,11 +86,25 @@ export default function Step3({ setStep }:any) {
               <Button
                 className={`bg-warning  text-secondary footerButton`}
                 sx={{
+                  fontFamily: "sans-serif",
+                  textAlign: "center !important",
+                  backgroundColor: "#ffc300 !important",
+
+                  borderRadius: "105px !important",
+                  textDecoration: "none !important",
+                  fontSize: "15px !important",
+                  fontWeight: "600 !important",
+
+                  margin: "0 auto !important",
+                  lineHeight: "30px !important",
+                  marginTop: "40px !important",
+                  marginBottom: "20px !important",
+                  color: "#181723 !important",
+                  textTransform: "uppercase !important",
                   padding: "0px",
                   width: "100% !important",
                   maxWidth: "100% !important",
                   height: "50px",
-                  color: "#181723 !important"
                 }}
               >
                 Generate Website

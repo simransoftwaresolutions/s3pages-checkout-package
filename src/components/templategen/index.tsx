@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
-import "./modal.css"
+// import "./modal.css"
 export default function index() {
   const [step, setStep] = useState("step1");
   return (

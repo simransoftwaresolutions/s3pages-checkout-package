@@ -4,9 +4,9 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-export default function Step1({ setStep }:any) {
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+export default function Step1({ setStep }: any) {
   const top100Films = [
     { label: "The Shawshank Redemption", year: 1994 },
     { label: "The Godfather", year: 1972 },
@@ -28,16 +28,16 @@ export default function Step1({ setStep }:any) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height:{  xs:"92.1vh", md:"89.4vh"},
+            height: { xs: "92.1vh", md: "89.4vh" },
           }}
         >
           <Box
             sx={{
               padding: "70px 50px",
-              width:"500px",
+              width: "500px",
               borderRadius: "20px",
               backgroundColor: "#fff",
-              position:"relative",
+              position: "relative",
               boxShadow:
                 " rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;",
             }}
@@ -45,17 +45,15 @@ export default function Step1({ setStep }:any) {
             <Box
               sx={{
                 borderRadius: "100px",
-               
+
                 backgroundColor: "#fff",
                 display: "block",
-                textAlign:"center",
-                position:"relative",
-                top:"-20px",
-           
-               
+                textAlign: "center",
+                position: "relative",
+                top: "-20px",
               }}
             >
-                <BusinessCenterIcon sx={{color:"#9234e0",fontSize:"50px"}}/>
+              <BusinessCenterIcon sx={{ color: "#9234e0", fontSize: "50px" }} />
             </Box>
             <Typography variant="h6">
               What type of business are you building?
@@ -78,15 +76,29 @@ export default function Step1({ setStep }:any) {
                 className={`bg-warning  text-secondary footerButton`}
                 fullWidth
                 sx={{
+                  fontFamily: "sans-serif",
+                  textAlign: "center !important",
+                  backgroundColor: "#ffc300 !important",
+
+                  borderRadius: "105px !important",
+                  textDecoration: "none !important",
+                  fontSize: "15px !important",
+                  fontWeight: "600 !important",
+
+                  margin: "0 auto !important",
+                  lineHeight: "30px !important",
+                  marginTop: "40px !important",
+                  marginBottom: "20px !important",
+                  color: "#181723 !important",
+                  textTransform: "uppercase !important",
                   padding: "0px",
                   width: "100% !important",
                   maxWidth: "100% !important",
                   height: "50px",
-                  color: "#181723 !important"
                 }}
                 onClick={() => setStep("step2")}
               >
-                Next <ArrowForwardIcon/>
+                Next <ArrowForwardIcon />
               </Button>
             </Box>
             <Box textAlign="center">
