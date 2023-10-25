@@ -6,7 +6,8 @@ import './styles/pagepreview/custom.css';
 import './styles/pagepreview/globals.css';
 import "./styles/pagepreview/bootstrap-grid.css";
 import 'bootstrap/dist/css/bootstrap.css';
-
+import "./styles/globals.css"
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function componentName() {
 
