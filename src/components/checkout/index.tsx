@@ -9,7 +9,7 @@ import { useGlobalCSS } from "../../helper/arrayToCss";
 // import 'bootstrap/dist/css/bootstrap.css';
 // import 'bootstrap/dist/js/bootstrap.bundle.min';
 // import "../../styles/globals.css"
-
+import 'bootstrap/dist/css/bootstrap.css'
 export function CheckoutProduct({ product, style }: { product: any, style: any }) {
 
     useGlobalCSS(style ?? [])
