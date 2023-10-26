@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "../../styles/page-template/index.module.css";
 // import Image from "next/image";
 import { useEffect, useState, SyntheticEvent, useRef } from "react";
 // import Link from "next/link";

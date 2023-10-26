@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import styles from "./index.module.css";
+import styles from "../../styles/page-template/index.module.css";
 
 interface TabPanelProps {
   children?: React.ReactNode;
