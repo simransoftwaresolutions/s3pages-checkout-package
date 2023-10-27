@@ -2,7 +2,7 @@
 // import type { NextPage } from 'next';
 import Previeweditor from './previeweditor';
 
-import '../styles/globals.css';
+import '../../styles/pagepreview/globals.css';
 
 import 'animate.css';
 import { Fragment, useEffect } from "react";

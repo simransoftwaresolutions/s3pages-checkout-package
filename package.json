@@ -10,7 +10,7 @@
     "copy-templategen": "copyfiles -u 1 src/styles/* lib/",
     "copy-pageTemplate": "copyfiles -u 1 src/styles/page-template/*.css lib/",
     "copy-files": "yarn copy-preview && yarn copy-checkout && yarn copy-templategen  && yarn copy-pageTemplate",
-    "build": "tsc && vite build && yarn copy-files",
+    "build": "tsc && yarn copy-files",
     "prepare": "npm run build",
     "start": "react-scripts start"
   },
@@ -64,6 +64,7 @@
     "copyfiles": "^2.4.1",
     "css-loader": "^6.8.1",
     "medium-editor-colorpicker-buttons": "^0.0.4",
+    "react-quill": "^2.0.0",
     "react": "^18.2.0",
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
