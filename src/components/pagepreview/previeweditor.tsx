@@ -7,7 +7,7 @@ import { usePushCtx } from "../../context/pagepreview/PushContext";
 import { usePagesCtx } from "../../context/pagepreview/PagesContext";
 import { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import StyleGenerater from '../pagepreview/components/Atoms/StyleGenerater';
 import { GetSiteData, GetThemeSiteStyles } from "../../service/pagepreview/PagesServices";
 import { deepCloneArray } from '../../utils/functions';
