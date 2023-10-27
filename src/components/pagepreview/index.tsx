@@ -13,7 +13,7 @@ import { ContentsProvider } from '../../context/pagepreview/ContentsContext';
 import { CollectionProvider } from '../../context/pagepreview/CollectionModal';
 import { CollectionDataProvider } from '../../context/pagepreview/CollectionDataModal';
 import { SettingProvider } from '../../context/pagepreview/SettingModal';
-import 'react-quill/dist/quill.snow.css';
+// import 'react-quill/dist/quill.snow.css';
 
 interface PreviewPageProps {
   siteInfo?:any;
