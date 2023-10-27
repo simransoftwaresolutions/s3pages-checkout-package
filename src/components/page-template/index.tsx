@@ -2,7 +2,7 @@ import styles from "../../styles/page-template/index.module.css";
 // import Image from "next/image";
 import { useEffect, useState, SyntheticEvent, useRef } from "react";
 // import Link from "next/link";
-import Typography from "@mui/material/Typography";
+
 import {
   Button,
   IconButton,
@@ -12,21 +12,17 @@ import {
 } from "@mui/material";
 import Preview from "./preview";
 // import useSWR from "swr";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import SearchIcon from "@mui/icons-material/Search";
+
+// import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+// import FilterListIcon from "@mui/icons-material/FilterList";
+
 import { fetchAllTemplate } from "../../service/templateService";
 import { Link } from "@mui/joy";
 // import { Link } from "react-bootstrap/lib/Navbar";
 
 export default function componentName({ pages }: any) {
   const [title, setTitle] = useState("");
-  console.log("SFsadfsdfsdf", title);
+
   const [previewImage, setPreviewImage] = useState("");
 
   const [previewId, setPreviewId] = useState();
@@ -37,7 +33,7 @@ export default function componentName({ pages }: any) {
   const fetcher = (url: any) => fetch(url).then((res) => res.json());
   const [expanded, setExpanded] = useState<string | false>(false);
   const [search, setSearch] = useState("");
-  console.log("SDfsdfsdfsdsd", search);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10); // Number of items per page
   const [totalPages, setTotalPages] = useState(1);
@@ -130,7 +126,7 @@ export default function componentName({ pages }: any) {
   // if (error) console.log(error);
   //   console.log("asdasdasdasd",data)
   // if (!data) console.log("no data");
-
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="border-bottom">
       {showPreview ? (
@@ -181,24 +177,29 @@ export default function componentName({ pages }: any) {
                 } ${styles.filterListToggler}`}
               >
                 <p className={`${styles.filterTop}`}>Sort By</p>
-                <Tooltip title="filter">
-                  <IconButton
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-light"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="Tooltip on bottom"
                     onClick={() => {
                       toggleWindow.current.classList.toggle(`${styles.show}`);
                       setFilterIcon((prev) => !prev);
                     }}
                   >
                     {filtericon ? (
-                      <KeyboardArrowLeftIcon />
+                      <i className="fa-solid fa-chevron-left"></i>
                     ) : (
-                      <ChevronRightIcon />
+                      <i className="fa-solid fa-chevron-right"></i>
                     )}
-                  </IconButton>
-                </Tooltip>
+                  </button>
+                </div>
               </div>
             )}
 
-            {data !== undefined &&
+            {/* {data !== undefined &&
               data.filters?.map((item: any, index: number) => (
                 <div>
                   {index === 0 ? (
@@ -222,14 +223,13 @@ export default function componentName({ pages }: any) {
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel2a-content"
                         id="panel2a-header"
-                        
                       >
                         <Typography
                           sx={{
                             color: "#444",
                             fontWeight: "700",
                             fontFamily: "'Open Sans', sans-serif",
-                            fontSize: "14px", 
+                            fontSize: "14px",
                           }}
                         >
                           {item.key}
@@ -248,6 +248,71 @@ export default function componentName({ pages }: any) {
                     </Accordion>
                   )}
                 </div>
+              ))} */}
+            {data !== undefined &&
+              data.filters?.map((item: any, index: any) => (
+                <div key={index}>
+                  {index === 0 ? (
+                    <h5
+                      className={`${styles.cursor} ${styles.filterTop}`}
+                      onClick={() => setTitle("")}
+                    >
+                      {item.key}
+                    </h5>
+                  ) : (
+                    <div className="border-bottom">
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <button
+                          onClick={() => setIsOpen(index)}
+                          className="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#collapse${index}`}
+                          aria-expanded="false"
+                          style={{
+                            color: "#444",
+                            fontWeight: "700",
+                            fontFamily: "'Open Sans', sans-serif",
+                            fontSize: "14px",
+                            padding: "15px",
+                          }}
+                        >
+                          {item.key}
+                        </button>
+                        <i className="fa-solid fa-chevron-down"></i>
+                        {/* {isOpen === index ? (
+                          <i className="fa-solid fa-chevron-up"></i>
+                        ) : (
+                          <i className="fa-solid fa-chevron-down"></i>
+                        )} */}
+                      </div>
+
+                      <div
+                        id={`collapse${index}`}
+                        className="accordion-collapse collapse"
+                      >
+                        <div className="accordion-body">
+                          {item.value.map((item2: any, index2: any) => (
+                            <p
+                              className={`${styles.cursor} ${styles.pre}`}
+                              onClick={() => setTitle(item2.value)}
+                              key={index2}
+                              style={{
+                                // height: "15px",
+                                // paddingLeft: "15px",
+                                padding: "5px 15px",
+                                marginBottom: "0px",
+                                paddingBottom: "7px !important",
+                              }}
+                            >
+                              {item2.value}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
           </div>
 
@@ -256,7 +321,7 @@ export default function componentName({ pages }: any) {
               className={`d-flex ${styles.filterSearchContainer} justify-content-between px-5 border-bottom py-3 mb-4`}
             >
               <div className={`${styles.setMobileSrch}`}>
-                <SearchIcon />
+                <i className="fa-solid fa-magnifying-glass"></i>
                 <input
                   type="text"
                   placeholder="Search"
@@ -264,16 +329,16 @@ export default function componentName({ pages }: any) {
                 />
               </div>
 
-              <Button
+              <button
                 className={styles.filterBTN}
                 onClick={() => {
                   toggleWindow.current.classList.toggle(`${styles.show}`);
-                  // document.getElementById("toggleDiv")?.classList.toggle(`${styles.show}`)
+                  document.getElementById("toggleDiv")?.classList.toggle(`${styles.show}`)
                 }}
               >
-                <FilterListIcon />
+                {/* <FilterListIcon /> */}
                 Filter
-              </Button>
+              </button>
             </div>
           )}
 
@@ -283,7 +348,7 @@ export default function componentName({ pages }: any) {
           >
             <div className={styles.filterInputSetting}>
               <div className={styles.setFillter}>
-                <SearchIcon />
+                <i className="fa-solid fa-magnifying-glass"></i>
                 {windowSize.width > 990 && (
                   <input
                     type="text"
@@ -316,7 +381,10 @@ export default function componentName({ pages }: any) {
               </div>
             )}
 
-            <div className={` ${styles.templateBody}`} style={{overflow:"hidden"}}>
+            <div
+              className={` ${styles.templateBody}`}
+              style={{ overflow: "hidden" }}
+            >
               {templates !== undefined && templates.length > 0 ? (
                 <>
                   {templates &&
@@ -332,6 +400,7 @@ export default function componentName({ pages }: any) {
                       />
                     ))}
                   <br />
+
                   {totalPages > 1 && (
                     <Pagination
                       count={totalPages}
@@ -367,13 +436,17 @@ const TemplateImage = ({
   return (
     <>
       {show ? (
-        <Skeleton
+        <div
           key={item._id}
-          animation="wave"
-          variant="rectangular"
-          className={styles.pagePanel}
+          // animation="wave"
+          // variant="rectangular"
+          style={{
+            background:
+              " linear-gradient(45deg, rgba(138,138,143,1) 0%, rgba(251,254,255,1) 91%)",
+          }}
+          className={`pagePanel1 ${styles.pagePanel}`}
         >
-          <div key={item._id}>
+          {/* <div key={item._id}>
             <div>
               <img
                 src={`/template${random}.jpg`}
@@ -381,15 +454,15 @@ const TemplateImage = ({
                 height={200}
                 alt="template panel"
               />
-              <h1>{item.title}</h1>
+              <h6>{item.title}</h6>
             </div>
           </div>
           <div className={styles.pagePanelHover}>
             <Link target="_blank" href={`/template${random}.jpg`}>
               <p>Preview</p>
             </Link>
-          </div>
-        </Skeleton>
+          </div> */}
+        </div>
       ) : (
         <div className={styles.pagePanel} key={item._id}>
           <div className={styles.topPanel}>
