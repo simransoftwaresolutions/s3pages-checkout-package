@@ -14,7 +14,24 @@
     color: #fff !important;
     font-size: .8rem !important;
 }
-
+.pagination button {
+    background-color: #e0e0e0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: #8836dd;
+    color: white;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 .filterBTN1 {
     width: 80px;
     height: 30px;

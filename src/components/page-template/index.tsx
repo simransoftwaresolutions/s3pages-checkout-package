@@ -3,13 +3,13 @@ import styles from "../../styles/page-template/index.module.css";
 import { useEffect, useState, SyntheticEvent, useRef } from "react";
 // import Link from "next/link";
 
-import {
-  Button,
-  IconButton,
-  Pagination,
-  Skeleton,
-  Tooltip,
-} from "@mui/material";
+// import {
+//   Button,
+//   IconButton,
+//   Pagination,
+//   Skeleton,
+//   Tooltip,
+// } from "@mui/material";
 import Preview from "./preview";
 // import useSWR from "swr";
 
@@ -17,7 +17,7 @@ import Preview from "./preview";
 // import FilterListIcon from "@mui/icons-material/FilterList";
 
 import { fetchAllTemplate } from "../../service/templateService";
-import { Link } from "@mui/joy";
+// import { Link } from "@mui/joy";
 // import { Link } from "react-bootstrap/lib/Navbar";
 
 export default function componentName({ pages }: any) {
@@ -127,6 +127,9 @@ export default function componentName({ pages }: any) {
   //   console.log("asdasdasdasd",data)
   // if (!data) console.log("no data");
   const [isOpen, setIsOpen] = useState(false);
+  const handlePageChange1 = (newPage: any) => {
+    setCurrentPage(newPage);
+  };
   return (
     <div className="border-bottom">
       {showPreview ? (
@@ -261,14 +264,26 @@ export default function componentName({ pages }: any) {
                     </h5>
                   ) : (
                     <div className="border-bottom">
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <button
-                          onClick={() => setIsOpen(index)}
-                          className="accordion-button collapsed"
+                          onClick={() =>
+                            setIsOpen((prevState) =>
+                              prevState === index ? null : index
+                            )
+                          }
+                          className={`accordion-button collapsed ${
+                            isOpen === index ? "open" : ""
+                          }`}
                           type="button"
                           data-bs-toggle="collapse"
                           data-bs-target={`#collapse${index}`}
-                          aria-expanded="false"
+                          aria-expanded={isOpen === index ? "true" : "false"}
                           style={{
                             color: "#444",
                             fontWeight: "700",
@@ -279,17 +294,19 @@ export default function componentName({ pages }: any) {
                         >
                           {item.key}
                         </button>
-                        <i className="fa-solid fa-chevron-down"></i>
-                        {/* {isOpen === index ? (
+                        {isOpen === index ? (
                           <i className="fa-solid fa-chevron-up"></i>
                         ) : (
                           <i className="fa-solid fa-chevron-down"></i>
-                        )} */}
+                        )}
                       </div>
 
                       <div
                         id={`collapse${index}`}
-                        className="accordion-collapse collapse"
+                        className={`accordion-collapse collapse ${
+                          isOpen === index ? "show" : ""
+                        }`}
+                        style={{ transition: "0.5s" }}
                       >
                         <div className="accordion-body">
                           {item.value.map((item2: any, index2: any) => (
@@ -298,8 +315,6 @@ export default function componentName({ pages }: any) {
                               onClick={() => setTitle(item2.value)}
                               key={index2}
                               style={{
-                                // height: "15px",
-                                // paddingLeft: "15px",
                                 padding: "5px 15px",
                                 marginBottom: "0px",
                                 paddingBottom: "7px !important",
@@ -333,7 +348,9 @@ export default function componentName({ pages }: any) {
                 className={styles.filterBTN}
                 onClick={() => {
                   toggleWindow.current.classList.toggle(`${styles.show}`);
-                  document.getElementById("toggleDiv")?.classList.toggle(`${styles.show}`)
+                  document
+                    .getElementById("toggleDiv")
+                    ?.classList.toggle(`${styles.show}`);
                 }}
               >
                 {/* <FilterListIcon /> */}
@@ -400,8 +417,8 @@ export default function componentName({ pages }: any) {
                       />
                     ))}
                   <br />
-
-                  {totalPages > 1 && (
+                 
+                  {/* {totalPages > 1 && (
                     <Pagination
                       count={totalPages}
                       page={currentPage}
@@ -409,13 +426,42 @@ export default function componentName({ pages }: any) {
                       variant="outlined"
                       shape="rounded"
                     />
-                  )}
+                  )} */}
                 </>
               ) : (
                 <p>SORRY, No templates present</p>
               )}
 
               <div></div>
+            </div>
+            <div style={{padding:"20px 0px"}}>
+            {totalPages > 1 && (
+                    <div className={styles.pagination}>
+                      <button
+                        disabled={currentPage === 1}
+                        onClick={() => handlePageChange1(currentPage - 1)}
+                      >
+                        Previous
+                      </button>
+                      {Array.from({ length: totalPages }, (_, index) => (
+                        <button
+                          key={index + 1}
+                          onClick={() => handlePageChange1(index + 1)}
+                          className={
+                            currentPage === index + 1 ? styles.active : ""
+                          }
+                        >
+                          {index + 1}
+                        </button>
+                      ))}
+                      <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => handlePageChange1(currentPage + 1)}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  )}
             </div>
           </div>
         </div>
@@ -436,32 +482,37 @@ const TemplateImage = ({
   return (
     <>
       {show ? (
-        <div
-          key={item._id}
-          // animation="wave"
-          // variant="rectangular"
-          style={{
-            background:
-              " linear-gradient(45deg, rgba(138,138,143,1) 0%, rgba(251,254,255,1) 91%)",
-          }}
-          className={`pagePanel1 ${styles.pagePanel}`}
-        >
-          {/* <div key={item._id}>
-            <div>
-              <img
-                src={`/template${random}.jpg`}
-                width={200}
-                height={200}
-                alt="template panel"
-              />
-              <h6>{item.title}</h6>
-            </div>
+        // <div
+        //   key={item._id}
+        //   // animation="wave"
+        //   // variant="rectangular"
+        //   style={{
+        //     background:
+        //       " linear-gradient(45deg, rgba(138,138,143,1) 0%, rgba(251,254,255,1) 91%)",
+        //   }}
+        //   className={`pagePanel1 ${styles.pagePanel}`}
+        // >
+        //   {/* <div key={item._id}>
+        //     <div>
+        //       <img
+        //         src={`/template${random}.jpg`}
+        //         width={200}
+        //         height={200}
+        //         alt="template panel"
+        //       />
+        //       <h6>{item.title}</h6>
+        //     </div>
+        //   </div>
+        //   <div className={styles.pagePanelHover}>
+        //     <Link target="_blank" href={`/template${random}.jpg`}>
+        //       <p>Preview</p>
+        //     </Link>
+        //   </div> */}
+        // </div>
+        <div className="wrapper">
+          <div className="card">
+            <div className="card__img skeleton"></div>
           </div>
-          <div className={styles.pagePanelHover}>
-            <Link target="_blank" href={`/template${random}.jpg`}>
-              <p>Preview</p>
-            </Link>
-          </div> */}
         </div>
       ) : (
         <div className={styles.pagePanel} key={item._id}>
