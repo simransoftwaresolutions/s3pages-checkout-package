@@ -1,7 +1,7 @@
 import styles from '../../../../../../styles/pagepreview/MenuAtom.module.css';
 import MenuAtomProps from './IMenuAtom';
 import MaterialIcons from '../../../../components/Atoms/MaterialIcons';
-import { generateChildClassNameStr } from "../../../../../../utils/functions";
+import { generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../../utils/functions";
 import ButtonsIcons from '../../../../components/Atoms/ButtonsIcons';
 
 const MenuAtom = ({
@@ -18,6 +18,7 @@ const MenuAtom = ({
 
     const childStyleName = generateChildClassNameStr(styleClasses, 0);
     const iconColorClsName = generateChildClassNameStr(styleClasses, 4);
+    const menuTextAlign = generateChildClassNameStr(styleClasses, 9);
 
     const drawMenu = () => {
         switch(iconPosition){
@@ -54,13 +55,17 @@ const MenuAtom = ({
     } 
     
     return (
-        <li className="nav-item">
+        <li className={`nav-item ${menuTextAlign}`}>
             {
                 menuData?.url ?
                 (
-                    <a className={`${mClsName} ${childStyleName} ${styles.menuAtomBox} nav-link`} target="_blank" href={menuData?.url}>{drawMenu()}</a>
+                    <a 
+                        className={`${mClsName} ${childStyleName} ${styles.menuAtomBox} nav-link menu-ele-anchor`} 
+                        target={ menuData?.urlType === "internal" ? "_self" : "_blank" } 
+                        href={ menuData?.urlType === "internal" ? getSeoUrlFromPageId(menuData?.url) : menuData?.url }
+                    >{drawMenu()}</a>
                 ):(
-                    <a className={`${mClsName} ${childStyleName} ${styles.menuAtomBox} nav-link`}>{drawMenu()}</a>
+                    <a className={`${mClsName} ${childStyleName} ${styles.menuAtomBox} nav-link menu-ele-anchor`}>{drawMenu()}</a>
                 )
             }
             
