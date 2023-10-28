@@ -1,4 +1,5 @@
 import { TemplateCssType } from "../context/pagepreview/PushContext";
+import { useContentCtx } from "../context/pagepreview/ContentsContext";
 
 export const deepCloneStyle = (styleCtx:any) => {
     return JSON.parse(JSON.stringify(styleCtx));
@@ -334,4 +335,19 @@ export const getTypeOfElement = (type:string) => {
     }
 
     return "";
+}
+
+
+export const getSeoUrlFromPageId = (pageId:string) => {
+    const { pageSeoUrlCtx } = useContentCtx();
+
+    if(!pageSeoUrlCtx?.length) return "#";
+    const data = pageSeoUrlCtx?.find(page => pageId === page.pageId);
+
+    if(data?.domainname && data?.seourl){
+        return `https://${data?.domainname}/${data?.seourl}`;
+    }else{
+        return "#";
+    }
+
 }

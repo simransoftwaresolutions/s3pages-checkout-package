@@ -1,5 +1,6 @@
 interface MenuType {
     url?:string;
+    urlType?:string;
     menuName:string;
     menuIcon?:any;
 }

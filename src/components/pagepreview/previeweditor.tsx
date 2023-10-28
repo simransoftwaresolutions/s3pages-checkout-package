@@ -31,7 +31,7 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
   const { pageAction, setPageAction } = usePagesCtx();
   const { queryData, setQueryData, setGFonts, stylesGlobCtx, setStylesGlobCtx, setCssFromSettings } = usePagesCtx();
   const { funnelPages, setFunnelPages, stylesCtx, setStylesCtx } = usePagesCtx();
-  const { sectionCtx,setSectionCtx } = useContentCtx();
+  const { sectionCtx, setSectionCtx, setPageSeoUrlCtx } = useContentCtx();
 
   useEffect(() => {
     if(token){
@@ -82,6 +82,20 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
         }
       }
 
+      // SEO URL array creation
+      if(siteData?.status && siteData?.data?.pages?.length){
+
+        const _seoUrl:any[] = [];
+        for(let j=0; j<siteData?.data?.pages?.length; j++){
+          _seoUrl.push({
+            pageId: siteData?.data?.pages[j]?.id,
+            seourl: siteData?.data?.pages[j]?.seourl,
+            domainname: siteData?.data?.domainname,
+          });
+        }
+        setPageSeoUrlCtx(_seoUrl);
+      }
+
       setQueryData({...queryData, funnelId: id, siteType:_siteType, themeId:_themeId, pageId:siteData?.data?.pages[0]?.id});
       setStylesGlobCtx(_styleGlobCtx);
 
@@ -110,6 +124,20 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
           if(globSiteData.status && siteInfo?.data?._id !== _themeId){
             _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles: [];
           }
+        }
+
+        // SEO URL array creation
+        if(siteInfo?.status && siteInfo?.data?.pages?.length){
+
+          const _seoUrl:any[] = [];
+          for(let j=0; j<siteInfo?.data?.pages?.length; j++){
+            _seoUrl.push({
+              pageId: siteInfo?.data?.pages[j]?._id,
+              seourl: siteInfo?.data?.pages[j]?.seourl,
+              domainname: siteInfo?.data?.domainname,
+            });
+          }
+          setPageSeoUrlCtx(_seoUrl);
         }
 
         setStylesGlobCtx(_styleGlobCtx);

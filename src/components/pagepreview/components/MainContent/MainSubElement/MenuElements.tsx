@@ -1,7 +1,7 @@
 // import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import MenuAtom from '../../../components/Atoms/ElementsAtoms/MenuAtom';
-import { generateClassNameStr, generateChildClassNameStr, generateMenuClassNameStr } from "../../../../../utils/functions";
+import { generateClassNameStr, generateChildClassNameStr, generateMenuClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
 import ButtonsIcons from '../../../components/Atoms/ButtonsIcons';
 import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 
@@ -26,6 +26,7 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
   const iconColorClsName = generateChildClassNameStr(props?.styleClasses, 4);
   const logoClsName = generateChildClassNameStr(props?.styleClasses, 6);
   const menuAlignCls = generateChildClassNameStr(props?.styleClasses, 7);
+  const menuTextAlign = generateChildClassNameStr(props?.styleClasses, 9);
 
   const drawMenu = (iconPosition:any, menuData:any) => {
     switch(iconPosition){
@@ -61,23 +62,28 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
   }
 } 
 
-  const _menuCntCls = (props?.showLogo === "true" && props?.logoUrl) ? `${styles.menuCnt}` : `${styles.menuBlock}`;
-  const _menuAlignRightCls = (props?.showLogo === "true" && props?.logoUrl) ? ` ${styles.menuAlign}` : "";
-  const _flexCls = (props?.showLogo === "true" && props?.logoUrl) ? `${styles.menuFlex}` : ``;
-  const _displayCls = (props?.showHamburgerMenu !== "true" ? (props?.menuStyle === 'horizontal' ? `${styles.menuFlex}` : `${styles.menuFlex}`) : "");
-  const _isHorzntlOrVert = (props?.showHamburgerMenu !== "true" ? (props?.menuStyle === 'horizontal' ? `${styles.menuCnt}` : `${styles.menuBlock}`) : "");
+  const _menuCntCls = (props?.showLogo === "true" && props?.logoUrl) ? `menuCnt` : `menuBlock`;
+  const _menuAlignRightCls = (props?.showLogo === "true" && props?.logoUrl) ? `menuAlign` : "";
+  const _flexCls = (props?.showLogo === "true" && props?.logoUrl) ? `menuFlex` : ``;
+  const _displayCls = (props?.showHamburgerMenu !== "true" ? (props?.menuStyle === 'horizontal' ? `menuFlex` : `menuFlex`) : "");
+  const _isHorzntlOrVert = (props?.showHamburgerMenu !== "true" ? (props?.menuStyle === 'horizontal' ? `menuCnt` : `menuBlock`) : "");
+  const _noHmb = (props?.showHamburgerMenu !== "true" && props?.showLogo === "true") ? "menu-alignment-flex" : "";
   return (
-    <div ref={refBtn} className={`${styleSelectorName} ${_displayCls}`} style={{...parentStyle}}>
+    <div ref={refBtn} className={`${styleSelectorName} ${_displayCls} ${_noHmb}`} style={{...parentStyle}}>
         {
           props?.showHamburgerMenu && props?.showHamburgerMenu === "true" ?
           (
             <nav className="navbar navbar-expand-sm navbar-dark">
               <div className={`container ${_menuCntCls} ${props?.showHamburgerMenu === "true" ? "hambMnCnt" : ""}`}>
-                <div className={`${styles.menuCnt} ${_flexCls} ${styles.hbgMenuBtnCnt}`}>
+                <div className={`menuCnt ${_flexCls} hbgMenuBtnCnt`}>
                   {
                     props?.showLogo === "true" && props?.logoUrl &&
                     (
-                      <a className="navbar-brand">
+                      <a 
+                        className="navbar-brand"
+                        href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : (props?.logoHrefUrl || "#") }
+                        target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
+                      >
                         <img className={`${styles?.imageResponsive} ${logoClsName}`} src={props?.logoUrl} />
                       </a>
                     )
@@ -96,8 +102,18 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                         {
                           props?.menuArr?.map((menu:any, mIndex:any) => {
                             const mClsName = generateMenuClassNameStr(props?.menuArr[mIndex]?.menuClassName);
-                            if(menu?.url) return <li className={`nav-item`} key={mIndex}><a className={`${mClsName} ${childStyleName} nav-link`} href={menu?.url}>{drawMenu(props?.iconPosition, menu)}</a></li>
-                            return <li className={`nav-item`} key={mIndex}><a className={`${mClsName} ${childStyleName} nav-link`}>{drawMenu(props?.iconPosition, menu)}</a></li>
+                            if(menu?.url){
+                              return <li className={`nav-item ${menuTextAlign}`} key={mIndex}>
+                                <a 
+                                  target={ menu?.urlType === "internal" ? "_self" : "_blank" }
+                                  className={`${mClsName} ${childStyleName} nav-link menu-ele-anchor`} 
+                                  href={ menu?.urlType === "internal" ? getSeoUrlFromPageId(menu?.url) : menu?.url }
+                                >
+                                  {drawMenu(props?.iconPosition, menu)}
+                                </a>
+                              </li>
+                            }
+                            return <li className={`nav-item ${menuTextAlign}`} key={mIndex}><a className={`${mClsName} ${childStyleName} nav-link`}>{drawMenu(props?.iconPosition, menu)}</a></li>
                           })
                         }
                       </ul>
@@ -113,7 +129,11 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                   props?.showLogo === "true" && props?.logoUrl &&
                   (
                     <div>
-                      <a className="navbar-brand">
+                      <a 
+                        className="navbar-brand"
+                        href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : (props?.logoHrefUrl || "#") }
+                        target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
+                      >
                         <img className={`${styles?.imageResponsive} ${logoClsName}`} src={props?.logoUrl} />
                       </a>
                     </div>

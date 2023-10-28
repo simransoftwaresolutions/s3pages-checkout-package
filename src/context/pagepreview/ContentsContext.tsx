@@ -95,6 +95,9 @@ type contentsContextType = {
   tempStyleSelector: TempStyleSelectorType; // Contains shadow copy of style selector information
   setTempStyleSelector:(tempStyleSelector:TempStyleSelectorType) => void;
 
+  pageSeoUrlCtx: any[]; // Contains Seo URL
+  setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => void;
+
 };
 
 
@@ -117,6 +120,9 @@ const contentsContextDefaultValues: contentsContextType = {
 
   tempStyleSelector: defaultTempStyleSelector,
   setTempStyleSelector:(tempStyleSelector:TempStyleSelectorType) => {},
+
+  pageSeoUrlCtx: [],
+  setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => {},
 };
 
 const ContentsContext = createContext<contentsContextType>(contentsContextDefaultValues);
@@ -137,6 +143,7 @@ export const ContentsProvider = ({ children }: Props) => {
     const [hoveredElement, _setHoveredElement] = useState<HoveredElementType>(defaultHoveredElement);
     const [contentAction, _setContentAction] = useState<ContentActionType>(defaultContentAction);
     const [tempStyleSelector, _setTempStyleSelector] = useState<TempStyleSelectorType>(defaultTempStyleSelector);
+    const [pageSeoUrlCtx, _setPageSeoUrlCtx] = useState<any[]>([]);
 
     const setSectionCtx = (sectionsCtx:SectionsType[]) => {
       _setSectionCtx(sectionsCtx);
@@ -177,6 +184,10 @@ export const ContentsProvider = ({ children }: Props) => {
       }
     }
 
+    const setPageSeoUrlCtx = (pageSeoUrlCtx:any[]) => {
+      _setPageSeoUrlCtx(pageSeoUrlCtx);
+    };
+
     const value = {
       sectionCtx,
       setSectionCtx,
@@ -190,6 +201,8 @@ export const ContentsProvider = ({ children }: Props) => {
       setContentAction,
       tempStyleSelector,
       setTempStyleSelector,
+      pageSeoUrlCtx,
+      setPageSeoUrlCtx,
     };
 
     return (
