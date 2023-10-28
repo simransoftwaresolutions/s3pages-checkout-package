@@ -9,7 +9,7 @@ export const fetchAllTemplate = async (
   return ErrorHandler(async () => {
     const userStr = localStorage.getItem("user") as any;
     const user = JSON.parse(userStr);
-    let url = `https://s3pagesapi.s3preview.com/api/site/fe/public?page=${page}&pageSize=${pageSize}&title=${search}&limit=2`;
+    let url = `https://s3pagesapi.s3preview.com/api/site/fe/public?page=${page}&pageSize=${pageSize}&title=${search}`;
 
     if (title) {
       url += `&tag=${title}`;
