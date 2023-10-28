@@ -89,17 +89,15 @@ export default function Step3({ setStep }:any) {
                   fontFamily: "sans-serif",
                   textAlign: "center !important",
                   backgroundColor: "#ffc300 !important",
-
                   borderRadius: "105px !important",
                   textDecoration: "none !important",
                   fontSize: "15px !important",
                   fontWeight: "600 !important",
-
                   margin: "0 auto !important",
                   lineHeight: "30px !important",
                   marginTop: "40px !important",
                   marginBottom: "20px !important",
-                  color: "#181723 !important",
+                  color: "#000c !important",
                   textTransform: "uppercase !important",
                   padding: "0px",
                   width: "100% !important",

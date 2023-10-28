@@ -1,7 +1,5 @@
 import styles from "../../styles/page-template/index.module.css";
-// import Image from "next/image";
 import { useEffect, useState, SyntheticEvent, useRef } from "react";
-// import Link from "next/link";
 import Typography from "@mui/material/Typography";
 import {
   Button,
@@ -11,7 +9,6 @@ import {
   Tooltip,
 } from "@mui/material";
 import Preview from "./preview";
-// import useSWR from "swr";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -22,7 +19,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SearchIcon from "@mui/icons-material/Search";
 import { fetchAllTemplate } from "../../service/templateService";
 import { Link } from "@mui/joy";
-// import { Link } from "react-bootstrap/lib/Navbar";
+
 const data1 = {
   filters: [
     {
@@ -139,9 +136,7 @@ const data1 = {
 };
 export default function componentName({ pages }: any) {
   const [title, setTitle] = useState("");
-  console.log("SFsadfsdfsdf", title);
   const [previewImage, setPreviewImage] = useState("");
-
   const [previewId, setPreviewId] = useState();
   const [filtericon, setFilterIcon] = useState(false);
   const [show, setShow] = useState(false);
@@ -150,9 +145,8 @@ export default function componentName({ pages }: any) {
   const fetcher = (url: any) => fetch(url).then((res) => res.json());
   const [expanded, setExpanded] = useState<string | false>(false);
   const [search, setSearch] = useState("");
-  console.log("SDfsdfsdfsdsd", search);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10); // Number of items per page
+  const [pageSize, setPageSize] = useState(10); 
   const [totalPages, setTotalPages] = useState(1);
   const [templates, setTemplates] = useState([]);
 
@@ -183,31 +177,12 @@ export default function componentName({ pages }: any) {
     fetchData();
   }, [currentPage, pageSize, title, search]);
 
-  // const [data, setData] = useState("") as any;
-  // console.log("ssdfsdfsdfsdfsdfsdfsdfsd", data);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setShow(true);
-  //     try {
-  //       // Perform your data fetching here using the fetch function
-  //       const response = await fetch("/files/doc.json");
-  //       const dataList = await response.json();
-  //       setData(dataList);
-  //       // Process the fetched data as needed
-  //       // For example, set the filters and templates state
-  //       console.log("SDFsdfsdfsdfsdf", dataList);
-  //     } catch (error) {
-  //       console.error("Error fetching data: ", error);
-  //     }
-  //   };
 
-  //   fetchData();
-  // }, [currentPage, pageSize, title, search]);
   const handlePageChange = (event: any, newPage: any) => {
     setCurrentPage(newPage);
   };
   useEffect(() => {
-    // Handler to call on window resize
+   
 
     function handleResize() {
       if (window.innerWidth < 990) {
@@ -218,18 +193,18 @@ export default function componentName({ pages }: any) {
         toggleWindow?.current?.classList.remove(`${styles.absolute}`);
       }
 
-      // Set window width/height to state
+     
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     }
-    // Add event listener
+  
     window.addEventListener("resize", handleResize);
     window.addEventListener("load", handleResize);
-    // Call handler right away so state gets updated with initial window size
+   
     handleResize();
-    // Remove event listener on cleanup
+   
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -238,11 +213,6 @@ export default function componentName({ pages }: any) {
       setExpanded(isExpanded ? panel : false);
     };
 
-  // const { data, error } = useSWR("/files/doc.json", fetcher);
-
-  // if (error) console.log(error);
-  //   console.log("asdasdasdasd",data)
-  // if (!data) console.log("no data");
 
   return (
     <div className="border-bottom">
@@ -280,11 +250,7 @@ export default function componentName({ pages }: any) {
             className={`col-xl-2 col-lg-3 col-sm-3 pt-3 ${styles.filterList}`}
             ref={toggleWindow}
           >
-            {/* { windowSize.width < 990 && 
-                        <Button  className={styles.filterBTN1} onClick={()=>toggleWindow.current.classList.toggle(`${styles.show}`)}>
-                        Done
-                    </Button>
-                    } */}
+      
 
             {windowSize.width > 990 && (
               <div
@@ -335,14 +301,13 @@ export default function componentName({ pages }: any) {
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel2a-content"
                         id="panel2a-header"
-                        
                       >
                         <Typography
                           sx={{
                             color: "#444",
                             fontWeight: "700",
                             fontFamily: "'Open Sans', sans-serif",
-                            fontSize: "14px", 
+                            fontSize: "14px",
                           }}
                         >
                           {item.key}
@@ -381,7 +346,7 @@ export default function componentName({ pages }: any) {
                 className={styles.filterBTN}
                 onClick={() => {
                   toggleWindow.current.classList.toggle(`${styles.show}`);
-                  // document.getElementById("toggleDiv")?.classList.toggle(`${styles.show}`)
+                  document.getElementById("toggleDiv")?.classList.toggle(`${styles.show}`)
                 }}
               >
                 <FilterListIcon />
@@ -429,7 +394,10 @@ export default function componentName({ pages }: any) {
               </div>
             )}
 
-            <div className={` ${styles.templateBody}`} style={{overflow:"hidden"}}>
+            <div
+              className={` ${styles.templateBody}`}
+              style={{ overflow: "hidden" }}
+            >
               {templates !== undefined && templates.length > 0 ? (
                 <>
                   {templates &&
@@ -519,9 +487,7 @@ const TemplateImage = ({
               />
               <p>{item.title}</p>
             </div>
-            {/* <div className={styles.itmTitle}>
-                     <p>{item.title}</p>
-                    </div> */}
+          
             <div className={styles.pagePanelHover}>
               <p
                 onClick={() => {

@@ -89,7 +89,7 @@ export default function Step1({ setStep }: any) {
                   lineHeight: "30px !important",
                   marginTop: "40px !important",
                   marginBottom: "20px !important",
-                  color: "#181723 !important",
+                  color: "#000c !important",
                   textTransform: "uppercase !important",
                   padding: "0px",
                   width: "100% !important",
