@@ -23,7 +23,120 @@ import SearchIcon from "@mui/icons-material/Search";
 import { fetchAllTemplate } from "../../service/templateService";
 import { Link } from "@mui/joy";
 // import { Link } from "react-bootstrap/lib/Navbar";
-
+const data1 = {
+  filters: [
+    {
+      key: "All",
+      value: [
+        {
+          key: "",
+          value: "",
+        },
+      ],
+    },
+    {
+      key: "Option",
+      value: [
+        {
+          key: "Email Option",
+          value: "optin-emial",
+        },
+        {
+          key: "Thank You",
+          value: "optin-thank-you",
+        },
+      ],
+    },
+    {
+      key: "Sales",
+      value: [
+        {
+          key: "Long Sales Page",
+          value: "long-sales-page",
+        },
+        {
+          key: "Video Sales Page",
+          value: "video-sales-page",
+        },
+        {
+          key: "Product Launch",
+          value: "product launch",
+        },
+        {
+          key: "App Landing Page",
+          value: "app-landing-page",
+        },
+        {
+          key: "Personal Branding",
+          value: "personal-branding",
+        },
+        {
+          key: "E-Book Download",
+          value: "e-book-download",
+        },
+      ],
+    },
+    {
+      key: "Webinar",
+      value: [
+        {
+          key: "Webinar Registration",
+          value: "webinar-registration",
+        },
+        {
+          key: "Thank you",
+          value: "webinar-thank-you",
+        },
+      ],
+    },
+    {
+      key: "Miscellaneous",
+      value: [
+        {
+          key: "JV Page",
+          value: "jv-page",
+        },
+        {
+          key: "404 Page",
+          value: "404-page",
+        },
+        {
+          key: "Coming Soon",
+          value: "coming-soon",
+        },
+      ],
+    },
+  ],
+  type: [
+    "image",
+    "video",
+    "progressBar",
+    "form",
+    "section",
+    "html",
+    "socialIcons",
+    "headings",
+    "popup",
+    "grid",
+    "button",
+    "timers",
+    "menu",
+    "text",
+    "seprator",
+  ],
+  tags: [
+    "header",
+    "footer",
+    "hero",
+    "testimonials",
+    "services",
+    "grid",
+    "testimonial",
+    "service",
+    "custom",
+    "",
+  ],
+};
 export default function componentName({ pages }: any) {
   const [title, setTitle] = useState("");
   console.log("SFsadfsdfsdf", title);
@@ -70,26 +183,26 @@ export default function componentName({ pages }: any) {
     fetchData();
   }, [currentPage, pageSize, title, search]);
 
-  const [data, setData] = useState("") as any;
-  console.log("ssdfsdfsdfsdfsdfsdfsdfsd", data);
-  useEffect(() => {
-    const fetchData = async () => {
-      setShow(true);
-      try {
-        // Perform your data fetching here using the fetch function
-        const response = await fetch("/files/doc.json");
-        const dataList = await response.json();
-        setData(dataList);
-        // Process the fetched data as needed
-        // For example, set the filters and templates state
-        console.log("SDFsdfsdfsdfsdf", dataList);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
+  // const [data, setData] = useState("") as any;
+  // console.log("ssdfsdfsdfsdfsdfsdfsdfsd", data);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setShow(true);
+  //     try {
+  //       // Perform your data fetching here using the fetch function
+  //       const response = await fetch("/files/doc.json");
+  //       const dataList = await response.json();
+  //       setData(dataList);
+  //       // Process the fetched data as needed
+  //       // For example, set the filters and templates state
+  //       console.log("SDFsdfsdfsdfsdf", dataList);
+  //     } catch (error) {
+  //       console.error("Error fetching data: ", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, [currentPage, pageSize, title, search]);
+  //   fetchData();
+  // }, [currentPage, pageSize, title, search]);
   const handlePageChange = (event: any, newPage: any) => {
     setCurrentPage(newPage);
   };
@@ -198,8 +311,8 @@ export default function componentName({ pages }: any) {
               </div>
             )}
 
-            {data !== undefined &&
-              data.filters?.map((item: any, index: number) => (
+            {data1 !== undefined &&
+              data1.filters?.map((item: any, index: number) => (
                 <div>
                   {index === 0 ? (
                     <Typography
