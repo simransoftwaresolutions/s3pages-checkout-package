@@ -63,12 +63,12 @@ hr {
   }
 }
 
-body {
+/* body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 98vh;
-}
+} */
 
 .card {
   --card-radius: 6px;
