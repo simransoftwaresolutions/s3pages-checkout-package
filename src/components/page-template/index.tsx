@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "../../styles/page-template/index.module.css";
 import { useEffect, useState, SyntheticEvent, useRef } from "react";
 import Typography from "@mui/material/Typography";
@@ -24,7 +26,7 @@ import {
 } from "../../service/templateService";
 import { Link } from "@mui/joy";
 
-// const data1 = {
+
 //   filters: [
 //     {
 //       key: "All",
