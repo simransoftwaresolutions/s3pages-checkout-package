@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Box, Button } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -20,6 +20,12 @@ export default function Step1({ setStep }: any) {
       year: 2003,
     },
   ];
+  const [selectedValue, setSelectedValue] = useState('') as any
+
+  const handleAutocompleteChange = (eventa:any, newValue:any) => {
+    setSelectedValue(newValue);
+  };
+
   return (
     <Box sx={{ background: "#F6F6F6", height: "100%" }}>
       <Container maxWidth="lg">
@@ -63,6 +69,7 @@ export default function Step1({ setStep }: any) {
                 id="free-solo-demo"
                 freeSolo
                 options={top100Films.map((option) => option.label)}
+                onChange={handleAutocompleteChange}
                 renderInput={(params) => (
                   <TextField
                     {...params}
