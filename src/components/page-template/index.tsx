@@ -3,6 +3,7 @@ import { useEffect, useState, SyntheticEvent, useRef } from "react";
 import Typography from "@mui/material/Typography";
 import {
   Button,
+  Hidden,
   IconButton,
   Pagination,
   Skeleton,
@@ -200,7 +201,7 @@ export default function componentName({ pages }: any) {
   };
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth < 990) {
+      if (window.innerWidth < 900) {
         toggleWindow?.current?.classList.add(`${styles.show}`);
         toggleWindow?.current?.classList.add(`${styles.absolute}`);
       } else {
@@ -263,7 +264,7 @@ export default function componentName({ pages }: any) {
             className={`col-xl-2 col-lg-3 col-sm-3 pt-3 ${styles.filterList}`}
             ref={toggleWindow}
           >
-            {windowSize.width > 990 && (
+            {windowSize.width > 900 && (
               <div
                 className={`d-flex align-items-center justify-content-between ${
                   toggleWindow?.current?.classList.contains(`${styles.show}`) &&
@@ -339,8 +340,8 @@ export default function componentName({ pages }: any) {
                 </div>
               ))}
           </div>
-
-          {windowSize.width < 990 && (
+            <Hidden mdUp>
+            {windowSize.width < 900 && (
             <div
               className={`d-flex ${styles.filterSearchContainer} justify-content-between px-5 border-bottom py-3 mb-4`}
             >
@@ -367,6 +368,8 @@ export default function componentName({ pages }: any) {
               </Button>
             </div>
           )}
+              </Hidden>                
+         
 
           <div
             ref={toogleDiv}
