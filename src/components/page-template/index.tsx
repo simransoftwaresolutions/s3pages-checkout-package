@@ -17,123 +17,126 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SearchIcon from "@mui/icons-material/Search";
-import { fetchAllTemplate } from "../../service/templateService";
+import {
+  FilterListHandler,
+  fetchAllTemplate,
+} from "../../service/templateService";
 import { Link } from "@mui/joy";
 
-const data1 = {
-  filters: [
-    {
-      key: "All",
-      value: [
-        {
-          key: "",
-          value: "",
-        },
-      ],
-    },
-    {
-      key: "Option",
-      value: [
-        {
-          key: "Email Option",
-          value: "optin-emial",
-        },
-        {
-          key: "Thank You",
-          value: "optin-thank-you",
-        },
-      ],
-    },
-    {
-      key: "Sales",
-      value: [
-        {
-          key: "Long Sales Page",
-          value: "long-sales-page",
-        },
-        {
-          key: "Video Sales Page",
-          value: "video-sales-page",
-        },
-        {
-          key: "Product Launch",
-          value: "product launch",
-        },
-        {
-          key: "App Landing Page",
-          value: "app-landing-page",
-        },
-        {
-          key: "Personal Branding",
-          value: "personal-branding",
-        },
-        {
-          key: "E-Book Download",
-          value: "e-book-download",
-        },
-      ],
-    },
-    {
-      key: "Webinar",
-      value: [
-        {
-          key: "Webinar Registration",
-          value: "webinar-registration",
-        },
-        {
-          key: "Thank you",
-          value: "webinar-thank-you",
-        },
-      ],
-    },
-    {
-      key: "Miscellaneous",
-      value: [
-        {
-          key: "JV Page",
-          value: "jv-page",
-        },
-        {
-          key: "404 Page",
-          value: "404-page",
-        },
-        {
-          key: "Coming Soon",
-          value: "coming-soon",
-        },
-      ],
-    },
-  ],
-  type: [
-    "image",
-    "video",
-    "progressBar",
-    "form",
-    "section",
-    "html",
-    "socialIcons",
-    "headings",
-    "popup",
-    "grid",
-    "button",
-    "timers",
-    "menu",
-    "text",
-    "seprator",
-  ],
-  tags: [
-    "header",
-    "footer",
-    "hero",
-    "testimonials",
-    "services",
-    "grid",
-    "testimonial",
-    "service",
-    "custom",
-    "",
-  ],
-};
+// const data1 = {
+//   filters: [
+//     {
+//       key: "All",
+//       value: [
+//         {
+//           key: "",
+//           value: "",
+//         },
+//       ],
+//     },
+//     {
+//       key: "Option",
+//       value: [
+//         {
+//           key: "Email Option",
+//           value: "optin-emial",
+//         },
+//         {
+//           key: "Thank You",
+//           value: "optin-thank-you",
+//         },
+//       ],
+//     },
+//     {
+//       key: "Sales",
+//       value: [
+//         {
+//           key: "Long Sales Page",
+//           value: "long-sales-page",
+//         },
+//         {
+//           key: "Video Sales Page",
+//           value: "video-sales-page",
+//         },
+//         {
+//           key: "Product Launch",
+//           value: "product launch",
+//         },
+//         {
+//           key: "App Landing Page",
+//           value: "app-landing-page",
+//         },
+//         {
+//           key: "Personal Branding",
+//           value: "personal-branding",
+//         },
+//         {
+//           key: "E-Book Download",
+//           value: "e-book-download",
+//         },
+//       ],
+//     },
+//     {
+//       key: "Webinar",
+//       value: [
+//         {
+//           key: "Webinar Registration",
+//           value: "webinar-registration",
+//         },
+//         {
+//           key: "Thank you",
+//           value: "webinar-thank-you",
+//         },
+//       ],
+//     },
+//     {
+//       key: "Miscellaneous",
+//       value: [
+//         {
+//           key: "JV Page",
+//           value: "jv-page",
+//         },
+//         {
+//           key: "404 Page",
+//           value: "404-page",
+//         },
+//         {
+//           key: "Coming Soon",
+//           value: "coming-soon",
+//         },
+//       ],
+//     },
+//   ],
+//   type: [
+//     "image",
+//     "video",
+//     "progressBar",
+//     "form",
+//     "section",
+//     "html",
+//     "socialIcons",
+//     "headings",
+//     "popup",
+//     "grid",
+//     "button",
+//     "timers",
+//     "menu",
+//     "text",
+//     "seprator",
+//   ],
+//   tags: [
+//     "header",
+//     "footer",
+//     "hero",
+//     "testimonials",
+//     "services",
+//     "grid",
+//     "testimonial",
+//     "service",
+//     "custom",
+//     "",
+//   ],
+// };
 export default function componentName({ pages }: any) {
   const [title, setTitle] = useState("");
   const [previewImage, setPreviewImage] = useState("");
@@ -146,9 +149,12 @@ export default function componentName({ pages }: any) {
   const [expanded, setExpanded] = useState<string | false>(false);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10); 
+  const [pageSize, setPageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const [templates, setTemplates] = useState([]);
+
+  const cachedData = localStorage.getItem("cachedData");
+  const [data1, setData1] = useState(cachedData ? JSON.parse(cachedData) : []);
 
   const [windowSize, setWindowSize] = useState({
     width: 0,
@@ -177,13 +183,22 @@ export default function componentName({ pages }: any) {
     fetchData();
   }, [currentPage, pageSize, title, search]);
 
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await FilterListHandler();
+        setData1(res.data);
+        localStorage.setItem("cachedData", JSON.stringify(res.data));
+      } catch (error) {}
+    };
+    if (!cachedData) {
+      fetchData();
+    }
+  }, []);
   const handlePageChange = (event: any, newPage: any) => {
     setCurrentPage(newPage);
   };
   useEffect(() => {
-   
-
     function handleResize() {
       if (window.innerWidth < 990) {
         toggleWindow?.current?.classList.add(`${styles.show}`);
@@ -193,18 +208,17 @@ export default function componentName({ pages }: any) {
         toggleWindow?.current?.classList.remove(`${styles.absolute}`);
       }
 
-     
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     }
-  
+
     window.addEventListener("resize", handleResize);
     window.addEventListener("load", handleResize);
-   
+
     handleResize();
-   
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -212,7 +226,6 @@ export default function componentName({ pages }: any) {
     (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
 
   return (
     <div className="border-bottom">
@@ -250,8 +263,6 @@ export default function componentName({ pages }: any) {
             className={`col-xl-2 col-lg-3 col-sm-3 pt-3 ${styles.filterList}`}
             ref={toggleWindow}
           >
-      
-
             {windowSize.width > 990 && (
               <div
                 className={`d-flex align-items-center justify-content-between ${
@@ -278,7 +289,7 @@ export default function componentName({ pages }: any) {
             )}
 
             {data1 !== undefined &&
-              data1.filters?.map((item: any, index: number) => (
+              data1?.map((item: any, index: number) => (
                 <div>
                   {index === 0 ? (
                     <Typography
@@ -346,7 +357,9 @@ export default function componentName({ pages }: any) {
                 className={styles.filterBTN}
                 onClick={() => {
                   toggleWindow.current.classList.toggle(`${styles.show}`);
-                  document.getElementById("toggleDiv")?.classList.toggle(`${styles.show}`)
+                  document
+                    .getElementById("toggleDiv")
+                    ?.classList.toggle(`${styles.show}`);
                 }}
               >
                 <FilterListIcon />
@@ -487,7 +500,7 @@ const TemplateImage = ({
               />
               <p>{item.title}</p>
             </div>
-          
+
             <div className={styles.pagePanelHover}>
               <p
                 onClick={() => {

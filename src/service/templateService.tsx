@@ -24,3 +24,17 @@ export const fetchAllTemplate = async (
     return responseJSON.status ? responseJSON : false;
   });
 };
+export const FilterListHandler = async () => {
+  return ErrorHandler(async () => {
+
+    let url = `https://s3pagesapi.s3preview.com/api/fe/theme/filter`;
+
+    const response = await fetch(url, {
+      // Add any necessary headers or authentication tokens here
+    });
+
+    const responseJSON = await response.json();
+
+    return responseJSON.status ? responseJSON : false;
+  });
+};
