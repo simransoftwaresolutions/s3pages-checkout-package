@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Box, Button } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -20,9 +20,9 @@ export default function Step1({ setStep }: any) {
       year: 2003,
     },
   ];
-  const [selectedValue, setSelectedValue] = useState('') as any
+  const [selectedValue, setSelectedValue] = useState("") as any;
 
-  const handleAutocompleteChange = (eventa:any, newValue:any) => {
+  const handleAutocompleteChange = (eventa: any, newValue: any) => {
     setSelectedValue(newValue);
   };
 
