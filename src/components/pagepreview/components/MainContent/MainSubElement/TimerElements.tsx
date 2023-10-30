@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import TimerAtom from '../../../components/Atoms/ElementsAtoms/TimerAtom';
 import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 import Countdown, { CountdownApi } from 'react-countdown';
-import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
+import { generateClassNameStr, generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
 
 interface Prop {
   type:string;
@@ -33,9 +33,16 @@ const TimerElements = ({type, props, refBtn}:Prop) => {
       </div>
     )
   }
-
+  
+  const redUrl = getSeoUrlFromPageId(props?.timerGeneralData?.redirectUrl || "");
   const completeTimer = () => {
-    if(typeof window !== "undefined" && props?.timerGeneralData?.redirectUrl) window.location = (props?.timerGeneralData?.redirectUrl);
+    if(typeof window !== "undefined" && props?.timerGeneralData?.redirectUrl){
+      if (props?.timerGeneralData?.urlType === "internal") {
+          window.location.href = redUrl;
+      } else {
+          window.open(props?.timerGeneralData?.redirectUrl, "_blank");
+      }
+    }
   }
   
   const parentStyle = {

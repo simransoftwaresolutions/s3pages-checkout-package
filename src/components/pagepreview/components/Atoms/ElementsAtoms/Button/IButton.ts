@@ -33,6 +33,7 @@ export default interface ButtonProps {
     text?:string;
     refInner?:any;
     url?:string;
+    urlType?:string;
     btnAlign?:any;
     onClick?:(e:React.MouseEvent<HTMLButtonElement>) => void;
 }
