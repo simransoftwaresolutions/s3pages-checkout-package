@@ -1,5 +1,5 @@
 // import type { NextPage } from 'next';
-import { Fragment, memo } from 'react';
+import { Fragment, memo, useCallback } from 'react';
 import MainContent from '../pagepreview/components/MainContent';
 import styles from '../../styles/pagepreview/Home.module.css';
 import ENV from '../../utils/env';
@@ -21,7 +21,6 @@ interface PreviewPageProps {
 }
 
 const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
-
   ENV.isViewReadOnly = true;
 
   const id = "64661c4927827070ff3212e5";
@@ -39,121 +38,118 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
     }
   }, [token]);
 
-  useEffect(() => {
-
-    const getDatas = async () => {
-
-      if (!id) return;
-
-      let _themeId = "";
-      const siteData = await GetSiteData(id);
-
-      // set sections ctx
-      if (siteData?.status && siteData?.data?.pages[0]) {
-        _themeId = siteData?.data?.themeId;
-
-        const _gFntFamily = (siteData?.data?.settings);
-
-        if (_gFntFamily?.styles?.length) {
-          setCssFromSettings(_gFntFamily?.styles || []);
-        }
-
-        if (siteData?.data?.pages[0]?.variants[0]) {
-          const testJson = JSON.parse(siteData?.data?.pages[0]?.variants[0]?.content);
-          const _tempContents = siteData?.data?.pages[0]?.variants[0]?.content !== ' ' ? testJson : [];
-          setSectionCtx(_tempContents);
-        }
+  const getNewData = useCallback(async () => {
+    if (uriInfo?.status === false) {
+      return;
+    } else {
+      let _themeId = siteInfo?.data?.themeId;
+      if (uriInfo?.data?.page?.variants?.length) {
+        const testJson = JSON.parse(uriInfo?.data?.page?.variants[0]?.content);
+        const _tempContents = uriInfo?.data?.page?.variants[0]?.content !== ' ' ? testJson : [];
+        setSectionCtx(_tempContents);
       }
 
-      // setPagesArr(_finalPagesData);
       const _styleCtx = deepCloneArray(stylesCtx); // set styles 
-      _styleCtx.styles = siteData?.data?.styles ? siteData?.data?.styles : [];
+      _styleCtx.styles = siteInfo?.data?.styles ? siteInfo?.data?.styles : [];
       setStylesCtx(_styleCtx);
 
-
-      let _siteType = id !== _themeId ? "site" : "themesite";
-
       const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
-      if (id !== _themeId) {
+      let _siteType = siteInfo?.data?._id !== _themeId ? "site" : "themesite";
+      if (_themeId !== siteInfo?.data?._id) {
         const globSiteData = await GetThemeSiteStyles(_themeId);
-        if (globSiteData.status && id !== _themeId) {
+        if (globSiteData.status && siteInfo?.data?._id !== _themeId) {
           _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles : [];
-          _siteType = "site";
         }
       }
 
       // SEO URL array creation
-      if (siteData?.status && siteData?.data?.pages?.length) {
+      if (siteInfo?.status && siteInfo?.data?.pages?.length) {
 
         const _seoUrl: any[] = [];
-        for (let j = 0; j < siteData?.data?.pages?.length; j++) {
+        for (let j = 0; j < siteInfo?.data?.pages?.length; j++) {
           _seoUrl.push({
-            pageId: siteData?.data?.pages[j]?.id,
-            seourl: siteData?.data?.pages[j]?.seourl,
-            domainname: siteData?.data?.domainname,
+            pageId: siteInfo?.data?.pages[j]?._id,
+            seourl: siteInfo?.data?.pages[j]?.seourl,
+            domainname: siteInfo?.data?.domainname,
           });
         }
         setPageSeoUrlCtx(_seoUrl);
       }
 
-      setQueryData({ ...queryData, funnelId: id, siteType: _siteType, themeId: _themeId, pageId: siteData?.data?.pages[0]?.id });
       setStylesGlobCtx(_styleGlobCtx);
 
+      setQueryData({ ...queryData, funnelId: siteInfo?.data?._id, siteType: _siteType, themeId: _themeId, pageId: uriInfo?.data?.page?._id });
+
     }
+  }, [uriInfo?.data?._id, siteInfo?.data?._id])
 
+  const getDatas = useCallback(async () => {
 
-    const getNewData = async () => {
-      if (uriInfo?.status === false) {
-        return;
-      } else {
-        let _themeId = siteInfo?.data?.themeId;
-        if (uriInfo?.data?.page?.variants?.length) {
-          const testJson = JSON.parse(uriInfo?.data?.page?.variants[0]?.content);
-          const _tempContents = uriInfo?.data?.page?.variants[0]?.content !== ' ' ? testJson : [];
-          setSectionCtx(_tempContents);
-        }
+    if (!id) return;
 
-        const _styleCtx = deepCloneArray(stylesCtx); // set styles 
-        _styleCtx.styles = siteInfo?.data?.styles ? siteInfo?.data?.styles : [];
-        setStylesCtx(_styleCtx);
+    let _themeId = "";
+    const siteData = await GetSiteData(id);
 
-        const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
-        let _siteType = siteInfo?.data?._id !== _themeId ? "site" : "themesite";
-        if (_themeId !== siteInfo?.data?._id) {
-          const globSiteData = await GetThemeSiteStyles(_themeId);
-          if (globSiteData.status && siteInfo?.data?._id !== _themeId) {
-            _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles : [];
-          }
-        }
+    // set sections ctx
+    if (siteData?.status && siteData?.data?.pages[0]) {
+      _themeId = siteData?.data?.themeId;
 
-        // SEO URL array creation
-        if (siteInfo?.status && siteInfo?.data?.pages?.length) {
+      const _gFntFamily = (siteData?.data?.settings);
 
-          const _seoUrl: any[] = [];
-          for (let j = 0; j < siteInfo?.data?.pages?.length; j++) {
-            _seoUrl.push({
-              pageId: siteInfo?.data?.pages[j]?._id,
-              seourl: siteInfo?.data?.pages[j]?.seourl,
-              domainname: siteInfo?.data?.domainname,
-            });
-          }
-          setPageSeoUrlCtx(_seoUrl);
-        }
+      if (_gFntFamily?.styles?.length) {
+        setCssFromSettings(_gFntFamily?.styles || []);
+      }
 
-        setStylesGlobCtx(_styleGlobCtx);
-
-        setQueryData({ ...queryData, funnelId: siteInfo?.data?._id, siteType: _siteType, themeId: _themeId, pageId: uriInfo?.data?.page?._id });
-
+      if (siteData?.data?.pages[0]?.variants[0]) {
+        const testJson = JSON.parse(siteData?.data?.pages[0]?.variants[0]?.content);
+        const _tempContents = siteData?.data?.pages[0]?.variants[0]?.content !== ' ' ? testJson : [];
+        setSectionCtx(_tempContents);
       }
     }
 
+    // setPagesArr(_finalPagesData);
+    const _styleCtx = deepCloneArray(stylesCtx); // set styles 
+    _styleCtx.styles = siteData?.data?.styles ? siteData?.data?.styles : [];
+    setStylesCtx(_styleCtx);
+
+
+    let _siteType = id !== _themeId ? "site" : "themesite";
+
+    const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
+    if (id !== _themeId) {
+      const globSiteData = await GetThemeSiteStyles(_themeId);
+      if (globSiteData.status && id !== _themeId) {
+        _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles : [];
+        _siteType = "site";
+      }
+    }
+
+    // SEO URL array creation
+    if (siteData?.status && siteData?.data?.pages?.length) {
+
+      const _seoUrl: any[] = [];
+      for (let j = 0; j < siteData?.data?.pages?.length; j++) {
+        _seoUrl.push({
+          pageId: siteData?.data?.pages[j]?.id,
+          seourl: siteData?.data?.pages[j]?.seourl,
+          domainname: siteData?.data?.domainname,
+        });
+      }
+      setPageSeoUrlCtx(_seoUrl);
+    }
+
+    setQueryData({ ...queryData, funnelId: id, siteType: _siteType, themeId: _themeId, pageId: siteData?.data?.pages[0]?.id });
+    setStylesGlobCtx(_styleGlobCtx);
+
+  }, [])
+
+  useEffect(() => {
     if (uriInfo && siteInfo) {
       getNewData();
     } else {
       getDatas();
     }
-
-  }, [uriInfo, siteInfo])
+  }, [uriInfo?.data?._id, siteInfo?.data?._id])
 
   return (
     <Fragment>
