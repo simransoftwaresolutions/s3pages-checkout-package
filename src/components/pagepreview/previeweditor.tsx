@@ -16,11 +16,11 @@ import { Typography } from '@mui/material';
 import PageTemplate from "../page-template/index"
 import Templategen from "../templategen/index"
 interface PreviewPageProps {
-  siteInfo?:any;
-  uriInfo?:any;
+  siteInfo?: any;
+  uriInfo?: any;
 }
 
-const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
+const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
 
   ENV.isViewReadOnly = true;
 
@@ -34,31 +34,31 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
   const { sectionCtx, setSectionCtx, setPageSeoUrlCtx } = useContentCtx();
 
   useEffect(() => {
-    if(token){
+    if (token) {
       ENV.auth = token.toString();
     }
-   }, [token]);
+  }, [token]);
 
   useEffect(() => {
 
-    const getDatas = async() => {
-  
-      if(!id) return;
+    const getDatas = async () => {
+
+      if (!id) return;
 
       let _themeId = "";
       const siteData = await GetSiteData(id);
-      
+
       // set sections ctx
-      if(siteData?.status && siteData?.data?.pages[0]){
+      if (siteData?.status && siteData?.data?.pages[0]) {
         _themeId = siteData?.data?.themeId;
 
         const _gFntFamily = (siteData?.data?.settings);
 
-        if(_gFntFamily?.styles?.length){
+        if (_gFntFamily?.styles?.length) {
           setCssFromSettings(_gFntFamily?.styles || []);
         }
 
-        if(siteData?.data?.pages[0]?.variants[0]){
+        if (siteData?.data?.pages[0]?.variants[0]) {
           const testJson = JSON.parse(siteData?.data?.pages[0]?.variants[0]?.content);
           const _tempContents = siteData?.data?.pages[0]?.variants[0]?.content !== ' ' ? testJson : [];
           setSectionCtx(_tempContents);
@@ -67,26 +67,26 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
 
       // setPagesArr(_finalPagesData);
       const _styleCtx = deepCloneArray(stylesCtx); // set styles 
-      _styleCtx.styles = siteData?.data?.styles ? siteData?.data?.styles: [];
+      _styleCtx.styles = siteData?.data?.styles ? siteData?.data?.styles : [];
       setStylesCtx(_styleCtx);
 
 
       let _siteType = id !== _themeId ? "site" : "themesite";
 
       const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
-      if(id !== _themeId){
+      if (id !== _themeId) {
         const globSiteData = await GetThemeSiteStyles(_themeId);
-        if(globSiteData.status && id !== _themeId){
-          _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles: [];
+        if (globSiteData.status && id !== _themeId) {
+          _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles : [];
           _siteType = "site";
         }
       }
 
       // SEO URL array creation
-      if(siteData?.status && siteData?.data?.pages?.length){
+      if (siteData?.status && siteData?.data?.pages?.length) {
 
-        const _seoUrl:any[] = [];
-        for(let j=0; j<siteData?.data?.pages?.length; j++){
+        const _seoUrl: any[] = [];
+        for (let j = 0; j < siteData?.data?.pages?.length; j++) {
           _seoUrl.push({
             pageId: siteData?.data?.pages[j]?.id,
             seourl: siteData?.data?.pages[j]?.seourl,
@@ -96,41 +96,41 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
         setPageSeoUrlCtx(_seoUrl);
       }
 
-      setQueryData({...queryData, funnelId: id, siteType:_siteType, themeId:_themeId, pageId:siteData?.data?.pages[0]?.id});
+      setQueryData({ ...queryData, funnelId: id, siteType: _siteType, themeId: _themeId, pageId: siteData?.data?.pages[0]?.id });
       setStylesGlobCtx(_styleGlobCtx);
 
     }
 
 
-    const getNewData = async() => {
+    const getNewData = async () => {
       if (uriInfo?.status === false) {
         return;
-      }else{
+      } else {
         let _themeId = siteInfo?.data?.themeId;
-        if(uriInfo?.data?.page?.variants?.length){
+        if (uriInfo?.data?.page?.variants?.length) {
           const testJson = JSON.parse(uriInfo?.data?.page?.variants[0]?.content);
           const _tempContents = uriInfo?.data?.page?.variants[0]?.content !== ' ' ? testJson : [];
           setSectionCtx(_tempContents);
         }
 
         const _styleCtx = deepCloneArray(stylesCtx); // set styles 
-        _styleCtx.styles = siteInfo?.data?.styles ? siteInfo?.data?.styles: [];
+        _styleCtx.styles = siteInfo?.data?.styles ? siteInfo?.data?.styles : [];
         setStylesCtx(_styleCtx);
 
         const _styleGlobCtx = deepCloneArray(stylesGlobCtx); // set global styles 
         let _siteType = siteInfo?.data?._id !== _themeId ? "site" : "themesite";
-        if(_themeId !== siteInfo?.data?._id){
+        if (_themeId !== siteInfo?.data?._id) {
           const globSiteData = await GetThemeSiteStyles(_themeId);
-          if(globSiteData.status && siteInfo?.data?._id !== _themeId){
-            _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles: [];
+          if (globSiteData.status && siteInfo?.data?._id !== _themeId) {
+            _styleGlobCtx.styles = globSiteData?.styles ? globSiteData?.styles : [];
           }
         }
 
         // SEO URL array creation
-        if(siteInfo?.status && siteInfo?.data?.pages?.length){
+        if (siteInfo?.status && siteInfo?.data?.pages?.length) {
 
-          const _seoUrl:any[] = [];
-          for(let j=0; j<siteInfo?.data?.pages?.length; j++){
+          const _seoUrl: any[] = [];
+          for (let j = 0; j < siteInfo?.data?.pages?.length; j++) {
             _seoUrl.push({
               pageId: siteInfo?.data?.pages[j]?._id,
               seourl: siteInfo?.data?.pages[j]?.seourl,
@@ -142,14 +142,14 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
 
         setStylesGlobCtx(_styleGlobCtx);
 
-        setQueryData({...queryData, funnelId: siteInfo?.data?._id, siteType:_siteType, themeId:_themeId, pageId:uriInfo?.data?.page?._id});
+        setQueryData({ ...queryData, funnelId: siteInfo?.data?._id, siteType: _siteType, themeId: _themeId, pageId: uriInfo?.data?.page?._id });
 
       }
     }
 
-    if(uriInfo && siteInfo){
+    if (uriInfo && siteInfo) {
       getNewData();
-    }else{
+    } else {
       getDatas();
     }
 
@@ -158,21 +158,18 @@ const Previeweditor = ({siteInfo, uriInfo}:PreviewPageProps) => {
   return (
     <Fragment>
       {
-      id && token &&
+        id && token &&
         <>
           <div className='container-fluid'>
             <div className={`row`} >
               <div className={`${styles.previewPage} col-md-12}`}>
-                <Templategen/>
-                <PageTemplate/>
-                
-                {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} /> }
+                {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} />}
                 {isProcessing && <div className={styles.processingText}>Processing...</div>}
               </div>
             </div>
           </div>
-          <ToastContainer position="bottom-right" theme="light"/>
-        </> 
+          <ToastContainer position="bottom-right" theme="light" />
+        </>
       }
 
       <StyleGenerater />

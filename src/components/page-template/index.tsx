@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "../../styles/page-template/index.module.css";
 import { useEffect, useState, SyntheticEvent, useRef } from "react";
 import Typography from "@mui/material/Typography";
@@ -24,7 +26,7 @@ import {
 } from "../../service/templateService";
 import { Link } from "@mui/joy";
 
-// const data1 = {
+
 //   filters: [
 //     {
 //       key: "All",
@@ -154,8 +156,14 @@ export default function componentName({ pages }: any) {
   const [totalPages, setTotalPages] = useState(1);
   const [templates, setTemplates] = useState([]);
 
-  const cachedData = localStorage.getItem("cachedData");
-  const [data1, setData1] = useState(cachedData ? JSON.parse(cachedData) : []);
+  const [data1, setData1] = useState([]);
+
+  useEffect(() => {
+    const cachedData = localStorage.getItem("cachedData") ?? "";
+    setData1(() => JSON.parse(cachedData))
+
+    return () => { }
+  }, [])
 
   const [windowSize, setWindowSize] = useState({
     width: 0,
@@ -190,9 +198,9 @@ export default function componentName({ pages }: any) {
         const res = await FilterListHandler();
         setData1(res.data);
         localStorage.setItem("cachedData", JSON.stringify(res.data));
-      } catch (error) {}
+      } catch (error) { }
     };
-    if (!cachedData) {
+    if (!localStorage.getItem("cachedData")) {
       fetchData();
     }
   }, []);
@@ -266,10 +274,9 @@ export default function componentName({ pages }: any) {
           >
             {windowSize.width > 900 && (
               <div
-                className={`d-flex align-items-center justify-content-between ${
-                  toggleWindow?.current?.classList.contains(`${styles.show}`) &&
+                className={`d-flex align-items-center justify-content-between ${toggleWindow?.current?.classList.contains(`${styles.show}`) &&
                   styles.filterToggleList
-                } ${styles.filterListToggler}`}
+                  } ${styles.filterListToggler}`}
               >
                 <p className={`${styles.filterTop}`}>Sort By</p>
                 <Tooltip title="filter">
@@ -340,36 +347,36 @@ export default function componentName({ pages }: any) {
                 </div>
               ))}
           </div>
-            <Hidden mdUp>
+          <Hidden mdUp>
             {windowSize.width < 900 && (
-            <div
-              className={`d-flex ${styles.filterSearchContainer} justify-content-between px-5 border-bottom py-3 mb-4`}
-            >
-              <div className={`${styles.setMobileSrch}`}>
-                <SearchIcon />
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className={styles.filterInput}
-                />
-              </div>
-
-              <Button
-                className={styles.filterBTN}
-                onClick={() => {
-                  toggleWindow.current.classList.toggle(`${styles.show}`);
-                  document
-                    .getElementById("toggleDiv")
-                    ?.classList.toggle(`${styles.show}`);
-                }}
+              <div
+                className={`d-flex ${styles.filterSearchContainer} justify-content-between px-5 border-bottom py-3 mb-4`}
               >
-                <FilterListIcon />
-                Filter
-              </Button>
-            </div>
-          )}
-              </Hidden>                
-         
+                <div className={`${styles.setMobileSrch}`}>
+                  <SearchIcon />
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className={styles.filterInput}
+                  />
+                </div>
+
+                <Button
+                  className={styles.filterBTN}
+                  onClick={() => {
+                    toggleWindow.current.classList.toggle(`${styles.show}`);
+                    document
+                      .getElementById("toggleDiv")
+                      ?.classList.toggle(`${styles.show}`);
+                  }}
+                >
+                  <FilterListIcon />
+                  Filter
+                </Button>
+              </div>
+            )}
+          </Hidden>
+
 
           <div
             ref={toogleDiv}

@@ -2,7 +2,7 @@
 import { Fragment } from 'react'
 import FormAtom from '../../../components/Atoms/ElementsAtoms/FormAtom';
 import { useState, useEffect, useRef } from "react";
-import { generateClassNameStr, generateFormClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
+import { generateClassNameStr, generateFormClassNameStr, generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
 import { usePagesCtx } from '../../../../../context/pagepreview/PagesContext';
 import { SubmitFormApi } from "../../../../../service/pagepreview/PagesServices";
 import { toast } from 'react-toastify';
@@ -21,6 +21,8 @@ const FormElements = ({type, props, refBtn}:Prop) => {
   
   const [ validation, setValidation ] = useState<string[]>([]);
   const { pageAction, funnelPages, queryData } = usePagesCtx();
+
+  const redUrl = getSeoUrlFromPageId(props?.redirectUrl || "");
 
   const handleForm = async(e:any) => {
     e.preventDefault(); 
@@ -68,7 +70,13 @@ const FormElements = ({type, props, refBtn}:Prop) => {
       const res = await SubmitFormApi(req);
       if(res?.status){
         toast.success(res?.message);
-        if(props?.redirectUrl) window.location = props?.redirectUrl;
+        if(props?.redirectUrl){
+          if (props?.urlType === "internal") {
+            window.location.href = redUrl;
+          } else {
+            window.open(props?.redirectUrl, "_blank");
+          }
+        }
       }else{
         toast.error(res?.message);
       }

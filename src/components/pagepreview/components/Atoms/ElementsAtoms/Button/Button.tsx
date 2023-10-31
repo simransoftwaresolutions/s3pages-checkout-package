@@ -1,7 +1,7 @@
 import styles from '../../../../../../styles/pagepreview/Button.module.css';
 import ButtonProps from './IButton';
 import ButtonsIcons from '../../../../components/Atoms/ButtonsIcons';
-import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";
+import { generateClassNameStr, generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../../utils/functions";
 
 const Button = ({
                     cssClass, 
@@ -15,12 +15,21 @@ const Button = ({
                     style,
                     refInner,
                     url,
+                    urlType,
                     btnAlign,
                     onClick}:ButtonProps
                 ) => {
 
+    const internalUrl = getSeoUrlFromPageId(url || "");
+
     const handleClick = () => {
-        if(url) window.location.href = url;
+        if(url){
+            if (urlType === "internal") {
+                window.location.href = internalUrl;
+            } else {
+                window.open(url, "_blank");
+            }
+        }
     }
                   
     const styleSelectorName = generateClassNameStr(styleClasses);
