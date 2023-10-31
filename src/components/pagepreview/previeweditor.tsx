@@ -15,6 +15,8 @@ import { useContentCtx } from "../../context/pagepreview/ContentsContext";
 import { Typography } from '@mui/material';
 import PageTemplate from "../page-template/index"
 import Templategen from "../templategen/index"
+import Bannersection from "../bannersection/index"
+import Slidersection from "../slidersection/index"
 interface PreviewPageProps {
   siteInfo?: any;
   uriInfo?: any;
@@ -156,6 +158,8 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       {
         id && token &&
         <>
+          <Bannersection heading={"No More Wasted"} option={['Efforts', 'Back-and-forth', 'Energy']}/>
+          <Slidersection/>
           <div className='container-fluid'>
             <div className={`row`} >
               <div className={`${styles.previewPage} col-md-12}`}>
