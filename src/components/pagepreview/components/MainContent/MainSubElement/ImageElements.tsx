@@ -2,7 +2,7 @@
 import { Fragment } from 'react'
 import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 import ButtonsIcons from '../../../components/Atoms/ButtonsIcons';
-import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
+import { generateClassNameStr, generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
 
 interface Prop {
   type:string;
@@ -22,8 +22,14 @@ const ImageElements = ({type, refBtn, props}:Prop) => {
           <>
             {
               props?.link ?
-              (<a target="_blank" href={props?.link ? props?.link : "#"}><img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} /></a>)
-              :(<a target="_blank"><img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} /></a>)
+              (<a 
+                target={ props?.urlType === "internal" ? "_self" : "_blank" } 
+                href={props?.urlType === "internal" ? getSeoUrlFromPageId(props?.link) : props?.link}
+              >
+                <img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} />
+              </a>)
+              :
+              (<a target="_blank"><img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} /></a>)
             }
           </>
         )
@@ -31,7 +37,12 @@ const ImageElements = ({type, refBtn, props}:Prop) => {
       {
         props?.iType === 'Icon' && (
           props?.iconUrl ?
-          <a target="_blank" href={props?.iconUrl}><ButtonsIcons clsStr={`${styleSelectorName}`} name={props?.iconName ? props?.iconName : 'Adjust'} /></a>
+          <a 
+            target={ props?.urlType === "internal" ? "_self" : "_blank" }
+            href={props?.urlType === "internal" ? getSeoUrlFromPageId(props?.iconUrl) : props?.iconUrl}
+          >
+            <ButtonsIcons clsStr={`${styleSelectorName}`} name={props?.iconName ? props?.iconName : 'Adjust'} />
+          </a>
           :<a><ButtonsIcons clsStr={`${styleSelectorName}`} name={props?.iconName ? props?.iconName : 'Adjust'} /></a>
         )
       }
