@@ -32,10 +32,6 @@ const data = [
     img: "https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg",
     head: "Automotive",
   },
-  {
-    img: "https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg",
-    head: "Automotive",
-  },
 ];
 export default function index() {
   return (
@@ -67,7 +63,7 @@ export default function index() {
                         width="100px"
                         alt=""
                       />
-                      <Box>
+                      <Box pt={1}>
                         <Typography variant="h6">{item?.head}</Typography>
                       </Box>
                     </Box>
