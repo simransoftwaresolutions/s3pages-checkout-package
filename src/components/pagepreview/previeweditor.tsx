@@ -1,5 +1,5 @@
 // import type { NextPage } from 'next';
-import { Fragment } from 'react';
+import { Fragment, memo } from 'react';
 import MainContent from '../pagepreview/components/MainContent';
 import styles from '../../styles/pagepreview/Home.module.css';
 import ENV from '../../utils/env';
@@ -181,4 +181,4 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
   )
 }
 
-export default Previeweditor;
+export default memo(Previeweditor);

@@ -5,7 +5,7 @@ import Previeweditor from './previeweditor';
 import '../../styles/pagepreview/globals.css';
 
 import 'animate.css';
-import { Fragment, useEffect } from "react";
+import { Fragment, memo, useEffect } from "react";
 import { SettingsProvider } from "../../context/pagepreview/SettingsContext";
 import { PushProvider } from "../../context/pagepreview/PushContext";
 import { PagesProvider } from '../../context/pagepreview/PagesContext';
@@ -47,4 +47,4 @@ const PreviewPage = ({siteInfo, uriInfo}:PreviewPageProps) => {
   )
 }
 
-export default PreviewPage;
+export default memo(PreviewPage);
