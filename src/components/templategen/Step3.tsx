@@ -70,7 +70,7 @@ export default function Step3({ setStep }:any) {
               What is the name of your business?
             </Typography>
             <Box pt={2}>
-              <Autocomplete
+              {/* <Autocomplete
                 id="free-solo-demo"
                 freeSolo
                 options={top100Films.map((option) => option.label)}
@@ -80,7 +80,8 @@ export default function Step3({ setStep }:any) {
                     placeholder="Coaching, Photography, Landscaping..."
                   />
                 )}
-              />
+              /> */}
+              <TextField fullWidth placeholder="Enter your business name"/>
             </Box>
             <Box>
               <Button

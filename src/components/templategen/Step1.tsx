@@ -8,17 +8,25 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 export default function Step1({ setStep }: any) {
   const top100Films = [
-    { label: "The Shawshank Redemption", year: 1994 },
-    { label: "The Godfather", year: 1972 },
-    { label: "The Godfather: Part II", year: 1974 },
-    { label: "The Dark Knight", year: 2008 },
-    { label: "12 Angry Men", year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: "Pulp Fiction", year: 1994 },
-    {
-      label: "The Lord of the Rings: The Return of the King",
-      year: 2003,
-    },
+    { label: "Accounting" },
+    { label: "Acupuncture" },
+    { label: "Arborist" },
+    { label: "Art Restoration" },
+    { label: "Audio Editing" },
+    { label: "Audio Production" },
+    { label: "Bakery" },
+    { label: "Lactation Consulting" },
+    { label: "Education" },
+    { label: "Video Editing" },
+    { label: "Writing" },
+    { label: "Yoga Instruction" },
+    { label: "Content Writing" },
+    { label: "Catering" },
+    { label: "Construction" },
+    { label: "Coffee Shop" },
+    { label: "Interior Design" },
+    { label: "Car Detailing" },
+    { label: "Barber Shop" },
   ];
   const [selectedValue, setSelectedValue] = useState("") as any;
 
