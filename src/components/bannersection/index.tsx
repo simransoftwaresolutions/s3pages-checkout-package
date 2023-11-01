@@ -2,14 +2,14 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 export default function Index({ heading, option }: any) {
-  const defaultOption = ['Efforts', 'Back-and-forth', 'Energy', "SDfsdf", "Sfdfsdf"];
+  const defaultOption = ['Energy', 'Back-and-forth', 'Energy', "Energy", "Energy"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       const options = option ? option : defaultOption;
       setCurrentIndex((prevIndex) => (prevIndex + 1) % options.length);
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
@@ -39,15 +39,26 @@ export default function Index({ heading, option }: any) {
               {heading ? heading : "No More Wasted"}
             </Typography>
           </Box>
+          <Box sx={{  "overflow": "hidden",
+  "height": "81px",
+  "marginTop": "20px"
+        }}>
+
           <Box
-            className="changing-text"
+          
             sx={{
+              overflow:"hidden",
               fontSize: { md: "4.5rem", xs: "2.5rem" },
               color: "#ff7c28",
               fontWeight: "700",
+              height:"100px"
             }}
           >
+            <Box sx={{    lineHeight: "62px"}} className="changing-text">
+
             {dynamicText}
+            </Box>
+          </Box>
           </Box>
         </Box>
         <Box sx={{ paddingTop: "50px", overflow: "hidden" }}>

@@ -93,21 +93,25 @@ hr {
   /* font-size: 24px;
   text-align: center;
   margin-top: 100px; */
-  animation: fadeInOut 3s ease infinite;
+  animation: fadeInOut 2s ease infinite;
 }
 
 @keyframes fadeInOut {
   0% {
-    opacity: 0;
-    transform: translateY(10px);
+    /* opacity: 0; */
+    transform: translateY(100px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
   }
   50% {
     opacity: 1;
     transform: translateY(0);
   }
   100% {
-    opacity: 0;
-    transform: translateY(-10px);
+    /* opacity: 0; */
+    transform: translateY(-100px);
   }
 }
 
