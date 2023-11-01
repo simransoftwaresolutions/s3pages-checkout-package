@@ -761,7 +761,7 @@ const MainContent = () => {
 
   const onMouseLeaveFromSec = (ev:any) => {
     ev.stopPropagation();
-    setSectionHoverIdx(-1);
+    // setSectionHoverIdx(-1);
     removeAllHover();
     setContentAction({...contentAction, tooltipEnableString:""});    
   }
@@ -769,7 +769,7 @@ const MainContent = () => {
     ev.stopPropagation();
     removeAllHover();
 
-    setSectionHoverIdx(sIndex);
+    // setSectionHoverIdx(sIndex);
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
       secRefs?.current[sIndex]?.classList.add('drag-over');

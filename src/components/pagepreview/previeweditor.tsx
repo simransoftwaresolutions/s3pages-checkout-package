@@ -158,7 +158,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       {
         id && token &&
         <>
-          <Bannersection option={["1","2","3"]} />
+          <Bannersection option={["1","2",]} />
           <Slidersection/>
           <div className='container-fluid'>
             <div className={`row`} >
