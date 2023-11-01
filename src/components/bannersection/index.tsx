@@ -2,11 +2,12 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 export default function index({heading,option}:any) {
-  const [dynamicText, setDynamicText] = useState('Efforts');
+  const defaultoption =['Efforts', 'Back-and-forth', 'Energy',"SDfsdf","Sfdfsdf"]
+  const [dynamicText, setDynamicText] = useState(option ? option[0] : defaultoption[0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const options = option;
+      const options = option ? option : defaultoption;
       const randomIndex = Math.floor(Math.random() * options.length);
       setDynamicText(options[randomIndex]);
     }, 3000);
@@ -54,7 +55,7 @@ export default function index({heading,option}:any) {
                 fontWeight: "500",
               }}
             >
-            {heading}  
+            {heading ? heading : "No More Wasted"}  
             </Typography>
           </Box>
           <Box
@@ -78,8 +79,9 @@ export default function index({heading,option}:any) {
         </Box>
         <Box pt={2}>
           <Button
+          variant="contained"
             sx={{
-              background: "#ffc300ff",
+              background: "#ffc300ff !important",
               color: "#000",
               borderRadius: "100px",
               padding: "8px 25px",

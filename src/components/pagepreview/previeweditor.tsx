@@ -158,7 +158,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       {
         id && token &&
         <>
-          <Bannersection heading={"No More Wasted"} option={['Efforts', 'Back-and-forth', 'Energy']}/>
+          <Bannersection />
           <Slidersection/>
           <div className='container-fluid'>
             <div className={`row`} >
