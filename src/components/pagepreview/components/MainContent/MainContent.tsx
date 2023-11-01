@@ -897,8 +897,8 @@ const MainContent = () => {
                     onDragOver={(event) => onDragOverFromSection(event, sIndex)} 
                     onDragStart={(event:any) => dragSection(event, sec, sIndex)} 
                     ref={(el) => (secRefs.current[sIndex] = el)}
-                    onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
-                    onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
+                    // onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
+                    // onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
                   >
                     {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, sec, sIndex)}
                     {
