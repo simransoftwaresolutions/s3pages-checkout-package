@@ -173,7 +173,7 @@ export const ContentsProvider = ({ children }: Props) => {
     const setContentAction = (newContentAction:ContentActionType) => {
       const newState = {...contentAction, ...newContentAction};
       if (newState !== contentAction) {
-          _setContentAction(newState);
+          // _setContentAction(newState);
       }
     }
 
