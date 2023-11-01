@@ -2,7 +2,7 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 export default function index({heading,option}:any) {
-  const defaultoption =['Efforts', 'Back-and-forth', 'Energy']
+  const defaultoption =['Efforts', 'Back-and-forth', 'Energy',"SDfsdf","Sfdfsdf"]
   const [dynamicText, setDynamicText] = useState(option ? option[0] : defaultoption[0]);
 
   useEffect(() => {

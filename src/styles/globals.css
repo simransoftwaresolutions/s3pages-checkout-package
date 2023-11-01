@@ -87,7 +87,7 @@ hr {
 }
 .slider .slide {
   height: 100px;
-  width: 200px;
+  width: 230px;
 }
 .changing-text {
   /* font-size: 24px;
@@ -107,7 +107,7 @@ hr {
   }
   100% {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
 }
 

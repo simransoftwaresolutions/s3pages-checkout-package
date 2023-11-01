@@ -33,6 +33,7 @@ const data = [
     head: "Automotive",
   },
 ];
+const duplicatedData = [...data, ...data,...data];
 export default function index() {
   return (
     <Box>
@@ -44,7 +45,7 @@ export default function index() {
           <Box sx={{ padding: "50px 0px", overflow: "hidden" }}>
             <div className="slider">
               <div className="slide-track">
-                {data.map((item: any) => (
+                {duplicatedData?.map((item: any) => (
                   <div className="slide">
                     <Box
                       sx={{
@@ -69,97 +70,6 @@ export default function index() {
                     </Box>
                   </div>
                 ))}
-
-                {/* <div className="slide">
-                  <Box sx={{ display:"flex",justifyContent:"center",flexDirection:"column" }}>
-                    <img
-                      src="https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg"
-                      height="100px"
-                      width="100px"
-                      alt=""
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                       Insurance
-                      </Typography>
-                    </Box>
-                  </Box>
-                </div>
-                <div className="slide">
-                  <Box sx={{ display:"flex",justifyContent:"center",flexDirection:"column" }}>
-                    <img
-                      src="https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg"
-                      height="100px"
-                      width="100px"
-                      alt=""
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                       Insurance
-                      </Typography>
-                    </Box>
-                  </Box>
-                </div>
-                <div className="slide">
-                  <Box sx={{ display:"flex",justifyContent:"center",flexDirection:"column" }}>
-                    <img
-                      src="https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg"
-                      height="100px"
-                      width="100px"
-                      alt=""
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                       Insurance
-                      </Typography>
-                    </Box>
-                  </Box>
-                </div>
-                <div className="slide">
-                  <Box sx={{ display:"flex",justifyContent:"center",flexDirection:"column" }}>
-                    <img
-                      src="https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg"
-                      height="100px"
-                      width="100px"
-                      alt=""
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                       Insurance
-                      </Typography>
-                    </Box>
-                  </Box>
-                </div>
-                <div className="slide">
-                  <Box sx={{ display:"flex",justifyContent:"center",flexDirection:"column" }}>
-                    <img
-                      src="https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg"
-                      height="100px"
-                      width="100px"
-                      alt=""
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                       Insurance
-                      </Typography>
-                    </Box>
-                  </Box>
-                </div>
-                <div className="slide">
-                  <Box sx={{ display:"flex",justifyContent:"center",flexDirection:"column" }}>
-                    <img
-                      src="https://www.salesassist.io/_next/static/media/Icons3_Machinery.8f219f3f.svg"
-                      height="100px"
-                      width="100px"
-                      alt=""
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                       Insurance
-                      </Typography>
-                    </Box>
-                  </Box>
-                </div> */}
               </div>
             </div>
           </Box>
