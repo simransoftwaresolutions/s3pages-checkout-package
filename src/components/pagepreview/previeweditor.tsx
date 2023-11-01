@@ -158,8 +158,6 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       {
         id && token &&
         <>
-          <Bannersection />
-          <Slidersection/>
           <div className='container-fluid'>
             <div className={`row`} >
               <div className={`${styles.previewPage} col-md-12}`}>
