@@ -1,43 +1,24 @@
 import { Box, Container, Typography, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
-export default function index({heading,option}:any) {
-  const defaultoption =['Efforts', 'Back-and-forth', 'Energy',"SDfsdf","Sfdfsdf"]
-  const [dynamicText, setDynamicText] = useState(option ? option[0] : defaultoption[0]);
+export default function Index({ heading, option }: any) {
+  const defaultOption = ['Efforts', 'Back-and-forth', 'Energy', "SDfsdf", "Sfdfsdf"];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const options = option ? option : defaultoption;
-      const randomIndex = Math.floor(Math.random() * options.length);
-      setDynamicText(options[randomIndex]);
+      const options = option ? option : defaultOption;
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % options.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
-  // const [changingText, setChangingText] = useState("Efforts");
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setChangingText((prevText) => {
-  //       switch (prevText) {
-  //         case "Efforts":
-  //           return "Back-and-forth";
-  //         case "Back-and-forth":
-  //           return "Energy";
-  //         case "Energy":
-  //           return "Efforts";
-  //         default:
-  //           return "Efforts";
-  //       }
-  //     });
-  //   }, 2000);
+  const dynamicText = option ? option[currentIndex] : defaultOption[currentIndex];
 
-  //   return () => clearInterval(interval);
-  // }, []);
   return (
     <Box sx={{ padding: "100px 0px" }}>
       <Container>
-        {/* <Typography>No More Wasted </Typography><Box  className="changing-text" >{dynamicText}</Box> */}
         <Box>
           <Typography
             variant="h2"
@@ -55,7 +36,7 @@ export default function index({heading,option}:any) {
                 fontWeight: "500",
               }}
             >
-            {heading ? heading : "No More Wasted"}  
+              {heading ? heading : "No More Wasted"}
             </Typography>
           </Box>
           <Box
@@ -69,7 +50,7 @@ export default function index({heading,option}:any) {
             {dynamicText}
           </Box>
         </Box>
-        <Box sx={{ paddingTop: "50px",overflow:"hidden" }}>
+        <Box sx={{ paddingTop: "50px", overflow: "hidden" }}>
           <Typography variant="h6">
             Gather information from customers securely and easily with
             SalesAssist, the Ultimate CRM Booster that streamlines your
@@ -79,7 +60,7 @@ export default function index({heading,option}:any) {
         </Box>
         <Box pt={2}>
           <Button
-          variant="contained"
+            variant="contained"
             sx={{
               background: "#ffc300ff !important",
               color: "#000",
