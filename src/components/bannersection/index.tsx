@@ -2,7 +2,7 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 export default function Index({ heading, option }: any) {
-  const defaultOption = ['Energy', 'Back-and-forth', 'Energy', "Energy", "Energy"];
+  const defaultOption = ['Energy', 'Back-and-forth', 'Habit', "Values", "Profits"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
