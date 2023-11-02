@@ -46,6 +46,7 @@ import EditSectionTopbar from '../../components/Atoms/EditSectionTopbar';
 import PageTopbar from '../../components/Atoms/PageTopbar';
 import { useContentCtx } from "../../../../context/pagepreview/ContentsContext";
 import { toast } from 'react-toastify';
+import MainMyComponent from './MainMyComponent';
 
 const MainContent = () => {
 
@@ -885,6 +886,13 @@ const MainContent = () => {
               // const sectionStyleSelector = sec?.eleInfo?.props?.styleSelctor ? sec?.eleInfo?.props?.styleSelctor:"";
               /////////////////////////////////////////////////////////////////////////////
 
+
+              // for My component
+              if(sec?.eleInfo?.myComponentKey){
+                return (
+                  <MainMyComponent componentName={sec?.eleInfo?.myComponentKey} />
+                )
+              }
 
               if(viewState === "phone" && sec?.eleInfo?.props?.mobileView && sec.eleInfo.props.mobileView === "false") return <></>;
 
