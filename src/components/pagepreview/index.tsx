@@ -14,13 +14,14 @@ import { CollectionProvider } from '../../context/pagepreview/CollectionModal';
 import { CollectionDataProvider } from '../../context/pagepreview/CollectionDataModal';
 import { SettingProvider } from '../../context/pagepreview/SettingModal';
 // import 'react-quill/dist/quill.snow.css';
+import { siteInfo, uriInfo } from "../../Site.js"
 
 interface PreviewPageProps {
-  siteInfo?:any;
-  uriInfo?:any;
+  siteInfo?: any;
+  uriInfo?: any;
 }
 
-const PreviewPage = ({siteInfo, uriInfo}:PreviewPageProps) => {
+const PreviewPage = () => {
 
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap");

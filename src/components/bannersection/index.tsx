@@ -39,26 +39,27 @@ export default function Index({ heading, option }: any) {
               {heading ? heading : "No More Wasted"}
             </Typography>
           </Box>
-          <Box sx={{  "overflow": "hidden",
-  "height": "81px",
-  "marginTop": "20px"
-        }}>
+          <Box sx={{
+            "overflow": "hidden",
+            "height": "81px",
+            "marginTop": "20px"
+          }}>
 
-          <Box
-          
-            sx={{
-              overflow:"hidden",
-              fontSize: { md: "4.5rem", xs: "2.5rem" },
-              color: "#ff7c28",
-              fontWeight: "700",
-              height:"100px"
-            }}
-          >
-            <Box sx={{    lineHeight: "62px"}} className="changing-text">
+            <Box
 
-            {dynamicText}
+              sx={{
+                overflow: "hidden",
+                fontSize: { md: "4.5rem", xs: "2.5rem" },
+                color: "#ff7c28",
+                fontWeight: "700",
+                height: "100px"
+              }}
+            >
+              <Box sx={{ lineHeight: "62px" }} className="changing-text">
+
+                {dynamicText}
+              </Box>
             </Box>
-          </Box>
           </Box>
         </Box>
         <Box sx={{ paddingTop: "50px", overflow: "hidden" }}>

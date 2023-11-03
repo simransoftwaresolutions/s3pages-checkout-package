@@ -10,8 +10,9 @@
     "copy-templategen": "copyfiles -u 1 src/styles/* lib/",
     "copy-slidersection": "copyfiles -u 1 src/styles/* lib/",
     "copy-bannersection": "copyfiles -u 1 src/styles/* lib/",
+    "copy-tabs": "copyfiles -u 1 src/styles/* lib/",
     "copy-pageTemplate": "copyfiles -u 1 src/styles/page-template/*.css lib/",
-    "copy-files": "yarn copy-preview && yarn copy-checkout && yarn copy-templategen  && yarn copy-pageTemplate && yarn copy-slidersection && yarn copy-bannersection",
+    "copy-files": "yarn copy-preview && yarn copy-checkout && yarn copy-tabs && yarn copy-templategen  && yarn copy-pageTemplate && yarn copy-slidersection && yarn copy-bannersection",
     "build": "tsc && yarn copy-files",
     "prepare": "npm run build",
     "start": "react-scripts start"
