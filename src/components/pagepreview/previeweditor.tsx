@@ -17,11 +17,61 @@ import PageTemplate from "../page-template/index"
 import Templategen from "../templategen/index"
 import Bannersection from "../bannersection/index"
 import Slidersection from "../slidersection/index"
+import Tabs from "../Tabs/index"
 interface PreviewPageProps {
   siteInfo?: any;
   uriInfo?: any;
 }
-
+const TabData = [
+  {
+    icon: "fa-solid fa-barcode",
+    heading: "Overviesdfsdfsdfsdfsdfsdfw",
+    image:
+      "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
+    description:
+      "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+  },
+  {
+    icon: "fa-solid fa-cart-shopping",
+    heading: "sdasdasd",
+    image:
+      "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
+    description:
+      "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+  },
+  {
+    icon: "fa-solid fa-truck-fast",
+    heading: "Shipping",
+    image:
+      "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
+    description:
+      "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+  },
+  {
+    icon: "fa-solid fa-barcode",
+    heading: "Centralized Inventory",
+    image:
+      "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
+    description:
+      "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+  },
+  {
+    icon: "fa-solid fa-barcode",
+    heading: "Sales Analytics",
+    image:
+      "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
+    description:
+      "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+  },
+  {
+    icon: "fa-solid fa-hand-holding-dollar",
+    heading: "Payments",
+    image:
+      "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
+    description:
+      "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+  },
+];
 const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
   ENV.isViewReadOnly = true;
 
@@ -158,7 +208,8 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       {
         id && token &&
         <>
-          <Bannersection />
+        <Tabs />
+          <Bannersection  />
           <Slidersection/>
           <div className='container-fluid'>
             <div className={`row`} >

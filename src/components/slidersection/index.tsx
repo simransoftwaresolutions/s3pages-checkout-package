@@ -40,7 +40,7 @@ export default function index() {
       <Container>
         <Box>
           <Box textAlign="center">
-            <Typography variant="h5">Built for Every Sales Process</Typography>
+            <Typography variant="h5" sx={{fontWeight:"700"}}>Built for Every Sales Process</Typography>
           </Box>
           <Box sx={{ padding: "50px 0px", overflow: "hidden" }}>
             <div className="slider">

@@ -1,5 +1,5 @@
 "use client";
-
+                
 import { CheckoutPage } from "./components";
 import { ProductProvider } from "../../context/product/product.provider";
 import { ToastContainer } from 'react-toastify';
