@@ -52,10 +52,11 @@ interface Prop {
   viewState?:any;
   idxs?:number[];
   gridIdx?:number;
+  isMytemplate?:boolean;
   // onClick:()=>void;
 }
 
-const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props, gridData, parentIdx, width, gridEle, gridMatrix, curEleSIndex, curEleCIndex = 0, refBtn}:Prop) => {
+const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns, type, props, gridData, parentIdx, width, gridEle, gridMatrix, curEleSIndex, curEleCIndex = 0, refBtn}:Prop) => {
 
   const gridEleRefs = useRef<any>([]);
   const gridRefs = useRef<any>([]);
@@ -243,9 +244,19 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
   }
   const onDragOverFromGrid = (ev:any, sIdx:number, gridIdxs:[], type:string, elePointer:string) => {
 
-    if(draggedElement.type === "Section") return;
     ev.preventDefault();
     ev.stopPropagation();
+
+    if(draggedElement.type === "Section" || isMytemplate){
+      const _hoveredElement = {
+        sectionIdx:-1,
+        elementIdxs:[],
+        type:"",
+      }
+  
+      setHoveredElement({...hoveredElement, ..._hoveredElement});
+      return;
+    }
 
     if(ENV.isViewReadOnly === false){
       if(type === "Column") gridRefs?.current[elePointer]?.classList.add('drag-highlight');
@@ -263,6 +274,8 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
 
   const onDragStartFromElement = (ev:any, type:string, eleIdxs:any, data:any) => {
     ev.stopPropagation();
+    if(isMytemplate) return;
+
     const _element = {
       from:"main_content",
       data:data,
@@ -285,6 +298,7 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
   const onMouseOverFromGrid = (ev:any, pointer:string, tooltipStr:string) => {
     ev.stopPropagation();
     removeAllHover();
+    if(isMytemplate) return;
 
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
@@ -294,6 +308,7 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
   const onMouseOverFromGridRow = (ev:any, pointer:string, tooltipStr:string) => {
     ev.stopPropagation();
     removeAllHover();
+    if(isMytemplate) return;
 
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
@@ -304,6 +319,7 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
     ev.preventDefault();
     ev.stopPropagation();
     removeAllHover();
+    if(isMytemplate) return;
 
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
@@ -587,7 +603,7 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
                               >
                           <Fragment>
                             {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
-                            <HeadingElements curEleSIndex={curEleSIndex} gridIdxs={eleIdxs} headEleIdx={eleRefIndex} refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
+                            <HeadingElements isMytemplate={isMytemplate} curEleSIndex={curEleSIndex} gridIdxs={eleIdxs} headEleIdx={eleRefIndex} refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
                       case 'Faq':
@@ -629,7 +645,7 @@ const GridElements = ({ gridIdx, viewState, idxs, eleData, columns, type, props,
                           innerGridMatrix.push([gridEle, gIdx]);
                           return <span key={eIdx+1}> 
                             <div>
-                              <GridElements gridIdx={eIdx} viewState={viewState} idxs={eleIdxs} eleData={gEle} curEleSIndex={curEleSIndex} parentIdx={parentIdx+1}/>
+                              <GridElements gridIdx={eIdx} viewState={viewState} idxs={eleIdxs} eleData={gEle} curEleSIndex={curEleSIndex} parentIdx={parentIdx+1} isMytemplate={isMytemplate}/>
                             </div>
                           </span>
                           break;
