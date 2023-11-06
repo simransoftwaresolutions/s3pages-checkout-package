@@ -875,6 +875,7 @@ const MainContent = () => {
             sectionCtx?.map((secDat:any, sIndex:number) => {
 
               let sec = secDat;
+              let _sectionId = secDat?.eleInfo?.props?.sectionId || "";
               let isMytemplate = false; // For my templates
               if(secDat?.eleInfo?.myTemplateId){
                 if(myTemplatesCtx[secDat?.eleInfo?.myTemplateId]){
@@ -883,6 +884,7 @@ const MainContent = () => {
                   return;
                 }
                 isMytemplate = true;
+                _sectionId = secDat?.eleInfo?.sectionId || "";
               }
 
               const sectionTooltipStr = "section_" + sIndex;
@@ -902,7 +904,7 @@ const MainContent = () => {
               // for My component
               if(secDat?.eleInfo?.myComponentKey){
                 return (
-                  <MainMyComponent componentName={secDat?.eleInfo?.myComponentKey} />
+                  <div id={secDat?.eleInfo?.sectionId || ""}><MainMyComponent componentName={secDat?.eleInfo?.myComponentKey} /></div>
                 )
               }
 
@@ -911,6 +913,7 @@ const MainContent = () => {
               return (
                   <section
                     key={sIndex+1} 
+                    id={_sectionId}
                     className={`${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} highlight`} 
                     draggable={selDragSection === sIndex ? "true":"false"} 
                     onDragLeave={(event:any) => onDragLeaveFromSection(event, sIndex)} 

@@ -82,7 +82,7 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                       <a 
                         className="navbar-brand"
                         href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : (props?.logoHrefUrl || "#") }
-                        target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
+                        // target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
                       >
                         <img className={`${styles?.imageResponsive} ${logoClsName}`} src={props?.logoUrl} />
                       </a>
@@ -105,7 +105,7 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                             if(menu?.url){
                               return <li className={`nav-item ${menuTextAlign}`} key={mIndex}>
                                 <a 
-                                  target={ menu?.urlType === "internal" ? "_self" : "_blank" }
+                                  // target={ menu?.urlType === "internal" ? "_self" : "_blank" }
                                   className={`${mClsName} ${childStyleName} nav-link menu-ele-anchor`} 
                                   href={ menu?.urlType === "internal" ? getSeoUrlFromPageId(menu?.url) : menu?.url }
                                 >
@@ -132,7 +132,7 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                       <a 
                         className="navbar-brand"
                         href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : (props?.logoHrefUrl || "#") }
-                        target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
+                        // target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
                       >
                         <img className={`${styles?.imageResponsive} ${logoClsName}`} src={props?.logoUrl} />
                       </a>

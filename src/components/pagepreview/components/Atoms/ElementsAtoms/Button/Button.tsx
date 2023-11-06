@@ -27,7 +27,7 @@ const Button = ({
             if (urlType === "internal") {
                 window.location.href = internalUrl;
             } else {
-                window.open(url, "_blank");
+                window.location.href = url;
             }
         }
     }

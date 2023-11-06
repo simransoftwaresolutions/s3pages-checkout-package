@@ -61,7 +61,7 @@ const MenuAtom = ({
                 (
                     <a 
                         className={`${mClsName} ${childStyleName} ${styles.menuAtomBox} nav-link menu-ele-anchor`} 
-                        target={ menuData?.urlType === "internal" ? "_self" : "_blank" } 
+                        // target={ menuData?.urlType === "internal" ? "_self" : "_blank" } 
                         href={ menuData?.urlType === "internal" ? getSeoUrlFromPageId(menuData?.url) : menuData?.url }
                     >{drawMenu()}</a>
                 ):(

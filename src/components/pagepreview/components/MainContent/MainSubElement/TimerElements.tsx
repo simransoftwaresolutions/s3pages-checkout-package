@@ -40,7 +40,8 @@ const TimerElements = ({type, props, refBtn}:Prop) => {
       if (props?.timerGeneralData?.urlType === "internal") {
           window.location.href = redUrl;
       } else {
-          window.open(props?.timerGeneralData?.redirectUrl, "_blank");
+        window.location.href = props?.timerGeneralData?.redirectUrl;
+          // window.open(props?.timerGeneralData?.redirectUrl, "_blank");
       }
     }
   }
