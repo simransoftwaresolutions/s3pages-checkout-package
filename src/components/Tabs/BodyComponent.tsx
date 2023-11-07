@@ -10,7 +10,7 @@ export default function BodyComponent({data}:any) {
             </Grid>
             <Grid item xs={12} sm={6}>
             <Box py={2}>
-                <Typography variant='h4'sx={{fontWeight:"700"}} >{data?.heading}</Typography>
+                <Typography variant='h4'sx={{fontWeight:"700",wordBreak:"break-all"}} >{data?.heading}</Typography>
 
             </Box>   
             <Box>

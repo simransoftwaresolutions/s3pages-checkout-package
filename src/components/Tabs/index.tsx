@@ -18,7 +18,7 @@ export default function index({ position, type, TabData }: any) {
       image:
         "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
       description:
-        "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
+        "Centralised command center for your business. Integrated center for your business. Integrated center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
     },
     {
       icon: "fa-solid fa-truck-fast",
@@ -29,7 +29,7 @@ export default function index({ position, type, TabData }: any) {
         "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
     },
     {
-      icon: "fa-solid fa-barcode",
+      icon: "fa-solid fa-boxes-stacked",
       heading: "Centralized Inventory",
       image:
         "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",
@@ -37,7 +37,7 @@ export default function index({ position, type, TabData }: any) {
         "Centralised command center for your business. Integrated with leading marketplaces, shopping carts, shipping providers and accounting systems.",
     },
     {
-      icon: "fa-solid fa-barcode",
+      icon: "fa-solid fa-chart-line",
       heading: "Sales Analytics",
       image:
         "https://s3commerce.com/home/wp-content/themes/s3commerce-sass/images/macbook-overview.png",

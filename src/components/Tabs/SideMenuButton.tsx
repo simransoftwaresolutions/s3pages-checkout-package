@@ -23,7 +23,7 @@ export default function SideMenuButton({
               <Box
                 display="flex"
                 sx={{
-                  overflow: { xs: "auto", sm: "auto", md: "hidden" },
+                  // overflow: { xs: "auto", sm: "auto", md: "hidden" },
                   padding: "0px 15px",
                 }}
               >
@@ -95,14 +95,17 @@ export default function SideMenuButton({
             </>
           )}
         </Box>
-        <Box display="flex">
+        <Box  sx={{
+          display:{ xs:"block" ,  sm:"flex"}
+
+        }} >
           {position === "right" && (
             <>
               <BodyComponent data={maindata} />
               <Box
                 display="flex"
                 sx={{
-                  overflow: { xs: "auto", sm: "auto", md: "hidden" },
+                  // overflow: { xs: "auto", sm: "auto", md: "hidden" },
                   padding: "0px 15px",
                 }}
               >
@@ -111,7 +114,7 @@ export default function SideMenuButton({
                     <>
                       {type === "button" ? (
                         <>
-                          <Box py={2}>
+                          <Box py={2} display="flex" justifyContent="end">
                             <Button
                               onClick={() => {
                                 setMainData(item);

@@ -208,7 +208,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       {
         id && token &&
         <>
-        <Tabs />
+        <Tabs  />
           <Bannersection  />
           <Slidersection/>
           <div className='container-fluid'>
