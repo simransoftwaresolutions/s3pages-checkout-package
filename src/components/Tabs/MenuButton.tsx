@@ -68,6 +68,8 @@ export default function MenuButton({
                       ></i> */}
                         <Box
                           sx={{
+                            display:"flex",
+                            justifyContent:"center",
                             color: activeTab === index ? "#d87df9" : "#9c9494",
                             fontSize: "40px",
                           }}
@@ -155,6 +157,8 @@ export default function MenuButton({
                         ></i> */}
                           <Box
                           sx={{
+                            display:"flex",
+                            justifyContent:"center",
                             color: activeTab === index ? "#d87df9" : "#9c9494",
                             fontSize: "40px",
                           }}
