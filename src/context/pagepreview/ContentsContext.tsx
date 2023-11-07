@@ -98,6 +98,12 @@ type contentsContextType = {
   pageSeoUrlCtx: any[]; // Contains Seo URL
   setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => void;
 
+  myTemplatesCtx: any[]; // Contains templates created by owner
+  setMyTemplatesCtx:(myTemplatesCtx:any[]) => void;
+  
+  myTemplatesNameCtx: any[]; // Contains templates name and ID created by owner
+  setMyTemplatesNameCtx:(myTemplatesNameCtx:any[]) => void;
+
 };
 
 
@@ -123,6 +129,12 @@ const contentsContextDefaultValues: contentsContextType = {
 
   pageSeoUrlCtx: [],
   setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => {},
+  
+  myTemplatesCtx: [],
+  setMyTemplatesCtx:(myTemplatesCtx:any[]) => {},
+
+  myTemplatesNameCtx: [],
+  setMyTemplatesNameCtx:(myTemplatesNameCtx:any[]) => {},
 };
 
 const ContentsContext = createContext<contentsContextType>(contentsContextDefaultValues);
@@ -144,6 +156,8 @@ export const ContentsProvider = ({ children }: Props) => {
     const [contentAction, _setContentAction] = useState<ContentActionType>(defaultContentAction);
     const [tempStyleSelector, _setTempStyleSelector] = useState<TempStyleSelectorType>(defaultTempStyleSelector);
     const [pageSeoUrlCtx, _setPageSeoUrlCtx] = useState<any[]>([]);
+    const [myTemplatesCtx, _setMyTemplatesCtx] = useState<any[]>([]);
+    const [myTemplatesNameCtx, _setMyTemplatesNameCtx] = useState<any[]>([]);
 
     const setSectionCtx = (sectionsCtx:SectionsType[]) => {
       _setSectionCtx(sectionsCtx);
@@ -188,6 +202,14 @@ export const ContentsProvider = ({ children }: Props) => {
       _setPageSeoUrlCtx(pageSeoUrlCtx);
     };
 
+    const setMyTemplatesCtx = (myTemplatesCtx:any[]) => {
+      _setMyTemplatesCtx(myTemplatesCtx);
+    };
+
+    const setMyTemplatesNameCtx = (myTemplatesNameCtx:any[]) => {
+      _setMyTemplatesNameCtx(myTemplatesNameCtx);
+    };
+
     const value = {
       sectionCtx,
       setSectionCtx,
@@ -203,6 +225,10 @@ export const ContentsProvider = ({ children }: Props) => {
       setTempStyleSelector,
       pageSeoUrlCtx,
       setPageSeoUrlCtx,
+      myTemplatesCtx,
+      setMyTemplatesCtx,
+      myTemplatesNameCtx,
+      setMyTemplatesNameCtx,
     };
 
     return (

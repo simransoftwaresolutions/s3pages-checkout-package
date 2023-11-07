@@ -16,10 +16,11 @@ interface Prop {
   refBtn:any;
   gridIdxs:any;
   curEleSIndex:number;
+  isMytemplate?:boolean;
   // onClick:()=>void;
 }
 
-const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSIndex}:Prop) => {
+const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSIndex, isMytemplate}:Prop) => {
 
   const [ text, setText ] = useState<any>();
   const [ showEditor, setShowEditor ] = useState(false);
@@ -149,7 +150,7 @@ const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSInde
   return (
     <Fragment>
       {
-        ENV.isViewReadOnly === true ?
+        ENV.isViewReadOnly === true || isMytemplate ?
         (
           <span style={{color:"#000"}}><Heading refInner={refBtn} {...innerProps} /></span>          
         ):

@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import StyleGenerater from '../pagepreview/components/Atoms/StyleGenerater';
 import { GetSiteData, GetThemeSiteStyles } from "../../service/pagepreview/PagesServices";
+import { GetAllSectionTags } from '../../service/pagepreview/ElementServices';
 import { deepCloneArray } from '../../utils/functions';
 import { useContentCtx } from "../../context/pagepreview/ContentsContext";
 import { Typography } from '@mui/material';
@@ -82,7 +83,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
   const { pageAction, setPageAction } = usePagesCtx();
   const { queryData, setQueryData, setGFonts, stylesGlobCtx, setStylesGlobCtx, setCssFromSettings } = usePagesCtx();
   const { funnelPages, setFunnelPages, stylesCtx, setStylesCtx } = usePagesCtx();
-  const { sectionCtx, setSectionCtx, setPageSeoUrlCtx } = useContentCtx();
+  const { sectionCtx, setSectionCtx, setPageSeoUrlCtx, setMyTemplatesCtx, setMyTemplatesNameCtx } = useContentCtx();
 
   useEffect(() => {
     if (token) {
@@ -144,7 +145,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
 
     // set sections ctx
     if (siteData?.status && siteData?.data?.pages[0]) {
-      _themeId = siteData?.data?.themeId;
+      _themeId = siteData?.data?.themeId || id;
 
       const _gFntFamily = (siteData?.data?.settings);
 
@@ -203,14 +204,41 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
     }
   }, [uriInfo?.data?._id, siteInfo?.data?._id])
 
+  useEffect(() => {
+
+    const getMyTemplates = async() => {
+      if(queryData?.funnelId && queryData?.themeId){
+        const _myTemplatesData = await GetAllSectionTags("my-templates", queryData?.funnelId, queryData?.themeId);
+
+        if(_myTemplatesData?.status){
+          const _templatesData = [];
+          const _templatesNameData = [];
+          for(let i=0; i<_myTemplatesData?.data?.length; i++){
+            const _tempContents = _myTemplatesData?.data[i]?.content ? JSON.parse(_myTemplatesData?.data[i]?.content) : "";
+            _templatesData[_myTemplatesData?.data[i]?.id] = _tempContents;
+
+            const _tempImg = _myTemplatesData?.data[i]?.screenshot;
+            _templatesNameData[i] = {
+              id:_myTemplatesData?.data[i]?.id,
+              img:_tempImg
+            }
+          }
+          setMyTemplatesCtx(_templatesData);
+          setMyTemplatesNameCtx(_templatesNameData);
+          console.log(_templatesData);
+        }
+      }
+    }
+
+    getMyTemplates();
+
+  }, [queryData?.funnelId, queryData?.themeId])
+
   return (
     <Fragment>
       {
         id && token &&
         <>
-        <Tabs  />
-          <Bannersection  />
-          <Slidersection/>
           <div className='container-fluid'>
             <div className={`row`} >
               <div className={`${styles.previewPage} col-md-12}`}>
