@@ -61,14 +61,22 @@ export default function SideMenuButton({
                             borderColor: activeTab === index ? "blue" : "black",
                           }}
                         >
-                          <i
+                          {/* <i
                             className={item.icon}
                             style={{
                               color:
                                 activeTab === index ? "#d87df9" : "#9c9494",
                               fontSize: "40px",
                             }}
-                          ></i>
+                          ></i> */}
+                            <Box
+                          sx={{
+                            color: activeTab === index ? "#d87df9" : "#9c9494",
+                            fontSize: "40px",
+                          }}
+                        >
+                          {item.icon}
+                        </Box>
                           <div
                             style={{
                               color:
@@ -143,14 +151,22 @@ export default function SideMenuButton({
                             borderColor: activeTab === index ? "blue" : "black",
                           }}
                         >
-                          <i
+                          {/* <i
                             className={item.icon}
                             style={{
                               color:
                                 activeTab === index ? "#d87df9" : "#9c9494",
                               fontSize: "40px",
                             }}
-                          ></i>
+                          ></i> */}
+                            <Box
+                          sx={{
+                            color: activeTab === index ? "#d87df9" : "#9c9494",
+                            fontSize: "40px",
+                          }}
+                        >
+                          {item.icon}
+                        </Box>
                           <div
                             style={{
                               color:
