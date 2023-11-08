@@ -36,11 +36,11 @@ export default function MenuButton({
                               setMainData(item);
                               handleTabClick(index);
                             }}
-                            className={activeTab === index ? "activeTabs" : "inActiveTabs"}
-                            // variant={
-                            //   activeTab === index ? "contained" : "outlined"
-                            // }
-                            //   className={activeTab === index ? "active-tab" : "tab"}
+                            className={
+                              activeTab === index
+                                ? "activeTabs"
+                                : "inActiveTabs"
+                            }
                           >
                             {item?.heading}
                           </Button>
@@ -60,17 +60,10 @@ export default function MenuButton({
                           borderColor: activeTab === index ? "blue" : "black",
                         }}
                       >
-                        {/* <i
-                        className={item.icon}
-                        style={{
-                          color: activeTab === index ? "#d87df9" : "#9c9494",
-                          fontSize: "40px",
-                        }}
-                      ></i> */}
                         <Box
                           sx={{
-                            display:"flex",
-                            justifyContent:"center",
+                            display: "flex",
+                            justifyContent: "center",
                             color: activeTab === index ? "#d87df9" : "#9c9494",
                             fontSize: "40px",
                           }}
@@ -126,11 +119,11 @@ export default function MenuButton({
                               setMainData(item);
                               handleTabClick(index);
                             }}
-                            className={activeTab === index ? "activeTabs" : "inActiveTabs"}
-                            // variant={
-                            //   activeTab === index ? "contained" : "outlined"
-                            // }
-                            //   className={activeTab === index ? "active-tab" : "tab"}
+                            className={
+                              activeTab === index
+                                ? "activeTabs"
+                                : "inActiveTabs"
+                            }
                           >
                             {item?.heading}
                           </Button>
@@ -150,17 +143,10 @@ export default function MenuButton({
                           borderColor: activeTab === index ? "blue" : "black",
                         }}
                       >
-                        {/* <i
-                          className={item.icon}
-                          style={{
-                            color: activeTab === index ? "#d87df9" : "#9c9494",
-                            fontSize: "40px",
-                          }}
-                        ></i> */}
-                          <Box
+                        <Box
                           sx={{
-                            display:"flex",
-                            justifyContent:"center",
+                            display: "flex",
+                            justifyContent: "center",
                             color: activeTab === index ? "#d87df9" : "#9c9494",
                             fontSize: "40px",
                           }}

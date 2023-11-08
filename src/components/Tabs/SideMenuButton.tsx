@@ -23,8 +23,7 @@ export default function SideMenuButton({
               <Box
                 display="flex"
                 sx={{
-                  // overflow: { xs: "auto", sm: "auto", md: "hidden" },
-                  padding: "0px 15px",
+                    padding: "0px 15px",
                 }}
               >
                 <Box pr={1} display="block" justifyContent="space-between">
@@ -38,11 +37,7 @@ export default function SideMenuButton({
                                 setMainData(item);
                                 handleTabClick(index);
                               }}
-                              className={activeTab === index ? "activeTabs" : "inActiveTabs"}
-                              // variant={
-                              //   activeTab === index ? "contained" : "outlined"
-                              // }
-                              //   className={activeTab === index ? "active-tab" : "tab"}
+                              className={activeTab === index ? "activeTabs" : "inActiveTabs"}                       
                             >
                               {item?.heading}
                             </Button>
@@ -62,14 +57,7 @@ export default function SideMenuButton({
                             borderColor: activeTab === index ? "blue" : "black",
                           }}
                         >
-                          {/* <i
-                            className={item.icon}
-                            style={{
-                              color:
-                                activeTab === index ? "#d87df9" : "#9c9494",
-                              fontSize: "40px",
-                            }}
-                          ></i> */}
+                          
                             <Box
                           sx={{
                             display:"flex",
@@ -93,14 +81,7 @@ export default function SideMenuButton({
                     </>
                   ))}
                 </Box>
-                {/* {type !== "button" && <>   <Divider
-              orientation="vertical"
-                      sx={{
-                        position: "relative",
-                        top: "-16px",
-                        borderBottom: "2px solid #d87df9",
-                      }}
-                    /></> } */}
+           
               </Box>
               <BodyComponent data={maindata} />
             </>
@@ -116,8 +97,7 @@ export default function SideMenuButton({
               <Box
                 display="flex"
                 sx={{
-                  // overflow: { xs: "auto", sm: "auto", md: "hidden" },
-                  padding: "0px 15px",
+                    padding: "0px 15px",
                 }}
               >
                 <Box pr={1} display="block" justifyContent="space-between">
@@ -132,10 +112,6 @@ export default function SideMenuButton({
                                 handleTabClick(index);
                               }}
                               className={activeTab === index ? "activeTabs" : "inActiveTabs"}
-                              // variant={
-                              //   activeTab === index ? "contained" : "outlined"
-                              // }
-                              //   className={activeTab === index ? "active-tab" : "tab"}
                             >
                               {item?.heading}
                             </Button>
@@ -155,14 +131,7 @@ export default function SideMenuButton({
                             borderColor: activeTab === index ? "blue" : "black",
                           }}
                         >
-                          {/* <i
-                            className={item.icon}
-                            style={{
-                              color:
-                                activeTab === index ? "#d87df9" : "#9c9494",
-                              fontSize: "40px",
-                            }}
-                          ></i> */}
+                        
                             <Box
                           sx={{
                             display:"flex",
@@ -186,14 +155,7 @@ export default function SideMenuButton({
                     </>
                   ))}
                 </Box>
-                {/* {type !== "button" && <>   <Divider
-              orientation="vertical"
-                      sx={{
-                        position: "relative",
-                        top: "-16px",
-                        borderBottom: "2px solid #d87df9",
-                      }}
-                    /></> } */}
+            
               </Box>
             
             </>
