@@ -8,7 +8,7 @@ import "./styles/pagepreview/bootstrap-grid.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./styles/globals.css"
 import 'react-toastify/dist/ReactToastify.css';
-
+import Tabs from "./components/Tabs/index"
 export default function componentName() {
 
     // const [ sInfo, setSInfo ] = useState<any>([]);
@@ -34,6 +34,7 @@ export default function componentName() {
         <>
             {/* <CheckoutProduct data={{ product: {} }} /> */}
             {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
+            <Tabs position="top" />
             <PreviewPage />
         </>
     );

@@ -38,9 +38,10 @@ export default function SideMenuButton({
                                 setMainData(item);
                                 handleTabClick(index);
                               }}
-                              variant={
-                                activeTab === index ? "contained" : "outlined"
-                              }
+                              className={activeTab === index ? "activeTabs" : "inActiveTabs"}
+                              // variant={
+                              //   activeTab === index ? "contained" : "outlined"
+                              // }
                               //   className={activeTab === index ? "active-tab" : "tab"}
                             >
                               {item?.heading}
@@ -130,9 +131,10 @@ export default function SideMenuButton({
                                 setMainData(item);
                                 handleTabClick(index);
                               }}
-                              variant={
-                                activeTab === index ? "contained" : "outlined"
-                              }
+                              className={activeTab === index ? "activeTabs" : "inActiveTabs"}
+                              // variant={
+                              //   activeTab === index ? "contained" : "outlined"
+                              // }
                               //   className={activeTab === index ? "active-tab" : "tab"}
                             >
                               {item?.heading}

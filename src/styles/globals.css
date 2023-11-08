@@ -252,3 +252,19 @@ hr {
 .card__body>.card__text:last-child {
   width: 66%;
 }
+.activeTabs{
+  background: #D87DF9 !important;
+  color: #fff !important;
+  border-radius: 100px !important;
+  padding: 12px 20px 10px !important;
+  white-space: pre;
+  margin-left: 10px !important;
+}
+.inActiveTabs{
+  background: #958f97 !important;
+  color: #fff !important;
+  border-radius: 100px !important;
+  padding: 12px 20px 10px !important;
+  white-space: pre;
+  margin-left: 10px !important;
+}
