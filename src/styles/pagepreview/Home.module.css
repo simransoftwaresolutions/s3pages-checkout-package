@@ -150,6 +150,14 @@
   .previewContainer {
     width:100%;
   }
+
+  .dndPopup {
+    position: absolute; 
+    margin-left: -20px; 
+    z-index: 999;
+    top:0;
+    color:#fff;
+  }
   
   @media (max-width: 600px) {
     .grid {

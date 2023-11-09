@@ -18,7 +18,8 @@ import PageTemplate from "../page-template/index"
 import Templategen from "../templategen/index"
 import Bannersection from "../bannersection/index"
 import Slidersection from "../slidersection/index"
-import Tabs from "../Tabs/index"
+import Tabs from "../Tabs/index";
+
 interface PreviewPageProps {
   siteInfo?: any;
   uriInfo?: any;
@@ -193,7 +194,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
        
           <div className='container-fluid'>
             <div className={`row`} >
-              <div className={`${styles.previewPage} col-md-12}`}>
+              <div className={`${styles.previewPage} col-md-12`}>
                 {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} />}
                 {isProcessing && <div className={styles.processingText}>Processing...</div>}
               </div>

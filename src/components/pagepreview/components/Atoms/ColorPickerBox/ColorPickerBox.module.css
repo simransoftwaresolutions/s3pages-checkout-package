@@ -1,0 +1,16 @@
+.colorBox {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    padding: 3px;
+    display: block;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.colorBoxBg{
+    width: 100px !important;
+    text-align: center;
+    margin-top: 2px !important;
+}

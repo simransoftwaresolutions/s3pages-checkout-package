@@ -1,0 +1,62 @@
+.subSettingTitle {
+    padding:5px;
+    background-color:#555;
+    color:#fff; 
+    /* border-bottom:1px solid #fff; */
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding:5px;
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: none;
+    /* border: 1px solid #000; */
+}
+
+.iconContainer {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #fff;
+}
+.addNewIcon {
+    background: #fff;
+    padding: 5px;
+    color: #000;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    /* border: 1px solid #000; */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.colorBoxBg{
+    width: 100px !important;
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 2px !important;
+}

@@ -694,192 +694,26 @@ export const SettingsProvider = ({ children }: Props) => {
 
     const setStyleOfElement = (styleInfo:any, columns:any = 0, colWidth:any = 0) => {
 
-    if(colWidth && colWidth !== 0){ // change column's width here
-        const _eleIdx = changeStyleOfElement.elementIdxs[changeStyleOfElement.elementIdxs.length-1];
-        const _styleSectionsCtx = deepCloneArray(sectionCtx);
-        const _styleArrLength = changeStyleOfElement?.elementIdxs?.length-1;
-        let styleTemp = [];
-        let _styleTemp = _styleSectionsCtx[changeStyleOfElement.sectionIdx];
-        styleTemp.push(_styleTemp);
-        
-        for(let i=0; i<_styleArrLength; i++){ // loop for pointing Element
-          styleTemp[i+1] = styleTemp[i].elements[changeStyleOfElement.elementIdxs[i]];
-        }        
-
-        const totlaEle = styleTemp[styleTemp.length-1].elements?.length;
-
-        const cssClsArr:string[] = [];
-        const cssClsNumArr:number[] = [];
-
-        for(let j=0; j<totlaEle; j++){
-            const cssCls = styleTemp[styleTemp.length-1].elements[j]?.eleInfo?.props?.cssClass;
-            cssClsArr.push(cssCls);
-            const _tempCss = getColumnStrNumber(cssCls);
-            cssClsNumArr.push(_tempCss);
-        }
-
-        if(totlaEle > 1){
-
-            let finalCssClsNumArr = deepCloneArray(cssClsNumArr);
-            let _colWidth = 0;
-            let eleToChangeWidth = -1;
-            let colNumToDown = colWidth - cssClsNumArr[_eleIdx];
-            let flag:boolean = true;
-            if(colNumToDown > 0){
-                // this is called when width of column is increased. So width is deducted from neighbour columns.
-
-                for(let x=_eleIdx+1; x<totlaEle && flag; x++){
-                    let _downColNum = cssClsNumArr[x] - colNumToDown;
-                    if(_downColNum < 0){
-                        colNumToDown = _downColNum * -1;
-                        finalCssClsNumArr[x] = 0;
-                    }else if(_downColNum === 0){
-                        finalCssClsNumArr[x] = 0;
-                        flag = false;
-                        eleToChangeWidth = x;
-                    }else{
-                        _colWidth = _downColNum;
-                        eleToChangeWidth = x;
-                        flag = false;
-                    }
-                }
-                for(let x=_eleIdx-1; x>=0 && flag; x--){
-                    let _downColNum = cssClsNumArr[x] - colNumToDown;
-                    if(_downColNum < 0){
-                        colNumToDown = _downColNum * -1;
-                        finalCssClsNumArr[x] = 0;
-                    }else if(_downColNum === 0){
-                        finalCssClsNumArr[x] = 0;
-                        flag = false;
-                        eleToChangeWidth = x;
-                    }else{
-                        _colWidth = _downColNum;
-                        eleToChangeWidth = x;
-                        flag = false;
-                    }
-                }
-
-                styleTemp[styleTemp.length-1].elements[_eleIdx].eleInfo.props.cssClass = `col-sm-12 col-md-${colWidth}`;
-                if(_colWidth !== 0){
-                    styleTemp[styleTemp.length-1].elements[eleToChangeWidth].eleInfo.props.cssClass = `col-sm-12 col-md-${_colWidth}`;
-                }
-
-                for(let k=finalCssClsNumArr?.length-1; k>=0; k--){
-                    if(finalCssClsNumArr[k] === 0){
-                        // this code delete columns when it's width is calculated to 0.
-                        styleTemp[styleTemp.length-1].elements.splice((k), 1);
-                    }
-                }
-
-            }else{
-                // this is called when width of column is reduced. So extara width is added to neighbour column.
-                let nextPrevIdx = 0;
-                if(_eleIdx+1 < totlaEle){
-                    nextPrevIdx = _eleIdx + 1;
-                }else{
-                    nextPrevIdx = _eleIdx - 1;
-                }
-                let addWidthToNextPrevCol = cssClsNumArr[nextPrevIdx] - colNumToDown; // This add width to neighbour columns
-                
-                styleTemp[styleTemp.length-1].elements[_eleIdx].eleInfo.props.cssClass = `col-sm-12 col-md-${colWidth}`;
-                styleTemp[styleTemp.length-1].elements[nextPrevIdx].eleInfo.props.cssClass = `col-sm-12 col-md-${addWidthToNextPrevCol}`;
+        switch(changeStyleOfElement.type){ // Normal changes of style update here
+            case "Section":
+                const _forSectionsCtx = deepCloneArray(sectionCtx);
+                _forSectionsCtx[changeStyleOfElement.sectionIdx].eleInfo.props = styleInfo;
+                setSectionCtx(_forSectionsCtx);
+            break;
+            default:
+            const _eleIdx = changeStyleOfElement.elementIdxs[changeStyleOfElement.elementIdxs.length-1];
+            const _styleSectionsCtx = deepCloneArray(sectionCtx);
+            const _styleArrLength = changeStyleOfElement?.elementIdxs?.length-1;
+            let styleTemp = [];
+            let _styleTemp = _styleSectionsCtx[changeStyleOfElement.sectionIdx];
+            styleTemp.push(_styleTemp);
+            for(let i=0; i<_styleArrLength; i++){ // loop for pointing Element
+                styleTemp[i+1] = styleTemp[i].elements[changeStyleOfElement.elementIdxs[i]];
             }
+            styleTemp[styleTemp.length-1].elements[_eleIdx].eleInfo.props = styleInfo;
+            setSectionCtx(_styleSectionsCtx);
+            break;  
         }
-        setSectionCtx(_styleSectionsCtx);
-        return;
-    }
-
-    if(columns && columns !== 0){ // set columns for grid
-
-        let colCss = "";
-        switch(columns){
-            case 1:
-                colCss = "col-sm-12 col-md-12";
-            break;
-            case 2:
-                colCss = "col-sm-12 col-md-6";
-            break;
-            case 3:
-                colCss = "col-sm-12 col-md-4";
-            break;
-            case 4:
-                colCss = "col-sm-12 col-md-3";
-            break;
-            case 6:
-                colCss = "col-sm-12 col-md-2";
-            break;
-            case 12:
-                colCss = "col-sm-12 col-md-1";
-            break;
-        }
-
-        if(colCss === "") return;
-
-        const _eleIdx = changeStyleOfElement.elementIdxs[changeStyleOfElement.elementIdxs.length-1];
-        const _styleSectionsCtx = deepCloneArray(sectionCtx);
-        const _styleArrLength = changeStyleOfElement?.elementIdxs?.length-1;
-        let styleTemp = [];
-        let _styleTemp = _styleSectionsCtx[changeStyleOfElement.sectionIdx];
-        styleTemp.push(_styleTemp);
-        
-        for(let i=0; i<_styleArrLength; i++){ // loop for pointing Element
-          styleTemp[i+1] = styleTemp[i].elements[changeStyleOfElement.elementIdxs[i]];
-        }
-
-        const gridArr = [];
-        for(let i=0; i<columns; i++){
-            const colEle =  {
-                eleInfo: {
-                    "id": "column",
-                    "type": "Column",
-                    "props": {
-                        "style":{
-                            border:"0px 0px 0px 0px solid #fff",
-                            borderRadius: 0,
-                            padding:"", 
-                            margin:"", 
-                            bgColor:"transparent",
-                            bgImage:"",
-                        },
-                        cssClass: colCss, 
-                        // cssClass: colCss, 
-                        styleClasses:{
-                            mainClassName:[],
-                            childClassName:[],
-                        },
-                        name:"Column",
-                    },
-                },
-                elements:[]
-            };
-            gridArr.push(colEle);
-        }
-
-        styleTemp[styleTemp.length-1].elements[_eleIdx].elements = gridArr;
-        setSectionCtx(_styleSectionsCtx);
-        return;
-    }
-
-    switch(changeStyleOfElement.type){ // Normal changes of style update here
-        case "Section":
-            const _forSectionsCtx = deepCloneArray(sectionCtx);
-            _forSectionsCtx[changeStyleOfElement.sectionIdx].eleInfo.props = styleInfo;
-            setSectionCtx(_forSectionsCtx);
-          break;
-        default:
-          const _eleIdx = changeStyleOfElement.elementIdxs[changeStyleOfElement.elementIdxs.length-1];
-          const _styleSectionsCtx = deepCloneArray(sectionCtx);
-          const _styleArrLength = changeStyleOfElement?.elementIdxs?.length-1;
-          let styleTemp = [];
-          let _styleTemp = _styleSectionsCtx[changeStyleOfElement.sectionIdx];
-          styleTemp.push(_styleTemp);
-          for(let i=0; i<_styleArrLength; i++){ // loop for pointing Element
-            styleTemp[i+1] = styleTemp[i].elements[changeStyleOfElement.elementIdxs[i]];
-          }
-          styleTemp[styleTemp.length-1].elements[_eleIdx].eleInfo.props = styleInfo;
-          setSectionCtx(_styleSectionsCtx);
-        break;  
-      }
     }
     ///////////////////////////////////////////////////////////////////////////////////
 

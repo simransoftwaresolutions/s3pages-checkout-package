@@ -104,6 +104,9 @@ type contentsContextType = {
   myTemplatesNameCtx: any[]; // Contains templates name and ID created by owner
   setMyTemplatesNameCtx:(myTemplatesNameCtx:any[]) => void;
 
+  myComponentCtx: any[]; // Contains my component name
+  setMyComponentCtx:(myComponentCtx:any[]) => void;
+
 };
 
 
@@ -135,6 +138,9 @@ const contentsContextDefaultValues: contentsContextType = {
 
   myTemplatesNameCtx: [],
   setMyTemplatesNameCtx:(myTemplatesNameCtx:any[]) => {},
+
+  myComponentCtx: [],
+  setMyComponentCtx:(myComponentCtx:any[]) => {},
 };
 
 const ContentsContext = createContext<contentsContextType>(contentsContextDefaultValues);
@@ -158,6 +164,7 @@ export const ContentsProvider = ({ children }: Props) => {
     const [pageSeoUrlCtx, _setPageSeoUrlCtx] = useState<any[]>([]);
     const [myTemplatesCtx, _setMyTemplatesCtx] = useState<any[]>([]);
     const [myTemplatesNameCtx, _setMyTemplatesNameCtx] = useState<any[]>([]);
+    const [myComponentCtx, _setMyComponentCtx] = useState<any[]>([]);
 
     const setSectionCtx = (sectionsCtx:SectionsType[]) => {
       _setSectionCtx(sectionsCtx);
@@ -187,7 +194,7 @@ export const ContentsProvider = ({ children }: Props) => {
     const setContentAction = (newContentAction:ContentActionType) => {
       const newState = {...contentAction, ...newContentAction};
       if (newState !== contentAction) {
-          // _setContentAction(newState);
+          _setContentAction(newState);
       }
     }
 
@@ -210,6 +217,10 @@ export const ContentsProvider = ({ children }: Props) => {
       _setMyTemplatesNameCtx(myTemplatesNameCtx);
     };
 
+    const setMyComponentCtx = (myComponentCtx:any[]) => {
+      _setMyComponentCtx(myComponentCtx);
+    };
+
     const value = {
       sectionCtx,
       setSectionCtx,
@@ -229,6 +240,8 @@ export const ContentsProvider = ({ children }: Props) => {
       setMyTemplatesCtx,
       myTemplatesNameCtx,
       setMyTemplatesNameCtx,
+      myComponentCtx,
+      setMyComponentCtx,
     };
 
     return (

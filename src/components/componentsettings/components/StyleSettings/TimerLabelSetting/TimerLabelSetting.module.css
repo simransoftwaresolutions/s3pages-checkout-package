@@ -1,0 +1,74 @@
+.subSettingTitle {
+    
+    padding:5px;
+    background-color:#555;
+    color:#fff; 
+    cursor: pointer;
+    /* border-radius: 5px 5px 0px 0; */
+    border: 1px solid #635c5c;
+    font-size: 14px;
+    border-bottom:0;
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding: 10px 20px;
+    background-color: #4c4c4c;
+    margin-bottom: 5px;
+}
+.mainContainer  label{
+    display: inline-block !important;
+    width: 50%;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.mainContainer select{
+    width: auto;
+    width: 50%;
+    font-size: 14px;
+    height: 30px;
+}
+.mainContainer input{
+    width: auto;
+    width: 50%;
+    font-size: 14px;
+    height: 30px;
+    padding-left: 10px;
+}
+.mainContainer span{
+    min-width: 25px;
+    width: 25px;
+    font-size: 12px;
+}
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+    color: #ababab;
+    font-size: 13px;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}
+.colorBoxBg{
+    width: 100px !important;
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 2px !important;
+}
