@@ -72,7 +72,7 @@ export default function MenuButton({
                         </Box>
                         <div
                           style={{
-                            color: activeTab === index ? "#d87df9" : "#9c9494",
+                            color: activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
                           }}
                         >
                           {item?.heading}
@@ -102,6 +102,18 @@ export default function MenuButton({
         </Box>
         {position === "bottom" && (
           <>
+           {type !== "button" && (
+              <>
+                {" "}
+                <Divider
+                  sx={{
+                    position: "relative",
+                    top: "48px",
+                    borderBottom: "2px solid #d87df9",
+                  }}
+                />
+              </>
+            )}
             <Box
               sx={{
                 overflow: { xs: "auto", sm: "auto", md: "hidden" },
@@ -135,7 +147,7 @@ export default function MenuButton({
                           setMainData(item);
                           handleTabClick(index);
                         }}
-                        className={activeTab === index ? "active-tab" : "tab"}
+                        className={activeTab === index ? "active-tab-bottom" : "tab-bottom"}
                         textAlign="center"
                         p={2}
                         style={{
@@ -155,7 +167,7 @@ export default function MenuButton({
                         </Box>
                         <div
                           style={{
-                            color: activeTab === index ? "#d87df9" : "#9c9494",
+                            color: activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
                           }}
                         >
                           {item?.heading}
@@ -166,18 +178,7 @@ export default function MenuButton({
                 ))}
               </Box>
             </Box>
-            {type !== "button" && (
-              <>
-                {" "}
-                <Divider
-                  sx={{
-                    position: "relative",
-                    top: "-16px",
-                    borderBottom: "2px solid #d87df9",
-                  }}
-                />
-              </>
-            )}
+           
           </>
         )}
       </Container>
