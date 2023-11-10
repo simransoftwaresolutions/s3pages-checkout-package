@@ -46,6 +46,40 @@ export default function MenuButton({
                           </Button>
                         </Box>
                       </>
+                    ) : type === "underline" ? (
+                      <>
+                        <Box
+                        onClick={() => {
+                          setMainData(item);
+                          handleTabClick(index);
+                        }}
+                        className={activeTab === index ? "active-tab-underline" : "tab-underline"}
+                        textAlign="center"
+                        p={2}
+                        style={{
+                          color: activeTab === index ? "blue" : "black",
+                          borderColor: activeTab === index ? "blue" : "black",
+                        }}
+                      >
+                        {/* <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            color: activeTab === index ? "#d87df9" : "#9c9494",
+                            fontSize: "40px",
+                          }}
+                        >
+                          {item.icon}
+                        </Box> */}
+                        <div
+                          style={{
+                            color: activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
+                          }}
+                        >
+                          {item?.heading}
+                        </div>
+                      </Box>
+                      </>
                     ) : (
                       <Box
                         onClick={() => {
@@ -83,9 +117,8 @@ export default function MenuButton({
                 ))}
               </Box>
             </Box>
-            {type !== "button" && (
-              <>
-                {" "}
+            {type === "button"  ? (""):type === "underline"  ? (""): (
+              <>              
                 <Divider
                   sx={{
                     position: "relative",
@@ -102,7 +135,7 @@ export default function MenuButton({
         </Box>
         {position === "bottom" && (
           <>
-           {type !== "button" && (
+           {type === "button" ? "":type === "underline" ? "": (
               <>
                 {" "}
                 <Divider
@@ -141,6 +174,40 @@ export default function MenuButton({
                           </Button>
                         </Box>
                       </>
+                    ) :type === "underline" ? (
+                      <>
+                      <Box
+                      onClick={() => {
+                        setMainData(item);
+                        handleTabClick(index);
+                      }}
+                      className={activeTab === index ? "active-tab-underline-bottom" : "tab-underline-bottom"}
+                      textAlign="center"
+                      p={2}
+                      style={{
+                        color: activeTab === index ? "blue" : "black",
+                        borderColor: activeTab === index ? "blue" : "black",
+                      }}
+                    >
+                      {/* <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          color: activeTab === index ? "#d87df9" : "#9c9494",
+                          fontSize: "40px",
+                        }}
+                      >
+                        {item.icon}
+                      </Box> */}
+                      <div
+                        style={{
+                          color: activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
+                        }}
+                      >
+                        {item?.heading}
+                      </div>
+                    </Box>
+                    </>
                     ) : (
                       <Box
                         onClick={() => {

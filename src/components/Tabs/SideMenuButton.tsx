@@ -22,7 +22,12 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   padding: "25px 15px",
                 }}
               >
-                <Box pr={1} display="block" justifyContent="space-between">
+                <Box
+                  sx={{ width: "200px" }}
+                  pr={1}
+                  display="block"
+                  justifyContent="space-between"
+                >
                   {setTabData.map((item: any, index: any) => (
                     <>
                       {type === "button" ? (
@@ -42,6 +47,47 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             >
                               {item?.heading}
                             </Button>
+                          </Box>
+                        </>
+                      ) : type === "underline" ? (
+                        <>
+                          <Box
+                            onClick={() => {
+                              setMainData(item);
+                              handleTabClick(index);
+                            }}
+                            className={
+                              activeTab === index
+                                ? "active-tab-left-underline"
+                                : "tab-left-underline"
+                            }
+                            textAlign="center"
+                            p={2}
+                            style={{
+                              color: activeTab === index ? "blue" : "black",
+                              borderColor:
+                                activeTab === index ? "blue" : "black",
+                            }}
+                          >
+                            {/* <Box
+                            sx={{
+                              display: "flex",
+                              justifyContent: "center",
+                              color:
+                                activeTab === index ? "#d87df9" : "#9c9494",
+                              fontSize: "40px",
+                            }}
+                          >
+                            {item.icon}
+                          </Box> */}
+                            <div
+                              style={{
+                                color:
+                                  activeTab === index ? "#d87df9" : "#9c9494",
+                              }}
+                            >
+                              {item?.heading}
+                            </div>
                           </Box>
                         </>
                       ) : (
@@ -75,7 +121,6 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             style={{
                               color:
                                 activeTab === index ? "#d87df9" : "#9c9494",
-                              whiteSpace: "pre",
                             }}
                           >
                             {item?.heading}
@@ -85,7 +130,11 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                     </>
                   ))}
                 </Box>
-                {type !== "button" && (
+                {type === "button" ? (
+                  ""
+                ) : type === "underline" ? (
+                  ""
+                ) : (
                   <>
                     <Divider
                       orientation="vertical"
@@ -116,7 +165,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   padding: "25px 15px",
                 }}
               >
-                {type !== "button" && (
+                {type === "button" ? "": type === "underline" ? "":  (
                   <>
                     <Divider
                       orientation="vertical"
@@ -129,7 +178,12 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   </>
                 )}
 
-                <Box pr={1} display="block" justifyContent="space-between">
+                <Box
+                  sx={{ width: "200px" }}
+                  pr={1}
+                  display="block"
+                  justifyContent="space-between"
+                >
                   {setTabData.map((item: any, index: any) => (
                     <>
                       {type === "button" ? (
@@ -149,6 +203,47 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             >
                               {item?.heading}
                             </Button>
+                          </Box>
+                        </>
+                      ) : type === "underline" ? (
+                        <>
+                          <Box
+                            onClick={() => {
+                              setMainData(item);
+                              handleTabClick(index);
+                            }}
+                            className={
+                              activeTab === index
+                                ? "active-tab-right-underline"
+                                : "tab-right-underline"
+                            }
+                            textAlign="center"
+                            p={2}
+                            style={{
+                              color: activeTab === index ? "blue" : "black",
+                              borderColor:
+                                activeTab === index ? "blue" : "black",
+                            }}
+                          >
+                            {/* <Box
+                            sx={{
+                              display: "flex",
+                              justifyContent: "center",
+                              color:
+                                activeTab === index ? "#d87df9" : "#9c9494",
+                              fontSize: "40px",
+                            }}
+                          >
+                            {item.icon}
+                          </Box> */}
+                            <div
+                              style={{
+                                color:
+                                  activeTab === index ? "#d87df9" : "#9c9494",
+                              }}
+                            >
+                              {item?.heading}
+                            </div>
                           </Box>
                         </>
                       ) : (
@@ -184,7 +279,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             style={{
                               color:
                                 activeTab === index ? "#d87df9" : "#9c9494",
-                              whiteSpace: "pre",
+                              // whiteSpace: "pre",
                             }}
                           >
                             {item?.heading}
