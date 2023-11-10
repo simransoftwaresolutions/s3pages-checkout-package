@@ -85,14 +85,18 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                     </>
                   ))}
                 </Box>
-                <Divider
-                  orientation="vertical"
-                  sx={{
-                    position: "relative",
-                    right: "24px",
-                    borderRight: "2px solid #d87df9",
-                  }}
-                />
+                {type !== "button" && (
+                  <>
+                    <Divider
+                      orientation="vertical"
+                      sx={{
+                        position: "relative",
+                        right: "24px",
+                        borderRight: "2px solid #d87df9",
+                      }}
+                    />
+                  </>
+                )}
               </Box>
               <BodyComponent data={maindata} />
             </>
@@ -112,14 +116,19 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   padding: "25px 15px",
                 }}
               >
-                  <Divider
-                  orientation="vertical"
-                  sx={{
-                    position: "relative",
-                    left: "16px",
-                    borderRight: "2px solid #d87df9",
-                  }}
-                />
+                {type !== "button" && (
+                  <>
+                    <Divider
+                      orientation="vertical"
+                      sx={{
+                        position: "relative",
+                        left: "16px",
+                        borderRight: "2px solid #d87df9",
+                      }}
+                    />
+                  </>
+                )}
+
                 <Box pr={1} display="block" justifyContent="space-between">
                   {setTabData.map((item: any, index: any) => (
                     <>
@@ -173,9 +182,9 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                           </Box>
                           <div
                             style={{
-
                               color:
-                                activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
+                                activeTab === index ? "#d87df9" : "#9c9494",
+                              whiteSpace: "pre",
                             }}
                           >
                             {item?.heading}
