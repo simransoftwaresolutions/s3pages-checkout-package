@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './Mobile.module.css';
+import styles from '../../../../../styles/componentsettings/Mobile.module.css';
 import { Select } from '../../Atoms/Input';
 import { useState, useRef, useEffect } from 'react';
 import { MobileStyleItems } from '../../Atoms/datas/commonComponentData';

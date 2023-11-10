@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './SeparatorSettings.module.css';
+import styles from '../../../../../styles/componentsettings/SeparatorSettings.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { BorderTypeItems } from '../../Atoms/datas/commonComponentData';

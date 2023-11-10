@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './RowBackground.module.css';
+import styles from '../../../../../styles/componentsettings/RowBackground.module.css';
 import { Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { BackgroundTypeItems, BackgroundPosItems, BackgroundSizeItems, BackgroundRepeatItems, BgGradientTypeItems } from '../../Atoms/datas/commonComponentData';

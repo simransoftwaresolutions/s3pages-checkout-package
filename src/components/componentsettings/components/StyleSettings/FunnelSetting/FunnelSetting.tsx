@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './FunnelSetting.module.css';
+import styles from '../../../../../styles/componentsettings/FunnelSetting.module.css';
 import { Text, TextArea } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";

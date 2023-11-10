@@ -1,4 +1,4 @@
-import styles from './Filebrowser.module.css';
+import styles from '../../../../../styles/componentsettings/Filebrowser.module.css';
 import { Fragment } from 'react';
 // import { usePushCtx } from "contexts/PushContext";
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";

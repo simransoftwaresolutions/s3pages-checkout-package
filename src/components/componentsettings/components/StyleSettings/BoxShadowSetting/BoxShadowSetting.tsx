@@ -1,5 +1,5 @@
 import { Fragment, useEffect } from 'react';
-import styles from './BoxShadowSetting.module.css';
+import styles from '../../../../../styles/componentsettings/BoxShadowSetting.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useRef } from 'react';
 import { AnimationStyleItems } from '../../Atoms/datas/commonComponentData';

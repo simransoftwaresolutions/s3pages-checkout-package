@@ -8,8 +8,9 @@
 
     "copy-pageTemplate": "copyfiles -u 1 src/styles/page-template/*.css lib/",
     "copy-preview": "copyfiles -u 1 src/styles/pagepreview/*.css lib/",
+    "copy-componentsettings": "copyfiles -u 1 src/styles/componentsettings/*.css lib/",
     "copy-checkout": "copyfiles -u 1 src/styles/* lib/",
-    "copy-files": "yarn copy-pageTemplate && yarn copy-preview && yarn copy-checkout",
+    "copy-files": "yarn copy-pageTemplate && yarn copy-preview && yarn copy-componentsettings && yarn copy-checkout",
 
     "build": "tsc && yarn copy-files",
     "prepare": "npm run build",

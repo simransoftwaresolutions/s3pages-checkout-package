@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './VideoSetting.module.css';
+import styles from '../../../../../styles/componentsettings/VideoSetting.module.css';
 import { TextArea } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";

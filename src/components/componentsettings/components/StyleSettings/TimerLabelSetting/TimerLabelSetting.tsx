@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './TimerLabelSetting.module.css';
+import styles from '../../../../../styles/componentsettings/TimerLabelSetting.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FontFamilyItems, FontStyleItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './FormEditSetting.module.css';
+import styles from '../../../../../styles/componentsettings/FormEditSetting.module.css';
 import { Range, Select, Text, TextArea } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FormElementTypeItems } from '../../Atoms/datas/commonComponentData';

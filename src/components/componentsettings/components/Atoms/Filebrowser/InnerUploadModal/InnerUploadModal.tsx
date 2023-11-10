@@ -1,4 +1,4 @@
-import styles from './InnerUploadModal.module.css';
+import styles from '../../../../../../styles/componentsettings/InnerUploadModal.module.css';
 import { Fragment } from 'react';
 import { usePushCtx } from "../../../../../../context/pagepreview/PushContext";
 import { Text } from '../../Input';

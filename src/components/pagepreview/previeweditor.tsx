@@ -19,6 +19,7 @@ import Templategen from "../templategen/index"
 import Bannersection from "../bannersection/index"
 import Slidersection from "../slidersection/index"
 import Tabs from "../Tabs/index";
+import ComponentSettings from '../componentsettings';
 
 interface PreviewPageProps {
   siteInfo?: any;
@@ -197,6 +198,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
               <div className={`${styles.previewPage} col-md-12`}>
                 {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} />}
                 {isProcessing && <div className={styles.processingText}>Processing...</div>}
+                <><ComponentSettings/></>
               </div>
             </div>
           </div>

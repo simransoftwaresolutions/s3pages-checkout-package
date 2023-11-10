@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './CommonFont.module.css';
+import styles from '../../../../../../styles/componentsettings/CommonFont.module.css';
 import { Range, Select, Text } from '../../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FontStyleItems } from '../../../Atoms/datas/commonComponentData';

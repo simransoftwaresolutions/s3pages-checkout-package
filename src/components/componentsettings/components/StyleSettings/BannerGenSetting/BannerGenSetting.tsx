@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import styles from './BannerGenSetting.module.css';
+import styles from '../../../../../styles/componentsettings/BannerGenSetting.module.css';
 import StyleSelectorSettings from '../../StyleSettings/StyleSelectorSettings';
 import BannerSelectionSetting from '../../StyleSettings/BannerSelectionSetting';
 import Border from '../../StyleSettings/Border';

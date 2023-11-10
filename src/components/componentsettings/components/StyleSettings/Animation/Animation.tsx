@@ -1,6 +1,6 @@
 // import type { NextPage } from 'next';
 import { Fragment, useEffect } from 'react';
-import styles from './Animation.module.css';
+import styles from '../../../../../styles/componentsettings/Animation.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useRef } from 'react';
 import { AnimationStyleItems } from '../../Atoms/datas/commonComponentData';

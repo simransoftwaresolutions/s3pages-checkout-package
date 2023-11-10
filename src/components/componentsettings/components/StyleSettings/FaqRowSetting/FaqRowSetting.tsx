@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import styles from './FaqRowSetting.module.css';
+import styles from '../../../../../styles/componentsettings/FaqRowSetting.module.css';
 import FaqStyleSelectorSetting from '../../StyleSettings/FaqStyleSelectorSetting';
 import FaqSetting from '../../StyleSettings/FaqSetting';
 import RowPadding from '../../StyleSettings/RowPadding';

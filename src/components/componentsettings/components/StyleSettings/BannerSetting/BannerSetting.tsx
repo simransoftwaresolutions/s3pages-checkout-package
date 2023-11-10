@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './BannerSetting.module.css';
+import styles from '../../../../../styles/componentsettings/BannerSetting.module.css';
 import { Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { AnimationStyleItems } from '../../Atoms/datas/commonComponentData';

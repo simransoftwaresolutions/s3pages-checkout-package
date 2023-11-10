@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './RowMargin.module.css';
+import styles from '../../../../../styles/componentsettings/RowMargin.module.css';
 import { Range } from '../../Atoms/Input';
 import { useState, useEffect } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";

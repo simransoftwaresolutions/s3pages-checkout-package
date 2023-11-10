@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './FaqStyleSelectorSetting.module.css';
+import styles from '../../../../../styles/componentsettings/FaqStyleSelectorSetting.module.css';
 import { Text, Select } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";

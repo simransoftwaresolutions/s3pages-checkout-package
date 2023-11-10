@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './Border.module.css';
+import styles from '../../../../../styles/componentsettings/Border.module.css';
 import { Range, Select } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { BorderTypeItems } from '../../Atoms/datas/commonComponentData';

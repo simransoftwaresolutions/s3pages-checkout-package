@@ -1,4 +1,4 @@
-import styles from './ColorPickerBox.module.css';
+import styles from '../../../../../styles/componentsettings/ColorPickerBox.module.css';
 import { useEffect, useState } from "react";
 import { convertHexToRGB, convertRgbaToHex } from '../../../../../utils/functions';
 import { SketchPicker } from 'react-color';

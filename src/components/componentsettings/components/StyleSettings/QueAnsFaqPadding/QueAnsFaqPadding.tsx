@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './QueAnsFaqPadding.module.css';
+import styles from '../../../../../styles/componentsettings/QueAnsFaqPadding.module.css';
 import { Range } from '../../Atoms/Input';
 import { useState, useEffect } from 'react';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";

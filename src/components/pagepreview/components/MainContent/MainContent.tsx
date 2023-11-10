@@ -406,7 +406,8 @@ const MainContent = () => {
     if(contentAction.tooltipEnableString !== tooltipStr) showTooltip = false;
 
     return (
-      ENV.isViewReadOnly === false && showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
+      showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
+      // ENV.isViewReadOnly === false && showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
       (
         <span className={`${styles.actionSectionContainerChild} ${styles.noBorder}`}>
           <span className={styles.heading}><b>Section</b></span>
@@ -763,7 +764,7 @@ const MainContent = () => {
 
   const onMouseLeaveFromSec = (ev:any) => {
     ev.stopPropagation();
-    // setSectionHoverIdx(-1);
+    setSectionHoverIdx(-1);
     removeAllHover();
     setContentAction({...contentAction, tooltipEnableString:""});    
   }
@@ -771,7 +772,7 @@ const MainContent = () => {
     ev.stopPropagation();
     removeAllHover();
 
-    // setSectionHoverIdx(sIndex);
+    setSectionHoverIdx(sIndex);
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
       secRefs?.current[sIndex]?.classList.add('drag-over');

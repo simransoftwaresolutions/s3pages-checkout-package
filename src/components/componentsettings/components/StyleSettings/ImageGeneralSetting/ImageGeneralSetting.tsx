@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './ImageGeneralSetting.module.css';
+import styles from '../../../../../styles/componentsettings/ImageGeneralSetting.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { PreIconsItems, TextAlignItems, TextAlignIconItems } from '../../Atoms/datas/commonComponentData';

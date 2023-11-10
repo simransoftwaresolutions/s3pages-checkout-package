@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './ButtonFont.module.css';
+import styles from '../../../../../styles/componentsettings/ButtonFont.module.css';
 import { Range, Select } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FontFamilyItems, FontStyleItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';

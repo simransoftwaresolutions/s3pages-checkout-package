@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './PageSettings.module.css';
+import styles from '../../../../../styles/componentsettings/PageSettings.module.css';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
 import { Range, Select, Text, TextArea } from '../../Atoms/Input';
 import { LayoutItems, FontFamilyItems, BackgroundTypeItems, BackgroundSizeItems } from '../../Atoms/datas/PageSettingsData';

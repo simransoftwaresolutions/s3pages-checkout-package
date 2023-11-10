@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './ProBarSettings.module.css';
+import styles from '../../../../../styles/componentsettings/ProBarSettings.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { ProStyleItems, ProStripeItems } from '../../Atoms/datas/commonComponentData';

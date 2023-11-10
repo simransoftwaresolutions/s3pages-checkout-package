@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './ButtonSubText.module.css';
+import styles from '../../../../../styles/componentsettings/ButtonSubText.module.css';
 import { Text, Range, Select } from '../../Atoms/Input';
 import { useState, useEffect } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";

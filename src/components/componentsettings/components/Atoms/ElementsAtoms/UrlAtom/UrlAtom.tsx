@@ -1,4 +1,4 @@
-import styles from './UrlAtom.module.css';
+import styles from '../../../../../../styles/componentsettings/UrlAtom.module.css';
 import { Radio, Text, Select } from "../../Input";
 import { useState, useEffect, useRef } from 'react';
 import { usePagesCtx } from '../../../../../../context/pagepreview/PagesContext';

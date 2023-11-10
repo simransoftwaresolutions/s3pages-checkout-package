@@ -1,4 +1,4 @@
-import styles from './DragdropPopup.module.css';
+import styles from '../../../../../styles/componentsettings/DragdropPopup.module.css';
 import { Fragment } from 'react';
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
 import { useState, useEffect, useRef } from 'react';

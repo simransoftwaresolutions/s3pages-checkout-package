@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './MainPageSetting.module.css';
+import styles from '../../../../../styles/componentsettings/MainPageSetting.module.css';
 import { Text, TextArea, Select } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";

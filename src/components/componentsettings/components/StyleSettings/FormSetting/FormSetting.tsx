@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './FormSetting.module.css';
+import styles from '../../../../../styles/componentsettings/FormSetting.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { AutoResponderItems, MenuStyleItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';

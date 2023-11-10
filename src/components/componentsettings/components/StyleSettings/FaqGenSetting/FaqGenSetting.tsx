@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import styles from './FaqGenSetting.module.css';
+import styles from '../../../../../styles/componentsettings/FaqGenSetting.module.css';
 import FaqStyleSelectorSetting from '../../StyleSettings/FaqStyleSelectorSetting';
 import FaqSetting from '../../StyleSettings/FaqSetting';
 import Border from '../../StyleSettings/Border';

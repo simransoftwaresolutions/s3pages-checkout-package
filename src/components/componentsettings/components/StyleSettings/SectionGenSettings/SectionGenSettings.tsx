@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './SectionGenSettings.module.css';
+import styles from '../../../../../styles/componentsettings/SectionGenSettings.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { SectionLayoutItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';

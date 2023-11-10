@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './MainButton.module.css';
+import styles from '../../../../../styles/componentsettings/MainButton.module.css';
 import { Text, Range, Select } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { PreIconsItems } from '../../Atoms/datas/commonComponentData';

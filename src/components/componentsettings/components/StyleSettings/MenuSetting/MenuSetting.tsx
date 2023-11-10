@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './MenuSetting.module.css';
+import styles from '../../../../../styles/componentsettings/MenuSetting.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FontsNameItems, FontStyleItems, FontFamilyItems, MenuStyleItems, HmbMenuStyleItems, PreIconsItems, MenuIconPosTypeItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './ColumnGenSettings.module.css';
+import styles from '../../../../../styles/componentsettings/ColumnGenSettings.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { HorizontalAlignItems, VerticalAlignItems, TextAlignItems, ColumnWidthItems } from '../../Atoms/datas/commonComponentData';

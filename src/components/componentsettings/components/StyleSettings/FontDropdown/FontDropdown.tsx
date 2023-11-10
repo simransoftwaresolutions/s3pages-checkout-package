@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './FontDropdown.module.css';
+import styles from '../../../../../styles/componentsettings/FontDropdown.module.css';
 import { Text, Select } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FontFamilyItems, FontStyleItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';

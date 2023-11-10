@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './Margin.module.css';
+import styles from '../../../../../styles/componentsettings/Margin.module.css';
 import { Range } from '../../Atoms/Input';
 import { useState, useEffect } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
