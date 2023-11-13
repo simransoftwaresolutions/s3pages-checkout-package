@@ -268,17 +268,19 @@ hr {
   cursor: pointer;
 }
 .active-tab-tabs{
-  background: #dbdbdb;
-  border-radius: 8px;
+  background: #fff;
+  /* border-radius: 8px; */
   padding: 12px 45px;
   font-weight: 600;
   cursor: pointer;
+  border: 1px solid transparent;
 
 }
 .tab-tabs{
   padding: 12px 45px;
   font-weight: 600;
   cursor: pointer;
+  border: 1px solid #80808085;
   /* background: #dbdbdb45;
   border-radius: 8px; */
 }
