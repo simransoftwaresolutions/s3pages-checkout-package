@@ -4,7 +4,7 @@ import { Box, Container, Divider, Grid, Typography } from "@mui/material";
 export default function BodyComponent({ data }: any) {
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={6}>
           <img src={data.image} width="100%" alt="" />
         </Grid>

@@ -80,6 +80,28 @@ export default function MenuButton({
                         </div>
                       </Box>
                       </>
+                    ) :type === "tabs" ? (
+                      <>
+                        <Box
+                        onClick={() => {
+                          setMainData(item);
+                          handleTabClick(index);
+                        }}
+                        className={activeTab === index ? "active-tab-tabs" : "tab-tabs"}
+                        textAlign="center"
+                        sx={{cursor:"pointer"}}
+                     
+                      >
+                       
+                        <div
+                          style={{
+                            color: activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
+                          }}
+                        >
+                          {item?.heading}
+                        </div>
+                      </Box>
+                      </>
                     ) : (
                       <Box
                         onClick={() => {
@@ -117,7 +139,7 @@ export default function MenuButton({
                 ))}
               </Box>
             </Box>
-            {type === "button"  ? (""):type === "underline"  ? (""): (
+            {type === "button"  ? (""):type === "underline"  ? (""):type === "tabs"  ? (""): (
               <>              
                 <Divider
                   sx={{
@@ -135,7 +157,7 @@ export default function MenuButton({
         </Box>
         {position === "bottom" && (
           <>
-           {type === "button" ? "":type === "underline" ? "": (
+           {type === "button" ? "":type === "underline" ? "": type === "tabs" ? "": (
               <>
                 {" "}
                 <Divider
@@ -208,6 +230,28 @@ export default function MenuButton({
                       </div>
                     </Box>
                     </>
+                    ) :type === "tabs" ? (
+                      <>
+                        <Box
+                        onClick={() => {
+                          setMainData(item);
+                          handleTabClick(index);
+                        }}
+                        className={activeTab === index ? "active-tab-tabs" : "tab-tabs"}
+                        textAlign="center"
+                        sx={{cursor:"pointer"}}
+                     
+                      >
+                       
+                        <div
+                          style={{
+                            color: activeTab === index ? "#d87df9" : "#9c9494",whiteSpace:"pre"
+                          }}
+                        >
+                          {item?.heading}
+                        </div>
+                      </Box>
+                      </>
                     ) : (
                       <Box
                         onClick={() => {

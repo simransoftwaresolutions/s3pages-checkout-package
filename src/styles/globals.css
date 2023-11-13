@@ -267,6 +267,19 @@ hr {
   border-left: 0.5rem solid transparent !important;
   cursor: pointer;
 }
+.active-tab-tabs{
+  background: #dbdbdb;
+  border-radius: 8px;
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+
+}
+.tab-tabs{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+}
 @-webkit-keyframes scroll {
   0% {
     transform: translateX(0);

@@ -90,7 +90,29 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             </div>
                           </Box>
                         </>
-                      ) : (
+                      ) : type === "tabs" ? (
+                        <>
+                          <Box
+                          onClick={() => {
+                            setMainData(item);
+                            handleTabClick(index);
+                          }}
+                          className={activeTab === index ? "active-tab-tabs" : "tab-tabs"}
+                          textAlign="center"
+                          sx={{cursor:"pointer"}}
+                       
+                        >
+                         
+                          <div
+                            style={{
+                              color: activeTab === index ? "#d87df9" : "#9c9494",
+                            }}
+                          >
+                            {item?.heading}
+                          </div>
+                        </Box>
+                        </>
+                      ) :(
                         <Box
                           onClick={() => {
                             setMainData(item);
@@ -134,6 +156,8 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   ""
                 ) : type === "underline" ? (
                   ""
+                ) : type === "tabs" ? (
+                  ""
                 ) : (
                   <>
                     <Divider
@@ -165,7 +189,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   padding: "25px 15px",
                 }}
               >
-                {type === "button" ? "": type === "underline" ? "":  (
+                {type === "button" ? "": type === "underline" ? "": type === "tabs" ? "":  (
                   <>
                     <Divider
                       orientation="vertical"
@@ -246,7 +270,29 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             </div>
                           </Box>
                         </>
-                      ) : (
+                      ) :  type === "tabs" ? (
+                        <>
+                          <Box
+                          onClick={() => {
+                            setMainData(item);
+                            handleTabClick(index);
+                          }}
+                          className={activeTab === index ? "active-tab-tabs" : "tab-tabs"}
+                          textAlign="center"
+                          sx={{cursor:"pointer"}}
+                       
+                        >
+                         
+                          <div
+                            style={{
+                              color: activeTab === index ? "#d87df9" : "#9c9494",
+                            }}
+                          >
+                            {item?.heading}
+                          </div>
+                        </Box>
+                        </>
+                      ) :(
                         <Box
                           onClick={() => {
                             setMainData(item);
