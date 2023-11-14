@@ -280,9 +280,208 @@ hr {
   padding: 12px 45px;
   font-weight: 600;
   cursor: pointer;
-  border: 1px solid #80808085;
+  border-left: 1px solid #80808085;
+  border-top: 1px solid #80808085;
+  border-right: 1px solid #80808085;
+  border-bottom: 1px solid transparent;
+
+}
+.tab-tabs-bottom{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  border-left: 1px solid #80808085;
+  border-bottom: 1px solid #80808085;
+  border-right: 1px solid #80808085;
+  border-top: 1px solid transparent;
+
+}
+.active-tab-tabs-left{
+  background: #fff;
+  /* border-radius: 8px; */
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin-top: 8px;
+}
+.tab-tabs-left{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid #80808085;
+  border-left: 1px solid #80808085;
+  border-top: 1px solid #80808085;
+  margin-top: 8px;
+}
+.active-tab-tabs-right{
+  background: #fff;
+  /* border-radius: 8px; */
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin-top: 8px;
+}
+.tab-tabs-right{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  border-right: 1px solid #80808085;
+  border-bottom: 1px solid #80808085;
+  border-left: 1px solid transparent;
+  border-top: 1px solid #80808085;
+  margin-top: 8px;
+}
+.active-tab-tabbutton{
+
+  background: rgb(216, 125, 249);
+  /* border-radius: 8px; */
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  /* border: 1px solid transparent; */
+
+}
+.tab-tabbutton{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #dbdbdb45;
   /* background: #dbdbdb45;
   border-radius: 8px; */
+}
+.active-tab-tabbutton:last-child{
+border-radius: 0px 100px 100px 0px;
+}
+.tab-tabbutton:last-child{
+border-radius: 0px 100px 100px 0px;
+}
+.active-tab-tabbutton:first-child{
+border-radius: 100px 0px 0px 100px;
+}
+.tab-tabbutton:first-child{
+border-radius: 100px 0px 0px 100px;
+}
+.active-tab-arrow{
+
+ position: relative;
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+
+
+}
+.tab-arrow{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+ 
+}
+.active-tab-arrow::after {
+
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid #ffffff;
+  content: "";
+  position: absolute;
+  left: auto;
+  transform: rotate(181deg);
+  right: 37%;
+ 
+}
+.active-tab-arrow-bottom{
+
+  position: relative;
+   padding: 12px 45px;
+   font-weight: 600;
+   cursor: pointer;
+ 
+ 
+ }
+ .active-tab-arrow-bottom::after {
+ 
+   width: 0;
+   height: 0;
+   border-left: 1rem solid transparent;
+   border-right: 1rem solid transparent;
+   border-top: 1rem solid #ffffff;
+   content: "";
+   position: absolute;
+   left: auto;
+   transform: rotate(0deg);
+   right: 37%;
+   top:0px
+  
+ }
+.tab-arrow-bottom{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+ 
+}
+.active-tab-arrow-left{
+
+  position: relative;
+   padding: 12px 45px;
+   font-weight: 600;
+   cursor: pointer;
+ 
+ 
+ }
+ .active-tab-arrow-left::after {
+ 
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid #ffffff;
+  content: "";
+  position: absolute;
+  right: -23px;
+  transform: rotate(90deg);
+  top: 38%;
+
+  
+ }
+.tab-arrow-left{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+ 
+}
+.active-tab-arrow-right{
+
+  position: relative;
+   padding: 12px 45px;
+   font-weight: 600;
+   cursor: pointer;
+ 
+ 
+ }
+ .active-tab-arrow-right::after {
+ 
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid #ffffff;
+  content: "";
+  position: absolute;
+  left: -23px;
+  transform: rotate(-90deg);
+  top: 38%;
+
+  
+ }
+.tab-arrow-right{
+  padding: 12px 45px;
+  font-weight: 600;
+  cursor: pointer;
+ 
 }
 @-webkit-keyframes scroll {
   0% {

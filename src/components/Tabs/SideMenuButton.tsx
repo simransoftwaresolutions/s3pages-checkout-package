@@ -13,23 +13,33 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
   return (
     <div>
       <Container>
-        
         <Box display="flex">
           {position === "left" && (
             <>
               <Box
                 display="flex"
-                sx={type === "tabs" ? {
-                  padding: "25px 0px 15px 15px",
-                  background:"#e3e3e3"
-                }:{
-                  padding: "25px 15px",
-                }}
-               
+                sx={
+                  type === "tabs"
+                    ? {
+                        padding: "25px 0px 15px 15px",
+                        background: "#e3e3e3",
+                      }
+                    : type === "arrow"
+                    ? {
+                        // overflow: { xs: "auto", sm: "auto", md: "hidden" },
+                        padding: "0px 15px",
+                        background: "#2f2f2f",
+                        marginRight:"10px"
+
+                      }
+                    : {
+                        padding: "25px 15px",
+                      }
+                }
               >
                 <Box
                   sx={{ width: "200px" }}
-                  pr={1}
+                  // pr={1}
                   display="block"
                   justifyContent="space-between"
                 >
@@ -98,26 +108,58 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                       ) : type === "tabs" ? (
                         <>
                           <Box
-                          onClick={() => {
-                            setMainData(item);
-                            handleTabClick(index);
-                          }}
-                          className={activeTab === index ? "active-tab-tabs" : "tab-tabs"}
-                          textAlign="center"
-                          sx={{cursor:"pointer"}}
-                       
-                        >
-                         
-                          <div
-                            style={{
-                              color: activeTab === index ? "#d87df9" : "#9c9494",
+                            onClick={() => {
+                              setMainData(item);
+                              handleTabClick(index);
                             }}
+                            className={
+                              activeTab === index
+                                ? "active-tab-tabs-left"
+                                : "tab-tabs-left"
+                            }
+                            textAlign="center"
+                            sx={{ cursor: "pointer" }}
                           >
-                            {item?.heading}
-                          </div>
-                        </Box>
+                            <div
+                              style={{
+                                color:
+                                  activeTab === index ? "#d87df9" : "#9c9494",
+                              }}
+                            >
+                              {item?.heading}
+                            </div>
+                          </Box>
                         </>
-                      ) :(
+                      ) : type === "arrow" ? (
+                        <>
+                          <Box
+                            onClick={() => {
+                              setMainData(item);
+                              handleTabClick(index);
+                            }}
+                            className={
+                              activeTab === index
+                                ? "active-tab-arrow-left"
+                                : "tab-arrow-left"
+                            }
+                            textAlign="center"
+                            sx={{ cursor: "pointer" }}
+                          >
+                            <Box
+                              sx={{
+                                color:
+                                  activeTab === index ? "#d87df9" : "#9c9494",
+                               
+                                "&:hover": {
+                                  color: "#d87df9",
+                                },
+                              }}
+                            >
+                              {item?.heading}
+                            </Box>
+                          </Box>
+                        </>
+                      ) : (
                         <Box
                           onClick={() => {
                             setMainData(item);
@@ -163,6 +205,8 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   ""
                 ) : type === "tabs" ? (
                   ""
+                ) : type === "arrow" ? (
+                  ""
                 ) : (
                   <>
                     <Divider
@@ -176,6 +220,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   </>
                 )}
               </Box>
+          
               <BodyComponent data={maindata} />
             </>
           )}
@@ -190,14 +235,34 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
               <BodyComponent data={maindata} />
               <Box
                 display="flex"
-                sx={type === "tabs" ? {
-                  padding: "25px 15px 15px 0px",
-                  background:"#e3e3e3"
-                }:{
-                  padding: "25px 15px",
-                }}
+                sx={
+                  type === "tabs"
+                    ? {
+                        padding: "25px 15px 15px 0px",
+                        background: "#e3e3e3",
+                      }
+                    : type === "arrow"
+                    ? {
+                        // overflow: { xs: "auto", sm: "auto", md: "hidden" },
+                        padding: "0px 15px",
+                        background: "#2f2f2f",
+                        marginLeft:"10px"
+
+                      }
+                    :{
+                        padding: "25px 15px",
+                      }
+                }
               >
-                {type === "button" ? "": type === "underline" ? "": type === "tabs" ? "":  (
+                {type === "button" ? (
+                  ""
+                ) : type === "underline" ? (
+                  ""
+                ) : type === "tabs" ? (
+                  ""
+                ) : type === "arrow" ? (
+                  ""
+                ) : (
                   <>
                     <Divider
                       orientation="vertical"
@@ -278,29 +343,61 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             </div>
                           </Box>
                         </>
-                      ) :  type === "tabs" ? (
+                      ) : type === "tabs" ? (
                         <>
                           <Box
-                          onClick={() => {
-                            setMainData(item);
-                            handleTabClick(index);
-                          }}
-                          className={activeTab === index ? "active-tab-tabs" : "tab-tabs"}
-                          textAlign="center"
-                          sx={{cursor:"pointer"}}
-                       
-                        >
-                         
-                          <div
-                            style={{
-                              color: activeTab === index ? "#d87df9" : "#9c9494",
+                            onClick={() => {
+                              setMainData(item);
+                              handleTabClick(index);
                             }}
+                            className={
+                              activeTab === index
+                                ? "active-tab-tabs-right"
+                                : "tab-tabs-right"
+                            }
+                            textAlign="center"
+                            sx={{ cursor: "pointer" }}
                           >
-                            {item?.heading}
-                          </div>
-                        </Box>
+                            <div
+                              style={{
+                                color:
+                                  activeTab === index ? "#d87df9" : "#9c9494",
+                              }}
+                            >
+                              {item?.heading}
+                            </div>
+                          </Box>
                         </>
-                      ) :(
+                      ) : type === "arrow" ? (
+                        <>
+                          <Box
+                            onClick={() => {
+                              setMainData(item);
+                              handleTabClick(index);
+                            }}
+                            className={
+                              activeTab === index
+                                ? "active-tab-arrow-right"
+                                : "tab-arrow-right"
+                            }
+                            textAlign="center"
+                            sx={{ cursor: "pointer" }}
+                          >
+                            <Box
+                              sx={{
+                                color:
+                                  activeTab === index ? "#d87df9" : "#9c9494",
+                               
+                                "&:hover": {
+                                  color: "#d87df9",
+                                },
+                              }}
+                            >
+                              {item?.heading}
+                            </Box>
+                          </Box>
+                        </>
+                      ) :  (
                         <Box
                           onClick={() => {
                             setMainData(item);

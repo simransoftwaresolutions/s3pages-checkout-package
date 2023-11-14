@@ -32,9 +32,9 @@ export default function componentName() {
 
     return (
         <>
-            {/* <CheckoutProduct data={{ product: {} }} /> */}
-            {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
-           <Tabs  position="top"  type="tabs"  />
+           {/* <CheckoutProduct data={{ product: {} }} /> */}
+           {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
+           {/* <Tabs  position="top" type="arrow"   /> */}
            
             <PreviewPage />
         </>
