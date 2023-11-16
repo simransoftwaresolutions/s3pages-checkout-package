@@ -46,7 +46,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
     if (uriInfo?.status === false) {
       return;
     } else {
-      let _themeId = siteInfo?.data?.themeId;
+      let _themeId = siteInfo?.data?.themeId || siteInfo?.data?._id;
       if (uriInfo?.data?.page?.variants?.length) {
         const testJson = JSON.parse(uriInfo?.data?.page?.variants[0]?.content);
         const _tempContents = uriInfo?.data?.page?.variants[0]?.content !== ' ' ? testJson : [];
