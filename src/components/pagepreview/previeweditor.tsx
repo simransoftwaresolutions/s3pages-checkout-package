@@ -176,7 +176,6 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
           }
           setMyTemplatesCtx(_templatesData);
           setMyTemplatesNameCtx(_templatesNameData);
-          console.log(_templatesData);
         }
       }
     }
