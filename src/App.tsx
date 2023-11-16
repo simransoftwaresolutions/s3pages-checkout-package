@@ -34,9 +34,9 @@ export default function componentName() {
         <>
            {/* <CheckoutProduct data={{ product: {} }} /> */}
            {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
-           {/* <Tabs  position="top" type="arrow"   /> */}
+           <Tabs  position="left" type=""  />
            
-            <PreviewPage />
+           {/* <PreviewPage /> */}
         </>
     );
 }

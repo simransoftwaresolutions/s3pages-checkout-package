@@ -29,8 +29,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                         // overflow: { xs: "auto", sm: "auto", md: "hidden" },
                         padding: "0px 15px",
                         background: "#2f2f2f",
-                        marginRight:"10px"
-
+                        marginRight: "10px",
                       }
                     : {
                         padding: "25px 15px",
@@ -39,7 +38,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
               >
                 <Box
                   sx={{ width: "200px" }}
-                  // pr={1}
+                  pr={type == "" ? 1 : 0}
                   display="block"
                   justifyContent="space-between"
                 >
@@ -149,7 +148,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                               sx={{
                                 color:
                                   activeTab === index ? "#d87df9" : "#9c9494",
-                               
+
                                 "&:hover": {
                                   color: "#d87df9",
                                 },
@@ -220,7 +219,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   </>
                 )}
               </Box>
-          
+
               <BodyComponent data={maindata} />
             </>
           )}
@@ -246,10 +245,9 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                         // overflow: { xs: "auto", sm: "auto", md: "hidden" },
                         padding: "0px 15px",
                         background: "#2f2f2f",
-                        marginLeft:"10px"
-
+                        marginLeft: "10px",
                       }
-                    :{
+                    : {
                         padding: "25px 15px",
                       }
                 }
@@ -387,7 +385,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                               sx={{
                                 color:
                                   activeTab === index ? "#d87df9" : "#9c9494",
-                               
+
                                 "&:hover": {
                                   color: "#d87df9",
                                 },
@@ -397,7 +395,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                             </Box>
                           </Box>
                         </>
-                      ) :  (
+                      ) : (
                         <Box
                           onClick={() => {
                             setMainData(item);
