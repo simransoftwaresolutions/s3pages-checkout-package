@@ -36,7 +36,7 @@ export default function componentName() {
            {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
            {/* <Tabs  position="left" type=""  /> */}
            
-           {/* <PreviewPage /> */}
+           <PreviewPage />
         </>
     );
 }
