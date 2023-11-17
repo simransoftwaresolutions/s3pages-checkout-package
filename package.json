@@ -7,9 +7,8 @@
   "scripts": {
     "copy-pageTemplate": "copyfiles -u 1 src/styles/page-template/*.css lib/",
     "copy-preview": "copyfiles -u 1 src/styles/pagepreview/*.css lib/",
-    "copy-checkout": "copyfiles -u 1 src/styles/* lib/",
-    "copy-Slidercomponent": "copyfiles -u 1 src/styles/* lib/",
-    "copy-files": "yarn copy-pageTemplate && yarn copy-preview && yarn copy-checkout  && yarn copy-Slidercomponent",
+    "copy-checkout": "copyfiles -u 1 src/styles/* lib/",    
+    "copy-files": "yarn copy-pageTemplate && yarn copy-preview && yarn copy-checkout",
     "build": "tsc && yarn copy-files",
     "prepare": "npm run build",
     "start": "react-scripts start"
@@ -77,6 +76,7 @@
     "react-slick": "^0.29.0",
     "react-toast-notifications": "^2.5.1",
     "react-toastify": "^9.1.3",
+    "slick-carousel": "^1.8.1",
     "style-loader": "^3.3.3"
   }
 }
