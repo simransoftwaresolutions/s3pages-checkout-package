@@ -23,6 +23,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                     ? {
                         padding: "25px 0px 15px 15px",
                         background: "#e3e3e3",
+                        height: "fit-content",
                       }
                     : type === "arrow"
                     ? {
@@ -30,14 +31,16 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                         padding: "0px 15px",
                         background: "#2f2f2f",
                         marginRight: "10px",
+                        height: "fit-content",
                       }
                     : {
                         padding: "25px 15px",
+                        height: "fit-content",
                       }
                 }
               >
                 <Box
-                  sx={{ width: "200px" }}
+                  sx={{ width:{sm:"150px" , md:"200px"} }}
                   pr={type == "" ? 1 : 0}
                   display="block"
                   justifyContent="space-between"
@@ -219,19 +222,23 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                   </>
                 )}
               </Box>
-
+              &nbsp;
+              &nbsp;
               <BodyComponent data={maindata} />
+             
             </>
           )}
         </Box>
         <Box
           sx={{
-            display: { xs: "block", sm: "flex" },
+            display: { xs: "flex", sm: "flex" },
           }}
         >
           {position === "right" && (
             <>
               <BodyComponent data={maindata} />
+              &nbsp;
+              &nbsp;
               <Box
                 display="flex"
                 sx={
@@ -239,6 +246,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                     ? {
                         padding: "25px 15px 15px 0px",
                         background: "#e3e3e3",
+                        height: "fit-content",
                       }
                     : type === "arrow"
                     ? {
@@ -246,9 +254,11 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                         padding: "0px 15px",
                         background: "#2f2f2f",
                         marginLeft: "10px",
+                        height: "fit-content",
                       }
                     : {
                         padding: "25px 15px",
+                        height: "fit-content",
                       }
                 }
               >
@@ -274,7 +284,7 @@ export default function SideMenuButton({ position, type, setTabData }: any) {
                 )}
 
                 <Box
-                  sx={{ width: "200px" }}
+                 sx={{ width:{sm:"150px" , md:"200px"} }}
                   pr={1}
                   display="block"
                   justifyContent="space-between"

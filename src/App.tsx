@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "./styles/globals.css"
 import 'react-toastify/dist/ReactToastify.css';
 import Tabs from "./components/Tabs/index"
+import SliderComponent from "../src/components/slidercomponent/index"
 export default function componentName() {
 
     // const [ sInfo, setSInfo ] = useState<any>([]);
@@ -34,8 +35,8 @@ export default function componentName() {
         <>
            {/* <CheckoutProduct data={{ product: {} }} /> */}
            {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
-           {/* <Tabs  position="left" type=""  /> */}
-           
+           {/* <Tabs  position="left" type="arrow"  /> */}
+           <SliderComponent/>
            <PreviewPage />
         </>
     );

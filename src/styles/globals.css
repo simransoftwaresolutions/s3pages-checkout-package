@@ -380,6 +380,56 @@ border-radius: 100px 0px 0px 100px;
   cursor: pointer;
  
 }
+.Card_body {
+  background-color: #fff;
+  /* padding: 100px; */
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.Card_body:hover img:nth-child(2) {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.Card_body .img1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
+.icon_box {
+  transform: translateX(60px); 
+  transition: transform 0.3s ease; 
+}
+
+.Card_body:hover .icon_box {
+  transform: translateX(0px); 
+}
+.btn2{
+  position: absolute;
+  transform: translateY(10px);
+  transition: transform 0.2s ease;
+}
+.Card_body:hover .btn2 {
+  transform: translateY(-19px); 
+}
+.btn1{
+  
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+.Card_body:hover .btn1 {
+  transform: translateY(-29px); 
+}
+.image_body{
+
+}
+.des_box{
+
+}
 @media (max-width:430px){
   .active-tab-arrow{
     padding: 12px 25px;
