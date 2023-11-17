@@ -5,7 +5,7 @@ import PageTemplate from "./components/page-template"
 import Slidersection from "./components/slidersection"
 import Bannersection from "./components/bannersection"                         
 import Tabs from "./components/Tabs" 
-import SliderComponent from "./components/slidercomponent"                        
+import Slidercomponent from "./components/slidercomponent"                        
 export {
     CheckoutProduct,
     PreviewPage,
@@ -14,5 +14,5 @@ export {
     Slidersection,
     Tabs,
     Bannersection,
-    SliderComponent
+    Slidercomponent
 }
