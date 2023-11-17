@@ -4,7 +4,8 @@ import Templategen from "./components/templategen"
 import PageTemplate from "./components/page-template"
 import Slidersection from "./components/slidersection"
 import Bannersection from "./components/bannersection"                         
-import Tabs from "./components/Tabs"                         
+import Tabs from "./components/Tabs" 
+import SliderComponent from "./components/slidercomponent"                        
 export {
     CheckoutProduct,
     PreviewPage,
@@ -13,4 +14,5 @@ export {
     Slidersection,
     Tabs,
     Bannersection,
+    SliderComponent
 }

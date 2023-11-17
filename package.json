@@ -8,7 +8,8 @@
     "copy-pageTemplate": "copyfiles -u 1 src/styles/page-template/*.css lib/",
     "copy-preview": "copyfiles -u 1 src/styles/pagepreview/*.css lib/",
     "copy-checkout": "copyfiles -u 1 src/styles/* lib/",
-    "copy-files": "yarn copy-pageTemplate && yarn copy-preview && yarn copy-checkout",
+    "copy-SliderComponent": "copyfiles -u 1 src/styles/* lib/",
+    "copy-files": "yarn copy-pageTemplate && yarn copy-preview && yarn copy-checkout  && yarn copy-SliderComponent",
     "build": "tsc && yarn copy-files",
     "prepare": "npm run build",
     "start": "react-scripts start"
