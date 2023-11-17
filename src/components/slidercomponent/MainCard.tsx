@@ -98,40 +98,45 @@ export default function MainCard() {
           <Box
             p={1}
             sx={{
-              margin: "auto",
-              width: "fit-content",
+             
+             
               overflow: "hidden",
               position: "relative",
             }}
           >
-            <Box className="btn1">
+            <Box className="btn1" sx={{textAlign:"center"}}>
               <Typography
                 sx={{
                   background: "none",
-                  borderBottom: "1.5px solid #e5e5e5",
+              
                   color: "#222222",
                   fontWeight: "600",
                   lineHeight: "1.2",
                   padding: "0",
+                  whiteSpace:"pre",
                 }}
                 variant="body2"
               >
-                ADD TO CART
+               $169.00
               </Typography>
             </Box>
-            <Box className="btn2">
+            <Box className="btn2" sx={{width:"100%",textAlign:"center"}}>
               <Typography
                 sx={{
                   background: "none",
-                  borderBottom: "1.5px solid #e5e5e5",
+                  
                   color: "#222222",
                   fontWeight: "600",
                   lineHeight: "1.2",
                   padding: "0",
+                  whiteSpace:"pre",
                 }}
                 variant="body2"
               >
+                <span style={{borderBottom: "1.5px solid #e5e5e5",}}>
+
                 ADD TO CART
+                </span>
               </Typography>
             </Box>
           </Box>
