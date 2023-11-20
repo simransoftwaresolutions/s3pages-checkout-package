@@ -765,3 +765,15 @@ hr {
 .slickbottomslider:hover .slick-prev {
   opacity: 1;
 }
+.slickbottomslider .slick-prev.slick-disabled{
+  opacity: 0;
+}
+.slickbottomslider:hover .slick-prev.slick-disabled{
+  opacity: 0.5;
+}
+.slickbottomslider .slick-next.slick-disabled{
+  opacity: 0;
+}
+.slickbottomslider:hover .slick-next.slick-disabled{
+  opacity: 0.5;
+}

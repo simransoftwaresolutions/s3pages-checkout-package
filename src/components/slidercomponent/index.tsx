@@ -1,13 +1,23 @@
 import { Container, Grid } from "@mui/material";
-import React from "react";
-import MainCard from "./MainCard";
 import Slider from "./SliderComponent";
 
-export default function index() {
+export default function index({
+  slidesToShowlg,
+  slidesToShowmd,
+  slidesToShowsm,
+  slidesToShowxs,
+  cardData,
+}: any) {
   return (
     <div>
       <Container>
-        <Slider />
+        <Slider
+          slidesToShowlg={slidesToShowlg}
+          slidesToShowmd={slidesToShowmd}
+          slidesToShowsm={slidesToShowsm}
+          slidesToShowxs={slidesToShowxs}
+          cardData={cardData}
+        />
       </Container>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, IconButton } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-export default function MainCard() {
+export default function MainCard({ item }: any) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -19,34 +19,51 @@ export default function MainCard() {
       onMouseLeave={handleHoverOut}
     >
       <Box className="image_body">
-        <img
-          src="	https://alukas.presslayouts.com/wp-content/uploads/2023/02/Blue-Stripes-Stone-Earrings-1.jpg"
-          width="100%"
-          alt=""
-        />
-        <img
-          className="img1"
-          src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/Blue-Stripes-Stone-Earrings-3.jpg"
-          width="100%"
-          alt=""
-        />
-        <Box
-          sx={{
-            padding: "1px 5px",
-            background: "#ff554e",
-            position: "absolute",
-            zIndex: "1",
-            left: "15px",
-            top: "15px",
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{ color: "#fff", fontSize: "12px", fontWeight: "600" }}
-          >
-            Hot
-          </Typography>
-        </Box>
+        <img src={item.img} width="100%" alt="" />
+        <img className="img1" src={item.hoverimg} width="100%" alt="" />
+        {item.chiphead.toLowerCase() === "hot" ? (
+          <>
+            <Box
+              sx={{
+                padding: "1px 5px",
+                background: "#ff554e",
+                position: "absolute",
+                zIndex: "1",
+                left: "15px",
+                top: "15px",
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{ color: "#fff", fontSize: "12px", fontWeight: "600" }}
+              >
+                {item.chiphead}
+              </Typography>
+            </Box>
+          </>
+        ) : (
+          <>
+            <Box
+              sx={{
+                padding: "1px 5px",
+
+                background: "#ffa965",
+                position: "absolute",
+                zIndex: "1",
+                left: "15px",
+                top: "15px",
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{ color: "#fff", fontSize: "12px", fontWeight: "600" }}
+              >
+                {item.chiphead}
+              </Typography>
+            </Box>
+          </>
+        )}
+
         <Box
           className="icon_box"
           sx={{
@@ -78,7 +95,7 @@ export default function MainCard() {
             }}
             variant="body2"
           >
-            EARNINGS
+            {item.head}
           </Typography>
         </Box>
         <Box sx={{ textAlign: "center" }}>
@@ -91,51 +108,48 @@ export default function MainCard() {
             }}
             variant="body2"
           >
-            Circle of Light Heart Earrings
+            {item.description}
           </Typography>
         </Box>
         <Box mt={0.5}>
           <Box
             p={1}
             sx={{
-             
-             
               overflow: "hidden",
               position: "relative",
             }}
           >
-            <Box className="btn1" sx={{textAlign:"center"}}>
+            <Box className="btn1" sx={{ textAlign: "center" }}>
               <Typography
                 sx={{
                   background: "none",
-              
+
                   color: "#222222",
                   fontWeight: "600",
                   lineHeight: "1.2",
                   padding: "0",
-                  whiteSpace:"pre",
+                  whiteSpace: "pre",
                 }}
                 variant="body2"
               >
-               $169.00
+                $ {item.price}
               </Typography>
             </Box>
-            <Box className="btn2" sx={{width:"100%",textAlign:"center"}}>
+            <Box className="btn2" sx={{ width: "100%", textAlign: "center" }}>
               <Typography
                 sx={{
                   background: "none",
-                  
+
                   color: "#222222",
                   fontWeight: "600",
                   lineHeight: "1.2",
                   padding: "0",
-                  whiteSpace:"pre",
+                  whiteSpace: "pre",
                 }}
                 variant="body2"
               >
-                <span style={{borderBottom: "1.5px solid #e5e5e5",}}>
-
-                ADD TO CART
+                <span style={{ borderBottom: "1.5px solid #e5e5e5" }}>
+                  ADD TO CART
                 </span>
               </Typography>
             </Box>
