@@ -66,7 +66,7 @@ export default function SliderComponent({
   cardData,
 }: any) {
   const settings = {
-    // dots: true,
+    dots: true,
     infinite: false,
     speed: 500,
     // autoplay: true,
