@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import React from "react";
 import MainCard from "./MainCard";
+import PrimaryCard from "./PrimaryCard";
 import Slider from "react-slick";
 const defaultCardData = [
   {
@@ -64,6 +64,7 @@ export default function SliderComponent({
   slidesToShowsm = 2,
   slidesToShowxs = 1,
   cardData,
+  cardType,
 }: any) {
   const settings = {
     dots: true,
@@ -104,7 +105,15 @@ export default function SliderComponent({
       <Slider {...settings} className="slickbottomslider">
         {cardData1.map((item: any, index: any) => (
           <Box key={index} p={1}>
-            <MainCard item={item} />
+            {cardType === "simple" ? (
+              <>
+                <PrimaryCard item={item} />
+              </>
+            ) : (
+              <>
+                <MainCard item={item} />
+              </>
+            )}
           </Box>
         ))}
       </Slider>

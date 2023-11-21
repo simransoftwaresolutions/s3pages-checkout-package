@@ -7,6 +7,7 @@ export default function index({
   slidesToShowsm,
   slidesToShowxs,
   cardData,
+  cardType,
 }: any) {
   return (
     <div>
@@ -17,6 +18,7 @@ export default function index({
           slidesToShowsm={slidesToShowsm}
           slidesToShowxs={slidesToShowxs}
           cardData={cardData}
+          cardType={cardType}
         />
       </Container>
     </div>

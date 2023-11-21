@@ -777,3 +777,15 @@ hr {
 .slickbottomslider:hover .slick-next.slick-disabled{
   opacity: 0.5;
 }
+@media (max-width:430px) {
+  .slickbottomslider .slick-prev.slick-disabled{
+    opacity: 0.5;
+  }
+  .slickbottomslider .slick-prev{
+    opacity: 1;
+  }
+  .slickbottomslider .slick-next{
+    opacity: 1;
+  }
+
+}

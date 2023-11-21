@@ -2,25 +2,12 @@ import React, { useState } from "react";
 import { Box, Typography, IconButton } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-export default function MainCard({ item }: any) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleHover = () => {
-    setIsHovered(true);
-  };
-
-  const handleHoverOut = () => {
-    setIsHovered(false);
-  };
+export default function PrimaryCard({ item }: any) {
   return (
-    <Box
-      className="Card_body"
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHoverOut}
-    >
+    <Box className="Card_body">
       <Box className="image_body">
         <img src={item.img} width="100%" alt="" />
-        <img className="img1" src={item.hoverimg} width="100%" alt="" />
+
         {item.chiphead.toLowerCase() === "hot" ? (
           <>
             <Box
@@ -65,7 +52,7 @@ export default function MainCard({ item }: any) {
         )}
 
         <Box
-          className="icon_box"
+          className=""
           sx={{
             display: "grid",
             gap: "6px",
@@ -111,7 +98,7 @@ export default function MainCard({ item }: any) {
             {item.description}
           </Typography>
         </Box>
-        <Box mt={0.5}>
+        <Box>
           <Box
             p={1}
             sx={{
@@ -119,7 +106,7 @@ export default function MainCard({ item }: any) {
               position: "relative",
             }}
           >
-            <Box className="btn1" sx={{ textAlign: "center" }}>
+            <Box pb={1} className="" sx={{ textAlign: "center" }}>
               <Typography
                 sx={{
                   background: "none",
@@ -135,7 +122,7 @@ export default function MainCard({ item }: any) {
                 $ {item.price}
               </Typography>
             </Box>
-            <Box  className="btn2" sx={{ width: "100%", textAlign: "center" }}>
+            <Box className="" sx={{ width: "100%", textAlign: "center" }}>
               <Typography
                 sx={{
                   background: "none",
@@ -148,7 +135,7 @@ export default function MainCard({ item }: any) {
                 }}
                 variant="body2"
               >
-                <span  style={{ borderBottom: "1.5px solid #e5e5e5" }}>
+                <span style={{ borderBottom: "1.5px solid #e5e5e5" }}>
                   ADD TO CART
                 </span>
               </Typography>

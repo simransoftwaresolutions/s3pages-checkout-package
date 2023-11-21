@@ -98,6 +98,7 @@ export default function componentName() {
         slidesToShowsm={2}
         slidesToShowxs={1}
         cardData={cardData}
+        
       />
       <PreviewPage />
     </>
