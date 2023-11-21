@@ -4,6 +4,7 @@ import { generateClassNameStr, generateChildClassNameStr } from "../../../../../
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { Fragment } from 'react';
 
 const drawStar = (star:string, childStyleName:string) => {
 
@@ -38,8 +39,8 @@ const RatingAtom = ({
                 return (
                     <div className={`${styles.ratingCnt} ${childStyleName}`}>
                         {
-                            stars?.map((star:string)=> {
-                                return drawStar(star, childStyleName);
+                            stars?.map((star:string, rIdx:number)=> {
+                                return <Fragment key={rIdx}>{drawStar(star, childStyleName)}</Fragment>
                             })
                         }
                         <span className={styles.rateText}>{rate}</span>

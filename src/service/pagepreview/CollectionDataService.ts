@@ -55,6 +55,13 @@ export const createCollectionData = async ({ data}:any) =>{
             },
             body: JSON.stringify(data)
         })
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error('Network response was not ok');
+        }
         return response.status === 200 ? true: false
     }catch(error){
         return undefined
@@ -130,6 +137,13 @@ export const updateCollectionData = async ({id, data}:any) =>{
             },
             body: JSON.stringify(data)
         })
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error('Network response was not ok');
+        }
         return response.status === 200 ? true: false
     }catch(error){
         return undefined

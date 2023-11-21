@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next';
 import { Fragment, useEffect } from 'react';
 import styles from '../../../../../styles/componentsettings/Animation.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
@@ -84,7 +83,7 @@ const Animation = () => {
 
   return (
     <Fragment>
-      <div className={`${styles.subSettingTitle} ${selectedSetting === "animation_setting" ? "active_subsetting" : ""}`} onClick={()=>displaySubSetting("animation_setting")}>
+      <div className={`${styles.subSettingTitle} sub-set-title-bg ${selectedSetting === "animation_setting" ? "active_subsetting" : ""}`} onClick={()=>displaySubSetting("animation_setting")}>
         Animation Settings
       </div>
       <div style={{ display:`${selectedSetting === "animation_setting" ? "block" : "none"}`, backgroundColor:"#0e0e0e" }}>

@@ -544,7 +544,7 @@ const Background = () => {
           <Select selRef={bgTypeRef} format={OutlinedFormat} id="background_type" label="Background Type" items={BackgroundTypeItems} onChange={(e:any)=>selBackground(e, 'bg_type')} />
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting`} style={{ display:`${bgType === "Color" ? "block" : "none"}`}}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`} style={{ display:`${bgType === "Color" ? "block" : "none"}`}}>
           <ColorPickerBox name="Background Color" colorHex={bgColor} retColor={handleChange} />
         </div>
 
@@ -567,7 +567,7 @@ const Background = () => {
         </div>
 
         {/* for color + image */}
-        <div className={`${styles.mainContainer} inner_setting`} style={{ display:`${bgType === "colorimage" ? "block" : "none"}`}}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`} style={{ display:`${bgType === "colorimage" ? "block" : "none"}`}}>
           <ColorPickerBox name="Background Color" colorHex={colorImageColor} retColor={handleBgCIChange} />
         </div>
 
@@ -601,11 +601,11 @@ const Background = () => {
           <Select selRef={bgGradRef} format={OutlinedFormat} label="Direction" items={BgGradientTypeItems} onChange={(e:any)=>setGradient(e)} />
           {(bgDirection === "deg") && xGradBox()}
         </div>
-        <div className={`${styles.mainContainer} inner_setting`} style={{ display:`${bgType === "Gradient" ? "block" : "none"}`}}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`} style={{ display:`${bgType === "Gradient" ? "block" : "none"}`}}>
           <ColorPickerBox name="Background Start" colorHex={bgGradirntStartColor} retColor={handleChangeStart} />
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting`} style={{ display:`${bgType === "Gradient" ? "block" : "none"}`}}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`} style={{ display:`${bgType === "Gradient" ? "block" : "none"}`}}>
           <ColorPickerBox name="Background End" colorHex={bgGradirntEndColor} retColor={handleChangeEnd} />
         </div>
 

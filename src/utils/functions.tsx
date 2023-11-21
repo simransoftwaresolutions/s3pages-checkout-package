@@ -178,11 +178,11 @@ export const convertRgbaToHex = (r:number, g:number, b:number, a:number) => {
     return `#${red}${green}${blue}${alpha}`;
 }
 
-// export const getClassFromSelector = (val:string) => {
-//     let _selName = val?.replaceAll(' ','-');
-//     _selName = _selName.toLowerCase();
-//     return `${_selName}`;
-// }
+export const getClassFromSelector = (val:string) => {
+    let _selName = val.replaceAll(' ','-');
+    _selName = _selName.toLowerCase();
+    return `${_selName}`;
+}
 
 export const setClassesName = (ret:any, tempStyleCtx:any, childIdx:number=-1) => {
 
@@ -336,7 +336,6 @@ export const getTypeOfElement = (type:string) => {
 
     return "";
 }
-
 
 export const getSeoUrlFromPageId = (pageId:string) => {
     const { pageSeoUrlCtx } = useContentCtx();

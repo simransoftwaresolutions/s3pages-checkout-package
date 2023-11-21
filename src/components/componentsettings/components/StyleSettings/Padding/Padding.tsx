@@ -164,10 +164,10 @@ const Padding = () => {
         Padding Settings
       </div>
       <div style={{ display:`${selectedSetting === "padding_setting" ? "block" : "none"}`, backgroundColor:"#0e0e0e" }}>
-        <div className={`${styles.mainContainer} inner_setting inner_range_setting`}>
+        <div className={`${styles.mainContainer} inner_setting inner_range_setting main-cnt-bg`}>
           <Range displayValue={true} format={OutlinedFormat} id="padding" label="Padding" min={-50} max={400} step={1} defaultValue={paddingVal} onChange={(e:any)=>setPadding('padding', e)} />
           <div className={`${styles.advSet}`} onClick={displayPadding}>Advanced Settings</div>
-          <div style={{ display:`${openPadding === true ? "block" : "none"}` }} className={`${styles.stMrgPdg}`}>
+          <div style={{ display:`${openPadding === true ? "block" : "none"}` }} className={`${styles.stMrgPdg} str-mrg-pdg-bd`}>
             <Range displayValue={true} format={OutlinedFormat} id="padding_top" label="Top" min={-50} max={400} step={1} defaultValue={paddingTopVal} onChange={(e:any)=>setPadding('top', e)} />
             <Range displayValue={true} format={OutlinedFormat} id="padding_right" label="Right" min={-50} max={400} step={1} defaultValue={paddingRightVal} onChange={(e:any)=>setPadding('right', e)} />
             <Range displayValue={true} format={OutlinedFormat} id="padding_bottom" label="Bottom" min={-50} max={400} step={1} defaultValue={paddingBottomVal} onChange={(e:any)=>setPadding('bottom', e)} />

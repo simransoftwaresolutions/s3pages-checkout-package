@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { HorizontalAlignItems, VerticalAlignItems, TextAlignItems, ColumnWidthItems } from '../../Atoms/datas/commonComponentData';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
-import { setClassesName } from '../../../../../utils/functions';
+import { deepCloneStyle, deepCloneSection, getColumnStrNumber, setClassesName } from '../../../../../utils/functions';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
 import { usePagesCtx } from '../../../../../context/pagepreview/PagesContext';
 

@@ -15,7 +15,7 @@ const Select = ({className="", format, items, id, label, selRef, required=false,
     if(selRef){
     }
     return (
-        <div className={`${styles.input_container} common_input_cls`}>
+        <div className={`${styles.input_container} ip_cnt_gb`}>
             {label && (<label htmlFor={id} id={`${id}-label`}>{label}</label>)}
             <select className={`${className}`} ref={selRef} id={id} onChange={onChange} required={required}>
                 {

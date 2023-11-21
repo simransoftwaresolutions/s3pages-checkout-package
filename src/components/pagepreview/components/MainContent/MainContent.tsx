@@ -1,11 +1,10 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react';
 import { usePushCtx } from "../../../../context/pagepreview/PushContext";
 import { usePagesCtx } from "../../../../context/pagepreview/PagesContext";
 import { useSettingsCtx } from "../../../../context/pagepreview/SettingsContext";
 import { 
   ButtonElements, 
-  // HeadingElements, 
+  HeadingElements, 
   ProgressElements, 
   GridElements, 
   // NewGridElements, 
@@ -35,11 +34,10 @@ import {
   getDraggedElement,
   getHoveredElement,  
   getChangeStyleOfElement,
-  // getClassFromSelector,
   generateClassNameStr,
 } from '../../../../utils/functions';
 import ENV from '../../../../utils/env';
-// import { useRouter } from 'next/router';
+import GetElements from '../../../../service/pagepreview/GetElements';
 import { CreateTemplate, UpdateTemplate } from '../../../../service/pagepreview/TemplateServices';
 import { DeletePage, ClonePage } from '../../../../service/pagepreview/PagesServices';
 import EditSectionTopbar from '../../components/Atoms/EditSectionTopbar';
@@ -50,7 +48,6 @@ import MainMyComponent from './MainMyComponent';
 
 const MainContent = () => {
 
-  // const router = useRouter();
   //////////////////////////////////////////////////////////////////////////////////////////
   const { sectionCtx, 
           setSectionCtx, 
@@ -63,7 +60,9 @@ const MainContent = () => {
           changeStyleOfElement,
           setChangeStyleOfElement,
           myTemplatesCtx,
+          pageSeoUrlCtx,
         } = useContentCtx();
+
   const { setIsProcessing } = usePushCtx();
 
   ////////////////////////////////////////////////////////////////////////////////////////////
@@ -300,15 +299,26 @@ const MainContent = () => {
   // functions for pages
 
   const handlePreview = () => {
+
+    const _myTemplatesCtx = [];
+    for ( const [key,value] of Object.entries(myTemplatesCtx) ) {
+      _myTemplatesCtx.push({
+        key:key,
+        data:value
+      });
+    }
     localStorage.removeItem("sectionCtx");
     localStorage.removeItem("templateCss");
     localStorage.removeItem("stylesCtx");
     localStorage.removeItem("stylesGlobCtx");
+    localStorage.removeItem("myTemplatesCtx");
+    localStorage.removeItem("pageSeoUrlCtx");
     localStorage.setItem('sectionCtx', JSON.stringify(sectionCtx));
     localStorage.setItem('templateCss', JSON.stringify(templateCss));
     localStorage.setItem('stylesCtx', JSON.stringify(stylesCtx));
     localStorage.setItem('stylesGlobCtx', JSON.stringify(stylesGlobCtx));
-    // router.push("/preview");
+    localStorage.setItem('myTemplatesCtx', JSON.stringify(_myTemplatesCtx));
+    localStorage.setItem('pageSeoUrlCtx', JSON.stringify(pageSeoUrlCtx));
 
   }
 
@@ -380,7 +390,8 @@ const MainContent = () => {
   const cloneSectionComponent = (secIndex:number) => {
 
     const blockSectionCtx = deepCloneSection(sectionCtx);
-    const newSectionCtx = deepCloneSection(sectionCtx[secIndex]);
+    let newSectionCtx = deepCloneSection(sectionCtx[secIndex]);
+    newSectionCtx.eleInfo.props.sectionId = "";
 
     blockSectionCtx.push(newSectionCtx);
     setSectionCtx(blockSectionCtx);
@@ -400,25 +411,38 @@ const MainContent = () => {
     setIsSettingsOpen(true);
   }
   
-  const actionSectionComponent = (tooltipStr:string, sec:any, sIdx:number) => {
+  const actionSectionComponent = (tooltipStr:string, sec:any, sIdx:number, isMytemplate:boolean, isMyComponent:boolean=false) => {
 
     let showTooltip:boolean = true;
     if(contentAction.tooltipEnableString !== tooltipStr) showTooltip = false;
 
     return (
-      showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
-      // ENV.isViewReadOnly === false && showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
+      ENV.isViewReadOnly === false && showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
       (
-        <span className={`${styles.actionSectionContainerChild} ${styles.noBorder}`}>
-          <span className={styles.heading}><b>Section</b></span>
-          <span className={`${styles.sectionIcon}`}>
-            <OpenWithOutlinedIcon fontSize="medium" onMouseDown={()=>setSelDragSection(sIdx)}/>
-            <SettingsOutlinedIcon fontSize="medium" onClick={()=>openSectionSettings("Section", sIdx, sec, [])}/>
-            <FileCopyOutlinedIcon fontSize="medium" onClick={()=>cloneSectionComponent(sIdx)}/>
-            <SaveOutlinedIcon fontSize="medium" data-bs-toggle="modal" data-bs-target="#saveModal" onClick={() => showElementInModal(sec, sIdx)} />
-            <DeleteForeverOutlinedIcon fontSize="medium" onClick={()=>handleDeleteSection(sIdx)} />
+        isMytemplate || isMyComponent ? 
+        (
+          <span className={`${styles.actionSectionContainerChild} ${styles.noBorder}`}>
+            <span className={styles.heading}><b>{isMytemplate ? "My Templates" : "My Component"}</b></span>
+            <span className={`${styles.sectionIcon}`}>
+              <OpenWithOutlinedIcon fontSize="medium" onMouseDown={()=>setSelDragSection(sIdx)}/>
+              <SettingsOutlinedIcon fontSize="medium" onClick={()=>openSectionSettings("Section", sIdx, sec, [])} />
+              <DeleteForeverOutlinedIcon fontSize="medium" onClick={()=>handleDeleteSection(sIdx)} />
+            </span>
           </span>
-        </span>
+        )
+        :
+        (
+          <span className={`${styles.actionSectionContainerChild} ${styles.noBorder}`}>
+            <span className={styles.heading}><b>Section</b></span>
+            <span className={`${styles.sectionIcon}`}>
+              <OpenWithOutlinedIcon fontSize="medium" onMouseDown={()=>setSelDragSection(sIdx)}/>
+              <SettingsOutlinedIcon fontSize="medium" onClick={()=>openSectionSettings("Section", sIdx, sec, [])}/>
+              <FileCopyOutlinedIcon fontSize="medium" onClick={()=>cloneSectionComponent(sIdx)}/>
+              <SaveOutlinedIcon fontSize="medium" data-bs-toggle="modal" data-bs-target="#saveModal" onClick={() => showElementInModal(sec, sIdx)} />
+              <DeleteForeverOutlinedIcon fontSize="medium" onClick={()=>handleDeleteSection(sIdx)} />
+            </span>
+          </span>
+        )
       ):
       (<></>)
 
@@ -483,13 +507,12 @@ const MainContent = () => {
     ev.preventDefault();
     removeAllHighlightedHover();
     setSelDragSection(-1);
-
-    if(ENV.isViewReadOnly) return;
+    if(ENV.isViewReadOnly || !hoveredElement?.type) return;
 
     if(draggedElement?.from === "blocks" && draggedElement?.type === "Section"){
       // this code is called on section drop from blocks
 
-      createNewClassOfElement(); // craete class name for element and applied predefined css of element
+      // createNewClassOfElement(); // craete class name for element and applied predefined css of element
       const _tempSectionsCtx = deepCloneArray(sectionCtx);
       if(hoveredElement.sectionIdx > -1 && (hoveredElement.sectionIdx+1) < _tempSectionsCtx.length){
         _tempSectionsCtx.splice((hoveredElement.sectionIdx), 0, draggedElement?.data);
@@ -617,8 +640,8 @@ const MainContent = () => {
           }
 
         }else{
-          toTemp[toTemp.length-1].elements.push(draggedElement.data); // at destination push dragged element
-          formTemp[formTemp.length-1].elements.splice(_dragEleIdx, 1); // remove element after drag
+          toTemp[toTemp.length-1]?.elements.push(draggedElement.data); // at destination push dragged element
+          formTemp[formTemp.length-1]?.elements.splice(_dragEleIdx, 1); // remove element after drag
         }
         setSectionCtx(_toSectionsCtx);
 
@@ -890,6 +913,44 @@ const MainContent = () => {
 
               const sectionTooltipStr = "section_" + sIndex;
 
+              // for My component
+              if(ENV.isPackage){
+                if(secDat?.eleInfo?.myComponentKey){
+                  return (
+                    <div id={secDat?.eleInfo?.sectionId || ""}><MainMyComponent componentName={secDat?.eleInfo?.myComponentKey} /></div>
+                  )
+                }
+              }else{
+                if(secDat?.eleInfo?.myComponentKey !== undefined){
+
+                  if(!secDat?.eleInfo?.myComponentKey) return <></>;
+  
+                  return (
+                    <section
+                      key={sIndex+1} 
+                      id={secDat?.eleInfo?.sectionId || ""}
+                      className={`${styles.actionSectionContainerParent} highlight`} 
+                      draggable={(selDragSection === sIndex && ENV.isViewReadOnly === false) ? "true":"false"} 
+                      onDragLeave={(event:any) => onDragLeaveFromSection(event, sIndex)} 
+                      onDragOver={(event) => onDragOverFromSection(event, sIndex)} 
+                      onDragStart={(event:any) => dragSection(event, secDat, sIndex)} 
+                      ref={(el) => (secRefs.current[sIndex] = el)}
+                      onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
+                      onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
+                    >
+                      {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate, true)}
+                      <div className={`${styles.myCompContainer}`}>
+                        <div className={`${styles.dragndropimg} ${styles.placehodlerMyComp}`}>
+                          <h4 className={`${styles.myComph4}`}>Placeholder for "{secDat?.eleInfo?.myComponentName}"</h4>
+                        </div>
+                      </div>
+                    </section>
+                  )
+                }
+              }
+
+
+
               /////////////////////////////////////////////////////////////////////////////
               const animationStyleStrSec = sec?.eleInfo?.props?.style?.animationStyle ? `animate__${sec?.eleInfo?.props?.style?.animationStyle}` : "";
               const animationDelayStrSec = sec?.eleInfo?.props?.style?.animationDelay ? `animate__delay-${sec?.eleInfo?.props?.style?.animationDelay}s` : "";
@@ -902,13 +963,6 @@ const MainContent = () => {
               /////////////////////////////////////////////////////////////////////////////
 
 
-              // for My component
-              if(secDat?.eleInfo?.myComponentKey){
-                return (
-                  <div id={secDat?.eleInfo?.sectionId || ""}><MainMyComponent componentName={secDat?.eleInfo?.myComponentKey} /></div>
-                )
-              }
-
               if(viewState === "phone" && sec?.eleInfo?.props?.mobileView && sec.eleInfo.props.mobileView === "false") return <></>;
 
               return (
@@ -916,7 +970,7 @@ const MainContent = () => {
                     key={sIndex+1} 
                     id={_sectionId}
                     className={`${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} highlight`} 
-                    draggable={selDragSection === sIndex ? "true":"false"} 
+                    draggable={(selDragSection === sIndex && ENV.isViewReadOnly === false) ? "true":"false"} 
                     onDragLeave={(event:any) => onDragLeaveFromSection(event, sIndex)} 
                     onDragOver={(event) => onDragOverFromSection(event, sIndex)} 
                     onDragStart={(event:any) => dragSection(event, secDat, sIndex)} 
@@ -924,7 +978,7 @@ const MainContent = () => {
                     onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
                     onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
                   >
-                    {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex)}
+                    {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate)}
                     {
                       sec?.elements?.length ?
                       sec?.elements?.map((eleData:any, eIdx:number) => {

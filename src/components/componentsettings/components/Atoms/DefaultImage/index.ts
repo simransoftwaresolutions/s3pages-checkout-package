@@ -1,2 +1,2 @@
-import DefaultImage from "./DefaultImage";
+import DefaultImage from "../../../../pagepreview/components/Atoms/DefaultImage";
 export default DefaultImage;

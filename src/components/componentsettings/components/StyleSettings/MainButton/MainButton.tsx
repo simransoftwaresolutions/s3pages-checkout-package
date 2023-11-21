@@ -200,11 +200,11 @@ const MainButton = () => {
           <UrlAtom getUrl={setBtnUrl} getUrlType={handleUrlType} urlTypeVal={urlType} menuUrlVal={url} />
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting`}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`}>
           <ColorPickerBox name="Text Color" colorHex={textColor} retColor={handleTextColorChange} />
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting`}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`}>
           <ColorPickerBox name="Icon Color" colorHex={iconColor} retColor={handleIconColorChange} />
         </div>
 

@@ -7,11 +7,13 @@ import Bannersection from "./components/bannersection";
 import Tabs from "./components/Tabs";
 import ComponentSettings from './components/componentsettings';     
 import * as Allcontexts from "./context/pagepreview"; 
+import * as Allutilities from "./utils/utilities";
 export {
     CheckoutProduct,
     PreviewPage,
     ComponentSettings,
     Allcontexts,
+    Allutilities,
     Templategen,
     PageTemplate,
     Slidersection,

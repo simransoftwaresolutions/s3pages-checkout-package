@@ -4,8 +4,7 @@ import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { SectionLayoutItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
-import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
-import { deepCloneStyle, deepCloneSection, deepCloneArray } from '../../../../../utils/functions';
+import { deepCloneArray } from '../../../../../utils/functions';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
 
 const OutlinedFormat = {

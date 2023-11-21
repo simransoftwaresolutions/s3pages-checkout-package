@@ -104,7 +104,7 @@ const PageTopbar = ({
                         </button> */}
                         <button onClick={handlePreview}>
                             <div className="tooltip"> 
-                                {/* <Link href="/preview"><a target='_blank'><RemoveRedEyeIcon fontSize="medium"/></a></Link> */}
+                                <a target='_blank' href="/preview"><RemoveRedEyeIcon fontSize="medium"/></a>
                                 <span className="tooltiptext">Preview</span>
                             </div>
                         </button>

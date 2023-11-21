@@ -20,6 +20,7 @@ import Bannersection from "../bannersection/index"
 import Slidersection from "../slidersection/index"
 import Tabs from "../Tabs/index";
 import ComponentSettings from '../componentsettings';
+import FileManager from '../componentsettings/components/Atoms/FileManager';
 
 interface PreviewPageProps {
   siteInfo?: any;
@@ -27,7 +28,7 @@ interface PreviewPageProps {
 }
 
 const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
-  ENV.isViewReadOnly = true;
+  ENV.isViewReadOnly = false;
 
   const id = "64661c4927827070ff3212e5";
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZmZGZiOGJkM2QwMWU3OWE5MGE5OCIsImlhdCI6MTY4NzkyODcxMywiZXhwIjoxNzE5NDY0NzEzfQ.ITTlkhQCZyu-hHDPOa0PKC83p6cWMl6ab_p-0p-FOcM";
@@ -48,7 +49,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
     if (uriInfo?.status === false) {
       return;
     } else {
-      let _themeId = siteInfo?.data?.themeId;
+      let _themeId = siteInfo?.data?.themeId || siteInfo?.data?._id;
       if (uriInfo?.data?.page?.variants?.length) {
         const testJson = JSON.parse(uriInfo?.data?.page?.variants[0]?.content);
         const _tempContents = uriInfo?.data?.page?.variants[0]?.content !== ' ' ? testJson : [];
@@ -198,10 +199,11 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
               <div className={`${styles.previewPage} col-md-12`}>
                 {sectionCtx && stylesCtx ? <MainContent /> : <img src={`${ENV.serverPath}images/dragndrop.png`} />}
                 {isProcessing && <div className={styles.processingText}>Processing...</div>}
-                <><ComponentSettings/></>
+                {/* <><ComponentSettings/></> */}
               </div>
             </div>
           </div>
+          {/* <FileManager /> */}
           <ToastContainer position="bottom-right" theme="light" />
         </>
       }

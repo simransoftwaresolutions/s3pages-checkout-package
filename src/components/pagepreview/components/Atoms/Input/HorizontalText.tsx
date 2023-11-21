@@ -22,7 +22,7 @@ interface TextFieldProps {
 const HorizontalText = ({className="", disabled=false, refText, format, lableColor, required=false, type, id, label, placeholder, defaultValue, onChange, onKeyUp, onKeyDown, onFocus, onBlur}:TextFieldProps) => {
 
     return (
-        <div className={`${styles.input_container} row mb-3 common_input_cls`}>
+        <div className={`${styles.input_container} row mb-3 ip_cnt_gb`}>
             {
                 label &&  
                 (

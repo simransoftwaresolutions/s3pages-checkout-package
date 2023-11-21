@@ -1,8 +1,7 @@
-// import type { NextPage } from 'next'
 import { Fragment, useState, useEffect } from 'react'
 import styles from "../../../../../styles/pagepreview/MainSubElement.module.css";
 import DefaultImage from '../../../components/Atoms/DefaultImage';
-import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";
+import { generateClassNameStr, generateChildClassNameStr, generateMenuClassNameStr } from "../../../../../utils/functions";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -13,15 +12,15 @@ interface Prop {
   // onClick:()=>void;
 }
 
-const faqAtom = (que:string, ans:string, index:number, rowClsName:string, showAns:number, setShowAns:any) => {
+const faqAtom = (que:string, ans:string, index:number, rowClsName:string, showAns:number, setShowAns:any, queCls:any, ansCls:any) => {
 
   return (
     <div className={`${rowClsName} ${styles.queMainBox} faqBox`} key={index}>
-      <div className={`question`}>
+      <div className={`${styles.faqPaddingMargin} question ${queCls}`}>
         <div className={`${styles.queInner} ${styles.faqText}`}>
-          <div>{que}</div>
+          <div>{que ? que : "No Data"}</div>
           <div onClick={()=>setShowAns(index === showAns ? -1 : index)}>
-            <span className={`${styles.faqArrow}`}>
+            <span className={`${styles.faqArrow} faqarw`}>
               {
                 showAns === index ?
                 <KeyboardArrowDownIcon fontSize='medium'/>:
@@ -31,9 +30,9 @@ const faqAtom = (que:string, ans:string, index:number, rowClsName:string, showAn
           </div>
         </div>
       </div>
-      <div style={{margin:"0", padding:"0"}} className={`${styles.faqText} ${styles.ansBox} answer faqAns ${showAns === index ? "": "hidden"}`}>
+      <div className={`${styles.faqPaddingMargin} ${ansCls} ${styles.faqText} ${styles.ansBox} answer faqAns ${showAns === index ? "": "hidden"}`}>
         <span className={styles.faqSpan}>
-          {ans}
+          {ans ? ans  : "No Data"}
         </span>
       </div>
     </div>
@@ -43,6 +42,8 @@ const faqAtom = (que:string, ans:string, index:number, rowClsName:string, showAn
 const FaqElements = ({type, props, refBtn}:Prop) => {
 
   const styleSelectorName = generateClassNameStr(props?.styleClasses);
+  const queCls = generateMenuClassNameStr(props?.queClassName);
+  const ansCls = generateMenuClassNameStr(props?.ansClassName);
   const rowClsName = generateChildClassNameStr(props?.styleClasses, 0);
   const [ faqDatas, setFaqDatas ] = useState<any>([]);
   const [ showAns, setShowAns ] = useState<number>(0);
@@ -74,13 +75,7 @@ const FaqElements = ({type, props, refBtn}:Prop) => {
       {
         faqDatas.length ? 
         faqDatas?.map((fData:any, fIdx:number) => {
-          return (
-            fData?.question && fData?.answer ? (
-              faqAtom(fData?.question, fData?.answer, fIdx, rowClsName, showAns, setShowAns)
-            ):(
-              <Fragment key={fIdx}></Fragment>
-            )
-          )
+          return faqAtom(fData?.question, fData?.answer, fIdx, rowClsName, showAns, setShowAns, queCls, ansCls);
         })
         :<div className={`${styles.noFaq} faq-placeholder`}><DefaultImage /></div>
       }

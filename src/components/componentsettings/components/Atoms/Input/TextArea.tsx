@@ -15,7 +15,7 @@ interface TextAreaProps {
 const TextArea = ({className="", format, label, id, required=false, defaultValue, refText, onChangeTextarea, onBlurTextarea}:TextAreaProps) => {
 
     return (
-        <div className={`${styles.input_container} common_input_cls`}>
+        <div className={`${styles.input_container} ip_cnt_gb`}>
             {
                 label && 
                 (

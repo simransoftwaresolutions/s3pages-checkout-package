@@ -156,10 +156,10 @@ const Margin = () => {
         Margin Settings
       </div>
       <div style={{ display:`${selectedSetting === "margin_setting" ? "block" : "none"}`, backgroundColor:"#0e0e0e" }}>
-        <div className={`${styles.mainContainer} inner_setting inner_range_setting`}>
+        <div className={`${styles.mainContainer} inner_setting inner_range_setting main-cnt-bg`}>
           <Range displayValue={true} format={OutlinedFormat} id="margin" label="Margin" min={-100} max={400} step={1} defaultValue={marginVal} onChange={(e:any)=>setMargin('Margin', e)} />
           <div className={`${styles.advSet}`} onClick={displayMargin}>Advanced Settings</div>
-          <div  style={{ display:`${openMargin === true ? "block" : "none"}` }} className={`${styles.stMrgPdg}`}>
+          <div  style={{ display:`${openMargin === true ? "block" : "none"}` }} className={`${styles.stMrgPdg} str-mrg-pdg-bd`}>
             <Range displayValue={true} format={OutlinedFormat} id="margin_top" label="Top" min={-100} max={400} step={1} defaultValue={marginTopVal} onChange={(e:any)=>setMargin('top', e)} />
             <Range displayValue={true} format={OutlinedFormat} id="margin_right" label="Right" min={-100} max={400} step={1} defaultValue={marginRightVal} onChange={(e:any)=>setMargin('right', e)} />
             <Range displayValue={true} format={OutlinedFormat} id="margin_bottom" label="Bottom" min={-100} max={400} step={1} defaultValue={marginBottomVal} onChange={(e:any)=>setMargin('bottom', e)} />

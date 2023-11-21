@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import styles from '../../../../../styles/componentsettings/MenuSetting.module.css';
 import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
-import { FontsNameItems, FontStyleItems, FontFamilyItems, MenuStyleItems, HmbMenuStyleItems, PreIconsItems, MenuIconPosTypeItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';
+import { FontStyleItems, MenuStyleItems, HmbMenuStyleItems, PreIconsItems, MenuIconPosTypeItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
 import { setClassesName, deepCloneArray } from '../../../../../utils/functions';
@@ -360,7 +360,7 @@ const MenuSetting = () => {
 
   const addNewMenu = () => {
 
-    if(!menuUrl || !menuName) return;
+    if(!menuName) return;
     
     const tempMenuArr = deepCloneArray(menuArr);
 

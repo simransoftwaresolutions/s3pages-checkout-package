@@ -35,6 +35,7 @@ export default class InlineEditor extends React.Component<any,any> {
 
     this.medium = new MediumEditor(`#${this.props.id}`, {
                                           placeholder: false,
+                                          // toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'textcolor', 'bgcolor','companySizes', 'fontnameext'] },
                                           toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor','companySizes', 'fontnameext'] },
                                          
                                           disableReturn: false,

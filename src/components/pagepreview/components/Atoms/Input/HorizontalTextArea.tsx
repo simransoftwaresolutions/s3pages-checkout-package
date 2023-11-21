@@ -15,7 +15,7 @@ interface TextAreaProps {
 const HorizontalTextArea = ({className="", format, label, id, required=false, defaultValue, refText, onChangeTextarea, onBlurTextarea}:TextAreaProps) => {
 
     return (
-        <div className={`${styles.input_container} row mb-3 common_input_cls`}>
+        <div className={`${styles.input_container} row mb-3 ip_cnt_gb`}>
             {
                 label && 
                 (

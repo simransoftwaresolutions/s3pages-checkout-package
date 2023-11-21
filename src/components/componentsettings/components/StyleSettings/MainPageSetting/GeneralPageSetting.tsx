@@ -4,7 +4,7 @@ import { Text, TextArea } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
 import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
-import { deepCloneStyle, deepCloneSection, deepCloneArray } from '../../../../../utils/functions';
+import { deepCloneArray } from '../../../../../utils/functions';
 import { usePagesCtx } from "../../../../../context/pagepreview/PagesContext";
 
 const OutlinedFormat = {

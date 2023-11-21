@@ -9,6 +9,7 @@ const SocialIcon = ({
                     refInner,
                     style,
                     styleClasses,
+                    iIndex,
                     onClick}:SocialIconProps
                 ) => {
 
@@ -20,14 +21,15 @@ const SocialIcon = ({
         }
 
         const childStyleName = generateChildClassNameStr(styleClasses, 0);
-        const iconCls = generateChildClassNameStr(styleClasses, 1);
+        const iconCls = generateChildClassNameStr(styleClasses, 1) || "";
+        const iconClr = generateChildClassNameStr(styleClasses, (3+iIndex)) || "";
 
     return (
         <div className={`iconCnt ${childStyleName}`}>
             {
                 icons?.url ?
-                <a target="_blank" href={icons?.url} style={{color:icons?.iconColor}}><MaterialIcons iconclass={iconCls} name={icons.iconName} /></a>
-                :<a target="_blank" style={{color:icons?.iconColor}}><MaterialIcons iconclass={iconCls} name={icons.iconName} /></a>    
+                <a target="_blank" href={icons?.url} style={{color:icons?.iconColor}}><MaterialIcons iconclass={`${iconClr} ${iconCls}`} name={icons.iconName} /></a>
+                :<a target="_blank" style={{color:icons?.iconColor}}><MaterialIcons iconclass={`${iconClr} ${iconCls}`} name={icons.iconName} /></a>    
             }
         </div>
     )

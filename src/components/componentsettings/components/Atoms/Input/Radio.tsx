@@ -15,8 +15,8 @@ interface RadioFieldProps {
 const Radio = ({refText, radioName, checked=false, lableColor, required=false, id, label, defaultValue, onChange}:RadioFieldProps) => {
 
     return (
-        <div className={`${styles.input_container} ${styles.radio} common_input_cls`}>
-            <input type="radio" name={radioName} id={`${id}`} required={required} onClick={onChange} value={defaultValue} checked={checked} />
+        <div className={`${styles.input_container} ${styles.radio} ip_cnt_gb`}>
+            <input type="radio" name={radioName} id={`${id}`} required={required} onChange={onChange} onClick={onChange} value={defaultValue} checked={checked} />
             <label htmlFor={`${id}`} id={`${id}-label`}>{label}</label>
         </div>
     )

@@ -1,49 +1,4 @@
 import ENV from "../../utils/env";
-// import useSWR from 'swr';
-
-export const getSiteInfo = (site: string) => {
-
-    const url = `https://s3pagesapi.s3preview.com/api/site/fe/${site}`;
-
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        maxRedirects: 20,
-    };
-
-    return fetch(url, options)
-    .then(response => {
-        return response.json();
-    })
-    .then(async data => {
-            return (data);
-        }
-    );
-}
-
-export const getUriInfo = (siteid: string) => {
-
-    const url = `https://s3pagesapi.s3preview.com//api/url/fe/${siteid}/`;
-
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        maxRedirects: 20,
-    };
-
-    return fetch(url, options)
-    .then(response => {
-        return response.json();
-    })
-    .then(async data => {
-            return (data);
-        }
-    );
-}
 
 export const GetGoogleFonts = () => {
 
@@ -208,13 +163,6 @@ export const GetSiteData = async(id:any) => {
     }
     return response.json();
 }
-
-// export const GetSiteDataFromApi = (id:any) => {
-//     if(!id) return;
-//     const url = `${ENV.apiRoot}api/site/${id}`;
-//     const { data, error, isLoading } = useSWR(url, SwrGetSiteData);
-//     return { data, error, isLoading };
-// }
 
 export const SwrGetSiteData = async(url:string) => {
 
@@ -464,7 +412,8 @@ export const UpdatePage = (pageId:string, data:any) => {
 
 export const PageSortOrder = (fId:string, pageData:any) => {
 
-    const url = `${ENV.apiRoot}api/pages/funnel/${fId}/sortorder`;
+    const url = `${ENV.apiRoot}api/pages/site/${fId}/sortorder`;
+    // const url = `${ENV.apiRoot}api/pages/funnel/${fId}/sortorder`;
     const token = `${ENV.auth}`;
 
     const options = {

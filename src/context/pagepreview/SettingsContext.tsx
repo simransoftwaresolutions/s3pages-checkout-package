@@ -1,8 +1,6 @@
 import { createContext, useContext, ReactNode, useState } from 'react';
-import { usePushCtx } from "./PushContext";
-// import { usePushCtx } from "../contexts/PushContext";
-import { defaultTempStyleSelector, useContentCtx } from "./ContentsContext";
-import { deepCloneArray, getColumnStrNumber, isObj } from '../../utils/functions';
+import { useContentCtx } from "./ContentsContext";
+import { deepCloneArray, isObj } from '../../utils/functions';
 import { usePagesCtx } from './PagesContext';
 
 type subToolType =  {
@@ -126,7 +124,7 @@ export const SettingsProvider = ({ children }: Props) => {
         if(!_classObj?.length) return [];
         
         let retArr = [];
-        for(let i=_classObj?.length; i>1; i--){
+        for(let i=_classObj?.length; i>0; i--){
             let classStr:string = "";
             for(let j=0; j<i; j++){
                 classStr += _classObj[j]?.selector;
@@ -587,7 +585,7 @@ export const SettingsProvider = ({ children }: Props) => {
 
         for(let i=0; i<_classesObj.length; i++){
             let _clssSlector = `${prntStr} ${_classesObj[i]}`;
-            if(statesName) _clssSlector = `${_classesObj[i]}:${statesName}`;
+            if(statesName) _clssSlector = `${_clssSlector}:${statesName}`;
 
             const ret = fetchOwnCss(styleName, _clssSlector);
             if(ret) return ret;
@@ -710,8 +708,12 @@ export const SettingsProvider = ({ children }: Props) => {
             for(let i=0; i<_styleArrLength; i++){ // loop for pointing Element
                 styleTemp[i+1] = styleTemp[i].elements[changeStyleOfElement.elementIdxs[i]];
             }
-            styleTemp[styleTemp.length-1].elements[_eleIdx].eleInfo.props = styleInfo;
-            setSectionCtx(_styleSectionsCtx);
+
+            if(styleTemp?.length && styleTemp[styleTemp.length-1]?.elements[_eleIdx]?.eleInfo?.props){
+                styleTemp[styleTemp.length-1].elements[_eleIdx].eleInfo.props = styleInfo;
+                setSectionCtx(_styleSectionsCtx);
+            }
+            
             break;  
         }
     }

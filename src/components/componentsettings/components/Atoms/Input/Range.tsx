@@ -19,7 +19,7 @@ interface RangeProps {
 
 const Checkbox = ({className="", format, displayValue, required=false, id, label, defaultValue, min, max, step, onChange, onBlur}:RangeProps) => {
     return (
-        <div className={`${styles.input_container} common_input_cls`}>
+        <div className={`${styles.input_container} ip_cnt_gb`}>
             {label && (<label htmlFor={id} id={`${id}-label`}>{label}</label>)}
             {displayValue && (<span className={`${styles.displayValue}`}>{`${ defaultValue ? defaultValue : 0 }`}</span>)}
             {/* <input type="number" value={defaultValue} onChange={onChange}/> */}

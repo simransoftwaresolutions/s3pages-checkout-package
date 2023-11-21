@@ -35,11 +35,11 @@ const ColorPickerBox = ({name, colorHex, retColor}:ColorPickProp) => {
           <span className={`color_label`}>{name ? name : "Color"} </span>
           <span style={{display:`${colorSel === "on" ? "block" : "none"}`}}>
             <SketchPicker color={color} onChangeComplete={handleChange} />
-            <span className={`${styles.colorBox} ${styles.colorBoxBg}`} onClick={() => setColorSel("off")}>
+            <span className={`${styles.colorBox} ${styles.colorBoxBg} colorbox-gb`} onClick={() => setColorSel("off")}>
               Choose Color
             </span>
           </span>
-          <span onClick={() => setColorSel("on")} className={`${styles.colorBox}`} style={{display:`${colorSel === "off" ? "block" : "none"}` ,float:"right"}}>
+          <span onClick={() => setColorSel("on")} className={`${styles.colorBox} colorbox-gb`} style={{display:`${colorSel === "off" ? "block" : "none"}` ,float:"right"}}>
             <div className={"select_color_box"} style={{ background: color ? convertRgbaToHex(color.r, color.g, color.b, color.a) : "#fff" }}></div>
           </span>
         </div>

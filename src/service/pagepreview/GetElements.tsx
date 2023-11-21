@@ -30,6 +30,7 @@ const BackgroundTypeItems = [
                     states:"",
                 }, 
                 url:"", 
+                urlType:"internal", 
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"", 
@@ -74,6 +75,7 @@ const BackgroundTypeItems = [
                     states:"",
                 }, 
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"", 
@@ -119,6 +121,7 @@ const BackgroundTypeItems = [
                     states:"",
                 }, 
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"", 
@@ -164,6 +167,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"", 
@@ -209,6 +213,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"Angle_double_right", 
@@ -254,6 +259,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"Angle_double_right", 
@@ -299,6 +305,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"", 
@@ -344,6 +351,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"", 
@@ -389,6 +397,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"Angle_double_right", 
@@ -434,6 +443,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"", 
                 postChildren:"Angle_double_right", 
@@ -479,6 +489,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"Angle_double_right", 
                 postChildren:"", 
@@ -524,6 +535,7 @@ const BackgroundTypeItems = [
                     states:"",
                 },
                 url:"", 
+                urlType:"internal",
                 cssClass:"", 
                 preChildren:"Angle_double_right", 
                 postChildren:"", 
@@ -764,34 +776,6 @@ const HeadingTypeItems = [
         elements:[]
 
     }
-    // ,
-    // {
-    //     eleInfo:{
-    //         "id": "Accordion1",
-    //         "type": "Heading",
-    //         "props": {
-    //             "style": {
-    //                 animationStyle:'',
-    //                 animationDelay:'',
-    //                 animationDuration:'',
-    //                 animationIteration:'',
-    //             },
-    //             cssClass:"", 
-    //             styleClasses:{
-    //                 mainClassName:[],
-    //                 childClassName:[],
-    //                 states:"",
-    //             },
-    //             text:"Paragraph",
-    //             headingType:"paragraph",
-    //             name:"Paragraph",
-    //             mobileView:true,
-    //         },
-    //         "thumbnail": "Accordion.png"
-    //     },
-    //     elements:[]
-
-    // },
 ];    
 
 const ColumnTypeItems = [
@@ -847,7 +831,7 @@ const SocialIconTypeItems = [
                 sType:"SocialIcon",
                 icons:[
                     {
-                        url:"https://www.test.com",
+                        url:"#",
                         iconName:"Facebook",
                         iconColor:"#000",
                     },
@@ -994,21 +978,26 @@ const MenuTypeItems = [
                 showHamburgerMenu:false,
                 hamburgerIcon:"justify",
                 menuStyle:"horizontal",
+                logoUrlType:"internal",
+                logoHrefUrl:"#",
                 menuArr:[
                     {
-                        url:"https://www.test.com",
+                        url:"",
+                        urlType:"internal",
                         menuName:"Page 1",
                         menuIcon:"",
                         menuClassName:[],
                     },
                     {
-                        url:"https://www.test.com",
+                        url:"",
+                        urlType:"internal",
                         menuName:"Page 2",
                         menuIcon:"",
                         menuClassName:[],
                     },
                     {
-                        url:"https://www.test.com",
+                        url:"",
+                        urlType:"internal",
                         menuName:"Page 3",
                         menuIcon:"",
                         menuClassName:[],
@@ -1044,21 +1033,26 @@ const MenuTypeItems = [
                 hamburgerIcon:"justify",
                 hamburgerIconSize:"24px",
                 menuStyle:"vertical",
+                logoUrlType:"internal",
+                logoHrefUrl:"#",
                 menuArr:[
                     {
-                        url:"https://www.test.com",
+                        url:"#",
+                        urlType:"internal",
                         menuName:"Page 1",
                         menuIcon:"",
                         menuClassName:[],
                     },
                     {
-                        url:"https://www.test.com",
+                        url:"#",
+                        urlType:"internal",
                         menuName:"Page 2",
                         menuIcon:"",
                         menuClassName:[],
                     },
                     {
-                        url:"https://www.test.com",
+                        url:"#",
+                        urlType:"internal",
                         menuName:"Page 3",
                         menuIcon:"",
                         menuClassName:[],
@@ -1123,6 +1117,7 @@ const TimerTypeItems = [
                     endMinutes:0,
                     endMinutesDate:0,
                     redirectUrl:"",
+                    urlType:"internal",
                 },
             },
             "thumbnail": "timer1.png"
@@ -1178,6 +1173,7 @@ const TimerTypeItems = [
                     endMinutes:0,
                     endMinutesDate:0,
                     redirectUrl:"",
+                    urlType:"internal",
                 },
             },
             "thumbnail": "timer2.png"
@@ -1240,6 +1236,8 @@ const FaqItems = [
                 questionIdx:-1,
                 answerIdx:-1,
                 dataLimit:0,
+                queClassName:[],
+                ansClassName:[],
                 faqData:{
                     question:[],
                     answer:[],
@@ -1281,25 +1279,8 @@ const BannerItems = [
                     label:[],
                     content:[],
                 },
-                // bannerData:[
-                //    {
-                //         image:"https://d105z293na9jky.cloudfront.net/95cfaafda18b2568897054602a3b0fff-close-up-man-with-dog-veterinarian-checkup.jpg",
-                //         label:"First slide label",
-                //         content:"Some representative placeholder content for the first slide.",
-                //    },
-                //    {
-                //         image:"https://d105z293na9jky.cloudfront.net/9924a0ea15ce88eb3fcb85b7bb0e31f4-wepik-export-20230821100513BhlD.png",
-                //         label:"Second slide label",
-                //         content:"Some representative placeholder content for the first slide.",
-                //    },
-                //    {
-                //         image:"https://d105z293na9jky.cloudfront.net/1144160b71c81128a70211acf69d4587-banner6.jpg",
-                //         label:"Third slide label",
-                //         content:"Some representative placeholder content for the first slide.",
-                //    },
-                // ],
             },
-            "thumbnail": "Banner1.png"
+            "thumbnail": "banner1.png"
         },
         elements:[]
 
@@ -1330,6 +1311,7 @@ const ImageTypeItems = [
                 imageUrl:"https://d105z293na9jky.cloudfront.net/7e4a624c50369be9bd83ba3a8b033ef0-screenshot.jpg",
                 iconUrl:"",
                 link:"",
+                urlType:"internal",
                 iconName:"",
                 mobileView:true,
                 iType:"Image",
@@ -1362,6 +1344,7 @@ const ImageTypeItems = [
                 imageUrl:"",
                 iconUrl:"",
                 link:"",
+                urlType:"internal",
                 iconName:"",
                 mobileView:true,
                 iType:"Icon",
@@ -1454,7 +1437,7 @@ const FormTypeItems = [
                 name:"Form",
                 mobileView:true,
                 submitBtnName:"Submit",
-                redirectUrl:"http://www.google.com",
+                redirectUrl:"#",
                 autoResponder:"",
                 formType:"vertical",
                 formArr:[

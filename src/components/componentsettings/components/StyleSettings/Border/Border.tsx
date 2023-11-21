@@ -273,10 +273,10 @@ const Border = () => {
         Border Settings
       </div>
       <div style={{ display:`${selectedSetting === "border_setting" ? "block" : "none"}`, backgroundColor:"#0e0e0e" }}>
-        <div className={`${styles.mainContainer} inner_setting inner_range_setting`}>
+        <div className={`${styles.mainContainer} inner_setting inner_range_setting main-cnt-bg`}>
           <Range displayValue={true} format={OutlinedFormat} id="border" label="Border" min={0} max={64} step={1} defaultValue={borderVal} onChange={(e:any)=>setBorder('Border', e)} />
           <div className={`${styles.advSet}`} onClick={displayBorder}>Advanced Settings</div>
-          <div style={{ display:`${openBorder === true ? "block" : "none"}` }} className={`${styles.stMrgPdg}`}>
+          <div style={{ display:`${openBorder === true ? "block" : "none"}` }} className={`${styles.stMrgPdg} str-mrg-pdg-bd`}>
             <Range displayValue={true} format={OutlinedFormat} id="border_top" label="Top" min={0} max={64} step={1} defaultValue={borderTopVal} onChange={(e:any)=>setBorder('top', e)} />
             <Range displayValue={true} format={OutlinedFormat} id="border_right" label="Right" min={0} max={64} step={1} defaultValue={borderRightVal} onChange={(e:any)=>setBorder('right', e)} />
             <Range displayValue={true} format={OutlinedFormat} id="border_bottom" label="Bottom" min={0} max={64} step={1} defaultValue={borderBottomVal} onChange={(e:any)=>setBorder('bottom', e)} />
@@ -284,15 +284,15 @@ const Border = () => {
           </div>
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting`}>
+        <div className={`${styles.mainContainer} inner_setting main-cnt-bg`}>
           <Select selRef={borderTypeRef} format={OutlinedFormat} id="border_type" label="Border Type" items={BorderTypeItems} onChange={(e:any)=>setBorderType(e)} />
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting`}>
+        <div className={`${styles.mainContainer} inner_setting main-cnt-bg`}>
           <ColorPickerBox name="Border Color" colorHex={borderColor} retColor={handleChange} />
         </div>
 
-        <div className={`${styles.mainContainer} inner_setting inner_range_setting`}>
+        <div className={`${styles.mainContainer} inner_setting inner_range_setting main-cnt-bg`}>
           <Range displayValue={true} format={OutlinedFormat} id="border_radius" label="Border Radius" min={0} max={100} step={1} defaultValue={borderRadius} onChange={(e:any)=>setBorder('radius', e)} />
         </div>
       </div>

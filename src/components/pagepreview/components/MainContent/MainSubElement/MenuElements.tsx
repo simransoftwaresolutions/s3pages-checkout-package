@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import MenuAtom from '../../../components/Atoms/ElementsAtoms/MenuAtom';
 import { generateClassNameStr, generateChildClassNameStr, generateMenuClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
@@ -80,8 +79,8 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                     props?.showLogo === "true" && props?.logoUrl &&
                     (
                       <a 
-                        className="navbar-brand"
-                        href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : (props?.logoHrefUrl || "#") }
+                        className="navbar-brand" 
+                        href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : props?.logoHrefUrl }
                         // target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
                       >
                         <img className={`${styles?.imageResponsive} ${logoClsName}`} src={props?.logoUrl} />
@@ -97,23 +96,23 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                 </div>
                 
                 <div className={`${_flexCls}`}>
-                  <div className={`collapse navbar-collapse menuAlignLeft ${_menuAlignRightCls} ${menuAlignCls}`} id="n_bar">
+                  <div className={`collapse navbar-collapse menuAlignLeft ${_menuAlignRightCls} ${menuAlignCls} hm-menu-alignment-flex`} id="n_bar">
                       <ul className="navbar-nav">
                         {
                           props?.menuArr?.map((menu:any, mIndex:any) => {
                             const mClsName = generateMenuClassNameStr(props?.menuArr[mIndex]?.menuClassName);
                             if(menu?.url){
                               return <li className={`nav-item ${menuTextAlign}`} key={mIndex}>
-                                <a 
-                                  // target={ menu?.urlType === "internal" ? "_self" : "_blank" }
-                                  className={`${mClsName} ${childStyleName} nav-link menu-ele-anchor`} 
-                                  href={ menu?.urlType === "internal" ? getSeoUrlFromPageId(menu?.url) : menu?.url }
-                                >
-                                  {drawMenu(props?.iconPosition, menu)}
-                                </a>
-                              </li>
+                                      <a 
+                                        // target={ menu?.urlType === "internal" ? "_self" : "_blank" }
+                                        className={`${mClsName} ${childStyleName} nav-link menu-ele-anchor`} 
+                                        href={ menu?.urlType === "internal" ? getSeoUrlFromPageId(menu?.url) : menu?.url }
+                                      >
+                                        {drawMenu(props?.iconPosition, menu)}
+                                      </a>
+                                    </li>
                             }
-                            return <li className={`nav-item ${menuTextAlign}`} key={mIndex}><a className={`${mClsName} ${childStyleName} nav-link`}>{drawMenu(props?.iconPosition, menu)}</a></li>
+                            return <li className={`nav-item ${menuTextAlign}`} key={mIndex}><a className={`${mClsName} ${childStyleName} nav-link menu-ele-anchor`}>{drawMenu(props?.iconPosition, menu)}</a></li>
                           })
                         }
                       </ul>
@@ -130,8 +129,8 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                   (
                     <div>
                       <a 
-                        className="navbar-brand"
-                        href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : (props?.logoHrefUrl || "#") }
+                        className="navbar-brand" 
+                        href={ props?.logoUrlType === "internal" ? getSeoUrlFromPageId(props?.logoHrefUrl) : props?.logoHrefUrl }
                         // target={ props?.logoUrlType === "internal" ? "_self" : "_blank" }
                       >
                         <img className={`${styles?.imageResponsive} ${logoClsName}`} src={props?.logoUrl} />
@@ -140,7 +139,7 @@ const MenuElements = ({type, props, refBtn}:Prop) => {
                   )
                 }
               </div>
-              <div className={`${_flexCls} ${_displayCls} ${_menuAlignRightCls} menuAlignLeft ${menuAlignCls}`}>
+              <div className={`${_flexCls} ${_displayCls} ${_menuAlignRightCls} ${menuAlignCls} menu-alignment-flex`}>
                 <ul className={`nav ${_isHorzntlOrVert}`}>
                 {
                   props?.menuArr?.map((menu:any, mIndex:any) => {

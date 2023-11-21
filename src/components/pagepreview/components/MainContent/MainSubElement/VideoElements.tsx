@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../utils/functions";

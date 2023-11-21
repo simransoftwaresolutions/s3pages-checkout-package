@@ -60,7 +60,7 @@ const HtmlSetting = () => {
       </div>
       <div style={{ display:`${selectedSetting === "gen_html_setting" ? "block" : "none"}`, backgroundColor:"#0e0e0e" }}>
         
-        <div className={`${styles.mainContainer} inner_setting`}>
+        <div className={`${styles.mainContainer} html-set-main-cnt-gb inner_setting`}>
           <TextArea format={OutlinedFormat} defaultValue={text} onChangeTextarea={(e:any)=>handleText(e)} />
         </div>
 

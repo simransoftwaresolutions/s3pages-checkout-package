@@ -4,7 +4,6 @@ import { Range, Select, Text } from '../../Atoms/Input';
 import { useState, useEffect, useRef } from 'react';
 import { FontsNameItems, TextAlignItems } from '../../Atoms/datas/commonComponentData';
 import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsContext";
-import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
 import { setClassesName, deepCloneArray } from '../../../../../utils/functions';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
 import ColorPickerBox from '../../Atoms/ColorPickerBox';
@@ -25,16 +24,13 @@ const SocialIconSetting = () => {
   const { getStylesFromCtx, setStylesToCtx } = useSettingsCtx();
   const { statesName, activeDevice } = usePagesCtx();
 
-  const [iconColorSel, setIconColorSel] = useState<string[]>();
   const [iconColor, setIconColor] = useState<any[]>();
   const [iconUrl, setIconUrl] = useState<string[]>();
-  const [iconName, setIconName] = useState<string[]>();
   const iconNameRefs = useRef<any>([]);
   const [fontSizeVal, setFontSizeVal] = useState<number>(8);
   const [bgSizeVal, setBgSizeVal] = useState<number>(8);
   const [iconGapVal, setIconGapVal] = useState<number>(8);
   const [radiusVal, setRadiusVal] = useState<number>(0);
-  const [bgColorSel, setBgColorSel] = useState<string>("off");
   const [bgColor, setBgColor] = useState<any>();
   const alignRef = useRef<any>(null);
 
@@ -103,20 +99,18 @@ const SocialIconSetting = () => {
 
     if(icons){
       const tempI = [];
-      const tempIconColorSel = [];
       const tempIconUrl = [];
       for(let i=0; i<icons.length;i++){
-        tempI.push(icons[i]?.iconColor);
-        tempIconColorSel.push("off");
+        const _iconClr = getStylesFromCtx("color", (3+i));
+        tempI.push(_iconClr || "#000");
         tempIconUrl.push(icons[i]?.url);
         if(iconNameRefs && iconNameRefs.current[i]) iconNameRefs.current[i].value = icons[i]?.iconName; 
       }
       setIconColor(tempI);
-      setIconColorSel(tempIconColorSel);
       setIconUrl(tempIconUrl);
     }
 
-  }, [icons]);
+  }, [icons, statesName, activeDevice]);
   
   const displaySubSetting = (sIndex:string) => {
     if(sIndex === selectedSetting){
@@ -129,7 +123,10 @@ const SocialIconSetting = () => {
   const handleTextColorChange = (color:any, iIdx:any) => {
 
     let tempStyleCtx = getStyleOfElement();
-    if(tempStyleCtx.icons.length && tempStyleCtx.icons[iIdx]) tempStyleCtx.icons[iIdx].iconColor = color;
+    if(tempStyleCtx?.icons?.length && tempStyleCtx.icons[iIdx]){
+      const ret = setStylesToCtx(["color"], [`${color}`], (3+iIdx));
+      tempStyleCtx = setClassesName(ret, tempStyleCtx, (3+iIdx));
+    }
     setStyleOfElement(tempStyleCtx);
     
     const iColorTemp = deepCloneArray(iconColor);
@@ -211,31 +208,16 @@ const SocialIconSetting = () => {
     
   }
 
-  const handleColorToggle = (iIdx:number, value:string) => {
-    const tempIconColorSel = deepCloneArray(iconColorSel);
-    if(tempIconColorSel && tempIconColorSel[iIdx]) tempIconColorSel[iIdx] = value;
-    setIconColorSel(tempIconColorSel);
-  }
-
-  const handleBgColorToggle = (value:string) => {
-    setBgColorSel(value);
-  }
-
   const addNewIcon = () => {
     const newIcon = {
-      url:"https://www.google.com",
-      iconName:"Facebook",
+      url:"#",
+      iconName:"Twitter",
       iconColor:"#000",
     }
 
     let tempStyleCtx = getStyleOfElement();
     tempStyleCtx.icons.push(newIcon);
     setStyleOfElement(tempStyleCtx);
-
-    // const tempIcons = deepCloneArray(icons);
-    // tempIcons.push(newIcon);
-    // setIcons(tempIcons);
-
   }
 
   const deleteIcon = (iIdx:number) => {
@@ -243,7 +225,7 @@ const SocialIconSetting = () => {
 
     let tempStyleCtx = getStyleOfElement();
     tempIcons.splice(iIdx, 1);
-
+    if(tempStyleCtx.styleClasses?.childClassName[3+iIdx]) tempStyleCtx.styleClasses?.childClassName?.splice(3+iIdx, 1);
     tempStyleCtx.icons = tempIcons;
     setStyleOfElement(tempStyleCtx);
 

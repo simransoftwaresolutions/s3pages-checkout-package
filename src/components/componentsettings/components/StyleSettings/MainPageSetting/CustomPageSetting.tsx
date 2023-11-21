@@ -65,7 +65,7 @@ const CustomPageSetting = () => {
 
   return (
     <Fragment>
-      <div className={`${styles.subSettingTitle} ${styles.subSettingTitleLast} ${selectedSetting === "custcode_sub_page_setting" ? "active_subsetting" : ""}`} onClick={()=>displaySubSetting("custcode_sub_page_setting")}>
+      <div className={`${styles.subSettingTitle} ${styles.subSettingTitleLast} sub-set-ttl-last-bg ${selectedSetting === "custcode_sub_page_setting" ? "active_subsetting" : ""}`} onClick={()=>displaySubSetting("custcode_sub_page_setting")}>
         Custom Code Settings
       </div>
       <div style={{ display:`${selectedSetting === "custcode_sub_page_setting" ? "block" : "none"}`, backgroundColor:"#0e0e0e" }}>

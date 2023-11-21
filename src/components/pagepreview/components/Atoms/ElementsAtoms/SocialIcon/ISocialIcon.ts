@@ -33,5 +33,6 @@ export default interface SocialIconProps {
     refInner?:any;
     style?:Style;
     styleClasses?:any;
+    iIndex:number;
     onClick?:(e:React.MouseEvent<HTMLButtonElement>) => void;
 }

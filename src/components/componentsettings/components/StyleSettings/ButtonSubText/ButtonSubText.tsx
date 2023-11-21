@@ -101,7 +101,7 @@ const ButtonSubText = () => {
           <Text format={OutlinedFormat} id="main_btn_sub_text" label="Text" defaultValue={text} type="text" onChange={(e:any)=>setBtnText(e)} />
         </div>
         
-        <div className={`${styles.mainContainer} inner_setting`}>
+        <div className={`${styles.mainContainer} inner_setting clr-cnt`}>
           <ColorPickerBox name="Text Color" colorHex={textColor} retColor={handleTextColorChange} />
         </div>
 
