@@ -1,3 +1,3 @@
-import { HorizontalTextArea } from "../../../../componentsettings/components/Atoms/Input";
+import { Text } from "../../../../componentsettings/components/Atoms/Input";
 
 export default Text;
