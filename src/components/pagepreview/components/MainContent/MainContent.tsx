@@ -959,6 +959,9 @@ const MainContent = () => {
 
               const animationStrSec = `animate__animated ${animationStyleStrSec} ${animationDelayStrSec} ${animationDurationStrSec} ${animationIterationStrSec}`;
               const sectionStyleSelector = generateClassNameStr(sec?.eleInfo?.props?.styleClasses);
+
+              const sectionHeightCls = sec?.eleInfo?.props?.isHeightClass ? styles.secHeight : "";
+
               // const sectionStyleSelector = sec?.eleInfo?.props?.styleSelctor ? sec?.eleInfo?.props?.styleSelctor:"";
               /////////////////////////////////////////////////////////////////////////////
 
@@ -969,7 +972,7 @@ const MainContent = () => {
                   <section
                     key={sIndex+1} 
                     id={_sectionId}
-                    className={`${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} highlight`} 
+                    className={`${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} ${sectionHeightCls} highlight`} 
                     draggable={(selDragSection === sIndex && ENV.isViewReadOnly === false) ? "true":"false"} 
                     onDragLeave={(event:any) => onDragLeaveFromSection(event, sIndex)} 
                     onDragOver={(event) => onDragOverFromSection(event, sIndex)} 

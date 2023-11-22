@@ -12,11 +12,23 @@ const OutlinedFormat = {
   format: 'Outlined'
 }
 
+const heightItems = [
+  {
+    key:"auto",
+    label:"Auto"
+  },
+  {
+    key:"full_screen",
+    label:"Full Screen"
+  },
+]
+
 const SectionGenSettings = () => {
 
   const { selectedSetting, setSelectedSetting } = useSettingsCtx();
   const { getStyleOfElement, setStyleOfElement } = useSettingsCtx();
   const contWidthRef = useRef<any>(null);
+  const secheightRef = useRef<any>(null);
   const hAlignRef = useRef<any>(null);
   const vAlignRef = useRef<any>(null);
   const [ sectionId, setSectionId ] = useState<string>("");
@@ -34,6 +46,9 @@ const SectionGenSettings = () => {
     const cWidth = tempStyleCtx?.style?.contentWidth; // for container or container-fluid
     const contWidthEle = contWidthRef.current;
     if(contWidthEle && cWidth) contWidthEle.value = cWidth;
+    
+    const _isHeightClass = tempStyleCtx?.isHeightClass; // for section height
+    if(secheightRef && secheightRef?.current) secheightRef.current.value = _isHeightClass ? "full_screen" : "auto";
 
     const hAlign = tempStyleCtx?.style?.horizontalAlign;  // for horizontal align
     const hAlignEle = hAlignRef?.current;
@@ -61,6 +76,14 @@ const SectionGenSettings = () => {
 
     let tempStyleCtx = getStyleOfElement();
     tempStyleCtx.style.contentWidth = e.target.value;
+    setStyleOfElement(tempStyleCtx);
+
+  }
+
+  const handleSectionHeight = (e:React.ChangeEvent<HTMLSelectElement>) => {
+
+    let tempStyleCtx = getStyleOfElement();
+    tempStyleCtx.isHeightClass = e.target.value === "full_screen" ? true : false;
     setStyleOfElement(tempStyleCtx);
 
   }
@@ -102,6 +125,10 @@ const SectionGenSettings = () => {
           <Select selRef={contWidthRef} format={OutlinedFormat} label="Content width" items={SectionLayoutItems} onChange={(e:any)=>setWidthSettings(e)} />
         </div>
 
+        <div className={`${styles.mainContainer} inner_setting`}>
+          <Select selRef={secheightRef} format={OutlinedFormat} label="Height" items={heightItems} onChange={(e:any)=>handleSectionHeight(e)} />
+        </div>
+        
         <div className={`${styles.mainContainer} inner_setting`}>
           <Select selRef={hAlignRef} format={OutlinedFormat} label="Horizontal Align" items={TextAlignItems} onChange={(e:any)=>setHorizonatalAlignSetting(e)} />
         </div>

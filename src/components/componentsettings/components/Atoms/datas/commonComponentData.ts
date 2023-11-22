@@ -836,6 +836,70 @@ export const PreIconsItems = [
     key:"play_arrow",
     label:"Play Arrow",
   },
+  { 
+    key:"notifications",
+    label:"Notifications",
+  },
+  { 
+    key:"notifications_important",
+    label:"Notifications Important",
+  },
+  { 
+    key:"alarm",
+    label:"Alarm",
+  },
+  { 
+    key:"alarm_on",
+    label:"Alarm On",
+  },
+  { 
+    key:"speed",
+    label:"Speed",
+  },
+  { 
+    key:"shutterspeed",
+    label:"Shutterspeed",
+  },
+  { 
+    key:"fastfood",
+    label:"Fastfood",
+  },
+  { 
+    key:"list",
+    label:"List",
+  },
+  { 
+    key:"restaurant_menu",
+    label:"Restaurant Menu",
+  },
+  { 
+    key:"widgets",
+    label:"Widgets",
+  },
+  { 
+    key:"thumbup",
+    label:"Thumb Up",
+  },
+  { 
+    key:"youtube",
+    label:"YouTube",
+  },
+  { 
+    key:"work",
+    label:"Work",
+  },
+  { 
+    key:"work_history",
+    label:"Work History",
+  },
+  { 
+    key:"access_alarm",
+    label:"Access Alarm",
+  },
+  { 
+    key:"accessibility_new",
+    label:"Accessibility",
+  },
 ];
 
 export const FontFamilyItems = [
