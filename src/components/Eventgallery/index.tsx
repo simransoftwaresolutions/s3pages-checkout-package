@@ -12,7 +12,7 @@ import { MdOutlineZoomOutMap } from "react-icons/md";
 import Slider from "react-slick";
 import { IoClose } from "react-icons/io5";
 
-const GalleryData = [
+const defaultGalleryData = [
   {
     img: "http://landingpages.rgenesis.com/demos/images/party_800x600_01.jpg",
     heading: "Consetetur sadipscing",
@@ -54,7 +54,7 @@ const GalleryData = [
     date: "30 Dec, 2014",
   },
 ];
-export default function index() {
+export default function index({GalleryData}:any) {
   const [open, setOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -70,6 +70,7 @@ export default function index() {
     setSelectedImageIndex(index);
     setOpen(true);
   };
+  const GalleryData1 = GalleryData ? GalleryData :defaultGalleryData
   return (
     <Box>
       <Container>
@@ -81,7 +82,7 @@ export default function index() {
           </Box>
           <Box sx={{ paddingTop: "40px" }}>
             <Grid container spacing={1.5}>
-              {GalleryData.map((item, index) => (
+              {GalleryData1.map((item:any, index:any) => (
                 <Grid item xs={12} sm={6} md={4} lg={3}>
                   <Box>
                     <Box className="main_card">
@@ -154,20 +155,22 @@ export default function index() {
                 {...settings}
                 initialSlide={selectedImageIndex}
                 className="slickbottomslider1"
-                beforeChange={(oldIndex, newIndex) => setSelectedImageIndex(newIndex)}
+                beforeChange={(oldIndex, newIndex) =>
+                  setSelectedImageIndex(newIndex)
+                }
               >
-                {GalleryData.map((item, index) => (
+                {GalleryData1.map((item:any, index:any) => (
                   <div key={index}>
                     <img src={item.img} width="100%" alt={item.heading} />
                   </div>
                 ))}
               </Slider>
-              <Box sx={{textAlign:"right"}}>
+              <Box sx={{ textAlign: "right" }}>
                 <Typography
                   variant="body1"
                   sx={{ fontWeight: "400", color: "#fff" }}
                 >
-                    {selectedImageIndex + 1} of {GalleryData.length}
+                  {selectedImageIndex + 1} of {GalleryData1.length}
                 </Typography>
               </Box>
             </Box>

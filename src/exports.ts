@@ -7,6 +7,7 @@ import Bannersection from "./components/bannersection"
 import Tabs from "./components/Tabs" 
 import Slidercomponent from "./components/slidercomponent"    
 import Ourachivements from "./components/ourachievements"                    
+import Eventgallery from "./components/Eventgallery"                    
 export {
     CheckoutProduct,
     PreviewPage,
@@ -16,5 +17,6 @@ export {
     Tabs,
     Bannersection,
     Slidercomponent,
-    Ourachivements
+    Ourachivements,
+    Eventgallery
 }
