@@ -12,6 +12,7 @@ import Tabs from "./components/Tabs/index";
 import SliderComponent from "../src/components/slidercomponent/index";
 import Ourachievement from "./components/ourachievements/index"
 import Eventgallery from "./components/Eventgallery/index"
+import { Slidersection } from "./exports";
 const GalleryData = [
   {
     img: "http://landingpages.rgenesis.com/demos/images/party_800x600_01.jpg",
@@ -87,8 +88,9 @@ export default function componentName() {
         cardData={cardData}
         
       /> */}
-      {/* <Ourachievement /> */}
-      {/* <Eventgallery  /> */}
+
+      <Ourachievement />
+      <Eventgallery  />
       <PreviewPage />
     </>
   );
