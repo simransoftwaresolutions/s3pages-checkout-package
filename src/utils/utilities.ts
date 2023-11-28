@@ -31,6 +31,7 @@ import MainContent from "../components/pagepreview/components/MainContent";
 import StyleGenerater from "../components/pagepreview/components/Atoms/StyleGenerater";
 import FileManager from '../components/componentsettings/components/Atoms/FileManager';
 import DefaultImage from "../components/pagepreview/components/Atoms/DefaultImage";
+import PreviewElement from "../components/pagepreview/components/Atoms/PreviewElement";
 import { ToastContainer, toast } from 'react-toastify';
 
 import { 
@@ -154,6 +155,7 @@ export {
     StyleGenerater,
     FileManager,
     DefaultImage,
+    PreviewElement,
     ToastContainer, 
     toast,
     CloneCollectionData,
