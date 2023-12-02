@@ -566,3 +566,48 @@ span.faqarw svg {
     margin-bottom: 1px !important;
     background-color: #4c4c4c;
 }
+
+.overlay-top {
+}
+
+.overlay-bottom {
+}
+
+.overlay-left {
+}
+
+.overlay-right {
+}
+
+.overlay-top-left {
+}
+
+.overlay-top-right {
+}
+
+.overlay-bottom-left {
+}
+
+.overlay-bottom-right {
+}
+
+.overlay-center {
+}
+
+.overlay-full-screen {
+}
+
+.overlay-cross-icon::after {
+    content: "\00D7";
+    font-size: 18px;
+    color: #fff;
+    display: inline-block;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: red;
+    width: 22px;
+    text-align: center;
+    top:0;
+    right:14px;
+}

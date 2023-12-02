@@ -15,10 +15,11 @@ interface Prop {
   gridIdxs:any;
   curEleSIndex:number;
   isMytemplate?:boolean;
+  isMyOverlay?:boolean;
   // onClick:()=>void;
 }
 
-const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSIndex, isMytemplate}:Prop) => {
+const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSIndex, isMytemplate, isMyOverlay}:Prop) => {
 
   const [ text, setText ] = useState<any>();
   const [ showEditor, setShowEditor ] = useState(false);
@@ -148,7 +149,7 @@ const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSInde
   return (
     <Fragment>
       {
-        ENV.isViewReadOnly === true || isMytemplate ?
+        ENV.isViewReadOnly === true || isMytemplate || isMyOverlay ?
         (
           <span style={{color:"#000"}}><Heading refInner={refBtn} {...innerProps} /></span>          
         ):

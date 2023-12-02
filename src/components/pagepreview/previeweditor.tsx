@@ -28,7 +28,7 @@ interface PreviewPageProps {
 }
 
 const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
-  // ENV.isViewReadOnly = false;
+  ENV.isViewReadOnly = true;
 
   const id = "64661c4927827070ff3212e5";
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmZmZGZiOGJkM2QwMWU3OWE5MGE5OCIsImlhdCI6MTY4NzkyODcxMywiZXhwIjoxNzE5NDY0NzEzfQ.ITTlkhQCZyu-hHDPOa0PKC83p6cWMl6ab_p-0p-FOcM";
@@ -37,7 +37,7 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
   const { pageAction, setPageAction } = usePagesCtx();
   const { queryData, setQueryData, setGFonts, stylesGlobCtx, setStylesGlobCtx, setCssFromSettings } = usePagesCtx();
   const { funnelPages, setFunnelPages, stylesCtx, setStylesCtx } = usePagesCtx();
-  const { sectionCtx, setSectionCtx, setPageSeoUrlCtx, setMyTemplatesCtx, setMyTemplatesNameCtx } = useContentCtx();
+  const { sectionCtx, setSectionCtx, setPageSeoUrlCtx, setMyTemplatesCtx, setMyOverlayCtx, setMyTemplatesNameCtx, setMyOverlayNameCtx } = useContentCtx();
 
   useEffect(() => {
     if (token) {
@@ -184,7 +184,31 @@ const Previeweditor = ({ siteInfo, uriInfo }: PreviewPageProps) => {
       }
     }
 
+    const getMyOverlay = async() => {
+      if(queryData?.funnelId && queryData?.themeId){
+        const _myOverlayData = await GetAllSectionTags("overlays", queryData?.funnelId, queryData?.themeId);
+
+        if(_myOverlayData?.status){
+          const _overlayData = [];
+          const _overlayNameData = [];
+          for(let i=0; i<_myOverlayData?.data?.length; i++){
+            const _tempContents = _myOverlayData?.data[i]?.content ? JSON.parse(_myOverlayData?.data[i]?.content) : "";
+            _overlayData[_myOverlayData?.data[i]?.id] = _tempContents;
+
+            const _tempImg = _myOverlayData?.data[i]?.screenshot;
+            _overlayNameData[i] = {
+              id:_myOverlayData?.data[i]?.id,
+              img:_tempImg
+            }
+          }
+          setMyOverlayCtx(_overlayData);
+          setMyOverlayNameCtx(_overlayNameData);
+        }
+      }
+    }
+
     getMyTemplates();
+    getMyOverlay();
 
   }, [queryData?.funnelId, queryData?.themeId])
 

@@ -900,6 +900,106 @@ export const PreIconsItems = [
     key:"accessibility_new",
     label:"Accessibility",
   },
+  { 
+    key:"brush",
+    label:"Brush",
+  },
+  { 
+    key:"codeoff",
+    label:"Codeoff",
+  },
+  { 
+    key:"bolt",
+    label:"Bolt",
+  },
+  { 
+    key:"assistant_photo",
+    label:"Assistant Photo",
+  },
+  { 
+    key:"emojiflags",
+    label:"Emoji Flags",
+  },
+  { 
+    key:"tour",
+    label:"Tour",
+  },
+  { 
+    key:"push_pin",
+    label:"Push Pin",
+  },
+  { 
+    key:"mobile_friendly",
+    label:"Mobile Friendly",
+  },
+  { 
+    key:"mobile_screen_share",
+    label:"Mobile Screen Share",
+  },
+  { 
+    key:"chat",
+    label:"Chat",
+  },
+  { 
+    key:"forum",
+    label:"Forum",
+  },
+  { 
+    key:"diamond",
+    label:"Diamond",
+  },
+  { 
+    key:"link",
+    label:"Link",
+  },
+  { 
+    key:"track_changes",
+    label:"Track Changes",
+  },
+  { 
+    key:"radar",
+    label:"Radar",
+  },
+  { 
+    key:"timeline",
+    label:"Timeline",
+  },
+  { 
+    key:"line_axis",
+    label:"Line Axis",
+  },
+  { 
+    key:"trending_up",
+    label:"Trending Up",
+  },
+  { 
+    key:"trending_down",
+    label:"Trending Down",
+  },
+  { 
+    key:"addchart",
+    label:"Add Chart",
+  },
+  { 
+    key:"ssid_chart",
+    label:"Ssid Chart",
+  },
+  { 
+    key:"format_color_fill",
+    label:"Format Color Fill",
+  },
+  { 
+    key:"color_lens",
+    label:"Color Lens",
+  },
+  { 
+    key:"format_size",
+    label:"Format Size",
+  },
+  { 
+    key:"Font_Download",
+    label:"Font Download",
+  },
 ];
 
 export const FontFamilyItems = [

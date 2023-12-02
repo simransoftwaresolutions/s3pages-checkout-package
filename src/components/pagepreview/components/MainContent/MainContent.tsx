@@ -2,21 +2,7 @@ import { Fragment } from 'react';
 import { usePushCtx } from "../../../../context/pagepreview/PushContext";
 import { usePagesCtx } from "../../../../context/pagepreview/PagesContext";
 import { useSettingsCtx } from "../../../../context/pagepreview/SettingsContext";
-import { 
-  ButtonElements, 
-  HeadingElements, 
-  ProgressElements, 
-  GridElements, 
-  // NewGridElements, 
-  SocialIconElements, 
-  SeparatorElements, 
-  MenuElements, 
-  TimerElements, 
-  HtmlElements, 
-  ImageElements, 
-  VideoElements, 
-  FormElements, 
-} from './MainSubElement';
+import { GridElements } from './MainSubElement';
 import styles from '../../../../styles/pagepreview/MainContent.module.css';
 import { useState, useEffect, useRef } from "react";
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
@@ -60,6 +46,7 @@ const MainContent = () => {
           changeStyleOfElement,
           setChangeStyleOfElement,
           myTemplatesCtx,
+          myOverlayCtx,
           pageSeoUrlCtx,
         } = useContentCtx();
 
@@ -77,7 +64,6 @@ const MainContent = () => {
   const [ selDragSection, setSelDragSection ] = useState(-1);
 
   const { saveElementData, setSaveElementData } = usePushCtx();
-  const { saveElementDataUrl, setSaveElementDataUrl } = usePushCtx();
   const { createNewElement, setCreateNewElement } = usePushCtx();
 
   const { showSettingCtx, setShowSettingCtx } = usePushCtx();
@@ -307,17 +293,27 @@ const MainContent = () => {
         data:value
       });
     }
+
+    const _myOverlayCtx = [];
+    for ( const [key,value] of Object.entries(myOverlayCtx) ) {
+      _myOverlayCtx.push({
+        key:key,
+        data:value
+      });
+    }
     localStorage.removeItem("sectionCtx");
     localStorage.removeItem("templateCss");
     localStorage.removeItem("stylesCtx");
     localStorage.removeItem("stylesGlobCtx");
     localStorage.removeItem("myTemplatesCtx");
+    localStorage.removeItem("myOverlayCtx");
     localStorage.removeItem("pageSeoUrlCtx");
     localStorage.setItem('sectionCtx', JSON.stringify(sectionCtx));
     localStorage.setItem('templateCss', JSON.stringify(templateCss));
     localStorage.setItem('stylesCtx', JSON.stringify(stylesCtx));
     localStorage.setItem('stylesGlobCtx', JSON.stringify(stylesGlobCtx));
     localStorage.setItem('myTemplatesCtx', JSON.stringify(_myTemplatesCtx));
+    localStorage.setItem('myOverlayCtx', JSON.stringify(_myOverlayCtx));
     localStorage.setItem('pageSeoUrlCtx', JSON.stringify(pageSeoUrlCtx));
 
   }
@@ -411,18 +407,23 @@ const MainContent = () => {
     setIsSettingsOpen(true);
   }
   
-  const actionSectionComponent = (tooltipStr:string, sec:any, sIdx:number, isMytemplate:boolean, isMyComponent:boolean=false) => {
+  const actionSectionComponent = (tooltipStr:string, sec:any, sIdx:number, isMytemplate:boolean, isMyOverlay:boolean, isMyComponent:boolean=false) => {
 
     let showTooltip:boolean = true;
     if(contentAction.tooltipEnableString !== tooltipStr) showTooltip = false;
 
+    let globalComponent = "";
+    if(isMytemplate) globalComponent = "My Templates";
+    if(isMyOverlay) globalComponent = "Overlay";
+    if(isMyComponent) globalComponent = "My Component";
+
     return (
       ENV.isViewReadOnly === false && showTooltip && !updateSection?.sectionEditEnable && !saveElementsData?.showElement ?
       (
-        isMytemplate || isMyComponent ? 
+        globalComponent ? 
         (
           <span className={`${styles.actionSectionContainerChild} ${styles.noBorder}`}>
-            <span className={styles.heading}><b>{isMytemplate ? "My Templates" : "My Component"}</b></span>
+            <span className={styles.heading}><b>{globalComponent}</b></span>
             <span className={`${styles.sectionIcon}`}>
               <OpenWithOutlinedIcon fontSize="medium" onMouseDown={()=>setSelDragSection(sIdx)}/>
               <SettingsOutlinedIcon fontSize="medium" onClick={()=>openSectionSettings("Section", sIdx, sec, [])} />
@@ -707,21 +708,12 @@ const MainContent = () => {
 
  /////////////////////////////////////////////////////////////////////////////////////////////////
   const removeAllHover = () => {
-    
     const elements = document.querySelectorAll(".drag-over");
     if(elements.length > 0){
       for(let i=0;i<elements.length;i++){
         elements[i].classList.remove('drag-over');
       }
     }
-
-    // const sections = document.querySelectorAll(".section-pad");
-    // if(sections.length > 0){
-    //   for(let i=0;i<sections.length;i++){
-    //     sections[i].classList.remove('section-pad');
-    //   }
-    // }
-
   }
 
   const removeAllHighlightedHover = () => {
@@ -800,6 +792,10 @@ const MainContent = () => {
     if(ENV.isViewReadOnly === false){
       secRefs?.current[sIndex]?.classList.add('drag-over');
     }
+  }
+
+  const closeOverlay = (sIndex:number) => {
+    secRefs.current[sIndex].style.display = "none";
   }
 
   let deviceCls = "desktopclass";
@@ -900,7 +896,9 @@ const MainContent = () => {
 
               let sec = secDat;
               let _sectionId = secDat?.eleInfo?.props?.sectionId || "";
-              let isMytemplate = false; // For my templates
+
+              // For my templates
+              let isMytemplate = false;
               if(secDat?.eleInfo?.myTemplateId){
                 if(myTemplatesCtx[secDat?.eleInfo?.myTemplateId]){
                   sec = myTemplatesCtx[secDat?.eleInfo?.myTemplateId];
@@ -909,6 +907,28 @@ const MainContent = () => {
                 }
                 isMytemplate = true;
                 _sectionId = secDat?.eleInfo?.sectionId || "";
+              }
+              
+              // For my overlay
+              let isMyOverlay = false;
+              if(secDat?.eleInfo?.myOverlayId){
+                if(myOverlayCtx[secDat?.eleInfo?.myOverlayId]){
+                  sec = myOverlayCtx[secDat?.eleInfo?.myOverlayId];
+                }else{
+                  return;
+                }
+                isMyOverlay = true;
+                _sectionId = secDat?.eleInfo?.sectionId || "";
+              }
+
+              // Overlay component class generation 
+              let isOverlay = sec?.eleInfo?.props?.isOverlay || false;
+              const overlaySecCss = isOverlay ? styles.overlayStyle : "";
+              const overlayCrossEle = isOverlay ? <div className="overlay-cross-icon" onClick={()=>closeOverlay(sIndex)} ></div> : <></>;
+              const overlaySecContCss = isOverlay ? styles.overlayContStyle : "";
+              let overlaySecPosCss = "";
+              if(isOverlay && secDat?.eleInfo?.ovPosition){
+                overlaySecPosCss = `overlay-${secDat?.eleInfo?.ovPosition}`;
               }
 
               const sectionTooltipStr = "section_" + sIndex;
@@ -938,7 +958,7 @@ const MainContent = () => {
                       onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
                       onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
                     >
-                      {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate, true)}
+                      {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate, isMyOverlay, true)}
                       <div className={`${styles.myCompContainer}`}>
                         <div className={`${styles.dragndropimg} ${styles.placehodlerMyComp}`}>
                           <h4 className={`${styles.myComph4}`}>Placeholder for "{secDat?.eleInfo?.myComponentName}"</h4>
@@ -972,7 +992,7 @@ const MainContent = () => {
                   <section
                     key={sIndex+1} 
                     id={_sectionId}
-                    className={`${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} ${sectionHeightCls} highlight`} 
+                    className={`${overlaySecCss} ${overlaySecPosCss} ${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} ${sectionHeightCls} highlight`} 
                     draggable={(selDragSection === sIndex && ENV.isViewReadOnly === false) ? "true":"false"} 
                     onDragLeave={(event:any) => onDragLeaveFromSection(event, sIndex)} 
                     onDragOver={(event) => onDragOverFromSection(event, sIndex)} 
@@ -981,7 +1001,7 @@ const MainContent = () => {
                     onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
                     onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
                   >
-                    {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate)}
+                    {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate, isMyOverlay)}
                     {
                       sec?.elements?.length ?
                       sec?.elements?.map((eleData:any, eIdx:number) => {
@@ -990,7 +1010,7 @@ const MainContent = () => {
                         return (
                           <div 
                             key={eIdx} 
-                            className={`${sec?.eleInfo?.props?.style?.contentWidth ? sec?.eleInfo?.props?.style?.contentWidth : "container"}`}
+                            className={`${overlaySecContCss} ${sec?.eleInfo?.props?.style?.contentWidth ? sec?.eleInfo?.props?.style?.contentWidth : "container"}`}
                           >
                             {
                               eleData.eleInfo?.type === "Grid" && 
@@ -1002,8 +1022,10 @@ const MainContent = () => {
                                 gridIdx={eIdx}
                                 viewState={viewState}
                                 isMytemplate={isMytemplate}
+                                isMyOverlay={isMyOverlay}
                               />
                             }
+                            {overlayCrossEle}
                           </div>
                         )
                       }

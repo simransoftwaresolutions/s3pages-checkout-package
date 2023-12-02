@@ -29,6 +29,7 @@ import FormSetting from '../../StyleSettings/FormSetting'
 import FormEditSetting from '../../StyleSettings/FormEditSetting'
 import { GeneralPageSetting, SeoPageSetting, GraphPageSetting, SiteSearchPageSetting, CustomPageSetting } from '../../StyleSettings/MainPageSetting';
 import SectionGenSettings from '../../StyleSettings/SectionGenSettings';
+import OverlaySectionSettings from '../../StyleSettings/OverlaySectionSettings';
 import GridGenSettings from '../../StyleSettings/GridGenSettings';
 import ColumnGenSettings from '../../StyleSettings/ColumnGenSettings';
 import StyleSelectorSettings from '../../StyleSettings/StyleSelectorSettings';
@@ -312,6 +313,7 @@ const Settings = () => {
         {
           !pageAction.showPageSetting && ( changeStyleOfElement.type == 'Section') && 
           (changeStyleOfElement?.data?.eleInfo?.myTemplateId) && 
+          (!changeStyleOfElement?.data?.eleInfo?.myOverlayId) && 
           (!changeStyleOfElement?.data?.eleInfo?.myComponentKey) &&
           (
             <Fragment>
@@ -321,7 +323,19 @@ const Settings = () => {
         }
         {
           !pageAction.showPageSetting && ( changeStyleOfElement.type == 'Section') && 
-          (changeStyleOfElement?.data?.eleInfo?.myComponentKey) && 
+          (changeStyleOfElement?.data?.eleInfo?.myOverlayId) && 
+          (!changeStyleOfElement?.data?.eleInfo?.myTemplateId) &&
+          (!changeStyleOfElement?.data?.eleInfo?.myComponentKey) &&
+          (
+            <Fragment>
+              <OverlaySectionSettings />
+            </Fragment>
+          )
+        }
+        {
+          !pageAction.showPageSetting && ( changeStyleOfElement.type == 'Section') && 
+          (changeStyleOfElement?.data?.eleInfo?.myComponentKey) &&
+          (!changeStyleOfElement?.data?.eleInfo?.myOverlayId) &&  
           (!changeStyleOfElement?.data?.eleInfo?.myTemplateId) && 
           (
             <Fragment>
@@ -332,7 +346,8 @@ const Settings = () => {
         {
           !pageAction.showPageSetting && ( changeStyleOfElement.type == 'Section') && 
           (!changeStyleOfElement?.data?.eleInfo?.myTemplateId) && 
-          (!changeStyleOfElement?.data?.eleInfo?.myComponentKey) && 
+          (!changeStyleOfElement?.data?.eleInfo?.myComponentKey) &&
+          (!changeStyleOfElement?.data?.eleInfo?.myOverlayId) &&  
           (
             <Fragment>
               <StyleSelectorSettings />

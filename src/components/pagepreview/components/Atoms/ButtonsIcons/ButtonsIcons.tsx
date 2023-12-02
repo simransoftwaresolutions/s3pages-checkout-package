@@ -107,351 +107,360 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
+import AlarmIcon from '@mui/icons-material/Alarm';
+import AlarmOnIcon from '@mui/icons-material/AlarmOn';
+import SpeedIcon from '@mui/icons-material/Speed';
+import ShutterSpeedIcon from '@mui/icons-material/ShutterSpeed';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import ListIcon from '@mui/icons-material/List';
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import WorkIcon from '@mui/icons-material/Work';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+
+import BrushIcon from '@mui/icons-material/Brush';
+import CodeOffIcon from '@mui/icons-material/CodeOff';
+import BoltIcon from '@mui/icons-material/Bolt';
+import AssistantPhotoIcon from '@mui/icons-material/AssistantPhoto';
+import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
+import TourIcon from '@mui/icons-material/Tour';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
+
+import MobileFriendlyIcon from '@mui/icons-material/MobileFriendly';
+import MobileScreenShareIcon from '@mui/icons-material/MobileScreenShare';
+import ChatIcon from '@mui/icons-material/Chat';
+import ForumIcon from '@mui/icons-material/Forum';
+import DiamondIcon from '@mui/icons-material/Diamond';
+import LinkIcon from '@mui/icons-material/Link';
+import TrackChangesIcon from '@mui/icons-material/TrackChanges';
+import RadarIcon from '@mui/icons-material/Radar';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import LineAxisIcon from '@mui/icons-material/LineAxis';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import SsidChartIcon from '@mui/icons-material/SsidChart';
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import FormatSizeIcon from '@mui/icons-material/FormatSize';
+import FontDownloadIcon from '@mui/icons-material/FontDownload';
 
 interface ButtonProps{
     name:string;
-    // fontSize?:string;
     clsStr?:string;
 }
 
 const ButtonsIcons = ({ name, clsStr }:ButtonProps) => {
 
-    // const iconStyle = {
-    //     fontSize: fontSize,
-    // } 
-
     switch(name?.toLowerCase()){
         case 'angle_double_right':
             return <KeyboardDoubleArrowRightOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'film':
             return <TheatersOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'adjust':
             return <TonalityOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'align_center':
             return <FormatAlignCenterIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'justify':
             return <FormatAlignJustifyIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'align_left':
             return <FormatAlignLeftIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'align_right':
             return <FormatAlignRightIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'anchor':
             return <AnchorIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'android':
             return <AdbIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_double_down':
             return <KeyboardDoubleArrowDownOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_double_left':
             return <KeyboardDoubleArrowLeftOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_double_up':
             return <KeyboardDoubleArrowUpOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_down':
             return <KeyboardArrowDownOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_left':
             return <KeyboardArrowLeftOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_right':
             return <KeyboardArrowRightOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'angle_up':
             return <KeyboardArrowUpOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'archive':
             return <ArchiveIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'unarchive':
             return <UnarchiveIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_vertical':
             return <HeightOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'circle':
             return <LensOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'clock':
             return <AccessTimeOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'close':
             return <CloseOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'cloud':
             return <CloudIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'cloud_download':
             return <CloudDownloadIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'cloud_upload':
             return <CloudUploadIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'code':
             return <CodeIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'coffee':
             return <FreeBreakfastIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'cog':
             return <SettingsIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'column':
             return <ViewColumnIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'comment':
             return <ChatBubbleOutlineOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'compass':
             return <ExploreOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'copy':
             return <ContentCopyOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'copyright':
             return <CopyrightOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'credit_card':
             return <CreditCardOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'phone':
             return <LocalPhoneIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'location':
             return <LocationOnIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'email':
             return <EmailIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'send':
             return <SendIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'account_balance':
             return <AccountBalanceIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'attachment':
             return <AttachmentIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'user':
             return <PersonIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'users':
             return <GroupIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'check':
             return <CheckIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'checkbox':
             return <CheckBoxIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'home':
             return <HomeIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'computer':
             return <ComputerIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'desktop':
             return <PersonalVideoIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'camera':
             return <CameraAltIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'video':
             return <VideocamIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'image':
             return <ImageIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'upload':
             return <UploadIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'plane':
             return <AirplanemodeActiveIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'folder':
             return <FolderIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'shopping':
             return <ShoppingCartIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'message':
             return <MailOutlineIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'calendar':
             return <CalendarMonthIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
-        break;    
         case 'globe':
             return <LanguageIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'quote':
             return <FormatQuoteIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'search':
             return <SearchIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'forward':
             return <ForwardIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'reply':
             return <ReplyIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'pencil':
             return <EditIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'bookmark':
             return <StarIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'shield':
             return <ShieldIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'trophy':
             return <EmojiEventsIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'delete':
             return <DeleteOutlineIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'edit':
             return <BorderColorIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_right':
             return <ArrowRightIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_left':
             return <ArrowLeftIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_back':
             return <ArrowBackIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_forward':
             return <ArrowForwardIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'flatware':
             return <FlatwareIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'google':
             return <GoogleIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'headphones':
             return <HeadphonesIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'newspaper':
             return <NewspaperIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'play_circle':
             return <PlayCircleIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'rocket':
             return <RocketIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'savealt':
             return <SaveAltIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'download':
             return <DownloadIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'favorite':
             return <FavoriteIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'favorite_border':
             return <FavoriteBorderIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star_border':
             return <StarBorderIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'check_circle':
             return <CheckCircleIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'umbrella':
             return <UmbrellaIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'life_ring':
             return <SupportIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'thumb':
             return <RecommendIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'cell_wifi':
             return <CellWifiIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'network_wifi':
             return <NetworkWifiIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star':
             return <StarIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star_border_purple':
             return <StarBorderPurple500Icon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star_half':
             return <StarHalfIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star_outline':
             return <StarOutlineIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star_purple':
             return <StarPurple500Icon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'star_rate':
             return <StarRateIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_right_alt':
             return <ArrowRightAltIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_drop_down':
             return <ArrowDropDownIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_drop_up':
             return <ArrowDropUpIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_forward_ios':
             return <ArrowForwardIosIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_back_ios':
             return <ArrowBackIosIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_back_ios_new':
             return <ArrowBackIosNewIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_circle_left':
             return <ArrowCircleLeftIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_circle_right':
             return <ArrowCircleRightIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'arrow_circle_up':
             return <ArrowCircleUpIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'card_giftcard':
             return <CardGiftcardIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'keyboard_arrow_down':
             return <KeyboardArrowDownIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'keyboard_arrow_left':
             return <KeyboardArrowLeftIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'keyboard_arrow_up':
             return <KeyboardArrowUpIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'keyboard_arrow_right':
             return <KeyboardArrowRightIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
         case 'play_arrow':
             return <PlayArrowIcon className={`iconDefaultCss ${clsStr}`} />;
-        break;    
+        case 'notifications':
+            return <NotificationsNoneIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'notifications_important':
+            return <NotificationImportantIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'alarm':
+            return <AlarmIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'alarm_on':
+            return <AlarmOnIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'speed':
+            return <SpeedIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'shutterspeed':
+            return <ShutterSpeedIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'fastfood':
+            return <FastfoodIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'list':
+            return <ListIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'restaurant_menu':
+            return <RestaurantMenuIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'widgets':
+            return <WidgetsIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'thumbup':
+            return <ThumbUpIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'youtube':
+            return <YouTubeIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'work':
+            return <WorkIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'work_history':
+            return <WorkHistoryIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'access_alarm':
+            return <AccessAlarmIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'accessibility_new':
+            return <AccessibilityNewIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'brush':
+            return <BrushIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'codeoff':
+            return <CodeOffIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'bolt':
+            return <BoltIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'assistant_photo':
+            return <AssistantPhotoIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'emojiflags':
+            return <EmojiFlagsIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'tour':
+            return <TourIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'push_pin':
+            return <PushPinOutlinedIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'mobile_friendly':
+            return <MobileFriendlyIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'mobile_screen_share':
+            return <MobileScreenShareIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'chat':
+            return <ChatIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'forum':
+            return <ForumIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'diamond':
+            return <DiamondIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'link':
+            return <LinkIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'track_changes':
+            return <TrackChangesIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'radar':
+            return <RadarIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'timeline':
+            return <TimelineIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'line_axis':
+            return <LineAxisIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'trending_up':
+            return <TrendingUpIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'trending_down':
+            return <TrendingDownIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'addchart':
+            return <AddchartIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'ssid_chart':
+            return <SsidChartIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'format_color_fill':
+            return <FormatColorFillIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'color_lens':
+            return <ColorLensIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'format_size':
+            return <FormatSizeIcon className={`iconDefaultCss ${clsStr}`} />;
+        case 'font_download':
+            return <FontDownloadIcon className={`iconDefaultCss ${clsStr}`} />;
         default:
             return <></>;
-        break;    
     }
 
 };
