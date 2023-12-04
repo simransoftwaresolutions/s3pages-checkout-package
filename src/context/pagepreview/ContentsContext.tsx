@@ -94,15 +94,24 @@ type contentsContextType = {
   
   tempStyleSelector: TempStyleSelectorType; // Contains shadow copy of style selector information
   setTempStyleSelector:(tempStyleSelector:TempStyleSelectorType) => void;
-
-  pageSeoUrlCtx: any[]; // Contains Seo URL
-  setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => void;
-
+  
   myTemplatesCtx: any[]; // Contains templates created by owner
   setMyTemplatesCtx:(myTemplatesCtx:any[]) => void;
+    
+  myOverlayCtx: any[]; // Contains Overlay created by owner
+  setMyOverlayCtx:(myOverlayCtx:any[]) => void;
   
   myTemplatesNameCtx: any[]; // Contains templates name and ID created by owner
   setMyTemplatesNameCtx:(myTemplatesNameCtx:any[]) => void;
+    
+  myOverlayNameCtx: any[]; // Contains Overlay name and ID created by owner
+  setMyOverlayNameCtx:(myOverlayNameCtx:any[]) => void;
+  
+  pageSeoUrlCtx: any[]; // Contains Seo URL
+  setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => void;
+  
+  myComponentCtx: any[]; // Contains my component name
+  setMyComponentCtx:(myComponentCtx:any[]) => void;
 
 };
 
@@ -127,14 +136,23 @@ const contentsContextDefaultValues: contentsContextType = {
   tempStyleSelector: defaultTempStyleSelector,
   setTempStyleSelector:(tempStyleSelector:TempStyleSelectorType) => {},
 
-  pageSeoUrlCtx: [],
-  setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => {},
-  
   myTemplatesCtx: [],
   setMyTemplatesCtx:(myTemplatesCtx:any[]) => {},
 
+  myOverlayCtx: [],
+  setMyOverlayCtx:(myOverlayCtx:any[]) => {},
+
   myTemplatesNameCtx: [],
   setMyTemplatesNameCtx:(myTemplatesNameCtx:any[]) => {},
+
+  myOverlayNameCtx: [],
+  setMyOverlayNameCtx:(myOverlayNameCtx:any[]) => {},
+
+  pageSeoUrlCtx: [],
+  setPageSeoUrlCtx:(pageSeoUrlCtx:any[]) => {},
+
+  myComponentCtx: [],
+  setMyComponentCtx:(myComponentCtx:any[]) => {},
 };
 
 const ContentsContext = createContext<contentsContextType>(contentsContextDefaultValues);
@@ -155,9 +173,12 @@ export const ContentsProvider = ({ children }: Props) => {
     const [hoveredElement, _setHoveredElement] = useState<HoveredElementType>(defaultHoveredElement);
     const [contentAction, _setContentAction] = useState<ContentActionType>(defaultContentAction);
     const [tempStyleSelector, _setTempStyleSelector] = useState<TempStyleSelectorType>(defaultTempStyleSelector);
-    const [pageSeoUrlCtx, _setPageSeoUrlCtx] = useState<any[]>([]);
     const [myTemplatesCtx, _setMyTemplatesCtx] = useState<any[]>([]);
+    const [myOverlayCtx, _setMyOverlayCtx] = useState<any[]>([]);
     const [myTemplatesNameCtx, _setMyTemplatesNameCtx] = useState<any[]>([]);
+    const [myOverlayNameCtx, _setMyOverlayNameCtx] = useState<any[]>([]);
+    const [pageSeoUrlCtx, _setPageSeoUrlCtx] = useState<any[]>([]);
+    const [myComponentCtx, _setMyComponentCtx] = useState<any[]>([]);
 
     const setSectionCtx = (sectionsCtx:SectionsType[]) => {
       _setSectionCtx(sectionsCtx);
@@ -187,7 +208,7 @@ export const ContentsProvider = ({ children }: Props) => {
     const setContentAction = (newContentAction:ContentActionType) => {
       const newState = {...contentAction, ...newContentAction};
       if (newState !== contentAction) {
-          // _setContentAction(newState);
+          _setContentAction(newState);
       }
     }
 
@@ -198,16 +219,28 @@ export const ContentsProvider = ({ children }: Props) => {
       }
     }
 
-    const setPageSeoUrlCtx = (pageSeoUrlCtx:any[]) => {
-      _setPageSeoUrlCtx(pageSeoUrlCtx);
-    };
-
     const setMyTemplatesCtx = (myTemplatesCtx:any[]) => {
       _setMyTemplatesCtx(myTemplatesCtx);
     };
 
+    const setMyOverlayCtx = (myOverlayCtx:any[]) => {
+      _setMyOverlayCtx(myOverlayCtx);
+    };
+
     const setMyTemplatesNameCtx = (myTemplatesNameCtx:any[]) => {
       _setMyTemplatesNameCtx(myTemplatesNameCtx);
+    };
+
+    const setMyOverlayNameCtx = (myOverlayNameCtx:any[]) => {
+      _setMyOverlayNameCtx(myOverlayNameCtx);
+    };    
+
+    const setPageSeoUrlCtx = (pageSeoUrlCtx:any[]) => {
+      _setPageSeoUrlCtx(pageSeoUrlCtx);
+    };
+
+    const setMyComponentCtx = (myComponentCtx:any[]) => {
+      _setMyComponentCtx(myComponentCtx);
     };
 
     const value = {
@@ -223,12 +256,18 @@ export const ContentsProvider = ({ children }: Props) => {
       setContentAction,
       tempStyleSelector,
       setTempStyleSelector,
-      pageSeoUrlCtx,
-      setPageSeoUrlCtx,
       myTemplatesCtx,
       setMyTemplatesCtx,
+      myOverlayCtx,
+      setMyOverlayCtx,
       myTemplatesNameCtx,
       setMyTemplatesNameCtx,
+      myOverlayNameCtx,
+      setMyOverlayNameCtx,
+      pageSeoUrlCtx,
+      setPageSeoUrlCtx,
+      myComponentCtx,
+      setMyComponentCtx,
     };
 
     return (

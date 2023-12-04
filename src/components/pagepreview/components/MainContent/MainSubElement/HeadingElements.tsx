@@ -1,10 +1,8 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import Heading from '../../../components/Atoms/ElementsAtoms/Heading';
 import { InlineEditor } from './InlineEditor';
 import { useState, useEffect, useRef } from "react";
 import { deepCloneArray, generateClassNameStr } from '../../../../../utils/functions';
-import { usePushCtx } from "../../../../../context/pagepreview/PushContext";
 import ENV from '../../../../../utils/env';
 import styles from '../../../../../styles/pagepreview/MainContent.module.css';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
@@ -17,10 +15,11 @@ interface Prop {
   gridIdxs:any;
   curEleSIndex:number;
   isMytemplate?:boolean;
+  isMyOverlay?:boolean;
   // onClick:()=>void;
 }
 
-const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSIndex, isMytemplate}:Prop) => {
+const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSIndex, isMytemplate, isMyOverlay}:Prop) => {
 
   const [ text, setText ] = useState<any>();
   const [ showEditor, setShowEditor ] = useState(false);
@@ -150,7 +149,7 @@ const HeadingElements = ({type, headEleIdx, props, refBtn, gridIdxs, curEleSInde
   return (
     <Fragment>
       {
-        ENV.isViewReadOnly === true || isMytemplate ?
+        ENV.isViewReadOnly === true || isMytemplate || isMyOverlay ?
         (
           <span style={{color:"#000"}}><Heading refInner={refBtn} {...innerProps} /></span>          
         ):

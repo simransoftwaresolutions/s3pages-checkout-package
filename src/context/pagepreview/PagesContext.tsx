@@ -69,6 +69,8 @@ interface UpdateSectionType {
     copySectionDetails?:any;
     editSection?:boolean;
     editSectionDetails?:any;
+    addSection?:boolean;
+    addSectionDetails?:any;
     sectionIdx?:number;
 }
 
@@ -83,6 +85,8 @@ const defaultUpdateSection:UpdateSectionType = {
     copySectionDetails:null,
     editSection:false,
     editSectionDetails:null,
+    addSection:false,
+    addSectionDetails:null,
     sectionIdx:0,
 }
 

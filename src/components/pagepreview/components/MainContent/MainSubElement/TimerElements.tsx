@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import TimerAtom from '../../../components/Atoms/ElementsAtoms/TimerAtom';
 import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
@@ -33,15 +32,15 @@ const TimerElements = ({type, props, refBtn}:Prop) => {
       </div>
     )
   }
-  
+
   const redUrl = getSeoUrlFromPageId(props?.timerGeneralData?.redirectUrl || "");
   const completeTimer = () => {
     if(typeof window !== "undefined" && props?.timerGeneralData?.redirectUrl){
       if (props?.timerGeneralData?.urlType === "internal") {
-          window.location.href = redUrl;
+        window.location.href = redUrl;
       } else {
+        // window.open(props?.timerGeneralData?.redirectUrl, "_blank");
         window.location.href = props?.timerGeneralData?.redirectUrl;
-          // window.open(props?.timerGeneralData?.redirectUrl, "_blank");
       }
     }
   }

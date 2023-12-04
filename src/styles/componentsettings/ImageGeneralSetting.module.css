@@ -1,0 +1,51 @@
+.subSettingTitle {
+    padding:5px;
+    /* background-color:orange; */
+    background-color: #555;
+    color:#fff; 
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding:10px 20px;
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}
+.colorBoxBg{
+    width: 100px !important;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+     margin-top: 2px !important;
+}
+
+.urlAtomElement{
+    margin-bottom: 1px !important;
+    background-color: #4c4c4c;
+}
