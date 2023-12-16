@@ -213,6 +213,9 @@ type pagesContextType = {
     pagesArr: PagesType[];
     setPagesArr:(ele:PagesType[]) => void;
 
+    hideOverlayArr: number[];
+    setHideOverlayArr:(hideOverlayArr:number[]) => void;
+
     funnelPages: any[];
     setFunnelPages:(ele:any[]) => void;
 
@@ -285,6 +288,9 @@ const pagesContextDefaultValues: pagesContextType = {
     pagesArr: defaultPagesProps,
     setPagesArr:(ele:PagesType[]) => {},
 
+    hideOverlayArr: [],
+    setHideOverlayArr:(hideOverlayArr:number[]) => {},
+
     funnelPages: [],
     setFunnelPages:(ele:any[]) => {},
 
@@ -350,6 +356,7 @@ type Props = {
 
 export const PagesProvider = ({ children }: Props) => {
     const [pagesArr, _setPagesArr] = useState<PagesType[]>(defaultPagesProps);
+    const [hideOverlayArr, _setHideOverlayArr] = useState<number[]>([]);
     const [funnelPages, _setFunnelPages] = useState<any[]>([]);
     const [pageAction, _setPageAction] = useState<PagesContextData>(defaultPageActionProps);
     const [userInfo, _setUserInfo] = useState<UserInfoType>(defaultUserInfo);
@@ -370,6 +377,10 @@ export const PagesProvider = ({ children }: Props) => {
 
     const setPagesArr = (ele:PagesType[]) => {
         _setPagesArr(ele);
+    };
+
+    const setHideOverlayArr = (hideOverlayArr:number[]) => {
+        _setHideOverlayArr(hideOverlayArr);
     };
 
     const setFunnelPages = (ele:any[]) => {
@@ -466,6 +477,8 @@ export const PagesProvider = ({ children }: Props) => {
     const value = {
         pagesArr,
         setPagesArr,
+        hideOverlayArr,
+        setHideOverlayArr,
         funnelPages,
         setFunnelPages,
         pageAction,

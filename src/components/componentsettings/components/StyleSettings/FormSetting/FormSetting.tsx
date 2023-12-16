@@ -10,7 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import OpenWithOutlinedIcon from '@mui/icons-material/OpenWithOutlined';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
-import { GetAutoResponderData } from "../../../../../service/pagepreview/PagesServices";
+import { GetAutoResponderData, GetFormTags } from "../../../../../service/pagepreview/PagesServices";
 import CommonStylesSettings from '../CommonStylesSettings';
 import { usePagesCtx } from '../../../../../context/pagepreview/PagesContext';
 import UrlAtom from '../../Atoms/ElementsAtoms/UrlAtom';
@@ -29,6 +29,7 @@ const FormSetting = () => {
   } = useContentCtx();
 
   const autoRef = useRef<any>(null);
+  const tagsRef = useRef<any>(null);
   const formTypeRef = useRef<any>(null);
   const btnWidthRef = useRef<any>(null);
   const btnTextAlignRef = useRef<any>(null);
@@ -39,6 +40,7 @@ const FormSetting = () => {
   const [formHoverIdx, setFormHoverIdx] = useState<number>(-1);
   const [curFormIdx, setCurFormIdx] = useState<number>(-1);
   const [autoResData, setAutoResData] = useState<any[]>([]);
+  const [tagsResData, setTagsResData] = useState<any[]>([]);
   const [textColor, setTextColor] = useState<any>();
   const [urlType, setUrlType] = useState<string>("");
 
@@ -59,8 +61,40 @@ const FormSetting = () => {
       setAutoResData(_autoResData);
     }
 
+    const getTags = async() => {
+
+      const _tags = await GetFormTags();
+
+      if(!_tags?.status) return;
+      const _tagsResData = [];
+      for(let i=0; i< _tags?.data?.length; i++){
+        _tagsResData[i] = { 
+          key:_tags?.data[i]?.id,
+          label:_tags?.data[i]?.tag,
+        }
+      }
+      setTagsResData(_tagsResData);
+    }
+
     getAutoRespndrdata();
+    getTags();
   }, [])
+
+  useEffect(()=>{
+    if(tagsResData?.length){
+      let tempStyleCtx = getStyleOfElement();
+      const _tags = tempStyleCtx?.tags;
+      if(tagsRef && tagsRef?.current) tagsRef.current.value = _tags || "";
+    }
+  }, [tagsResData, changeStyleOfElement])
+
+  useEffect(()=>{
+    if(autoResData?.length){
+      let tempStyleCtx = getStyleOfElement();
+      const _autoResponder = tempStyleCtx?.autoResponder;
+      if(autoRef && autoRef?.current) autoRef.current.value = _autoResponder || "";
+    }
+  }, [autoResData, changeStyleOfElement])
 
   useEffect(() => {
     if(openForm) return;
@@ -81,9 +115,6 @@ const FormSetting = () => {
 
     const _submitBtnName = tempStyleCtx?.submitBtnName;
     setSubmitBtnName(_submitBtnName);
-
-    const _autoResponder = tempStyleCtx?.autoResponder;
-    if(autoRef && autoRef.current) autoRef.current.value = _autoResponder;
 
     const _formType = tempStyleCtx?.formType;
     if(formTypeRef && formTypeRef.current){
@@ -253,6 +284,14 @@ const FormSetting = () => {
 
   }
 
+  const handleTags = (e:any) => {
+    
+    const tempStyleCtx  = getStyleOfElement();
+    tempStyleCtx.tags = e.target.value;
+    setStyleOfElement(tempStyleCtx);
+
+  }
+
   const handleFormType = (e:any) => {
     
     const tempStyleCtx  = getStyleOfElement();
@@ -304,6 +343,7 @@ const FormSetting = () => {
           <div><CommonStylesSettings componentName={"Row"} componentNumber={8}/></div>
           <div><CommonStylesSettings componentName={"Submit Button"} componentNumber={9}/></div>
           <div className={`inner_setting`}><Select selRef={autoRef} label="Auto Responder" items={autoResData} onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>handleAutoResponder(e)} /></div>
+          <div className={`inner_setting`}><Select selRef={tagsRef} label="Tags" items={tagsResData} onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>handleTags(e)} /></div>
           <div className={`inner_setting`}><Select selRef={formTypeRef} label="Form Type" items={MenuStyleItems} onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>handleFormType(e)} /></div>
           <div className={`${styles.mainContainer} url-atom-element`}>
             <UrlAtom getUrl={handleRedirectUrl} getUrlType={handleUrlType} urlTypeVal={urlType} menuUrlVal={redirectUrl} label="Redirect URL"/>

@@ -15,7 +15,6 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import {  
   deepCloneSection, 
   deepCloneArray, 
-  getElementName, 
   getTemplateStyle,
   getDraggedElement,
   getHoveredElement,  
@@ -23,7 +22,6 @@ import {
   generateClassNameStr,
 } from '../../../../utils/functions';
 import ENV from '../../../../utils/env';
-import GetElements from '../../../../service/pagepreview/GetElements';
 import { CreateTemplate, UpdateTemplate } from '../../../../service/pagepreview/TemplateServices';
 import { DeletePage, ClonePage } from '../../../../service/pagepreview/PagesServices';
 import EditSectionTopbar from '../../components/Atoms/EditSectionTopbar';
@@ -82,7 +80,7 @@ const MainContent = () => {
   
   const { pageAction, setPageAction, pagesArr, setPagesArr, stylesCtx, setStylesCtx, stylesGlobCtx } = usePagesCtx();
 
-  const { funnelPages, setFunnelPages, updateSection, setUpdateSection, saveElementsData, activeDevice, setActiveDevice } = usePagesCtx();
+  const { hideOverlayArr, setHideOverlayArr, funnelPages, setFunnelPages, updateSection, setUpdateSection, saveElementsData, activeDevice, setActiveDevice } = usePagesCtx();
 
   const [ activeHighlight, setActiveHighlight ] = useState(false);
   const [ extDivMinHeight, setExtDivMinHeight ] = useState<number>(0);
@@ -377,6 +375,13 @@ const MainContent = () => {
   const handleDeleteSection = (sIndex:number) => {
     const curSectionCtx = deepCloneSection(sectionCtx);
     curSectionCtx.splice(sIndex, 1);
+    
+    // Restructure hide overlay array
+    let indexToRemove = hideOverlayArr?.indexOf(sIndex);
+    if (indexToRemove !== -1) hideOverlayArr?.splice(indexToRemove, 1); // remove current section if it is overlay
+    const _hideOverlayArr = hideOverlayArr.map(element => (element > sIndex) ? element - 1 : element);
+    setHideOverlayArr(_hideOverlayArr);
+
     setSectionCtx(curSectionCtx);
   }
 
@@ -476,25 +481,6 @@ const MainContent = () => {
     setDraggedElement({...draggedElement, ..._element});
   }
 
-  const createNewClassOfElement = () => { // create and apply class name for css
-    const _cssClassArr = deepCloneArray(stylesCtx);
-    const _secFormBlcSelctor = (draggedElement?.type ? draggedElement.type.toLowerCase() : "newele") + Date.now().toString(36);
-    draggedElement.data.eleInfo.props.styleSelctor = _secFormBlcSelctor;
-
-    let _tempStyle = {
-      data:{
-          type: "class",
-          name: _secFormBlcSelctor,
-          selector: `.${_secFormBlcSelctor}`,
-          styles: draggedElement?.data?.eleInfo?.props?.styles ? draggedElement?.data?.eleInfo?.props?.styles: "",
-          children: [],
-      }
-
-    };
-    _cssClassArr.styles.push(_tempStyle);
-    setStylesCtx(_cssClassArr);
-  }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
   const dropSection = (ev:any) => { // called on drop in section
 
@@ -513,10 +499,13 @@ const MainContent = () => {
     if(draggedElement?.from === "blocks" && draggedElement?.type === "Section"){
       // this code is called on section drop from blocks
 
-      // createNewClassOfElement(); // craete class name for element and applied predefined css of element
       const _tempSectionsCtx = deepCloneArray(sectionCtx);
       if(hoveredElement.sectionIdx > -1 && (hoveredElement.sectionIdx+1) < _tempSectionsCtx.length){
         _tempSectionsCtx.splice((hoveredElement.sectionIdx), 0, draggedElement?.data);
+        
+        // Restructure hide overlay array
+        const _hideOverlayArr = hideOverlayArr.map(element => (element >= hoveredElement.sectionIdx) ? element + 1 : element);
+        setHideOverlayArr(_hideOverlayArr);
       }else{
         _tempSectionsCtx.push(draggedElement?.data);
       }
@@ -538,13 +527,25 @@ const MainContent = () => {
 
         if(hoveredElement.sectionIdx < draggedElement.sectionIdx){
           _tempSectionsCtx.splice((draggedElement.sectionIdx+1), 1);
+
+          // Restructure hide overlay array
+          const _hideOverlayArr = hideOverlayArr.map(element => (element >= hoveredElement.sectionIdx && element < draggedElement.sectionIdx) ? element + 1 : element);
+          setHideOverlayArr(_hideOverlayArr);
         }else{
           _tempSectionsCtx.splice(draggedElement.sectionIdx, 1); 
+                              
+          // Restructure hide overlay array
+          const _hideOverlayArr = hideOverlayArr.map(element => (element < hoveredElement.sectionIdx && element >= draggedElement.sectionIdx) ? element - 1 : element);
+          setHideOverlayArr(_hideOverlayArr);
         }
 
       }else{
         _tempSectionsCtx.push(draggedElement?.data);
         _tempSectionsCtx.splice(draggedElement.sectionIdx, 1);  
+                
+        // Restructure hide overlay array
+        const _hideOverlayArr = hideOverlayArr.map(element => (element >= draggedElement.sectionIdx) ? element - 1 : element);
+        setHideOverlayArr(_hideOverlayArr);
       }
       setSectionCtx(_tempSectionsCtx);
 
@@ -664,8 +665,6 @@ const MainContent = () => {
 
       if(!sectionCtx?.length) return;
       if(hoveredElement?.type === 'Section' && draggedElement?.type !== "Grid") return;
-
-      // createNewClassOfElement(); // craete class name for element and applied predefined css of element
 
       let _hoverEleIdx = -1; // _hoverEleIdx is hovered element index
       let _hoverLength = 0; // length of hover element pointing index array
@@ -794,8 +793,60 @@ const MainContent = () => {
     }
   }
 
-  const closeOverlay = (sIndex:number) => {
-    secRefs.current[sIndex].style.display = "none";
+  const closeOverlay = (sIndex:number) => { // for Overlay close 
+    secRefs.current[sIndex].classList.add("ov_close_int");
+    if(ENV.isViewReadOnly === false){
+      if(hideOverlayArr.indexOf(sIndex) === -1){
+        hideOverlayArr.push(sIndex);
+        setHideOverlayArr(hideOverlayArr);
+      }
+      if(!secRefs?.current[sIndex]?.classList?.contains("overlay-hide")) secRefs.current[sIndex].classList.add("overlay-hide");
+      if(secRefs?.current[sIndex]?.classList.contains('overlay-tgl-show')) secRefs?.current[sIndex]?.classList.remove('overlay-tgl-show');
+    }else{
+      if(secRefs?.current[sIndex]?.classList.contains("ov_show_int")) secRefs.current[sIndex].classList.remove("ov_show_int");
+    }
+  }
+
+  useEffect(() => { // for overlay close at exit intent
+    const handleMouseLeave = (e:any) => {
+      const exitIntentThreshold = 20;
+
+      if (e.clientY <= exitIntentThreshold && ENV.isViewReadOnly !== false ) {
+
+        for(let i=0;i< secRefs?.current?.length; i++){
+          if (!secRefs?.current[i]?.classList.contains('ov_hide') && secRefs?.current[i]?.classList?.contains('ov_exit_int')) {
+            secRefs?.current[i]?.classList.add('ov_hide');
+            secRefs?.current[i]?.classList.add('ov_show_int');
+          }
+        }
+
+      }
+    };
+
+    if(typeof document !== 'undefined') document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      if(typeof document !== 'undefined') document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  // overlay intent setting function for readonly view
+  const overlayDisplay = (isOverlay:boolean, sIndex:number, ovShowOn:string | undefined, ovShowDelay:number | undefined) => {
+    if(isOverlay && ENV.isViewReadOnly !== false){ // for start intent show after delay
+      switch(ovShowOn){
+        case "exit_intent":
+          if(secRefs?.current[sIndex] && !secRefs.current[sIndex].classList.contains('ov_close_int')) secRefs.current[sIndex].classList.add('ov_exit_int');
+          break;
+        case "start_intent":
+          setTimeout(()=>{
+            if(secRefs?.current[sIndex] && !secRefs.current[sIndex].classList.contains('ov_close_int')) secRefs.current[sIndex].classList.add('ov_show_int');
+          },((ovShowDelay || 0) * 1000));
+          break;
+        default:
+          if(secRefs?.current[sIndex] && !secRefs.current[sIndex].classList.contains('ov_close_int')) secRefs.current[sIndex].classList.add('ov_show_int');
+      }
+    }
+    return <></>;
   }
 
   let deviceCls = "desktopclass";
@@ -868,6 +919,7 @@ const MainContent = () => {
                 handlePreview={handlePreview}
                 handleSave={handleSave}
                 activeHighlight={activeHighlight}
+                secRefs={secRefs}
                 handleHighlight={handleHighlight}
               />
             }
@@ -922,13 +974,21 @@ const MainContent = () => {
               }
 
               // Overlay component class generation 
-              let isOverlay = sec?.eleInfo?.props?.isOverlay || false;
-              const overlaySecCss = isOverlay ? styles.overlayStyle : "";
-              const overlayCrossEle = isOverlay ? <div className="overlay-cross-icon" onClick={()=>closeOverlay(sIndex)} ></div> : <></>;
+              const isOverlay = sec?.eleInfo?.props?.isOverlay || false;
+              const overlaySecCss = isOverlay ? (ENV.isViewReadOnly === false ? styles.overlayAbStyle : styles.overlayStyle) : "";
+              const overlayHide = isOverlay && (hideOverlayArr.indexOf(sIndex) !== -1 || ENV.isViewReadOnly !== false) ? "overlay-hide" : "";
+              const ovTglCls = isOverlay && ENV.isViewReadOnly === false ? "overlay-toggle-cls" : "";
+              const overlayCrossEle = isOverlay ? <div style={{ color: secDat?.eleInfo?.ovXIconColor || "#fff" }} className="overlay-cross-icon"><div onClick={()=>closeOverlay(sIndex)} className="circle-with-cross" ></div></div> : <></>;
               const overlaySecContCss = isOverlay ? styles.overlayContStyle : "";
               let overlaySecPosCss = "";
               if(isOverlay && secDat?.eleInfo?.ovPosition){
                 overlaySecPosCss = `overlay-${secDat?.eleInfo?.ovPosition}`;
+              }
+              let overlayMinWidth:any = {};
+              let overlayMinHeight:any = {};
+              if(isOverlay && secDat?.eleInfo?.ovPositionType === "popup"){
+                overlayMinWidth = { minWidth: `${secDat?.eleInfo?.ovMinWidth}px` };
+                overlayMinHeight = { minHeight: `${secDat?.eleInfo?.ovMinHeight}px` };
               }
 
               const sectionTooltipStr = "section_" + sIndex;
@@ -992,7 +1052,8 @@ const MainContent = () => {
                   <section
                     key={sIndex+1} 
                     id={_sectionId}
-                    className={`${overlaySecCss} ${overlaySecPosCss} ${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} ${sectionHeightCls} highlight`} 
+                    className={`${overlaySecCss} ${overlaySecPosCss} ${overlayHide} ${ovTglCls} ${sectionStyleSelector} ${styles.actionSectionContainerParent} ${animationStrSec} ${sectionHeightCls} section-print highlight`} 
+                    style={{...overlayMinWidth, ...overlayMinHeight}}
                     draggable={(selDragSection === sIndex && ENV.isViewReadOnly === false) ? "true":"false"} 
                     onDragLeave={(event:any) => onDragLeaveFromSection(event, sIndex)} 
                     onDragOver={(event) => onDragOverFromSection(event, sIndex)} 
@@ -1001,7 +1062,14 @@ const MainContent = () => {
                     onMouseLeave={(ev:any) => onMouseLeaveFromSec(ev)} 
                     onMouseOver={(ev:any) => onMouseOverFromSec(ev, sIndex, sectionTooltipStr)}
                   >
+
+                    {
+                      // overlay intent display function
+                      overlayDisplay(isOverlay, sIndex, secDat?.eleInfo?.ovShowOn, secDat?.eleInfo?.ovShowDelay)
+                    }
+
                     {sectionHoverIdx === sIndex && actionSectionComponent(sectionTooltipStr, secDat, sIndex, isMytemplate, isMyOverlay)}
+                    
                     {
                       sec?.elements?.length ?
                       sec?.elements?.map((eleData:any, eIdx:number) => {

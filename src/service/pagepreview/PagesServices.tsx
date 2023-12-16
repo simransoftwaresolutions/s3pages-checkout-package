@@ -263,7 +263,7 @@ export const GetThemeSiteStyles = async(id:any) => {
 
 export const GetAutoResponderData = () => {
 
-    const url = `${ENV.apiRoot}api/autoresponder`;
+    const url = `${ENV.apiRoot}api/autoresponder/client/installed`;
     const token = `${ENV.auth}`;
 
     const options = {
@@ -281,6 +281,30 @@ export const GetAutoResponderData = () => {
     })
     .then(async data => {
             // console.log(data);
+            return (data);
+        }
+    );
+}
+
+export const GetFormTags = () => {
+
+    const url = `${ENV.apiRoot}api/tags`;
+    const token = `${ENV.auth}`;
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        },
+        maxRedirects: 20,
+    };
+
+    return fetch(url, options)
+    .then(response => {
+        return response.json();
+    })
+    .then(async data => {
             return (data);
         }
     );

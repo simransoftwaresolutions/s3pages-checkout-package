@@ -66,16 +66,18 @@ const FormElements = ({type, props, refBtn}:Prop) => {
       setValidation(_validation);
       if(!_pageId){toast.error("Something went wrong."); return;}
       req["page"] = _pageId;
+      req["auto-responder"] = props?.autoResponder || "";
+      req["tags"] = props?.tags || "";
       const res = await SubmitFormApi(req);
       if(res?.status){
         toast.success(res?.message);
 
         if(props?.redirectUrl){
           if (props?.urlType === "internal") {
-              window.location.href = redUrl;
+              // window.location.href = redUrl;
           } else {
               // window.open(props?.redirectUrl, "_blank");
-              window.location.href = props?.redirectUrl;
+              // window.location.href = props?.redirectUrl;
           }
         }
 

@@ -12,7 +12,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import AltRouteOutlinedIcon from '@mui/icons-material/AltRouteOutlined';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-// import Link from 'next/link';
+import LayersIcon from '@mui/icons-material/Layers';
+import LayersClearIcon from '@mui/icons-material/LayersClear';
 
 interface PageTopbarProps {
     onRedo: () => void,
@@ -23,6 +24,7 @@ interface PageTopbarProps {
     handlePreview: () => void,
     handleSave: () => void,
     activeHighlight:boolean,
+    secRefs:any,
     handleHighlight: () => void,
 }
 
@@ -35,13 +37,38 @@ const PageTopbar = ({
                             handlePreview,
                             handleSave,
                             activeHighlight,
+                            secRefs,
                             handleHighlight,
                             }:PageTopbarProps) => {
 
-    const { pageAction, setPageAction } = usePagesCtx();
+    const { setHideOverlayArr, pageAction, setPageAction } = usePagesCtx();
 
     const showSections = () => {
         setPageAction({...pageAction, showSectionPopup:true});
+    }
+
+    const [ isShowOvs, setIsShowOvs ] = useState<boolean>(false);
+
+    const tglFunc = () => {
+        let idxArr = [];
+        for(let i=0;i<secRefs?.current?.length; i++){
+          if(secRefs?.current[i]?.classList?.contains('overlay-toggle-cls')) {
+            if(isShowOvs){
+                secRefs?.current[i]?.classList.remove('overlay-tgl-show');
+                secRefs?.current[i]?.classList.add('overlay-hide');
+                idxArr.push(i);
+            }else{
+                secRefs?.current[i]?.classList.add('overlay-tgl-show');
+                secRefs?.current[i]?.classList.remove('overlay-hide');
+            }
+          }
+        }
+
+        if(isShowOvs){
+            setHideOverlayArr(idxArr);
+        }else{
+            setHideOverlayArr([]);
+        }
     }
 
     return (
@@ -49,6 +76,24 @@ const PageTopbar = ({
             <div className={`${styles.prevSve}`}>
                 <div className={`${styles.viewSizes1}`}>
                     <span className={`${styles.UndoRedu}`}>
+                        
+                        {
+                            isShowOvs ?
+                            <button onClick={()=>{setIsShowOvs(false);tglFunc();}}>
+                                <div className="tooltip">
+                                    <LayersClearIcon />
+                                    <span className="tooltiptext">Hide Overlay</span>
+                                </div>
+                            </button>
+                            :
+                            <button onClick={()=>{setIsShowOvs(true);tglFunc();}}>
+                                <div className="tooltip">
+                                    <LayersIcon />
+                                    <span className="tooltiptext">Show Overlay</span>
+                                </div>
+                            </button>
+                        }
+
                         <button>
                             <div className="tooltip">
                                 <UndoIcon />

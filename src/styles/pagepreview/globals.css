@@ -568,46 +568,116 @@ span.faqarw svg {
 }
 
 .overlay-top {
+    top: 0;
+    width:100%;
 }
 
 .overlay-bottom {
+    bottom: 0;
+    width:100%;
 }
 
 .overlay-left {
+    transform: translate(0%, -50%);
+    left: 0;
+    top: 50%;
 }
 
 .overlay-right {
+    transform: translate(0%, -50%);
+    right: 0;
+    top: 50%;
 }
 
 .overlay-top-left {
+    top: 0;
+    left: 0;
 }
 
 .overlay-top-right {
+    top: 0;
+    right: 0;
 }
 
 .overlay-bottom-left {
+    bottom:0;
+    left:0;
 }
 
 .overlay-bottom-right {
+    bottom:0;
+    right:0;
 }
 
 .overlay-center {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
 }
 
-.overlay-full-screen {
-}
+/* .overlay-full-screen {
+    width:100%;
+    height: 100%;
+} */
 
-.overlay-cross-icon::after {
-    content: "\00D7";
-    font-size: 18px;
-    color: #fff;
+.overlay-cross-icon {
     display: inline-block;
     position: absolute;
     cursor: pointer;
+    top: 0px;
+    right: 0px;
+}
+
+.overlay-hide {
+    display: none;
+}
+
+.overlay-tgl-show {
+    display: block !important;
+}
+
+.ov_show_int {
+    display: block;
+}
+.circle-with-cross {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
     border-radius: 50%;
-    background-color: red;
-    width: 22px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .circle-with-cross:before {
+    content: '\00D7';
+    position: absolute;
+    height: 11px;
+    width: 2px;
+    font-size: 20px;
+  }
+    
+  .circle-with-cross:before {
+    top: 0px;
+    left: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+  }
+  
+.ldrbtn-cnt {
     text-align: center;
-    top:0;
-    right:14px;
+    margin-top: 20px !important;
+}
+
+.ldrbtn-cnt .btn-ldmr {
+    color: #999;
+    border: 1px solid #fff;
+}
+
+.ldrbtn-cnt .btn-ldmr:hover {
+    color: #fff;
 }

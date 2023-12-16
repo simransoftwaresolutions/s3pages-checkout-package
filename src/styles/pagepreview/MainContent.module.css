@@ -401,9 +401,18 @@
 
 .overlayStyle{
     position: fixed;
-    z-index: 99;
+    z-index: 9999;
+}
+
+.overlayAbStyle{
+    position: absolute;
+    z-index: 9999;
 }
 
 .overlayContStyle{
-    position: fixed;
+    position: initial;
+}
+
+.mainCntcls {
+    position: relative;
 }
