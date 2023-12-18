@@ -74,10 +74,10 @@ const FormElements = ({type, props, refBtn}:Prop) => {
 
         if(props?.redirectUrl){
           if (props?.urlType === "internal") {
-              // window.location.href = redUrl;
+              window.location.href = redUrl;
           } else {
               // window.open(props?.redirectUrl, "_blank");
-              // window.location.href = props?.redirectUrl;
+              window.location.href = props?.redirectUrl;
           }
         }
 
