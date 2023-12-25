@@ -12,7 +12,7 @@ import Tabs from "./components/Tabs/index";
 import SliderComponent from "../src/components/slidercomponent/index";
 import Ourachievement from "./components/ourachievements/index"
 import Eventgallery from "./components/Eventgallery/index"
-import { Slidersection } from "./exports";
+import  Slidersection  from "../src/components/slidersection";
 const GalleryData = [
   {
     img: "http://landingpages.rgenesis.com/demos/images/party_800x600_01.jpg",
@@ -55,6 +55,7 @@ const GalleryData = [
     date: "30 Dec, 2014",
   },
 ];
+
 export default function componentName() {
   // const [ sInfo, setSInfo ] = useState<any>([]);
   // const [ uInfo, setUInfo ] = useState<any>([]);
@@ -88,9 +89,9 @@ export default function componentName() {
         cardData={cardData}
         
       /> */}
-
+  <Slidersection/>
       <Ourachievement />
-      <Eventgallery  />
+      <Eventgallery   />
       <PreviewPage />
     </>
   );
