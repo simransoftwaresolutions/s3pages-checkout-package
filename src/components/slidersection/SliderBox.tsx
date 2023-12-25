@@ -52,6 +52,7 @@ export default function SliderBox({
   variableWidth: true,
   infinite: true,
   arrows: false,
+  pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1025,
