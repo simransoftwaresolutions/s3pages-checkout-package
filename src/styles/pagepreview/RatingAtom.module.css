@@ -1,6 +1,6 @@
 .ratingCnt{
     align-items: center;
-    display: flex;
+    display: inline-flex;
 }
 
 .rateText{

@@ -203,9 +203,9 @@ const PreviewElement = ({data, type}:PreviewEleType) => {
     }
 
     return (
-        <>
+        <div className='section-print'>
             {drawElement()}
-        </>
+        </div>
     )
 
 };

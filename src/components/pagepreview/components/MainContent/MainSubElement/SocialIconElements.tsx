@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import SocialIcon from '../../../components/Atoms/ElementsAtoms/SocialIcon';
 import RatingAtom from '../../../components/Atoms/ElementsAtoms/RatingAtom';
@@ -25,7 +24,7 @@ const SocialIconElements = ({type, refBtn, props}:Prop) => {
             <div className={`${styles.socialIconCnt}`}>
               {
                 props?.icons?.map((icons:any, iIndex:any) => {
-                  return <SocialIcon icons={icons} key={`icon${iIndex}`} style={props.style} styleClasses={props?.styleClasses} />
+                  return <SocialIcon iIndex={iIndex} icons={icons} key={`icon${iIndex}`} style={props.style} styleClasses={props?.styleClasses} />
                 })
               }
             </div>

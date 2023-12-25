@@ -1,0 +1,11 @@
+.sectionContainer {
+    margin-top: 5px;
+    border:1px solid #dfdfdf;
+    min-height: 100px;
+}
+
+.innerModalContent {
+    width: 680px;
+    top: 150px;
+    left:10px;
+}

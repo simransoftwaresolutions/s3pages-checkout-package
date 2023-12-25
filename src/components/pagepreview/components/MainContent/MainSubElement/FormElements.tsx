@@ -1,8 +1,7 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import FormAtom from '../../../components/Atoms/ElementsAtoms/FormAtom';
 import { useState, useEffect, useRef } from "react";
-import { generateClassNameStr, generateFormClassNameStr, generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
+import { generateClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
 import { usePagesCtx } from '../../../../../context/pagepreview/PagesContext';
 import { SubmitFormApi } from "../../../../../service/pagepreview/PagesServices";
 import { toast } from 'react-toastify';
@@ -30,7 +29,7 @@ const FormElements = ({type, props, refBtn}:Prop) => {
     let isValidate = true;
 
     let activePage = pageAction?.activePage ? pageAction?.activePage : 0;
-    const _pageId = queryData?.pageId || "";
+    const _pageId = funnelPages[activePage]?.pageData?.id || queryData?.pageId;
     
     let req:any = {};
     for(let i=0; i<props?.formArr?.length; i++){
@@ -67,17 +66,21 @@ const FormElements = ({type, props, refBtn}:Prop) => {
       setValidation(_validation);
       if(!_pageId){toast.error("Something went wrong."); return;}
       req["page"] = _pageId;
+      req["auto-responder"] = props?.autoResponder || "";
+      req["tags"] = props?.tags || "";
       const res = await SubmitFormApi(req);
       if(res?.status){
         toast.success(res?.message);
+
         if(props?.redirectUrl){
           if (props?.urlType === "internal") {
-            window.location.href = redUrl;
+              window.location.href = redUrl;
           } else {
-            // window.open(props?.redirectUrl, "_blank");
-            window.location.href = props?.redirectUrl;
+              // window.open(props?.redirectUrl, "_blank");
+              window.location.href = props?.redirectUrl;
           }
         }
+
       }else{
         toast.error(res?.message);
       }

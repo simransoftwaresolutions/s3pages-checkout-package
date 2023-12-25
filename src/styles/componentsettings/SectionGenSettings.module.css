@@ -1,0 +1,39 @@
+.subSettingTitle {
+    
+    padding: 5px;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #635c5c;
+    font-size: 14px;
+    border-bottom: 0;
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding:5px;
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}

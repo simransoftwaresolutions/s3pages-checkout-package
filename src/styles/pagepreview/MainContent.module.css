@@ -377,3 +377,42 @@
     margin: 0 1px;
     box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
 }
+.placehodlerMyComp {
+    padding: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.myCompContainer {
+    background: #ecf3fe;
+    margin-bottom: 20px;
+}
+.myComph4 {
+    color: #999;
+    font-size: 25px !important;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    font-weight: 700 !important;
+}
+
+.secHeight {
+    min-height: 100vh;
+    align-items: center;
+    display: flex;
+}
+
+.overlayStyle{
+    position: fixed;
+    z-index: 9999;
+}
+
+.overlayAbStyle{
+    position: absolute;
+    z-index: 9999;
+}
+
+.overlayContStyle{
+    position: initial;
+}
+
+.mainCntcls {
+    position: relative;
+}

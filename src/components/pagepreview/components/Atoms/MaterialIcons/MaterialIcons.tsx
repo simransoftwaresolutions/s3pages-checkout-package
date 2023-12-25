@@ -38,8 +38,8 @@ const MaterialIcons = ({ name, iconclass="" }:ButtonProps) => {
         case 'Pages':
             return <WebIcon className={`${iconclass}`} />;
         break;    
-        // case 'Settings':
-        //     return <SettingsSuggestOutlinedIcon className={`${iconclass}`} />;
+        case 'Settings':
+            return <SettingsSuggestOutlinedIcon className={`${iconclass}`} />;
         break;    
         case 'Blocks':
             return <ViewInArOutlinedIcon className={`${iconclass}`} />;
@@ -52,9 +52,6 @@ const MaterialIcons = ({ name, iconclass="" }:ButtonProps) => {
         break;    
         case 'Banner':
             return <ViewCarouselIcon className={`${iconclass}`} />;
-        break;    
-        case 'Settings':
-            return <SettingsSuggestOutlinedIcon className={`${iconclass}`} />;
         break;    
         case 'Sections':
             return <AccountTreeOutlinedIcon className={`${iconclass}`} />;

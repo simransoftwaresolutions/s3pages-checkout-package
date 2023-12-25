@@ -193,9 +193,9 @@ export const GetSection = (siteId:string, themeId:string) => {
     );
 }
 
-export const GetAllSectionTags = ($tags:string, siteId:string, themeId:string) => {
+export const GetAllSectionTags = ($tags:string, siteId:string, themeId:string, page:number=1, limit:number=30) => {
 
-    const url = `${ENV.apiRoot}api/elements?limit=30&page=1&sortby=title&type=section&tags=${$tags}&site=${siteId}&themeId=${themeId}`;
+    const url = `${ENV.apiRoot}api/elements?limit=${limit}&page=${page}&sortby=title&type=section&tags=${$tags}&site=${siteId}&themeId=${themeId}`;
     const token = `${ENV.auth}`;
 
     const options = {

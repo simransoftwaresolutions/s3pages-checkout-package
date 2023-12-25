@@ -347,7 +347,7 @@ p.simpleText {
 .fieldCount p {
     color: #999;
 }
-.d-flex.align-items-center.addCollection_fieldCount__6X5MU p {
+.d-flex.align-items-center.field-count-gb p {
     color: #999;
 }
 
@@ -499,10 +499,6 @@ span.questionsquare {
     color: #ccc;
 }
 
-/*.textfieldtype label {
-    display: inherit;
-    margin-bottom: 5px;
-}*/
 .inputNumbercomp input {
     background: rgb(43, 43, 43);
     border-radius: 2px;
@@ -538,7 +534,6 @@ span.questionsquare {
     border: 1px solid #444;
     color: #d9d9d9;
     cursor: text;
-    /*font-size: 13px;*/
     display: block;
     margin-bottom: 20px;
 }
@@ -1011,7 +1006,7 @@ span.setNumbers {
 .rightSidebar h2 { 
     color: #ffffffde;
 }
-.addCollection_addCollectionUpper__KvO9J h1 {
+.add-collection-upr-bg h1 {
     color: #ffffffd3;
 }
 .clt-name {
@@ -1027,20 +1022,22 @@ span.setNumbers {
     color: #ffffffd3;
 }
 
-.addCollection_fieldBox__gMTuq p {
+.field-box-bg p {
     color: #ccc;
 }
-.addCollection_fieldBox__gMTuq h1 {
+.field-box-bg h1 {
     color: #fff;
-}.addCollection_header__02nug p {
+}
+
+.coltion-hdr-bg p {
     color: #ccc;
 }
-.layout_fieldsForm__ZFwHk label {
+.fieldsform-gb label {
     color: #ccc;
 }
-.addCollection_header__02nug h1 {
+.coltion-hdr-bg h1 {
     color: #ccc;
 }
-.addCollection_header__02nug button {
+.coltion-hdr-bg button {
     color: #ccc !important;
 }

@@ -1,8 +1,7 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import styles from '../../../../../styles/pagepreview/MainSubElement.module.css';
 import ButtonsIcons from '../../../components/Atoms/ButtonsIcons';
-import { generateClassNameStr, generateChildClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
+import { generateClassNameStr, getSeoUrlFromPageId } from "../../../../../utils/functions";
 
 interface Prop {
   type:string;
@@ -29,7 +28,9 @@ const ImageElements = ({type, refBtn, props}:Prop) => {
                 <img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} />
               </a>)
               :
-              (<a><img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} /></a>)
+              (<a target="_blank">
+                <img className={`${styleSelectorName} ${styles?.imageResponsive}`} src={props?.imageUrl} />
+              </a>)
             }
           </>
         )

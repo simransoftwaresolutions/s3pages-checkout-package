@@ -1,0 +1,448 @@
+.fileManagerMainContainer{
+    height: 100% !important;
+    width: 98.5% !important;
+    /* background-color: #e8e8e8; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.addNewFolderInput{
+    position: absolute;
+    bottom: 0px;
+    background: #d2d1d1;
+    padding: 10px;
+    left: 0px;
+    font-size: 13px;
+    width: 100%;
+}
+.addNewFolderInput svg{
+    color: #b4b7ba;
+    opacity: 0.9;
+}
+.addNewFolderInput svg:hover{
+    opacity: 1;
+}
+
+.folderIconColor svg{
+    color: #d2d1d1;
+}
+
+.uppderHeader{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+.uppderHeader>h1{
+    font-size: 1.4rem;
+    color: #3F88B3;
+    text-shadow: 1px 1px #fff !important;
+}
+
+.upperHeaderInput{
+    height: 40px;
+    width: max-content;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+.upperHeaderInput:hover>svg{
+    color: #3F88B3;
+    font-size: 1.4rem !important; 
+}
+.upperHeaderInput > svg{
+    color: #0009;
+    font-size: 1.2rem;
+    transition: .2s;
+}
+.upperHeaderInput > input{
+    height: 70%;
+    padding: 0 5px;
+    border: none;
+    outline: none;
+    border-left: 1px solid #0003;
+    margin-left: 5px;
+    color: #0009;
+}
+.fileBodyToggle{
+    height: 90% !important;
+    width: 100%;
+    padding: 0 20px;
+    background-color: #fff;
+    display: flex;
+    overflow-y: scroll;
+}
+.fileTreeView{
+    width: 25% !important;
+    height: 100%;
+    padding: 30px 0;
+
+}
+
+.fileBody{
+    position: relative;
+    height: 83vh;
+    width: 70%;
+    border-left: 1px solid #0002;
+}
+
+.fileTreeViewList:hover{
+    background-color: #0001;
+}
+.fileTreeViewList{
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.fileTreeViewList1{
+    display: flex;
+    height: 20px;
+    align-items: center;
+}
+.fileTreeViewList1 > svg{
+    color: #0006;
+    margin-bottom: 6px;
+    
+}
+.fileTreeViewList1 > p{
+    font-size: .85rem;
+    color: #0009;
+    margin-bottom: -2px;
+
+}
+.subFolder{
+    padding: 10px 25px;
+    padding-bottom: 0;
+}
+.subFolderList{
+    height: max-content;
+    width: 100%;
+     margin-bottom: 10px;
+}
+
+
+.fileBodyHeader{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 50px;
+    border-bottom: 1px solid #0002;
+}
+.fileHeaderBreadCrumb{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.fileBodyHeaderInput{
+    position: relative;
+    width: 90%;
+    margin-left: 10px;
+    height: 25px;
+    border-bottom: 1px solid #0003;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;    
+}
+.fileBodyHeaderInput:hover {
+    background-color: #0001;
+}
+.fileBodyHeaderInput:hover >.addFolder1 > svg{
+    transform: scale(1.1);
+}
+.folderImageTitle{
+    font-size: .75rem !important;
+    word-break: break-all;
+    word-wrap: break-word;
+    text-decoration: none !important;
+    color: #6c757d;
+}
+.addFolder > p{
+    margin-right: 5px !important;
+    font-size: .9rem;
+}
+.addFolder{
+    width: fit-content;
+    cursor: pointer;
+    width: max-content;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    color: #0008;
+}
+
+.addFolder:hover>span{
+    left: 10px;
+    transform: scale(1);
+
+}
+.addFolder>svg:nth-child(1){
+    color: #4fb1eb;
+}
+.addFolder>svg:nth-child(2){
+    color: #3F88B3;
+}
+.addFolder> span{
+    top: 25px;
+    left: 20px;
+    width: max-content;
+    border-radius: 10px;
+    font-size: .7rem;
+    background-color: #000;
+    color: #ffffffc0;
+    padding: 2px 15px;
+    position: absolute;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: .2s;
+}
+.folderBody{
+    height: 88.5% !important;
+    width: 100%;
+    overflow-y: scroll;
+}
+.fileBodyToggle::-webkit-scrollbar ,
+.folderBody::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  .fileBodyToggle::-webkit-scrollbar-track ,
+  .folderBody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  .fileBodyToggle::-webkit-scrollbar-thumb ,
+  .folderBody::-webkit-scrollbar-thumb {
+    background: #888888b6;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .fileBodyToggle::-webkit-scrollbar-thumb:hover ,
+  .folderBody::-webkit-scrollbar-thumb:hover {
+    background: #479bcc;
+  }
+
+
+.folderList:hover{
+    background-color: #00000007;
+    cursor: pointer;
+}
+.folderList{
+    padding: 10px ;
+    align-items: center;
+    display: flex;
+    color: #000000b0;
+    border-bottom: 1px solid #0000000e;
+    width: 99%;
+}
+.folderList > img{
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+.folderFilesContainer{
+    height: max-content;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.FolderImage:hover{
+    background-color: #0001;
+}
+.folderImageContainer{
+    text-decoration: none !important;
+
+}
+.FolderImage{
+    position: relative;
+    height: 145px;
+    width: 145px;
+    margin: 5px;
+    text-align: center;
+    padding-top: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+.FolderImage button svg{
+    color: #aeb1b5;
+    font-size: 20px;
+}
+.breadcrumbSetting nav ol li {
+    font-size: 13px;
+}
+.FolderImage > div ,
+.FolderImage > div > a{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none !important; 
+
+}
+.FolderImage > div >a>img{
+    height: 80px !important;
+    width: 80px !important;
+    object-fit: cover;
+    text-decoration: none !important; 
+
+}
+
+.FolderImage >div >a> p{
+    color: #0009;
+    margin-top: 15px;
+    width: 90%;
+    color: #0009;
+    font-size: .9rem;
+    text-align: center;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none !important; 
+}
+.folderFooter{
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-top: 1px solid #0001;
+    border-bottom: 1px solid #0001;
+    justify-content: space-around;
+}
+.folderFooter >div > input{
+    height: 25px;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    border-left: 1px solid #0003;
+    color: #0009;
+}
+.fileRenameContainer > button,
+.folderFooter >div > button{
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    background-color: #479bcc;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fileRenameContainer > button:hover,
+.folderFooter >div >  button:hover{
+    background-color: #3F88B3;
+}
+
+.folderDrop{
+    min-height: 50px;
+    max-height: max-content;
+    background-color: #0001;
+    padding: 5px 10px;
+    padding-right: 0;
+    width: 98%;
+}
+.FolderImage:hover .dataToolTip{
+    transform: scale(1);
+    width: 100%;
+}
+.dataToolTip{
+    flex-direction: column;
+    /* padding: 5px 0; */
+    transform: scale(0);
+    background: #fff;
+    box-shadow: 4px 0px 6px #0003;
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    transition: .2s;
+}
+.dataToolTip> button{
+    height: max-content;
+    width: max-content;
+    padding: 4px;
+}
+.dataToolTip> button:nth-child(1):hover{
+    color: #ff0000c2;
+}
+.dataToolTip> button:nth-child(2):hover{
+    color: #0059ffc0;
+}
+.dataToolTip> a > svg{
+    font-size: 1.3rem !important;
+    color: #0009;
+}
+.dataToolTip> a > svg.folderImageInfo{
+    font-size: 1rem !important;
+    color: #0009;
+}
+
+.dataToolTip> a>svg:hover{
+    color: #0059ffc0;
+}
+.dataToolTip> a>svg.folderImageInfo:hover{
+    color: #0009 !important; 
+}
+.dataToolTip> button > svg{
+    font-size: 1rem;
+    margin: 0 !important;
+}
+
+.fileRenameContainer{
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #0002;
+    transition: .2s;
+    /* background-color: red; */
+}
+.fileRenameContainer> label{
+    font-size: .7rem !important;
+    flex: .7;
+    text-align: center;
+}
+.fileRenameContainer> input{
+    padding-left: 10px;
+    height: 80%;
+    width: 60%;
+    border: none;
+    outline: none;
+    border-left: 1px solid #0002;
+    margin-left: 5px;
+    color: #0009;
+    letter-spacing: .5px;
+}
+
+.noFolderSelected{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0005;
+    font-size: 1.5rem;
+    cursor: default;
+}
+
+

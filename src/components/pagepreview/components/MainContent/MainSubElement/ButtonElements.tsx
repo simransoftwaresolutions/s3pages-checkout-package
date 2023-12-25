@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import Button from '../../../components/Atoms/ElementsAtoms/Button';
 import KeyboardDoubleArrowRightOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowRightOutlined';

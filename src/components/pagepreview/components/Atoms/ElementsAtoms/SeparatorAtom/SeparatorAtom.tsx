@@ -3,13 +3,6 @@ import SeparatorAtomProps from './ISeparatorAtom';
 import { generateClassNameStr, generateChildClassNameStr } from "../../../../../../utils/functions";
 
 const SeparatorAtom = ({
-                    style,
-                    cssClass,
-                    separatorBorderWidth,
-                    separatorBorderHeight,
-                    separatorBorderStyle,
-                    separatorBorderColor,
-                    name,
                     refInner,
                     styleClasses,
                     onClick}:SeparatorAtomProps
@@ -20,7 +13,7 @@ const SeparatorAtom = ({
 
                 return (
                     <div ref={refInner} className={`${styleSelectorName}`}>
-                        <hr className={`${childStyleName}`} />
+                        <hr className={`${styles.defaultSeparator} ${childStyleName}`} />
                     </div>
                 )
 

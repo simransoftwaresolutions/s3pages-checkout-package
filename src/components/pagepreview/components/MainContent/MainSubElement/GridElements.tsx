@@ -1,4 +1,3 @@
-// import type { NextPage } from 'next'
 import { Fragment } from 'react'
 import { useState, useEffect, useRef } from "react";
 import { 
@@ -32,7 +31,6 @@ import { useSettingsCtx } from "../../../../../context/pagepreview/SettingsConte
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 // import SaveElement from 'services/SaveElement';
 import ENV from '../../../../../utils/env';
-// import * as htmlToImage from 'html-to-image';
 import { useContentCtx } from "../../../../../context/pagepreview/ContentsContext";
 import { usePagesCtx } from '../../../../../context/pagepreview/PagesContext';
 
@@ -53,10 +51,11 @@ interface Prop {
   idxs?:number[];
   gridIdx?:number;
   isMytemplate?:boolean;
+  isMyOverlay?:boolean;
   // onClick:()=>void;
 }
 
-const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns, type, props, gridData, parentIdx, width, gridEle, gridMatrix, curEleSIndex, curEleCIndex = 0, refBtn}:Prop) => {
+const GridElements = ({ isMyOverlay, isMytemplate, gridIdx, viewState, idxs, eleData, columns, type, props, gridData, parentIdx, width, gridEle, gridMatrix, curEleSIndex, curEleCIndex = 0, refBtn}:Prop) => {
 
   const gridEleRefs = useRef<any>([]);
   const gridRefs = useRef<any>([]);
@@ -247,7 +246,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
     ev.preventDefault();
     ev.stopPropagation();
 
-    if(draggedElement.type === "Section" || isMytemplate){
+    if(draggedElement.type === "Section" || isMytemplate || isMyOverlay){
       const _hoveredElement = {
         sectionIdx:-1,
         elementIdxs:[],
@@ -274,8 +273,8 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
 
   const onDragStartFromElement = (ev:any, type:string, eleIdxs:any, data:any) => {
     ev.stopPropagation();
-    if(isMytemplate) return;
-
+    if(isMytemplate || isMyOverlay) return;
+    
     const _element = {
       from:"main_content",
       data:data,
@@ -298,7 +297,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
   const onMouseOverFromGrid = (ev:any, pointer:string, tooltipStr:string) => {
     ev.stopPropagation();
     removeAllHover();
-    if(isMytemplate) return;
+    if(isMytemplate || isMyOverlay) return;
 
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
@@ -308,7 +307,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
   const onMouseOverFromGridRow = (ev:any, pointer:string, tooltipStr:string) => {
     ev.stopPropagation();
     removeAllHover();
-    if(isMytemplate) return;
+    if(isMytemplate || isMyOverlay) return;
 
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
@@ -319,7 +318,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
     ev.preventDefault();
     ev.stopPropagation();
     removeAllHover();
-    if(isMytemplate) return;
+    if(isMytemplate || isMyOverlay) return;
 
     setContentAction({...contentAction, tooltipEnableString:tooltipStr});
     if(ENV.isViewReadOnly === false){
@@ -363,12 +362,12 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
         // style={{...generateGridStyle(eleData.eleInfo.props), padding:"10px"}}
         ref={gridRowRef} 
         className={` ${styleSelectorName} row ${hAlignForGrid} ${vAlignForGrid} highlight ${styles.actionGridRowContainerParent} ${animationStrGrid}`} 
-        draggable={contentAction?.draggableEleIdx === gridIndex ? "true" : "false"}
+        draggable={(contentAction?.draggableEleIdx === gridIndex && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
         onDragStart={(ev:any)=>onDragStartFromElement(ev, eleData?.eleInfo.type, idxs, eleData)}
         onMouseLeave={(ev:any) => onMouseLeaveFromGrid(ev)} 
         onMouseOver={(ev:any) => onMouseOverFromGridRow(ev, gridRefIdx, gridRefIdx)}
       >
-        {contentAction?.tooltipEnableString === gridRefIdx && actionGridRowComponent(eleData?.eleInfo.type, gridIndex, idxs, eleData, gridRefIdx)}
+        {contentAction?.tooltipEnableString === gridRefIdx && !isMytemplate && !isMyOverlay && actionGridRowComponent(eleData?.eleInfo.type, gridIndex, idxs, eleData, gridRefIdx)}
         {
           eleData?.elements?.length ? eleData?.elements?.map((grid:any, gIdx:any) => {
 
@@ -391,13 +390,13 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
               <div 
                 ref={(el:any) => (gridRefs.current[gridRefIndex] = el)} 
                 key={gIdx} 
-                className={`${styleSelectorNameForCol} ${vAlignForCol} ${grid.eleInfo?.props?.cssClass} ${styles.actionColumnContainerParent} highlight`} 
+                className={`${styleSelectorNameForCol} ${vAlignForCol} ${grid.eleInfo?.props?.cssClass} ${styles.actionColumnContainerParent} act-clm-cnt-pnt-gb highlight`} 
                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, gridRefIndex, grid.eleInfo.type)} 
                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, gridIdxs, grid.eleInfo.type, gridRefIndex)}
                 onMouseLeave={(ev:any) => onMouseLeaveFromGrid(ev)} 
                 onMouseOver={(ev:any) => onMouseOverFromGrid(ev, gridRefIndex, gridRefIndex)}  
               >
-                {contentAction?.tooltipEnableString === gridRefIndex && actionColumnComponent(grid?.eleInfo.type, gIdx, gridIdxs, grid, gridRefIndex)}
+                {contentAction?.tooltipEnableString === gridRefIndex && !isMytemplate && !isMyOverlay && actionColumnComponent(grid?.eleInfo.type, gIdx, gridIdxs, grid, gridRefIndex)}
                 {
                   grid?.elements?.length ? 
                   grid?.elements.map((gEle:any, eIdx:number) => {
@@ -424,7 +423,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -432,7 +431,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <ButtonElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -441,7 +440,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -449,7 +448,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <ProgressElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -458,7 +457,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -466,7 +465,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <SocialIconElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -475,7 +474,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -483,7 +482,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <SeparatorElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -492,7 +491,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -500,7 +499,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <MenuElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -509,7 +508,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -517,7 +516,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <TimerElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -526,7 +525,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -534,7 +533,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <HtmlElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -543,7 +542,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -551,7 +550,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <ImageElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -560,7 +559,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -568,7 +567,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <VideoElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -577,7 +576,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -585,7 +584,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <FormElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -594,7 +593,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -602,15 +601,15 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
-                            <HeadingElements isMytemplate={isMytemplate} curEleSIndex={curEleSIndex} gridIdxs={eleIdxs} headEleIdx={eleRefIndex} refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            <HeadingElements isMyOverlay={isMyOverlay} isMytemplate={isMytemplate} curEleSIndex={curEleSIndex} gridIdxs={eleIdxs} headEleIdx={eleRefIndex} refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
                       case 'Faq':
                         return <div 
                                 className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                 key={eIdx+1} 
-                                draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                 onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                 onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                 onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -618,7 +617,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                 onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                               >
                           <Fragment>
-                            {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                            { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                             <FaqElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                           </Fragment>                          
                         </div>
@@ -627,7 +626,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                           return <div 
                                   className={`${styles.actionGridContainerParent} ${animationStr}`} 
                                   key={eIdx+1} 
-                                  draggable={contentAction?.draggableEleIdx === eIdx ? "true" : "false"}
+                                  draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
                                   onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
                                   onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
                                   onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
@@ -635,7 +634,7 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                                   onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
                                 >
                             <Fragment>
-                              {actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                              { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
                               <BannerElements eIdx={eIdx} refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
                             </Fragment>                          
                           </div>
@@ -645,7 +644,16 @@ const GridElements = ({ isMytemplate, gridIdx, viewState, idxs, eleData, columns
                           innerGridMatrix.push([gridEle, gIdx]);
                           return <span key={eIdx+1}> 
                             <div>
-                              <GridElements gridIdx={eIdx} viewState={viewState} idxs={eleIdxs} eleData={gEle} curEleSIndex={curEleSIndex} parentIdx={parentIdx+1} isMytemplate={isMytemplate}/>
+                              <GridElements 
+                                gridIdx={eIdx} 
+                                viewState={viewState} 
+                                idxs={eleIdxs} 
+                                eleData={gEle} 
+                                curEleSIndex={curEleSIndex} 
+                                parentIdx={parentIdx+1}
+                                isMytemplate={isMytemplate}
+                                isMyOverlay={isMyOverlay}
+                              />
                             </div>
                           </span>
                           break;

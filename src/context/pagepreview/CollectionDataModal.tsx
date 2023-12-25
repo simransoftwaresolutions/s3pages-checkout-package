@@ -35,7 +35,7 @@ export function CollectionDataProvider({children}:any) {
             request()
         }
         
-        return () => {}
+        // return () => {}
     },[previewListFlag, flag])
 
 

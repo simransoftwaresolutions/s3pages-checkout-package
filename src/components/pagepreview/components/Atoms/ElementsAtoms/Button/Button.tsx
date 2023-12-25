@@ -21,41 +21,37 @@ const Button = ({
                 ) => {
 
     const internalUrl = getSeoUrlFromPageId(url || "");
-
+                    
     const handleClick = () => {
         if(url){
             if (urlType === "internal") {
                 window.location.href = internalUrl;
             } else {
                 window.location.href = url;
+                // window.open(url, "_blank");
             }
         }
     }
-                  
+
     const styleSelectorName = generateClassNameStr(styleClasses);
     const childStyleName = generateChildClassNameStr(styleClasses, 0);
     const btnCls = generateChildClassNameStr(styleClasses, 1);
 
-    // const _btnAlign = btnAlign ? btnAlign : "left" as const;
-
     return (
-        // <div style={{ textAlign:_btnAlign }}>
-            <button 
-                onClick={handleClick} 
-                ref={refInner}
-                className={`${styleSelectorName} ${cssClass}`}
-            >
-                <>
-                        <ButtonsIcons clsStr={btnCls} name={preChildren?preChildren:''} />
-                        {text}
-                        <ButtonsIcons clsStr={btnCls} name={postChildren?postChildren:''} />
-                        <span className={`${childStyleName} ${styles.subtextbox}`}>
-                            {subtext}
-                        </span>
-                </>
-            </button>
-        // </div>
-
+        <button 
+            onClick={handleClick} 
+            ref={refInner}
+            className={`${styleSelectorName} ${cssClass}`}
+        >
+            <>
+                    <ButtonsIcons clsStr={btnCls} name={preChildren?preChildren:''} />
+                    {text}
+                    <ButtonsIcons clsStr={btnCls} name={postChildren?postChildren:''} />
+                    <span className={`${childStyleName} ${styles.subtextbox}`}>
+                        {subtext}
+                    </span>
+            </>
+        </button>
     )
 }
 
