@@ -43,17 +43,15 @@ export default function SliderBox({
   
 }: any) {
   const settings = {
-    dots: false,
-    infinite: true,
-    speed:2000, // Set speed to 0 to disable slide transition animation
     autoplay: true,
-    autoplaySpeed: 0, // Set autoplay speed to 0 for continuous scrolling
-    cssEase: 'linear', // Adjust the speed (in milliseconds) between slide transitions
-    pauseOnHover: false, // Pause autoplay on hover
-
-    slidesToShow: slidesToShowlg,
-    slidesToScroll: 1,
-    arrows: false,
+  autoplaySpeed: 0,
+  speed: 3000, // Adjust speed as needed
+  cssEase: 'linear',
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  variableWidth: true,
+  infinite: true,
+  arrows: false,
     responsive: [
       {
         breakpoint: 1025,
