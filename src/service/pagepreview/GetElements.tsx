@@ -1254,8 +1254,8 @@ const FaqItems = [
 const SliderItems = [
     {
         eleInfo:{
-            "id": "Faq",
-            "type": "Faq",
+            "id": "Slider",
+            "type": "Slider",
             "props": {
                 "style": {
                     animationStyle:'',
