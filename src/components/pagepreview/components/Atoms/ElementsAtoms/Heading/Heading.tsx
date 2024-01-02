@@ -10,7 +10,8 @@ const Heading = ({
                     refInner,
                     styleClasses,
                     onClick}:HeadingProps
-                ) => {
+                ) => {  
+                    
 
                     const styleSelectorName = generateClassNameStr(styleClasses);
                     const _textVal = text?.replaceAll("<p>","")?.replaceAll("</p>","");

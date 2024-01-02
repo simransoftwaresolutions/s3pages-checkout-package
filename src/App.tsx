@@ -81,14 +81,14 @@ export default function componentName() {
       {/* <CheckoutProduct data={{ product: {} }} /> */}
       {/* <PreviewPage siteInfo={sInfo} uriInfo={uInfo} /> */}
       {/* <Tabs  position="left" type="arrow"  /> */}
-      {/* <SliderComponent
+      <SliderComponent
         slidesToShowlg={4}
         slidesToShowmd={3}
         slidesToShowsm={2}
         slidesToShowxs={1}
-        cardData={cardData}
+        // cardData={cardData}
         
-      /> */}
+      />
   <Slidersection/>
       <Ourachievement />
       <Eventgallery   />

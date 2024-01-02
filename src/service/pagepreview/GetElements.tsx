@@ -1251,7 +1251,40 @@ const FaqItems = [
 
     },
 ]
+const SliderItems = [
+    {
+        eleInfo:{
+            "id": "Faq",
+            "type": "Faq",
+            "props": {
+                "style": {
+                    animationStyle:'',
+                    animationDelay:'',
+                    animationDuration:'',
+                    animationIteration:'',
+                },
+                cssClass:"",
+                styleClasses:{
+                    mainClassName:[],
+                    childClassName:[],
+                }, 
+                name:"Slider",
+                mobileView:true,
+                collectionId:0,
+                questionIdx:-1,
+                answerIdx:-1,
+                dataLimit:0,
+                faqData:{
+                    question:[],
+                    answer:[],
+                },
+            },
+            "thumbnail": "Slider.png"
+        },
+        elements:[]
 
+    },
+]
 const BannerItems = [
     {
         eleInfo:{
@@ -3472,6 +3505,9 @@ const GetElements = (eleType: string) => {
             break;
         case "Faq":
             return FaqItems;
+            break;
+        case "Slider":
+            return SliderItems;
             break;
         case "Banner":
             return BannerItems;
