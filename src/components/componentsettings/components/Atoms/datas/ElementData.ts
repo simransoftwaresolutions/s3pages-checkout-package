@@ -52,6 +52,10 @@ export const ElementData = [
                                     "elementName":"Collections"
                                 },
                                 {
+                                    "elementID":14,
+                                    "elementName":"Slider"
+                                },
+                                {
                                     "elementID":13,
                                     "elementName":"Banner"
                                 },
