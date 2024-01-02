@@ -13,7 +13,8 @@ import {
   VideoElements, 
   FormElements, 
   FaqElements, 
-  BannerElements, 
+  BannerElements,
+  SliderElements,
 } from './index';
 import {  getElementName, 
           deepCloneArray, 
@@ -622,6 +623,23 @@ const GridElements = ({ isMyOverlay, isMytemplate, gridIdx, viewState, idxs, ele
                           </Fragment>                          
                         </div>
                         break;
+                        case 'Slider':
+                          return <div 
+                                  className={`${styles.actionGridContainerParent} ${animationStr}`} 
+                                  key={eIdx+1} 
+                                  draggable={(contentAction?.draggableEleIdx === eIdx && (ENV.isViewReadOnly === false || !isMytemplate || !isMyOverlay)) ? "true" : "false"}
+                                  onDragStart={(ev:any)=>onDragStartFromElement(ev, gEle?.eleInfo.type, eleIdxs, gEle)}
+                                  onDragLeave={(event:any) => onDragLeaveFromGrid(event, eleRefIndex, gEle.eleInfo.type)} 
+                                  onDragOver={(event) => onDragOverFromGrid(event, curEleSIndex, eleIdxs, gEle.eleInfo.type, eleRefIndex)}
+                                  onMouseLeave={(ev:any) => onMouseLeaveFromGrid(ev)} 
+                                  onMouseOver={(ev:any) => onMouseOverFromElement(ev, eleRefIndex, eleRefIndex)}
+                                >
+                            <Fragment>
+                              { !isMytemplate && !isMyOverlay && actionElementComponent(gEle?.eleInfo.type, eIdx, eleIdxs, gEle, eleRefIndex)}
+                              <SliderElements refBtn={(el:any) => (gridEleRefs.current[eleRefIndex] = el)} type={gEle?.eleInfo.type} props={gEle.eleInfo.props} />
+                            </Fragment>                          
+                          </div>
+                          break;
                         case 'Banner':
                           return <div 
                                   className={`${styles.actionGridContainerParent} ${animationStr}`} 

@@ -13,7 +13,7 @@ import VideoElements from './VideoElements';
 import FormElements from './FormElements';
 import FaqElements from './FaqElements';
 import BannerElements from './BannerElements';
-
+import SliderElements from './SliderElements';
 export { 
     HeadingElements, 
     ButtonElements, 
@@ -30,4 +30,5 @@ export {
     FormElements,
     FaqElements,
     BannerElements,
+    SliderElements,
 }
