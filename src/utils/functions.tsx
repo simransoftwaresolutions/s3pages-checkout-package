@@ -67,6 +67,9 @@ export const getElementName = (name:string) => {
         case "Faq":
             return "Faq";
         break;
+        case "Slider":
+            return "Slider";
+        break;
         case "Banner":
             return "Banner";
         break;
