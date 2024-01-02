@@ -27,6 +27,7 @@ import {
 } from "./functions";
 
 import MainContent from "../components/pagepreview/components/MainContent";
+import MainContent2 from "../components/pagepreview/components/MainContent/MainContent2";
 
 import StyleGenerater from "../components/pagepreview/components/Atoms/StyleGenerater";
 import FileManager from '../components/componentsettings/components/Atoms/FileManager';
@@ -152,6 +153,7 @@ export {
     getTypeOfElement,  
     getSeoUrlFromPageId,
     MainContent,
+    MainContent2,
     StyleGenerater,
     FileManager,
     DefaultImage,
