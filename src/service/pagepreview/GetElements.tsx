@@ -3503,9 +3503,9 @@ const GetElements = (eleType: string) => {
         case "NewGrid":
             return NewGridItems;
             break;
-        case "Faq":
-            return FaqItems;
-            break;
+        // case "Faq":
+        //     return FaqItems;
+        //     break;
         case "Slider":
             return SliderItems;
             break;
