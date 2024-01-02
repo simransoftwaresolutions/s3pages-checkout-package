@@ -24,13 +24,26 @@ import {
 import ENV from '../../../../utils/env';
 import { CreateTemplate, UpdateTemplate } from '../../../../service/pagepreview/TemplateServices';
 import { DeletePage, ClonePage } from '../../../../service/pagepreview/PagesServices';
-import EditSectionTopbar from '../../components/Atoms/EditSectionTopbar';
-import PageTopbar from '../../components/Atoms/PageTopbar';
+// import EditSectionTopbar from '../../components/Atoms/EditSectionTopbar';
+// import PageTopbar from '../../components/Atoms/PageTopbar';
 import { useContentCtx } from "../../../../context/pagepreview/ContentsContext";
 import { toast } from 'react-toastify';
 import MainMyComponent from './MainMyComponent';
+import React, { ReactElement } from 'react';
+import {
+  EditSectionTopbarProps,
+  PageTopbarProps
+} from "./MainContentProps";
 
-const MainContent2 = () => {
+interface MainContentProps {
+  EditSectionTopbar?: React.ComponentType<EditSectionTopbarProps>;
+  PageTopbar?: React.ComponentType<PageTopbarProps>;
+}
+
+const MainContent2: React.FC<MainContentProps> = ({
+  EditSectionTopbar,
+  PageTopbar
+}:MainContentProps) => {
 
   //////////////////////////////////////////////////////////////////////////////////////////
   const { sectionCtx, 
@@ -909,7 +922,7 @@ const MainContent2 = () => {
 
             </div>
             { // for main editor
-              !updateSection?.sectionEditEnable && !saveElementsData?.showElement &&
+              !updateSection?.sectionEditEnable && !saveElementsData?.showElement && PageTopbar &&
               <PageTopbar
                 onRedo={onRedo}
                 clonePage={clonePage}
@@ -924,7 +937,7 @@ const MainContent2 = () => {
               />
             }
             { // for Edit section    
-              updateSection?.sectionEditEnable && !saveElementsData?.showElement &&
+              updateSection?.sectionEditEnable && !saveElementsData?.showElement && EditSectionTopbar &&
               <EditSectionTopbar 
                 onRedo={onRedo} 
                 activeHighlight={activeHighlight} 
