@@ -50,7 +50,7 @@ const DragdropPopup = () => {
     const settingName = () => {
         switch(changeStyleOfElement.type){
             case "Faq":
-                return "FAQ"
+                return "FAQ3"
                 break;
             default:
                 return changeStyleOfElement.type;
