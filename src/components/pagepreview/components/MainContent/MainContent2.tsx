@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { GridElements } from './MainSubElement';
-import styles from '../../../../styles/pagepreview/MainContent.module.css';
+// import styles from '../../../../styles/pagepreview/MainContent.module.css';
 import { useState, useEffect, useRef } from "react";
 import {  
   getTemplateStyle,
@@ -20,6 +20,7 @@ import { usePushCtx } from "../../../../context/pagepreview/PushContext";
 
 interface MainContentProps {
   secRefs:any;
+  styles:any;
   viewState?:string;
   topBar?: any;
   mainContentRef?: any;
@@ -37,6 +38,7 @@ interface MainContentProps {
 
 const MainContent2: React.FC<MainContentProps> = ({
   secRefs,
+  styles,
   viewState="desktop",
   topBar,
   mainContentRef,
