@@ -1274,9 +1274,13 @@ const SliderItems = [
                 questionIdx:-1,
                 answerIdx:-1,
                 dataLimit:0,
-                faqData:{
-                    question:[],
-                    answer:[],
+                SliderData:{
+                    img:[],
+                    hoverimg:[],
+                    chiphead:[],
+                    head:[],
+                    description:[],
+                    price:[],
                 },
             },
             "thumbnail": "Slider.png"
@@ -3503,9 +3507,9 @@ const GetElements = (eleType: string) => {
         case "NewGrid":
             return NewGridItems;
             break;
-        // case "Faq":
-        //     return FaqItems;
-        //     break;
+        case "Faq":
+            return FaqItems;
+            break;
         case "Slider":
             return SliderItems;
             break;

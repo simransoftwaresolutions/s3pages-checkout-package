@@ -70,7 +70,7 @@ export default function SliderComponent({
     dots: true,
     infinite: false,
     speed: 500,
-    // autoplay: true,
+    autoplay: true,
     slidesToShow: slidesToShowlg,
     slidesToScroll: 1,
     arrows: true,

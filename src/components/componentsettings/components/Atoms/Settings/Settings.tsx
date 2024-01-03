@@ -61,7 +61,7 @@ const Settings = () => {
     changeStyleOfElement,
   } = useContentCtx();
   ///////////////////////////////////////////////////////////////////////////////////////////////
-
+  console.log("slider----------",changeStyleOfElement)
   useEffect(() => {
     setOpenForm(false);
     defaultOpenedSetting();
@@ -379,6 +379,20 @@ const Settings = () => {
         }
         {
           !pageAction.showPageSetting && changeStyleOfElement.type == 'Grid' && (
+            <Fragment>
+              <StyleSelectorSettings />
+              <GridGenSettings />
+              <Border />
+              <Padding />
+              <Margin />
+              <Background />
+              <Mobile />
+              <Animation />
+            </Fragment>
+          )
+        }
+        {
+          !pageAction.showPageSetting && changeStyleOfElement.type == 'Slider' && (
             <Fragment>
               <StyleSelectorSettings />
               <GridGenSettings />
