@@ -1,0 +1,42 @@
+.subSettingTitle {
+    padding:5px;
+    background-color:#555;
+    color:#fff; 
+    font-size: 14px;
+    cursor: pointer;
+    /* border-radius: 5px 5px 0px 0; */
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding:5px;
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}
+
+.submitBtn {
+    background:#ff7f2A;
+    color:#fff;
+}

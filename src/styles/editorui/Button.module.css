@@ -1,0 +1,16 @@
+.subtextbox {
+    display:block;
+}
+
+.btnLeft {
+    float:left;
+}
+
+.btnRight {
+    float:right;
+}
+
+.btnCenter {
+    display: block;
+    margin: 0 auto;
+}

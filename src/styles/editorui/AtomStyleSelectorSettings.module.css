@@ -1,0 +1,95 @@
+.subSettingTitle {
+    padding:5px;
+    background-color:orange;
+    color:#fff; 
+    /* border-bottom:1px solid #fff; */
+    cursor: pointer;
+    border-radius: 5px 5px 0px 0;
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding:5px;
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}
+.clsBtnContainer {
+    flex-wrap: wrap; 
+    display: inline-flex;
+    font-size: 12px; 
+    color:#fff;
+}
+.clsName {
+    background:#4c4c4c;
+    padding: 2px 20px 2px 5px;
+    border-radius:5px; 
+    border:1px solid #fff;
+    position: relative;
+    margin-left: 5px;
+    z-index: 99999;
+}
+.clsName svg {
+    font-size: 20px;
+    position: absolute;
+    display: none;
+    top:2px;
+    right:0;
+}
+
+.clsName:hover svg {
+    display: block;
+}
+.clsIpBox input {
+    width: 100% !important;
+    color:#fff !important;
+    background: transparent;
+    position: relative;
+}
+.clsLabel {
+    margin-bottom: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.dropDownBox {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.dropDowninnerBox {
+    background:#4c4c4c;
+    padding: 2px 20px 2px 5px;
+    border-radius:5px; 
+    border:1px solid #fff;
+    margin-left: 5px;
+}
+
+.dBoxComntainer {
+    position: absolute;
+    z-index: 9999999;
+    background:#4c4c4c;
+    width: 250px;
+}

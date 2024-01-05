@@ -1,0 +1,92 @@
+.input_container{
+    color:#fff;
+    margin: 15px;
+}
+.input_container label{
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.displayValue {
+    min-width:50px;
+    max-width:50px;
+    width: 50px;
+    padding: 3px;
+    /* border: 1px solid #ccc; */
+    border: none;
+    background-color: #fff;
+    color: #000;
+    margin: 0 5px;
+}
+.input_container select{
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    height: 34px;
+    padding: 2px 12px;
+}
+
+.input_container select:focus-visible{
+    outline: none;
+}
+
+.input_container textarea{
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    height: 60px;
+    outline: none;
+    padding: 2px 12px;
+}
+.input_container input{
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    /* border: 1px solid #ccc; */
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    height: 34px;
+    outline: none;
+    /* padding: 2px 12px; */
+}
+.mainContainer input{
+    width: auto;
+    width: 50%;
+    font-size: 14px;
+    height: 30px;
+    padding-left: 10px;
+    accent-color: #666;
+    border-radius: 8px;
+    height: 10px;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    background: #262626;
+}
+.input_container.radio{
+    display: inline-flex;
+}
+.input_container.radio input{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.input_required {
+    color:red;
+    margin-left:5px;
+}
+.hozntlLable {
+    padding-left: 0px;
+}

@@ -1,0 +1,62 @@
+.sectionContainer {
+    margin-top: 5px;
+    border:1px solid #dfdfdf;
+    min-height: 100px;
+}
+
+.uploadModalSize {
+    width:100%;
+    height: 100%;
+    /* width:700px;
+    height: 600px; */
+}
+
+.uploadSideBar {
+    background-color: #ccc;
+    height: 493px;
+    margin-left: -4px;
+    border-radius: 0 0 0 5px;
+}
+
+.topHeader {
+    display: inline-flex;
+    float: right;
+}
+
+.addFolder {
+    margin-right: 10px;
+}
+
+.folderIcon {
+    color: #d40000;
+}
+
+.rightFolderIcon svg {
+    font-size: 100px;
+}
+
+.rightMainContainer {
+    display: inline-flex;
+}
+
+.uploadMainBlock {
+    height: 490px;
+    overflow-y: scroll;
+}
+
+.rightFolderContainer {
+    margin-left: 40px;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.closeFolderBtn {
+    display: none;
+    position: absolute;
+    right: 0;
+}
+
+.rightFolderContainer:hover .closeFolderBtn {
+    display: block;
+}

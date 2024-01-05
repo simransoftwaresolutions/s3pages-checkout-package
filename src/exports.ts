@@ -9,7 +9,7 @@ import Slidercomponent from "./components/slidercomponent"
 import Ourachivements from "./components/ourachievements"                    
 import Eventgallery from "./components/Eventgallery"                    
 import ComponentSettings from './components/componentsettings';     
-import * as Allcontexts from "./context/pagepreview"; 
+import * as Allcontexts from "./context/editorui"; 
 import * as Allutilities from "./utils/utilities";
 export {
     CheckoutProduct,

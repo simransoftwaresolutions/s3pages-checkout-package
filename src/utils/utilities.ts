@@ -28,105 +28,55 @@ import {
 
 import MainContent from "../components/pagepreview/components/MainContent";
 import MainContent2 from "../components/pagepreview/components/MainContent/MainContent2";
+import SectionUI from "../components/editorui/components/section/ui";
+import DragdropPopup from "../components/editorui/atoms/DragdropPopup";
 
-import StyleGenerater from "../components/pagepreview/components/Atoms/StyleGenerater";
-import FileManager from '../components/componentsettings/components/Atoms/FileManager';
-import DefaultImage from "../components/pagepreview/components/Atoms/DefaultImage";
+import StyleGenerater from "../components/editorui/atoms/StyleGenerater";
+import FileManager from '../components/editorui/atoms/FileManager';
+import DefaultImage from "../components/editorui/atoms/DefaultImage";
 import PreviewElement from "../components/pagepreview/components/Atoms/PreviewElement";
 import { ToastContainer, toast } from 'react-toastify';
 
 import { 
-    CloneCollectionData,
     getCollectionData,
-    getSingleCollectionData,
-    createCollectionData,
-    deleteCollectionData,
-    deleteCollectionDataImage,
-    deleteCollectionDataImageMulti,
-    deleteS3Image,
-    updateCollectionData,
-    publishCollectionData,
-    UploadCollectionData,
-} from "../service/pagepreview/CollectionDataService";
+    getSingleCollectionData
+} from "../service/editorui/CollectionDataService";
 
 import { 
-    GetAllCollection,
-    ViewCollection,
-    AddCollection,
-    UpdateCollection,
-    DeleteCollection,
-    AddField,
-    AddFieldAtDefault,
-    DeleteField,
-    UpdateField,
-} from "../service/pagepreview/CollectionService";
+    GetAllCollection
+} from "../service/editorui/CollectionService";
 
 import { 
     GetDirectories,
     CreateFolder,
     uploadImage,
-} from "../service/pagepreview/Directories";
+} from "../service/editorui/Directories";
 
 import { 
-    GetAllElements,
-    SaveSection,
-    UpdateSectionApi,
-    DeleteSectionApi,
-    CloneSectionApi,
-    GetAllTags,
-    GetSectionDetail,
-    GetSection,
     GetAllSectionTags,
-} from "../service/pagepreview/ElementServices";
+} from "../service/editorui/ElementServices";
 
 import { 
     deleteFile,
     renameFileService,
     exportMultipleDocs,
-} from "../service/pagepreview/FolderServices";
+} from "../service/editorui/FolderServices";
 
 import { 
-    CalendarFetcher,
-    addHolidayFetcher,
-    addLeave,
-    editHolidayFetcher,
-    masterServiceFetch,
-    masterService,
     AddFolder,
     uploadFileToFolder,
     FetchFolders,
     FolderDelete,
-} from "../service/pagepreview/ModalServices";
+} from "../service/editorui/ModalServices";
 
 import { 
-    GetGoogleFonts,
     GetAllCollectionData,
     GetCollectionData,
-    CreatePage,
     SubmitFormApi,
     GetSiteData,
-    SwrGetSiteData,
     GetThemeSiteStyles,
     GetAutoResponderData,
-    GetPages,
-    GetPageVariants,
-    DeletePage,
-    ClonePage,
-    UpdatePage,
-    PageSortOrder,
-    UpdateSiteApi,
-} from "../service/pagepreview/PagesServices";
-
-import { 
-    CreateTemplate,
-    DeleteTemplate,
-    UpdateTemplate,
-    CloneTemplate,
-    UpdateSplitTesting,
-    CopyTemplate,
-    CopyToTemplate,
-    GetTemplateDetail,
-} from "../service/pagepreview/TemplateServices";
+} from "../service/editorui/PagesServices";
 
 export {
     ENV,
@@ -154,79 +104,32 @@ export {
     getSeoUrlFromPageId,
     MainContent,
     MainContent2,
+    SectionUI,
+    DragdropPopup,
     StyleGenerater,
     FileManager,
     DefaultImage,
     PreviewElement,
     ToastContainer, 
     toast,
-    CloneCollectionData,
     getCollectionData,
     getSingleCollectionData,
-    createCollectionData,
-    deleteCollectionData,
-    deleteCollectionDataImage,
-    deleteCollectionDataImageMulti,
-    deleteS3Image,
-    updateCollectionData,
-    publishCollectionData,
-    UploadCollectionData,
     GetAllCollection,
-    ViewCollection,
-    AddCollection,
-    UpdateCollection,
-    DeleteCollection,
-    AddField,
-    AddFieldAtDefault,
-    DeleteField,
-    UpdateField,
     GetDirectories,
     CreateFolder,
     uploadImage,
-    GetAllElements,
-    SaveSection,
-    UpdateSectionApi,
-    DeleteSectionApi,
-    CloneSectionApi,
-    GetAllTags,
-    GetSectionDetail,
-    GetSection,
     GetAllSectionTags,
     deleteFile,
     renameFileService,
     exportMultipleDocs,
-    CalendarFetcher,
-    addHolidayFetcher,
-    addLeave,
-    editHolidayFetcher,
-    masterServiceFetch,
-    masterService,
     AddFolder,
     uploadFileToFolder,
     FetchFolders,
     FolderDelete,
-    GetGoogleFonts,
     GetAllCollectionData,
     GetCollectionData,
-    CreatePage,
     SubmitFormApi,
     GetSiteData,
-    SwrGetSiteData,
     GetThemeSiteStyles,
     GetAutoResponderData,
-    GetPages,
-    GetPageVariants,
-    DeletePage,
-    ClonePage,
-    UpdatePage,
-    PageSortOrder,
-    UpdateSiteApi,
-    CreateTemplate,
-    DeleteTemplate,
-    UpdateTemplate,
-    CloneTemplate,
-    UpdateSplitTesting,
-    CopyTemplate,
-    CopyToTemplate,
-    GetTemplateDetail,
 }

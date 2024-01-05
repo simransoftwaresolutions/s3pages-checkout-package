@@ -1,0 +1,66 @@
+.subSettingTitle {
+    padding:5px;
+    background-color:#555;
+    color:#fff; 
+    /* border-bottom:1px solid #fff; */
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    padding:5px;
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}
+
+.menuContainer {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #fff;
+}
+.addNewMenu {
+    background: #fff;
+    padding: 5px;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.menuInput{
+    display:inline-flex;
+}
+.addIcon{
+    cursor: pointer;
+    padding: 10px;
+}
+.dragableElement {
+    padding:10px; 
+    border:1px solid #fff; 
+    margin:10px;
+}
+.dragableElement span:nth-child(2) {
+    padding-left: 10px;
+}

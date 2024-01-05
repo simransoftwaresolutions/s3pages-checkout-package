@@ -1,0 +1,418 @@
+.sectionContainer {
+    margin-top: 5px;
+    border:1px solid #dfdfdf;
+    min-height: 100px;
+}
+
+.desktop {
+    width: 100%;
+}
+
+.tablet {
+    width: 768px;
+}
+
+.phone {
+    width: 480px;
+}
+.Highlights.form-check-input{
+    background-color: #ccc;
+}
+.Highlights input{
+    width: 52px !important;
+    height: 25px;
+    margin-top: 0;
+    margin-right: 10px;
+}
+.Highlights label{
+    color: #B3B3B3;
+    font-size: 14px;
+    font-weight: 700;
+}
+.reloadIcon{
+    width: 50%;
+}
+.reloadToggler{
+    display: inline-flex;
+}
+.togglerIcon{
+    width: 50%;
+}
+.viewSizes{
+    display: flex;
+    align-items: center;
+}
+.UndoRedu{
+    padding-right: 7px;
+    border-right: 1px solid#333;
+}
+.moreIconDlt{
+    padding-left: 7px;
+    padding-right: 7px;
+    border-right: 1px solid#333;
+}
+.SetSizes{
+    border-left: 1px solid #333;
+    border-right: 1px solid#333;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+.clsSaveView{
+    padding-left: 7px;
+}
+.viewSizes button{
+    background: transparent;
+    border: 0;
+}
+.viewSizes button svg{ 
+    fill: #999;
+    width: 21px;
+    display: inline-block;
+}
+.viewSizes button svg:hover{
+    fill:#fff;
+}
+.viewSizes1{
+    display: flex;
+    align-items: center;
+    float: right;
+    padding-right: 27px;
+    white-space: nowrap;
+}
+.viewSizes1 button{
+    background: transparent;
+    border: 0;
+}
+.viewSizes1 button svg{ 
+    fill: #999;
+    width: 21px;
+    display: inline-block;
+}
+.viewSizes1 button svg:hover{
+    fill:#fff;
+}
+
+
+.prevSave{
+    text-align: right;
+}
+.prevSave button{
+    /* background: #58DA58; */
+    background: orange;
+    color: #fff;
+    padding: 6px 10px;
+    vertical-align: middle;
+    font-size: 12px;
+    margin-left: 5px;
+    border: 0;
+    line-height: 19px;
+    border-radius: 4px;
+    opacity:1;
+}
+.prevSave button:hover{
+    opacity: 0.8;
+}
+
+.headBtnContain {
+    padding: 5px;
+    background-color: #0e0e0e;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+}
+.headBtnContain svg {
+    color: #999;
+    /* opacity: 0.5; */
+}
+.headBtnContain svg:hover {
+    color: #fff;
+}
+
+.actionContainerParent .actionContainerChild {
+    /* display:none; */
+    top:0;
+    left:0;
+    position:absolute;
+    z-index: 999999;
+    /* background-color:#0e0e0e; */
+    cursor: pointer;
+}
+
+.noBorder {
+    border: none !important;
+}
+
+.dragndropimg {
+    text-align: center;
+}
+
+.actionContainerParent {
+    position: relative;
+}
+
+.actionContainerParent:hover .actionContainerChild {
+    display:inline-flex;
+}
+.actionContainerChild svg{
+    background-color: #fff;
+    font-size: 35px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.actionContainerChild .heading{
+    /* background-color: #804040;
+    font-size: 12px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%); */
+
+    background-color: #fd7e35;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 6px;
+    /* height: 16px; */
+    position: absolute;
+    top: -18px;
+    left: -10px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+
+.actionSectionContainerParent .actionSectionContainerChild {
+    /* display:none; */
+    top:-20px;
+    left:10px;
+    position:absolute;
+    display: flex;
+    z-index: 999999;
+    /* background-color:#0e0e0e; */
+    cursor: pointer;
+}
+.actionSectionContainerParent .actionSectionContainerChild svg {
+    background-color: #fff;
+    font-size: 35px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.actionSectionContainerParent .actionSectionContainerChild .heading {
+    
+    background-color: #fd7e35;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 6px;
+    position: absolute;
+    top: 0px;
+    right: -70px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.actionSectionContainerParent {
+    position: relative;
+}
+
+
+
+.actionSectionContainerParent:hover .actionSectionContainerChild {
+    /* display:block; */
+}
+
+.actionGridContainerParent .actionGridContainerChild {
+    display:none;
+    top: -18px;
+    left: 10px;
+    position:absolute;
+    z-index: 1000999;
+    cursor: pointer;
+}
+
+.actionGridContainerParent {
+    position: relative;
+}
+
+.curPointer {
+    cursor: pointer;
+}
+
+.actionGridContainerParent:hover .actionGridContainerChild {
+    /* display:block; */
+    display: flex;
+}
+.actionGridContainerParent:hover .actionGridContainerChild svg{
+    background-color: #fff;
+    font-size: 35px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.actionGridContainerParent:hover .actionGridContainerChild .heading {
+    /* background-color: #fff;
+    font-size: 12px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%); */
+
+    background-color: #fd7e35;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 6px;
+    /* height: 16px; */
+    position: absolute;
+    top: 0px;
+    right: -70px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+
+}
+.headingBottom {
+    margin-bottom: 0px;
+}
+.activeDevice svg {
+    fill:#fff !important;
+}
+.highlightElement svg {
+    fill:#fff !important;
+}
+
+.mainContentBox {
+    height: 92vh;
+    overflow-y: scroll;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    padding-top: 40px !important;
+}
+.mainContentBox::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.actionColumnContainerParent .actionColumnContainerChild {
+    display:none;
+    top:-20px;
+    left:10px;
+    position:absolute;
+    z-index: 1000000;
+    cursor: pointer;
+}
+
+.actionColumnContainerParent {
+    position: relative;
+}
+
+.actionColumnContainerParent:hover .actionColumnContainerChild {
+    display: flex;
+}
+.actionColumnContainerParent:hover .actionColumnContainerChild svg{
+    background-color: #fff;
+    font-size: 35px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.actionColumnContainerParent:hover .actionColumnContainerChild .heading {
+    background-color: #fd7e35;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 6px;
+    /* height: 16px; */
+    position: absolute;
+    top: 0;
+    right: -80px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+
+.actionGridRowContainerParent .actionGridRowContainerChild {
+    display:none;
+    top:-19px;
+    left:10px;
+    position:absolute;
+    z-index: 1000000;
+    cursor: pointer;
+}
+
+.actionGridRowContainerParent {
+    position: relative;
+}
+
+.actionGridRowContainerParent:hover .actionGridRowContainerChild {
+    display: flex;
+}
+.actionGridRowContainerParent:hover .actionGridRowContainerChild svg{
+    background-color: #fff;
+    font-size: 35px;
+    color: #333;
+    border-radius:5px;
+    padding: 8px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.actionGridRowContainerParent:hover .actionGridRowContainerChild .heading {
+    background-color: #fd7e35;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 6px;
+    /* height: 16px; */
+    position: absolute;
+    top: -0px;
+    left: 190px;
+    margin: 0 1px;
+    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+.placehodlerMyComp {
+    padding: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.myCompContainer {
+    background: #ecf3fe;
+    margin-bottom: 20px;
+}
+.myComph4 {
+    color: #999;
+    font-size: 25px !important;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    font-weight: 700 !important;
+}
+
+.secHeight {
+    min-height: 100vh;
+    align-items: center;
+    display: flex;
+}
+
+.overlayStyle{
+    position: fixed;
+    z-index: 9999;
+}
+
+.overlayAbStyle{
+    position: absolute;
+    z-index: 9999;
+}
+
+.overlayContStyle{
+    position: initial;
+}
+
+.mainCntcls {
+    position: relative;
+}

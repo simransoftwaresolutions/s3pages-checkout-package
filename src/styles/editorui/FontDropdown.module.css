@@ -1,0 +1,79 @@
+.subSettingTitle {
+    padding:5px;
+    background-color: #555;
+    color:#fff; 
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 14px;
+    /* border: 1px solid orange; */
+    border-bottom:0;
+    opacity: 0.9;
+}
+
+.subSettingTitle:hover {
+    opacity: 1;
+}
+
+.mainContainer {
+    /* padding:5px; */
+    /* background-color: #444242; */
+    margin-bottom: 5px;
+}
+
+.advSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.rangeSet {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.colorBox {
+    background-color:#fff;
+    color:#000;
+    cursor: pointer;
+    padding:3px;
+    border: 1px solid #000;
+}
+.dropDowninnerBox {
+    background:#4c4c4c;
+    padding: 2px 20px 2px 5px;
+    border-radius:5px; 
+    /* border:1px solid #fff; */
+    margin-left: 5px;
+    cursor: pointer;
+}
+.dropDownBox {
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
+.dropDowninnerBox {
+    background:#4c4c4c;
+    padding: 2px 20px 2px 5px;
+    border-radius:5px; 
+    /* border:1px solid #fff; */
+    margin-left: 5px;
+}
+.clsIpBox {
+    position: relative;
+}
+.clsIpBox input {
+    width: 100% !important;
+    color:#fff !important;
+    background: transparent;
+    position: relative;
+}
+.dBoxComntainer {
+    max-height:230px;
+    overflow-y: scroll;
+}
+.statesBoxArrw {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    z-index: 999912;
+    background: #333;
+    cursor:pointer;
+}
